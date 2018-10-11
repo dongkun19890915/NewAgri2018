@@ -1,6 +1,0 @@
-{
-  "application": "insure",
-  "option": "option",
-  "insure-now":"insure now",
-  "name": "name:{NAME, select, male{ermao} female{sun} other{figer}}"
-}

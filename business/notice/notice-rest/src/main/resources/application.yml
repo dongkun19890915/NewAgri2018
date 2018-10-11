@@ -1,6 +1,0 @@
-logging:
-    level:
-        root: INFO
-        com.sinosoft: DEBUG
-        org.springframework.cloud.config: DEBUG
-        druid.sql: DEBUG

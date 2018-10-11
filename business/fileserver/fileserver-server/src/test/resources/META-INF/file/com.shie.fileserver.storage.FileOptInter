@@ -1,3 +1,0 @@
-FTP=com.sinosoft.fileserver.storage.instance.FtpUtil
-SFTP=com.sinosoft.fileserver.storage.instance.SftpOptUtil
-OSS=com.sinosoft.fileserver.storage.instance.OssUtil
