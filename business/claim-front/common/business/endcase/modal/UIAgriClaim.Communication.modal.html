@@ -1,0 +1,99 @@
+<div>
+  <div class="modal-header">
+    <h1 class="font-large">理赔沟通</h1>
+    <i class="icon iconfont modal-header-close" ng-click="closeModal()">&#xe632;</i>
+  </div>
+  <div class="modal-body" style="min-height:200px;max-height: 500px;overflow-y:scroll;">
+    <div ng-if="!showLoading">
+      <div class="queryResult">
+        <ul class="clearfix">
+          <li class="condition_td fl half-li">
+            <label>报案号码</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.registNo" maxlength="19" disabled="disabled">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>保单号码</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.policyNo" disabled="disabled">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>立案号</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.claimNo" maxlength="19" disabled="disabled">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>险种代码</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.riskCode" disabled="disabled">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>输单日期</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.inputDate" disabled="disabled">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>节点类型</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.nodeType" disabled="disabled">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>操作员代码</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.operatorCode" disabled="disabled">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>操作员姓名</label>
+            <div class="half-div">
+              <input type="text" ng-model="communication.operatorName" disabled="disabled">
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="queryResult">
+        <div class="queryResult_title clearfix" style="background: #2DBE61;text-align: center;">
+          <span style="color: #fff;">记录信息</span>
+        </div>
+        <div class="input-content-box">
+          <textarea ng-model="communication.context"></textarea>
+        </div>
+        <div class="btn_tr clearfix">
+          <span ng-click="submitCommuication()">保存</span>
+          <span ng-click="resetContext()">重置</span>
+        </div>
+      </div>
+      <div class="queryResult">
+        <table>
+          <tr class="tr_top">
+            <td>序号</td>
+            <td>时间</td>
+            <td>节点类型</td>
+            <td>留言人</td>
+            <td>记录信息</td>
+          </tr>
+          <tr class="tr_content" ng-repeat="prpLMessageDto in communication.prpLMessageDtoList">
+            <td class="C2DBE61">{{prpLMessageDto.serialNo}}</td>
+            <td>{{prpLMessageDto.inputDate | timeFilter}}</td>
+            <td>{{prpLMessageDto.nodeType}}</td>
+            <td></td>
+            <td>{{prpLMessageDto.context}}</td>
+          </tr>
+        </table>
+        <!--<div class="index_page">-->
+        <!--<tm-pagination conf="paginationConfmm"></tm-pagination>-->
+        <!--</div>-->
+      </div>
+    </div>
+
+    <div ng-if="showLoading" style="position: absolute;z-index: 1000;top:0;left: 0;width: 100%;height: 100%;background:rgba(0,0,0,0.33);text-align: center;">
+      <span style="position: absolute;top: 50%;left: 43%;color:#ffffff"><img src="common/images/lightbox/loading.gif" style="width: 24px;">&nbsp;加载中。。。</span>
+    </div>
+  </div>
+</div>

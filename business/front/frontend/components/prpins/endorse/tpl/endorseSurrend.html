@@ -1,0 +1,264 @@
+<!--退保-->
+<div>
+    <ul class="index_process">
+        <li class="li_active"><i></i><span>1.批改信息录入</span></li>
+        <li><i class="i_1_1"></i><span>2.批改信息确认</span></li>
+        <li><i class="i_2"></i><span>3.完成</span></li>
+    </ul>
+    <ng-form novalidate="novalidate" name="endorseSurrendForm">
+        <div class="index_con">
+            <!--保单基本信息-->
+            <div class="index_list">
+                <div class="index_tit"><h6>保单基本信息</h6></div>
+                <ul class="list_ul list_ul1">
+                    <li><span>保单号码：</span></li>
+                    <li><span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.policyNo"></span></li>
+                    <li><em>*</em><span>投保日期：</span></li>
+                    <li>
+                        <span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.operateDate |date:'yyyy-MM-dd'">2016-07-20</span>
+
+                    </li>
+                    <li><em>*</em><span>保单生效日：</span></li>
+                    <li><span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.startDate |date:'yyyy-MM-dd'">2017-07-19</span><span class="fl">&nbsp;&nbsp;0时</span></li>
+                    <li><span>保单终止日：</span></li>
+                    <li><span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.endDate |date:'yyyy-MM-dd'">2017-07-19&nbsp;&nbsp;&nbsp;&nbsp;24时</span><span class="fl">&nbsp;&nbsp;24时</span></li>
+                </ul>
+            </div>
+            <!--批改基本信息-->
+            <div class="index_list">
+                <div class="index_tit"><h6>批改基本信息</h6></div>
+                <ul class="list_ul">
+                    <li><span>批改类型：</span></li>
+                    <li>
+                        <span ng-bind="endorseReturnDto.prpPheadDto.endorType" class="hide"></span>
+                        <span class="fl" ng-bind="endorseReturnDto.prpPheadDto.endorTypeName"></span>
+                    </li>
+
+                    <li><span>批改申请号码：</span></li>
+                    <li><span class="fl" ng-bind="endorseReturnDto.prpPheadDto.applyNo"></span></li>
+
+                    <li><em>*</em><span>批改申请日：</span></li>
+                    <li>
+                        <input type="text" readonly id="endorDate"  class="date-input fl date" format="YYYY-MM-DD" ng-model="endorseReturnDto.prpPheadDto.endorDate"  max-date="{{nowDate}}"  jedate required>
+                    </li>
+
+                    <li><em>*</em><span>退保类型：</span></li>
+                    <li class="li_radio">
+                        <div class="marr43">
+                            <label class="mar_right1" ng-class="{true:'radio',false:'on'}[surrendStartFlag]" ng-click="radioSurrendClick()">
+                                <input type="radio" class="hide" value="0" name="trafficIns"   ng-model="endorseReturnDto.prpPheadDto.surrenderType"/><em>起期退保</em>
+                            </label>
+                            <label ng-class="{true:'on',false:'radio'}[surrendCenFlag]" ng-click="radioSurrendClick1()">
+                                <input type="radio" checked="checked" class="hide" value="1" name="trafficIns"  ng-model="endorseReturnDto.prpPheadDto.surrenderType"/><em>中途退保</em>
+                            </label>
+                        </div>
+                    </li>
+
+                    <li ng-hide="validDateHide">
+                        <em>*</em><span>批改生效日：</span></li>
+                    <li ng-hide="validDateHide">
+                        <input type="text" id="validDate" readonly class="date-input fl date date_wid" value="2016-01-21" max-date="{{validDateMAX}}"  min-date="{{validDateMin}}" jedate format="YYYY-MM-DD" required ng-model="endorseReturnDto.prpPheadDto.validDate">
+                        <span class="fl">&nbsp;&nbsp;0时</span>
+                    </li>
+
+                    <li ng-hide="startDateHide">
+                        <em>*</em><span>批改生效日：</span></li>
+                    <li ng-hide="startDateHide" class="effective_date">
+                        <span class="fl"   ng-bind="endorseReturnDto.policyDto.prpCmainDto.startDate"></span><span  class="fl" >&nbsp;&nbsp;0时</span>
+                    </li>
+
+                    <li><em>*</em><span>退保原因：</span></li>
+                    <li>
+                        <div class="ui-select" ng-click="requiredReason()">
+                            <code-type ng-required="true" class="seletc_bor" base-code="EndorReason" ng-model='endorseReturnDto.prpPheadDto.reasonCode' ng-disabled="false" is-fuzzy="true" required></code-type>
+                        </div>
+                    </li>
+                    <li ng-if="endorseReturnDto.prpPheadDto.reasonCode!='03'"><span>退保原因说明：</span></li>
+                    <li  ng-if="endorseReturnDto.prpPheadDto.reasonCode!='03'" class="correct_reason"><input type="text" maxlength="40"   class="fl" ng-model="endorseReturnDto.prpPheadDto.reasonText"/></li>
+                    <li  ng-if="endorseReturnDto.prpPheadDto.reasonCode=='03'"><em>*</em><span>退保原因说明：</span></li>
+                    <li  ng-if="endorseReturnDto.prpPheadDto.reasonCode=='03'" class="correct_reason"><input type="text" required  maxlength="40"   warn-text="退保原因说明"  class="fl" ng-model="endorseReturnDto.prpPheadDto.reasonText"/></li>
+                </ul>
+            </div>
+            <!--业务相关信息-->
+            <div class="index_list">
+                <div class="index_tit"><h6>业务相关信息</h6></div>
+                <ul class="list_ul">
+                    <li><em>*</em><span>业务来源：</span></li>
+                    <li>
+                        <input type="text" class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.businessNatureName">
+                    </li>
+
+                    <li><em>*</em><span>出单省级机构：</span></li>
+                    <li>
+                        <input type="text" class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.comCodeName">
+                    </li>
+
+                    <li><em>*</em><span>出单分支机构代码：</span></li>
+                    <li>
+                        <input type="text" class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.cityCode">
+                    </li>
+
+                    <li><span>业务归属机构代码：</span></li>
+                    <li>
+                        <input type="text" class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.makeCom">
+                    </li>
+
+                    <li><span>渠道代码：</span></li>
+                    <li>
+                        <input type="text" class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handlerCode" maxlength="30" ng-pattern="/^[A-Za-z0-9]*$/" warn-text="{'ErrPattern':'渠道代码只能输入字母和数字'}"/>
+                    </li>
+                    <li><span>渠道名称：</span></li>
+                    <li>
+                        <input type="text" class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handlerName" maxlength="25"/>
+                    </li>
+                    <li><span>协议代码：</span></li>
+                    <li>
+                        <input type="text" class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.contractNo" maxlength="22"/>
+                    </li>
+                    <li></li>
+                    <li></li>
+
+                    <li><em>*</em><span>归属业务员代码：</span></li>
+                    <li>
+                        <input type="text" required class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handler1Code">
+                    </li>
+
+                    <li><em>*</em><span>归属业务员姓名：</span></li>
+                    <li>
+                        <input type="text" required class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handler1Name">
+                    </li>
+                    <li><em>*</em><span>录单人员代码：</span></li>
+                    <li>
+                        <input type="text" required class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.operatorCode">
+                    </li>
+
+                    <li><em>*</em><span>录单人员姓名：</span></li>
+                    <li>
+                        <input type="text" required class="fl bor box_shadow" readonly ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.operatorName">
+                    </li>
+
+                    <li><span>批改录入人员代码：</span></li>
+                    <li>
+                        <input type="text" class="fl" value=""  ng-model="endorseReturnDto.prpPheadDto.operatorCode" maxlength="15" ng-pattern="/^[A-Za-z0-9]*$/" warn-text="{'NonEmpty':'批改录入人员代码不能为空','ErrPattern':'批改录入人员代码只能输入字母和数字'}">
+                    </li>
+
+                    <li><span>批改录入人员姓名：</span></li>
+                    <li>
+                        <input type="text" class="fl" ng-model="endorseReturnDto.prpPheadDto.operatorName" maxlength="15" warn-text="{'NonEmpty':'批改录入人员姓名不能为空'}" >
+                    </li>
+                </ul>
+            </div>
+            <!--退费收款人信息-->
+            <div class="index_list">
+                <div class="index_tit"><h6>退费收款人信息</h6></div>
+                <ul class="list_ul">
+                    <li><span>收款人与投保人关系：</span></li>
+                    <li>
+                        <div class="ui-select" ng-click="autoPpayeeAccount()">
+                            <code-type class="seletc_bor" base-code="Insuredrelation" ng-model='endorseReturnDto.prpPpayeeAccountDto.accountType' ng-disabled="false" is-fuzzy="true"></code-type>
+                        </div>
+                    </li>
+
+                    <li><em>*</em><span>收款人姓名/名称：</span></li>
+                    <li>
+                        <input type="text" class="fl" ng-model="endorseReturnDto.prpPpayeeAccountDto.accountName" required  maxlength="40">
+                    </li>
+
+                    <li><em>*</em><span>收款人证件类型：</span></li>
+                    <li>
+                        <div class="ui-select" ng-click="changeIdentifyType()">
+                            <code-type ng-required="true" class="seletc_bor" base-code="IdentifyType" ng-model='endorseReturnDto.prpPpayeeAccountDto.identifyType'  ng-disabled="false" is-fuzzy="true"></code-type>
+                        </div>
+                    </li>
+                    <li><em>*</em><span>收款人证件号码：</span></li>
+                    <li>
+                        <input type="text" class="fl" ng-model="endorseReturnDto.prpPpayeeAccountDto.identifyNo" sv-credit="endorseReturnDto.prpPpayeeAccountDto.identifyType" required maxlength="20">
+                    </li>
+
+                    <ng-form novalidate="novalidate" name="transmissionForm">
+                    <li><em>*</em><span>退款账号开户所在省：</span></li>
+                    <li class="ui-select refund_li">
+                        <input type="hidden" ng-model="endorseReturnDto.prpPpayeeAccountDto.recBankProvinceName">
+                        <ui-select ng-model="endorseReturnDto.prpPpayeeAccountDto.recBankProvinceCode" on-select="selectCode($select.selected,'CapitalProvince');return;" required class="fl select">
+                            <ui-select-match style="overflow: hidden" placeholder="请选择省">{{$select.selected.codeName}}</ui-select-match>
+                            <ui-select-choices repeat="code.codeCode as code in provinceList  | filter: $select.search">
+                                <span ng-bind="code.codeName"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </li>
+                    <li><em>*</em><span>退款账号开户所在市：</span></li>
+                    <li class="ui-select refund_li">
+                        <input type='hidden' ng-model="endorseReturnDto.prpPpayeeAccountDto.recBankCityName">
+                        <ui-select ng-model="endorseReturnDto.prpPpayeeAccountDto.recBankCityCode" on-select="selectCode($select.selected,'CapitalCity');return;" required class="fl select">
+                            <ui-select-match style="overflow: hidden" placeholder="请选择市">{{$select.selected.codeName}}</ui-select-match>
+                            <ui-select-choices repeat="code.codeCode as code in cityList  | filter: $select.search">
+                                <span ng-bind="code.codeName"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </li>
+
+                    <li><em>*</em><span>退款账号开户银行：</span></li>
+                    <li>
+                        <div class="ui-select" ng-click="watchChange()">
+                            <code-type ng-required="true" class="seletc_bor" base-code="CapitalBankType" ng-model='endorseReturnDto.prpPpayeeAccountDto.basicBankCode' ng-disabled="false" is-fuzzy="true"></code-type>
+                        </div>
+                    </li>
+                    </ng-form>
+                    <li><em>*</em><span>银行账号：</span></li>
+                    <li>
+                        <input type="text" class="fl" ng-model="endorseReturnDto.prpPpayeeAccountDto.accountNo" ng-required="true" maxlength="40"  ng-pattern="/^[0-9]*$/" warn-text="{'ErrPattern':'银行账号只能输入数字'}">
+                    </li>
+
+                    <li><em>*</em><span>退款账户开户银行网点：</span></li>
+                    <li class="ui-select li_wid refund_li1">
+                        <input type="hidden" ng-model ="endorseReturnDto.prpPpayeeAccountDto.cnapsName">
+                        <ui-select ng-model="endorseReturnDto.prpPpayeeAccountDto.cnaps" on-select="selectCode($select.selected,'rebackBankType');return;" required class="fl select" ng-click="capitalBank()">
+                            <ui-select-match style="overflow: hidden" placeholder="查询或选择...">{{$select.selected.codeName}}</ui-select-match>
+                            <ui-select-choices repeat="code.codeCode as code in rebackBanklist  | filter: $select.search">
+                                <span ng-bind="code.codeName"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                        <!--
+                        <span ng-if="tipInfo">退款账号开户所在省市及开户行需填写</span>
+                        -->
+                    </li>
+
+                    <li class="hide"><em>*</em><span>对公对私类型：</span></li>
+                    <li class="hide">
+                        <div class="ui-select hide">
+                            <code-type class="seletc_bor" base-code="PayeePubPrivType" ng-model="endorseReturnDto.prpPpayeeAccountDto.isPrivate" ng-disabled="false" is-fuzzy="true"></code-type>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="index_btn">
+            <span class="policy_info"  ng-click="policyDetailShow()">
+                <i></i><em>查阅保单详情</em>
+            </span>
+            <span ng-click="FileshowInsure()">
+                <i class="i_1"></i><em>上传</em>
+            </span>
+            <span ng-click="deleteshowInsure()">
+                <i class="i_2"></i><em>删除</em>
+            </span>
+            <span ng-click="surrendSave()">
+                <i class="i_3"></i><em>保存</em>
+            </span>
+            </div>
+            <div class="index_btn1">
+                <span class="submit" ng-click="surrendNext()">下一步</span>
+                <span class="edit" ng-click="exitEndorse()" >退出</span>
+            </div>
+        </div>
+    </ng-form>
+    <!--弹层---文件上传-->
+    <div data-ng-include="'components/prpins/proposal/tpl/applicationFileUploadLayer.html'"></div>
+    <!--删除退保批单-->
+    <div ng-if="surrendDeleteLayer" data-ng-include="'components/prpins/endorse/tpl/endorseDeleteLayer.html'"></div>
+    <!--暂存成功-->
+    <div data-ng-include="'components/prpins/proposal/tpl/insuredOnlyOneLayer.html'"></div>
+    <!--弹层---删除-->
+    <div ng-if="!deleteLayer" data-ng-include="'components/prpins/endorse/tpl/endorseDeleteLayer.html'"></div>
+    <!--  引入 保单详情页面 容器，需要在 查阅保单详情 按钮上 增加显示 隐藏开关 -->
+    <div data-ng-include="'components/prpins/endorse/tpl/policyDetail.html'"></div>
+</div>

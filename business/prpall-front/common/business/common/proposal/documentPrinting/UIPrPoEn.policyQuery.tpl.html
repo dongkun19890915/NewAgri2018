@@ -1,0 +1,332 @@
+<div class="main">
+	<div class="section commentWidth" style="height:auto;">
+		<div class="position">
+			<span>当前位置：</span>
+			<span class="local-fir">单证打印<i>&gt;</i></span>
+			<span class="local-sec">保单打印</span>
+		</div>
+		<div class="content_div content1-div">
+			<div class="queryCriteria">
+				<span class="queryCriteria_title">
+				<label>查询条件</label>
+				<span class="click_img" ng-click="addFrom()">
+                    <i class="iconfont" ng-show="conditionShow">&#xe668;</i><i class="iconfont" ng-show="!conditionShow">&#xe667;</i>
+                </span>
+				</span>
+				<div class="condition_table" id="pt4">
+					<ul class="clearfix">
+						<li class="condition_td teaR fl">
+							<label>投保单号码</label>
+							<div>
+								<input type="text" ng-blur="checkproposalNo($event,proposal.prpTmain.proposalNo);" maxlength="40" ng-change="changeproposalNo(proposal.prpTmain.proposalNo)" ng-class="{'checkOutBdRed':check.proposalNo}" ng-model="proposal.prpTmain.proposalNo" class="">
+								<s ng-bind="check.proposalNo"></s>
+							</div>
+						</li>
+						<li class="condition_td teaR fl">
+							<label>保单号码</label>
+							<div>
+								<input ng-blur="checkpolicyNo($event,proposal.prpTmain.policyNo)" maxlength="40" ng-change="changeproposalNo(proposal.prpTmain.policyNo)" ng-class="{'checkOutBdRed':check.policyNo}" ng-model="proposal.prpTmain.policyNo" type="text" class="">
+								<s ng-bind="check.policyNo"></s>
+							</div>
+						</li>
+						<li class="condition_td teaC fl">
+							<label>投保人名称</label>
+							<div>
+								<input type="text" ng-blur="checkappliName($event,proposal.prpTmain.appliName)" maxlength="40" ng-class="{'checkOutBdRed':check.appliName}" ng-model="proposal.prpTmain.appliName" class="">
+								<s ng-bind="check.appliName"></s>
+							</div>
+						</li>
+						<li class="condition_td teaL fl">
+							<label>投保人代码</label>
+							<div>
+								<input type="text" ng-class="{'checkOutBdRed':check.appliCode}" maxlength="40" ng-blur="checkappliCode($event,proposal.prpTmain.appliCode)" ng-model="proposal.prpTmain.appliCode" class="">
+								<s ng-bind="check.appliCode"></s>
+							</div>
+						</li>
+						<li class="condition_td teaR fl">
+							<label>被保险人名称</label>
+							<div>
+								<input type="text" ng-blur="checkinsuredName($event,proposal.prpTmain.insuredName)" maxlength="40" ng-class="{'checkOutBdRed':check.insuredName}" ng-model="proposal.prpTmain.insuredName" class="">
+								<s ng-bind="check.insuredName"></s>
+							</div>
+						</li>
+						<li class="condition_td teaC fl">
+							<label>被保险人代码</label>
+							<div>
+								<input type="text" ng-blur="checkinsuredCode($event,proposal.prpTmain.insuredCode)" maxlength="40" ng-class="{'checkOutBdRed':check.insuredCode}" ng-model="proposal.prpTmain.insuredCode" class="">
+								<s ng-bind="check.insuredCode"></s>
+							</div>
+						</li>
+						<li ng-show="conditionShow">
+							<ul class="clearfix">
+								<li class="condition_td teaL fl">
+									<label>打印状态</label>
+									<select name="print" ng-model="proposal.prpTmain.printFlag">
+										<option value=""  selected hidden></option>
+										<option value="0">未打印</option>
+										<option value="1">已打印</option>
+									</select>
+								</li>
+								<!--<li class="condition_td teaR fl">
+									<label>归属机构</label>
+									<div>
+										<input type="text" ng-blur="checkcomCode($event,proposal.prpTmain.comCode)" maxlength="40" ng-class="{'checkOutBdRed':check.comCode}" ng-model="proposal.prpTmain.comCode" class="">
+										<s ng-bind='check.comCode'></s>
+									</div>
+								</li>-->
+								<li class="condition_td teaL fl">
+									<label>归属机构</label>
+									<div class="codeType codeNoBor"  >
+										<ui-select history ng-model="proposal.prpTmain.comCode"
+												   ng-click="getComCodeList()"
+										>
+											<ui-select-match placeholder="查询或选择..." ng-attr-title="{{$select.selected.comCName}}">
+												{{$select.selected.comCName}}
+											</ui-select-match>
+											<ui-select-choices repeat="code.comCode as code in selectListData.comCodeList | filter: $select.search">
+												<span ng-bind="code.comCName" ng-attr-title="{{code.comCName}}"></span>
+											</ui-select-choices>
+										</ui-select>
+									</div>
+								</li>
+
+								<li class="condition_td teaC fl">
+									<label>业务员代码</label>
+									<div>
+										<input type="text" ng-blur="checkhandlerCode($event,proposal.prpTmain.handlerCode)"maxlength="40"  ng-class="{'checkOutBdRed':check.handlerCode}" ng-model="proposal.prpTmain.handlerCode" class="">
+										<s ng-bind="check.handlerCode"></s>
+									</div>
+								</li>
+								<li class="condition_td teaL fl">
+									<label>操作员代码</label>
+									<div>
+										<input type="text" ng-blur="checkoperatorCode($event,proposal.prpTmain.operatorCode)" maxlength="40" ng-class="{'checkOutBdRed':check.operatorCode}" ng-model="proposal.prpTmain.operatorCode" class="">
+										<s ng-bind="check.operatorCode"></s>
+									</div>
+								</li>
+								<li class="condition_td teaR fl">
+									<label>制单日期</label>
+									<input style="width: 26%" type="text" id="idDataStart2" jedate
+										   class="date-input proposal_date " ng-model="proposal.prpTmain.operateDateStart"  ng-change="compareDate11(proposal.prpTmain.operateDateStart,proposal.prpTmain.operateDateEnd)"
+										   format="YYYY-MM-DD" required readonly /><!--ng-init="proposal.prpTmain.operateDateStart=time.year+'-'+time.month+'-01'"-->
+									<i class="fl">-</i>
+									<input style="width: 26%" type="text" id="idDataEnd2" jedate
+										   class="date-input proposal_date " ng-model="proposal.prpTmain.operateDateEnd"
+										   format="YYYY-MM-DD"
+										   required readonly  ng-change="compareDate1(proposal.prpTmain.operateDateStart,proposal.prpTmain.operateDateEnd)"/><!--    ng-init="proposal.prpTmain.operateDateEnd=time.year+'-'+time.month+'-'+time.date"-->
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="btn_tr clearfix">
+						<span class="fl" ng-click="submit()">查询</span>
+						<span class="fr" ng-click="reset()">重置</span>
+					</div>
+				</div>
+			</div>
+			<div class="queryResult">
+				<div class="queryResult_title clearfix">
+					<span class="fl">查询结果</span>
+					<!--<label class="fr" ng-click="configPrint()">打印</label>-->
+					<label class="fr" ng-click="goBackDashboard();">返回</label>
+					<!--<label class="fr" ng-click="printPolicyNo()">打印</label>-->
+					<label class="fr" ng-click="configOtherPrintSet()">打印其他</label>
+					<label class="fr" ng-click="config('PolicyPrint')">打印保单正本</label>
+					<label class="fr" ng-click="printUpload()">电子单证下载</label>
+				</div>
+				<table>
+					<tr class="tr_top">
+						<td class="w8 check-box1">
+							<label class="fl checkbox-label1"  ng-class="{'checkbox-checked':select_all==true}" ng-click="selectAll()"><!--box.checked=!box.checked-->
+								<span></span>
+								<input type="checkbox" name="checkbox" class="hide" ng-model="select_all"><em>全选</em>
+							</label>
+						</td>
+						<td>保单号</td>
+						<td>投保人名称</td>
+						<td>被保险人名称</td>
+						<td class="w8">险种</td>
+						<td class="w8">操作员</td>
+						<td class="w9">制单日期</td>
+						<td class="w8">发送电子保单</td>
+						<!--<td>状态</td>-->
+						<!--<td>核保信息</td>-->
+					</tr>
+					<tr class="tr_content  F2F2F2 check-box1" ng-repeat="info in proposal.QueryList track by $index">
+						<td>
+							<label class="fl checkbox-label1 " ng-class="{'checkbox-checked':info.checked==true}" ><!--box.checked1=!box.checked1-->
+								<span ng-click="selectOne(info.policyNo)"></span>
+								<input type="checkbox" name="checkbox" class="hide" ng-model="info.checked">
+							</label>
+						</td>
+						<td class="C2DBE61 cur">
+							<span  ng-click="getPolicyInfo(info.policyNo)"  ng-bind="info.policyNo"></span>
+						</td>
+						<td ng-bind="info.appliName"></td>
+						<td ng-bind="info.insuredName"></td>
+						<td  ng-attr-title="{{info.riskName}}">{{info.riskCode}} </td>
+						<td ng-bind="info.operatorName"></td>
+						<td ng-bind="info.operateDate"></td>
+						<td class="cur"> <span class="iconfont icon-table cur fs_20" ng-click="sendPolicy(info)">&#xe624;</span></td>
+						<!--<td>{{info.underWriteFlag?info.underWriteFlag=='1'?'通过':info.underWriteFlag=='2'?'不通过':info.underWriteFlag=='3'?'无需核保':info.underWriteFlag=='9'?'待核':'':'初始值'}}</td>-->
+						<!--<td ng-bind="info.othFlag"></td>-->
+					</tr>
+				</table>
+				<div ng-show="isEmptyObject(proposal.QueryList)||proposal.QueryList.length==0" ng-class="{'not-query':isEmptyObject(proposal.QueryList),'query-null':proposal.QueryList.length==0}" class="not-query"></div>
+				<div class="index_page">
+					<tm-pagination conf="paginationConfmm"></tm-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--批单打印设置弹层-->
+<div class="printLayerBox" ng-show="configPrintSetShow">
+	<div class="mask zIndex"></div>
+	<div class="tip_success_info printLayer" style="position: fixed;width: 768px;height: 270px;">
+		<div class="remove_header">
+			<span>打印设置</span>
+			<i class="icon iconfont plusAndReduce" ng-click="configPrintSet()">&#xe632;</i>
+		</div>
+		<div class="info_container">
+			<div class="printSelet-box" style="overflow: inherit;">
+				<div>
+					<label class="" >保单号</label>
+					<input class="printSelet-input" ng-model="policyNo" disabled type="text" style="width:26%"/>
+					<!--<input class="printSelet-input" ng-model="proposalNo" disabled type="hidden"/>-->
+					<div style="display: inline-block;" ng-mouseover="showprintListShow()" ng-mouseleave="showprintListHide()">
+						<label class="button_sure" style="text-align: center;width: 80px;margin-left: 20px;color:#fff;">详情</label>
+						<div ng-show="printListShow" style="position: absolute;left:38px;width: 90%;background: #fff;z-index:2;height:366px;overflow-y: auto; border: 2px solid #2DBE61;" >
+							<div class="" style="text-align: center;line-height: 36px;background: #f2f2f2;">
+								<span style="font-size: 16px;">打印详情列表</span>
+								<!--<i class="icon iconfont plusAndReduce" ng-click="configPrintSet()">&#xe632;</i>-->
+							</div>
+							<div class="info_container" style="">
+							<table>
+								<tr class="tr_top">
+									<td class="w5">序列</td>
+									<td class="w8">保单号</td>
+									<td style="width: 150px;">投保人名称</td>
+									<td style="width: 150px;">被保险人名称</td>
+									<td class="">险种</td>
+									<td class="">操作员</td>
+									<td>制单日期</td>
+									<!--<td>状态</td>-->
+									<!--<td>核保信息</td>-->
+								</tr>
+								<tr class="tr_content  F2F2F2 check-box1" ng-repeat="info in printlist track by $index">
+									<td>{{$index+1}}</td>
+									<td  ng-click="getPolicyInfo(info.policyNo)"  ng-bind="info.policyNo"></td>
+									<td ng-bind="info.appliName"></td>
+									<td ng-bind="info.insuredName"></td>
+									<td  ng-attr-title="{{info.riskName}}">{{info.riskCode}} </td>
+									<td ng-bind="info.operatorName"></td>
+									<td ng-bind="info.operateDate"></td>
+									<!--<td>{{info.underWriteFlag?info.underWriteFlag=='1'?'通过':info.underWriteFlag=='2'?'不通过':info.underWriteFlag=='3'?'无需核保':info.underWriteFlag=='9'?'待核':'':'初始值'}}</td>-->
+									<!--<td ng-bind="info.othFlag"></td>-->
+								</tr>
+							</table>
+								<div class="index_page">
+									<tm-pagination conf="paginationConfmm1"></tm-pagination>
+								</div>
+							</div>
+							<!--<div class="remove_button no-line">
+								<button class="button_sure" ng-click="printSure()">确 定</button>
+							</div>-->
+						</div>
+					</div>
+				</div>
+				<label class=""  >单证类型</label>
+				<select ng-model="visaCode" value="" ng-disabled="policyDisabled"  ng-change="changeVisaType(visaSerialNos)" ng-init="visaCode=0">
+					<option  ng-value="info.visaCode"  ng-repeat="info in visaSerialNos track by $index"  ng-bind="info.visaType" ng-selected="codeName==info.visaType"></option>
+				</select>
+				<label class="" >流水起始号</label>
+				<input class="printSelet-input" disabled type="text" ng-model="proposal.visaSerisal"/>
+			</div>
+
+		</div>
+		<div class="remove_button no-line" style="line-height: 0;height: 0;position: relative;top:5px;">
+			<button class="button_sure" ng-click="printSure()">确 定</button>
+		</div>
+	</div>
+</div>
+<!--保单打印其他-->
+<div class="printLayerBox" ng-show="configOtherPrintSetShow">
+	<div class="mask zIndex"></div>
+	<div class="tip_success_info printLayer" style="position: fixed;">
+		<div class="remove_header">
+			<span>打印单证</span>
+			<i class="icon iconfont plusAndReduce" ng-click="configOtherPrintSet()">&#xe632;</i>
+		</div>
+		<div class="info_container">
+			<div class="printType-box">
+				<ul>
+					<!--副本调用的接口一样，只是纸张大小不一样-->
+					<li ng-click="choosePrintype('PolicyPrint1')" class="first-printInfo "
+						ng-class="isActive('PolicyPrint1')?'active':''">保单副本打印
+						<div ng-if="isActive('PolicyPrint1')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<li ng-click="choosePrintype('InsuranceFormPrint')" class="first-printInfo "
+						ng-class="isActive('InsuranceFormPrint')?'active':''">投保单打印
+						<div ng-if="isActive('InsuranceFormPrint')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<li ng-click="choosePrintype('MainPrint')" class="first-printInfo "
+						ng-class="isActive('MainPrint')?'active':''">主险清单打印
+						<div ng-if="isActive('MainPrint')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<li ng-click="choosePrintype('SpecialyAgreedPrint')" class="first-printInfo "
+						ng-class="isActive('SpecialyAgreedPrint')?'active':''">特别约定打印
+						<div ng-if="isActive('SpecialyAgreedPrint')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<!--<li ng-click="choosePrintype('PrpaddressPrint')" class="first-printInfo "-->
+					<!--ng-class="isActive('PrpaddressPrint')?'active':''">标的地址打印-->
+					<!--<div ng-if="isActive('PrpaddressPrint')" class="choose-background"><span class="choose-dui">√</span></div>-->
+					<!--</li>-->
+					<li ng-click="choosePrintype('SubPrint')" class="first-printInfo "
+						ng-class="isActive('SubPrint')?'active':''">附加险清单打印
+						<div ng-if="isActive('SubPrint')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<li ng-click="choosePrintype('PaymentPlanPrint')" class="first-printInfo "
+						ng-class="isActive('PaymentPlanPrint')?'active':''">缴费计划打印
+						<div ng-if="isActive('PaymentPlanPrint')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<li ng-click="choosePrintype('PaymentNoticePrint')" class="first-printInfo "
+						ng-class="isActive('PaymentNoticePrint')?'active':''">缴费通知书打印
+						<div ng-if="isActive('PaymentNoticePrint')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<li ng-click="choosePrintype('FilePrint')" class="first-printInfo "
+						ng-class="isActive('FilePrint')?'active':''">承保卷宗打印
+						<div ng-if="isActive('FilePrint')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+					<li ng-click="choosePrintype('B5')" class="first-printInfo "
+						ng-class="isActive('B5')?'active':''">B5条款下载
+						<div ng-if="isActive('B5')" class="choose-background"><span class="choose-dui">√</span></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="remove_button no-line">
+			<button class="button_sure" ng-click="printSure()">确 定</button>
+		</div>
+	</div>
+</div>
+<!--发送电子保单-->
+<div class="printLayerBox" ng-show="sendPolicyFlag">
+	<div class="mask zIndex"></div>
+	<div class="tip_success_info printLayer" style="position: fixed;width: 700px;height: 220px;top:200px">
+		<div class="remove_header">
+			<span>发送电子保单</span>
+			<i class="icon iconfont plusAndReduce" ng-click="colseSendPolicy()">&#xe632;</i>
+		</div>
+		<li class="condition_td teaR fl" style="position:relative;top:55px;width: 75%">
+			<label>电子邮箱</label>
+			<div>
+				<input ng-model="emailSend" type="text">
+			</div>
+		</li>
+		<div class="remove_button no-line" style="position: relative;top:65px;height:0px;width: 70%;margin: auto">
+			<button class="button_sure" ng-click="sendPolicyEmail()">确 定</button>
+			<button class="button_sure" ng-click="colseSendPolicy()">取 消</button>
+		</div>
+	</div>
+</div>

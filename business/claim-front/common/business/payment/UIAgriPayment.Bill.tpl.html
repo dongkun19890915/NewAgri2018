@@ -1,0 +1,139 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔支付信息管理查询页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/6
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+          zhaowenjie    12.9          清单支付
+****************************************************************************
+-->
+<div class="section">
+
+  <div class="content_div content1-div">
+    <div class="queryCriteria mt20">
+                <span class="queryCriteria_title clearfix">
+                    <label>赔付信息</label>
+                  <tbody>
+                    <tr class="tr_content" ng-repeat="result in prpLregist">
+                      <td ng-bind="$index+1"></td>
+                      <td >
+                        <div class="w50oh w100oh" ng-attr-title="{{result.registNo}}" ng-bind="result.registNo"></div>
+                      </td>
+                      <td ng-bind="result.insuredName "></td>
+                      <td>
+                        <div class="w50oh w100oh" style="white-space: nowrap;" ng-attr-title="{{result.compensateNo}}" ng-bind="result.compensateNo"></div>
+                      </td>
+                      <td>
+                      <label ng-if="result.paymentType=='P60'">赔款</label>
+                      <label ng-if="result.paymentType=='GS60'">代付共保赔款</label>
+                      <label ng-if="result.paymentType=='P63'">施救费</label>
+                      <label ng-if="result.paymentType=='P62'">查勘费</label>
+                      <label ng-if="result.paymentType=='P64'">诉讼费</label>
+                      <label ng-if="result.paymentType=='P61'">检验鉴定费</label>
+                      <label ng-if="result.paymentType=='F67'">公估费</label>
+                      <label ng-if="result.paymentType=='P65'">系统内代查勘</label>
+                      <label ng-if="result.paymentType=='P68'">律师费</label>
+                      <label ng-if="result.paymentType!='P60'&&result.paymentType!='GS60'&&result.paymentType!='P63'
+                                  &&result.paymentType!='P62'&&result.paymentType!='P64'&&result.paymentType!='P61'
+                                  &&result.paymentType!='F67'&&result.paymentType!='P65'&&result.paymentType!='P68'">其他</label>
+                      </td>
+                      <td ng-bind="result.payTotalAmount"></td>
+                      <td ng-bind="result.havePayAmount"></td>
+                      <td ng-bind="result.payAmount"></td>
+                    </tr>
+                  </tbody>
+                  <input ng-model="queryDto.listNo" type="text" ng-show="false" />
+                  <input ng-model="queryDto.policyNo" type="text" ng-show="false" />
+                  <input ng-model="queryDto.registNo" type="text" ng-show="false" />
+                  <input ng-model="queryDto.compensateNo" type="text" ng-show="false" />
+                  <input ng-model="queryDto.billNo " type="text" ng-show="false" /><!--理赔清单号-->
+                  <input ng-model="queryDto.comCode" type="text" ng-show="false" />
+                  <input ng-model="mriskSwitch" type="text" ng-show="false" />
+                  <button class="fr btn btn-success" style="margin: 6px;" ng-click="importList()">导入清单</button>
+                  <button class="fr btn btn-success" style="margin: 6px;" ng-click="downloadList()">下载清单</button>
+                    <!--<div class="cur fr">-->
+                          <!--<i class="iconfont click_img">&#xe667;</i>-->
+                          <!--<i class="iconfont click_img hide">&#xe668;</i>-->
+                    <!--</div>-->
+                </span>
+      <div class="condition_table">
+        <ul class='clearfix half-ul'>
+          <li class="condition_td fl half-li">
+            <label>总赔付金额</label>
+            <div class="half-div">
+              <input ng-model="queryDto.payAmount" type="text" value='' ng-disabled="true" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="queryCriteria mt20">
+                <span class="queryCriteria_title clearfix">
+                    <label>处理意见</label>
+                  <div class="cur fr">
+          <!--        <i class="iconfont click_img">&#xe667;</i>-->
+                  <i class="iconfont click_img hide">&#xe668;</i>
+                  </div>
+                </span>
+      <div class="condition_table">
+        <ul class='clearfix half-ul' style="height: 150px;">
+          <li class="condition_td fl half-li">
+            <label>录入情况</label>
+            <div class="half-div">
+              <textarea style="margin: 0px;width: 726px;height: 134px;" ng-model="queryDto.newContext"></textarea>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="queryResult">
+        <!--<div class="queryResult_title clearfix">-->
+        <!--<span class="fl tit-color font-bold">查询结果列表</span>-->
+        <!--</div>-->
+        <table>
+          <thead>
+          <tr class="tr_top">
+            <th>序号</th>
+            <th>处理节点</th>
+            <th>流出时间</th>
+            <th>占用时间</th>
+            <th>操作人员</th>
+            <th>处理机构</th>
+            <th>处理意见</th>
+            <th>补充说明</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="tr_content" ng-repeat="(index,result) in payPurposeDtoList">
+            <!--<th>{{result.index+1}}</th>
+            <th>{{result.serialNo}}</th>
+            <th>{{result.registNo}}</th>
+            <th>{{result.policyNo}}</th>
+            <th>{{result.certiNo}}</th>
+            <th>{{result.billNo}}</th>
+            <th>{{result.payAmount}}</th>
+            <th>{{result.paymentType}}</th>-->
+            <td ng-bind="$index+1"></td>
+            <td ng-bind="result.nodeName"></td>
+            <td ng-bind="result.outputTime "></td>
+            <td ng-bind="result.occupyTime"></td>
+            <td ng-bind="result.operatorName"></td>
+            <td ng-bind="result.comName"></td>
+            <td ng-bind="result.notionName"></td>
+            <td ng-bind="result.context"></td>
+          </tr>
+          </tbody>
+        </table>
+        <div ng-show="prplregist===null||prplregist.length==0" ng-class="{'not-query':prplregist===null,'query-null':prplregist.length==0}"></div>
+        <!--<div class="index_page">
+          <tm-pagination conf="paginationConf"></tm-pagination>
+        </div>-->
+      </div>
+    </div>
+    <div class="btn_tr clearfix mt20">
+      <span class="btn"  ng-disabled="flag"  ng-click="submit('1')">提交</span>
+      <span ng-click="goBack()">取消</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔立案任务查询---调整估损金额弹层
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/12 
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="orderlayerBox" ng-show="checkAssLossFlag">
+  <div class="mask zIndex"></div>
+  <div class="printLayer info-task">
+    <div class="remove_header">
+      <span>立案估损详细信息</span>
+    </div>
+    <div class="info_container table-content">
+      <table class="info-table">
+        <tr>
+          <td class="tr" style="width: 18%">立案号：</td>
+          <td class="tl" style="width: 32%" ng-bind="claim.prpLClaimDto.claimNo"></td>
+          <td class="tr" style="width: 18%">报案号：</td>
+          <td class="tl" style="width: 32%" ng-bind="claim.prpLClaimDto.registNo"></td>
+        </tr>
+        <tr>
+          <td class="tr">保单号码：</td>
+          <td class="tl" ng-bind="claim.policyNo"></td>
+          <td class="tr">被保险人名称：</td>
+          <td class="tl" ng-bind="claim.prpLClaimDto.insuredNameShow"></td>
+        </tr>
+        <tr>
+          <td class="tr">保险期间：</td>
+          <td class="tl">{{claim.prpLClaimDto.startDate}}零时起至{{claim.prpLClaimDto.endDate}}二十四时止</td>
+          <td class="tr">币别：</td>
+          <td class="tl" ng-bind="claim.prpLClaimDto.currency">CNY-人民币</td>
+        </tr>
+        <tr>
+          <td class="tr">保险金额：</td>
+          <td class="tl" ng-bind="claim.prpLClaimDto.sumAmount"></td>
+          <td class="tr">出险时间：</td>
+          <td class="tl" ng-bind="claim.prpLClaimDto.damageStartDate"></td>
+        </tr>
+        <tr>
+          <td class="tr">险别估损金额合计：</td>
+          <td  class="tl" ng-bind="claim.prpLClaimDto.sumClaimAmount"></td>
+        </tr>
+      </table>
+      <h2>险别估损金额信息</h2>
+      <table class="news-table">
+        <tr class="tr-bg">
+          <td class="w9">险别</td>
+          <td class="w11_11">标的名称</td>
+          <td class="w17">币别</td>
+          <td>险别估损金额</td>
+          <td class="w9">费用类别</td>
+          <td class="w11_11">输入日期</td>
+          <td>调整原因</td>
+          <td class="no-bg w6"><span>汇总</span></td>
+        </tr>
+        <tr ng-repeat="result in claim.prpLclaimLossDtoList">
+          <td class="td-select">
+            <ui-select ng-disabled="showFlag" ng-required="true" ng-attr-title="{{$select.selected.kindName}}" on-select="getItemDetailName(result, $select)" ng-model="result.kindCode"  >
+              <ui-select-match   placeholder="查询或选择...">
+                {{$select.selected.kindName}}
+              </ui-select-match>
+              <ui-select-choices repeat="code.kindCode as code in codeListData.kindCodeList | filter: $select.search">
+                <span ng-bind="code.kindName"></span>
+              </ui-select-choices>
+            </ui-select>
+          </td>
+          <td ng-bind="result.itemDetailName"></td>
+          <td>
+            <code-type ng-model="result.currency" base-code="Currency"></code-type>
+          </td>
+          <td>
+            <input type="text" ng-model="result.sumClaim" ng-pattern="regData.positiveNumber"
+                   warn-text="{'ErrPattern':'险别估损金额只能输入数字!',itemName:'险别估损金额','positive':'true'}">
+          </td>
+          <td>
+            <code-type ng-model="result.lossFeeType" base-code="LossFeeType"></code-type>
+          </td>
+          <td ng-bind="result.inputDate"></td>
+          <td><input type="text" ng-model="result.remarkFlag"/></td>
+          <td class="btn-td"><i ng-click="deletePrpLclaimLossDto($index) ">-</i></td>
+        </tr>
+        <tr>
+          <td colspan="7">（按“+”号键增加信息，按“－”号键删除信息）</td>
+          <td class="btn-td" ng-click="addPrpLclaimLossDtoList()"><i>+</i></td>
+        </tr>
+      </table>
+      <!--<h2><i class="i-col">*</i>危险单位信息</h2>-->
+      <!--<div class="dangerUnit">生成危险单位</div>-->
+      <!--<table class="news-table">-->
+      <!--<tr class="tr-bg">-->
+      <!--<td>标的序号</td>-->
+      <!--<td>危险单位号</td>-->
+      <!--<td>危险单位描述</td>-->
+      <!--<td>地址描述</td>-->
+      <!--<td>币别</td>-->
+      <!--<td>估损金额</td>-->
+      <!--<td>占比</td>-->
+      <!--<td>险别代码</td>-->
+      <!--<td>险别名称</td>-->
+      <!--<td>标的代码</td>-->
+      <!--<td>标的名称</td>-->
+      <!--<td>是否危险单位</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+      <!--<td ng-bind="claim.prpLdangerItem.serialNo"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.dangerNo">1</td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.dangerdesc"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.addressName"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.currency"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.sumPaid"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.dangerKindShare"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.kindCode"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.kindName"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.itemCode"></td>-->
+      <!--<td ng-bind="claim.prpLdangerItem.itemName"></td>-->
+      <!--<td class="btn-td"><i>-</i></td>-->
+      <!--</tr>-->
+      <!--</table>-->
+      <div class="btn_tr clearfix mt20">
+        <span ng-click="saveAsslosss()">保存</span>
+        <span ng-click="checkAssLossFlag=false">返回</span>
+      </div>
+    </div>
+  </div>
+</div>

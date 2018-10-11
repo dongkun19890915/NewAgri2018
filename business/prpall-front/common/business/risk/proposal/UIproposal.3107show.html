@@ -1,0 +1,76 @@
+<!--主体内容-->
+<div class="application_entering">
+    <!--险种方案弹层-->
+    <!--<div ng-controller="UIPrPoEnRiskSchemeCtrl"  data-ng-include="'common/business/common/proposal/riskScheme/UIPrPoEn.riskScheme.layer.html'"></div>-->
+    <!--保存弹层-->
+    <!--<div ng-show="showSave"  class="all_payment layer-model">-->
+        <!--<div class="large-layer-content save_success">-->
+            <!--<div class="all_payment_head layer-header">-->
+                <!--<span>保存成功</span>-->
+            <!--</div>-->
+            <!--<div class="layer-con save_success_contain">-->
+                <!--<img src="" alt="">-->
+                <!--<h2>投保单保存成功</h2>-->
+            <!--</div>-->
+            <!--<div class="layer-footer">-->
+                <!--<button class="greenButton" ng-click="closeRiskScheme()">提交核保</button>-->
+                <!--<button class="greenButton" ng-click="resetRisk()">继续完善</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--第一层-->
+    <!--<div class="application_entering_first" ng-show="queryHide">-->
+        <!--<ul class="container">-->
+            <!--<li class="fl">-->
+                <!--<button class="btn btn-success">上传影像</button>-->
+                <!--<button class="btn btn-success">影像查看</button>-->
+                <!--<button class="btn btn-success">分户清单下载</button>-->
+                <!--<button class="btn btn-success">查看保核信息</button>-->
+            <!--</li>-->
+            <!--<li class="fr">-->
+                <!--<button ng-click="showSaveSuccess()" class="btn btn-success" disabled>保存</button>-->
+                <!--<button class="btn btn-success" disabled>暂存</button>-->
+                <!--<button class="btn btn-success" disabled>提交核保</button>-->
+                <!--&lt;!&ndash;<button class="btn btn-success">存为模板</button>&ndash;&gt;-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--右边的菜单栏  楼梯-->
+    <div id="navbar-example" class="application_entering_asider">
+        <ul class="application_entering_con">
+            <li ng-click="goBasic()" class=" cur">
+                <p><img src="common/images/chenpeng/write.png"/></p>
+                <p>基本</p>
+            </li>
+            <li ng-click="goContract()"  class="cur">
+                <p><img src="common/images/chenpeng/agreement.png"/></p>
+                <p>合同</p>
+            </li>
+            <li ng-click="goClient()" class="cur">
+                <p><img src="common/images/chenpeng/client.png"/></p>
+                <p>客户</p>
+            </li>
+            <li ng-click="goOthers()"  class="cur">
+                <p><img src="common/images/chenpeng/others.png"/></p>
+                <p>其他</p>
+            </li>
+        </ul>
+    </div>
+    <!--主体内容-->
+    <div data-spy="scroll" data-target="#navbar-example"  class="application_entering_section">
+        <!--填写信息部分-->
+
+        <div class="application_entering_mes">
+            <!--险种方案-->
+            <div ui-view="UIPrPoEnRiskScheme"></div>
+            <!--基本信息-->
+            <div ui-view="UIPrPoEnMainHead"></div>
+            <!--合同信息-->
+            <div ui-view="UIPrPoEnMainAgri"></div>
+            <!--客户信息-->
+            <div ui-view="UIPrPoEnAgriInsured"></div>
+            <!--其他信息-->
+            <div ui-view="UIPrPoEnOther"></div>
+        </div>
+    </div>
+</div>

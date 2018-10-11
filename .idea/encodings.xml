@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/business/agriclaim" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/agriclaim/agriclaim-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/agriclaim/agriclaim-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/agriclaim/agriclaim-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/agriprpall" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/agriprpall/agriprpall-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/agriprpall/agriprpall-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/agriprpall/agriprpall-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/dms" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/dms/dms-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/dms/dms-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/dms/dms-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/fileserver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/fileserver/fileserver-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/fileserver/fileserver-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/framework-agri-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/ims" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/ims/ims-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/ims/ims-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/ims/ims-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/notice" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/notice/notice-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/notice/notice-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/notice/notice-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/pms" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/pms/pms-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/pms/pms-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/pms/pms-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/sso/sso-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/sso/sso-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/sso/sso-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/txnlist" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/txnlist/txnlist-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/txnlist/txnlist-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/txnlist/txnlist-rest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/uap" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/config-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/registry" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/turbine" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/zipkin" charset="UTF-8" />
+  </component>
+</project>

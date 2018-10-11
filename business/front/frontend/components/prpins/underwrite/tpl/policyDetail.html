@@ -1,0 +1,14 @@
+<!--保单详情页面弹层-->
+<div ng-hide="policyDetail">
+    <div class="mask"></div>
+    <!-- 保单详情页面具体地址 -->
+    <div class="policyDetail_box">
+        <div class="remove_header">
+            <span>保单详情预览</span>
+            <a  ng-click="policyDetailClose()"><i></i></a>
+        </div>
+        <div class="policyDetail_container">
+            <div data-ng-include="'components/prpins/report/tpl/reportProposal.html'" class="policyDetail"></div>
+        </div>
+    </div>
+</div>

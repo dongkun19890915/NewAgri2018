@@ -1,0 +1,46 @@
+<!--批改详情页面-->
+<div class="index_con">
+    <!--批改历史-->
+    <div class="index_list index_tit_endorseText" ng-repeat="x in reportData">
+        <div class="index_tit"><h6><span ng-bind="x.endorType"></span></h6></div>
+        <!--<div>更改被保险人</div>-->
+        <ul class="list_ul list_ul1">
+            <li><span>批单号码：</span></li>
+            <li><span class="fl" ng-bind="x.endorseNo" ></span></li>
+
+            <li><span>批改状态：</span></li>
+            <li><span class="fl" ng-bind="x.status"></span></li>
+
+            <li><span>批改申请号：</span></li>
+            <li><span class="fl" ng-bind="x.applyNo" ></span></li>
+
+            <li><span>批改申请日：</span></li>
+            <li><span class="fl" ng-bind="x.endorDate |date:'yyyy-MM-dd'"   ></span></li>
+
+            <li><span>批改生效日：</span></li>
+            <li><span class="fl" ng-bind="x.validDate | date:'yyyy-MM-dd' " ></span> <span  class="lingshi" >0时</span></li>
+
+            <li><span ng-if="x.premiumFlag==true" >应收保费(元)：</span>
+                <span ng-if="x.premiumFlag==false" >应付保费(元)：</span>
+            </li>
+            <li><span class="fl" ><b ng-bind="x.chgSumPremium | number:2"></b></span></li>
+
+            <li><span>批改内容：</span></li>
+            <li class="li_remark"><div class="correct_content"><span class="pText_content" ng-bind-html="x.pText"></span></div></li>
+        </ul>
+
+        <div class="index_btn btn_visible">
+            <span class="policy_info_1" ng-click="queryPrePolicy(x)">
+                <i class="i_4"></i><em>查看批改前保单详情</em>
+            </span>
+        </div>
+    </div>
+
+    <!--按钮-->
+    <div class="index_btn1">
+        <!--<span class="submit hide" ng-click="reBack()">上一步</span>-->
+        <button  class="submit" ng-click="reBack()">退出</button>
+    </div>
+    <!--  引入 保单详情页面 容器，需要在 查阅保单详情 按钮上 增加显示 隐藏开关 -->
+    <div data-ng-include="'components/prpins/endorse/tpl/policyDetail.html'"></div>
+</div>

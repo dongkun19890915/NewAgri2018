@@ -1,0 +1,137 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔特殊赔案查询页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/11/28 
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="section">
+  <div class="content_div content1-div">
+    <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>查询条件</label>
+                </span>
+      <div class="condition_table">
+        <form name="agriPrepayFrom">
+          <ul class='clearfix half-ul'>
+            <li class="condition_td fl half-li">
+              <label>报案号</label>
+              <div class="half-div">
+                <input type="text" style="color: #333 ;" ng-model="PrpLSpeciQueryInDto.registNo" maxlength="21" ng-pattern="regData.number" warn-text="{'ErrPattern':'报案号格式错误，请修改!',itemName:'报案号'}" warn-text ng-minLength="15"/>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>保单号</label>
+              <div class="half-div">
+                <input type="text" style="color: #333 ;" ng-model="PrpLSpeciQueryInDto.policyNo" maxlength="21" ng-pattern="regData.number" warn-text="{'ErrPattern':'保单号格式错误，请修改!',itemName:'保单号'}" warn-text ng-minLength="15"/>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>立案号</label>
+              <div class="half-div">
+                <input type="text" maxlength="21"  style="color: #333 ;" ng-model="PrpLSpeciQueryInDto.claimNo" ng-pattern="regData.number" warn-text="{'ErrPattern':'立案号格式错误，请修改!',itemName:'立案号'}" warn-text ng-minLength="15"/>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>被保险人</label>
+              <div class="half-div">
+                <input type="text" style="color: #333 ;" ng-model="PrpLSpeciQueryInDto.insuredName" ng-pattern="regData.chineseNumber" warn-text="{'ErrPattern':'被保险人格式错误，请修改!',itemName:'被保险人'}" class=""/>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>险类</label>
+              <div class="half-div">
+                <code-type base-code="riskType" style="color: #333 ;"ng-model="PrpLSpeciQueryInDto.riskType" ng-change="getRiskCodeList()"> </code-type>
+                <!--<code-type base-code="riskType" on-select="getRiskCodeList()" ng-model="PrpLSpeciQueryInDto.riskType"></code-type>-->
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>险种</label>
+              <div class="half-div">
+                <!--<ui-select ng-disabled="showFlag" ng-required="true" ng-model="PrpLSpeciQueryInDto.riskCode"  >
+                  <ui-select-match   placeholder="查询或选择...">
+                    {{$select.selected.codecname}}
+                  </ui-select-match>
+                  <ui-select-choices repeat="code.codecode as code in codeListData.AllRisk | filter: $select.search">
+                    <span ng-bind="code.codecname"></span>
+                  </ui-select-choices>
+                </ui-select>-->
+                <ui-select  style="color: #333 ;" ng-model="PrpLSpeciQueryInDto.riskCode" ng-change="textChange($select.selected.codecname)" ng-disabled="showFlag">
+                  <ui-select-match allow-clear placeholder="查询或选择...">
+                    {{$select.selected.codecname}}
+                  </ui-select-match>
+                  <ui-select-choices repeat="code.codecode as code in codeListData.AllRisk | filter: $select.search">
+                    <span ng-bind="code.codecname"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </li>
+          </ul>
+        </form>
+
+        <div class="btn_tr clearfix">
+          <span ng-click="query()">查询</span>
+          <span ng-click="resetForm()">重置</span>
+        </div>
+      </div>
+    </div>
+    <div class="queryResult">
+      <div class="queryResult_title clearfix">
+        <span class="fl tit-color font-bold">查询结果列表</span>
+        <!--<button class="fr" class="fr" title="{{(checkedList.length==0||!checkedList.length)?'请先选择你要操作的数据':''}}" ng-disabled="checkedList.length==0||!checkedList.length" ng-click="goTransfer()">转交</button>-->
+      </div>
+      <table>
+        <thead>
+        <tr class="tr_top">
+          <th>
+            <div class="check-box query-list-checkAll" >
+              <!--<label class="checkbox-label" ng-class="{'checkbox-checked':checkedAll==true}" ng-click="doCheckedAll(this,SwfLogExtendDto,checkedList)">-->
+              <!--<span class="check-main" ng-show="SwfLogExtendDto.length>0"><span></span></span>-->
+              <!--</label>-->
+            </div>
+          </th>
+          <th>报案号</th>
+          <th>保单号码</th>
+          <th>立案号</th>
+          <th>险种</th>
+          <th>被保险人</th>
+          <!--<th>流入时间</th>-->
+          <!--<th>案件状态</th>-->
+          <!--<th>处理人员</th>-->
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="tr_content" ng-repeat="result in SwfLogExtendDto">
+          <td ng-bind="$index+1" >
+            <!--<div class="check-box">-->
+            <!--<label class="checkbox-label" ng-class="{'checkbox-checked':result.checked==true}" ng-click="doChecked($parent,SwfLogExtendDto, result, checkedList)">-->
+            <!--<span class="check-main"><span></span></span>-->
+            <!--</label>-->
+            <!--</div>-->
+          </td>
+          <td  ng-click="seeRegist(result)" ng-bind="result.swfLogDto.registNo"  class="pointer" style="color: #2DBE61" ></td>
+          <td >
+            <div class="w50oh" ng-bind="result.swfLogDto.policyNo" ng-attr-title="{{result.swfLogDto.policyNo}}"></div>
+          </td>
+          <td ng-bind="result.claimNo"></td>
+          <td ng-bind="result.riskName"></td>
+          <td ng-bind="result.swfLogDto.insuredName"></td>
+          <td class='operation'>
+            <span class="iconfont" ng-if="result.swfLogDto.nodeStatus==='0'" ng-click="goPrepayAdd(result)" title="申请">&#xe622;</span><!--申请-->
+            <span class="iconfont" ng-if="result.swfLogDto.nodeStatus==='4'" ng-click="goPrepaySee(result)" title="查看">&#xe620;</span><!--查看-->
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+
+      <div ng-show="SwfLogExtendDto===null||SwfLogExtendDto.length==0" ng-class="{'not-query':SwfLogExtendDto===null,'query-null':SwfLogExtendDto.length==0}"></div>
+      <div class="index_page">
+        <tm-pagination conf="paginationConf"></tm-pagination>
+      </div>
+    </div>
+  </div>
+</div>

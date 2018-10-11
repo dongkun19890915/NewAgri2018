@@ -1,0 +1,21 @@
+<!--批单成功-->
+<ul class="index_process ng-scope">
+    <li class="li_finish"><i></i><span>1.批改信息录入</span></li>
+    <li class="li_finish"><i class="i_1_1"></i><span>2.批改信息确认</span></li>
+    <li class="li_finish"><i class="i_2"></i><span>3.完成</span></li>
+</ul>
+<div class="index_con">
+    <div class="index_list">
+        <div class="index_tit"><h6>批改成功</h6></div>
+        <div class="order_success order_success1">
+            <!--<i ng-if="iconFlag"></i>-->
+            <span class="order_span" data-ng-bind-html="msg"></span>
+        </div>
+        <div class="div_back">
+            <a  class="a_back" ng-click="exitEndorse()">返回</a>
+            <!--<a href="javascript:void(0)" ng-show="downLoadFileButton" ng-click="dowloadEndorseFile('sign')" class="a_order">下载电子批单</a>-->
+        </div>
+
+    </div>
+</div>
+<div data-ng-include="'components/prpins/underwrite/tpl/showAlertMsgPage.html'"></div>

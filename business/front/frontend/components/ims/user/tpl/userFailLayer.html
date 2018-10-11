@@ -1,0 +1,17 @@
+<!--信息提示-错误-->
+<div ng-hide="userFailLayer">
+    <div class="mask zIndex1"></div>
+    <div class="tip_success_info zIndex1">
+        <div class="remove_header">
+            <span>信息提示</span>
+            <a href="javascript:void(0)"><i ng-click="userClose()"></i></a>
+        </div>
+        <div class="info_container">
+            <i class="tip_2"></i>
+            <span>{{message}}</span>
+        </div>
+        <div class="remove_button">
+            <button class="button_sure" ng-click="userClose()">返 回</button>
+        </div>
+    </div>
+</div>

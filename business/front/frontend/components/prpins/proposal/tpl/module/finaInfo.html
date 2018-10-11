@@ -1,0 +1,22 @@
+<!--财政补贴占比信息-->
+<div class="index_tit"><h6>财政补贴占比信息</h6></div>
+<ul class="list_ul">
+    <li><em>*</em><span>财政补贴比例类型：</span></li>
+    <li>
+        <div class="ui-select select_ihide" ng-click="changeSub()">
+            <code-type base-code="SubsidyType" class="seletc_bor" is-fuzzy="false" ng-model="SubsidyQueryConditionDto.subsidyType"  ng-disabled="false" required warn-text="" ></code-type>
+        </div>
+        <input type="hidden" ng-model="hiddenSubsidy">
+    </li>
+    <li></li>
+    <li></li>
+    <div ng-repeat="subsidy in subsidyList" ng-if="subsidyFlag">
+        <li><span>{{subsidy.subsidyName}}：</span></li>
+        <li>
+            <input type="text" ng-readonly="subsidy.readFlag" ng-class="{'read_only' : subsidy.readFlag  ,'read_text' : !subsidy.readFlag}" ng-model="subsidy.subsidyRate" warn-text="{'ErrPattern':'只能输入0-100之间的整数'}"  ng-pattern="/^((100)|[1-9]{0,1}[0-9])$/" ng-blur="recalculate()"><span class="fl">%</span>
+        </li>
+    </div>
+    <li class="hide">
+        <input type="text" ng-model="subsidyFlag">
+    </li>
+</ul>

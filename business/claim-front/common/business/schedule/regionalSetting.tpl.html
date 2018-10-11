@@ -1,0 +1,80 @@
+<div class="section">
+    <div class="content_div content1-div">
+        <div class="queryCriteria">
+            <div class="queryCriteria_title">
+                <label>区域设置</label>
+            </div>
+            <div class="condition_table">
+                <ul class="clearfix half-ul">
+                    <li class="condition_td fl half-li">
+                        <label><i class="i-col">*</i>班表机构</label>
+                        <div class="half-div">
+                            <select base-code="Deptname"
+                                    ng-options="codes.codeCode as codes.codeName for codes in Deptname"
+                                    style="color: #333 ;"
+                                    ng-model="regional.handleDept" ng-change="staffInDuty()">
+                            </select>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label><i class="i-col"></i>被维护人</label>
+                        <div class="half-div">
+                            <select base-code="HandlerName"
+                                    style="color: #333 ;"
+                                    ng-options="codes.codeCode as codes.codeName for codes in HandlerName"
+                                    ng-model="regional.handlerCode">
+                                    <option value=""></option>
+                            </select>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="btn_tr btn-half btn-th1 clearfix">
+                <span class="fl" ng-click="addRegional()">新增</span>
+                <span class="fr" ng-click="searchRegional()">查询</span>
+            </div>
+        </div>
+
+        <div class="orderlayerBox" ng-show="showSearch">
+            <div class=""></div>
+            <div class="">
+                <div class="remove_header">
+                    <span>查询区域设置信息</span>
+                </div>
+
+                <table class="regional-table" style="background:white">
+                    <thead>
+                    <tr class="tr_top">
+                        <td>序号</td>
+                        <td>班表机构</td>
+                        <td>被维护人</td>
+                        <td>维护人员</td>
+                        <td>维护时间</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="tr_content"  ng-repeat="result in regionalList">
+                        <td ng-bind="$index+1"></td>
+                        <td  ng-bind="result.comCName" class="pointer" style="color: #2DBE61"
+                             ng-click="tableClassShow(result.handleDept,'')"
+                            ng-disabled="true">
+                        </td>
+                        <td ng-click="tableClassShow(result.handleDept,result.handlerCode)" class="pointer" style="color: #2DBE61" ng-bind="result.handlerName"></td>
+                        <td ng-bind="result.operator"></td>
+                        <td ng-bind="result.flowinTime"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"  align="right">
+                            <div ng-show="regionalList===null||regionalList.length==0" ng-class="{'not-query':regionalList===null,'query-null':regionalList.length==0}"></div>
+                            <div class="index_page">
+                            <tm-pagination conf="paginationConf"></tm-pagination>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

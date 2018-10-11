@@ -1,0 +1,33 @@
+server:
+    port: 9004
+    #context-path: /pms-rest
+
+spring:
+    datasource:
+        name: pmsDatasource
+        url: jdbc:oracle:thin:@192.168.0.8:1521:agri
+        driver-class-name: oracle.jdbc.OracleDriver
+        username: gyic2
+        #password: gyic_222
+        password: ENC(13mAOOiBvSOLMvDJERt2EUO8NHwrY7DT)
+        connectionTimeout: 2000
+
+ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 5000
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000
+myProps:
+    validStatus: 1
+# 系统相关配置
+sysconfig:
+    # 数据有效性
+    validStatus: 1
+
+
+

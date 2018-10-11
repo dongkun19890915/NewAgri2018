@@ -1,0 +1,42 @@
+::-ms-clear, ::-ms-reveal{display: none;}/*去掉在IE下input框带有的x 及密码框自带的小眼睛*/
+.ie10 .ieCheckBox{
+    padding-left:0;
+    padding-right:0;
+    border:none;
+}
+.ie10 input[type='radio']{
+    border:none;
+}
+.ie10 input[type='radio'].radioWidth1{
+    width: 40%;
+}
+.ie10 input[type='radio'].radioWidth2{
+     width: 46%;
+ }
+.ie10 input[type='radio'].radioWidth3{
+    width: 54%;
+}
+.ie10 input[type='radio'].radioWidth4{
+    width: 36%;
+}
+.ie10 .select_arrow{
+    position: relative;
+    width:81%;
+}
+.ie10 .select_arrow .caretSelf{
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: 4px solid #333;	/*利用边框相交的三角形设置下拉箭头，下边框为0，则箭头朝下*/
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+    position: absolute;
+    z-index: 3;
+    top: 12px;
+    right: 3px;
+
+}
+.ie10 a:hover,.ie10 a:focus{
+    text-decoration: none;
+}

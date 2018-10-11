@@ -1,0 +1,492 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔报案任务修改页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/11/23
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="section" xmlns:resize="http://www.w3.org/1999/xhtml">
+  <div ng-show="editType=='SHOW'" class="view-record">
+      <!--<span ng-click="import()" ng-if="check.riskCode!=3220" >导入定损清单</span>
+      <span class="btn" ng-click="downloadlist()" ng-if="check.riskCode!=3220" ng-disabled="originFlag">下载清单</span>-->
+      <span ng-show="editType=='SHOW'"  ng-click="openQueryConnect()">查看理赔联系记录</span>
+  </div>
+  <div ng-show="queryConnect" class="all_payment layer-model">
+    <div class="large-layer-content relationListNo_layer">
+      <div class="all_payment_head layer-header">
+        <span>查看理赔联系记录结果</span>
+        <i class="icon iconfont" ng-click="closeQueryConnect()">&#xe62f;</i>
+      </div>
+      <div class="queryResult" style="max-height:440px;overflow-y: auto;">
+        <table>
+          <tr class="tr_top">
+            <td >序号</td>
+            <td>时间</td>
+            <td >节点类型</td>
+            <td >留言人</td>
+            <td >记录信息</td>
+          </tr>
+          <tr class="tr_content F2F2F2" ng-repeat="connect in queryConnectList">
+            <td>{{$index+1}}</td>
+            <td>{{connect.inputDate}}</td>
+            <td>{{connect.nodeType}}</td>
+            <td>{{connect.operatorName}}</td>
+            <td>{{connect.context}}</td>
+          </tr>
+        </table>
+        <div class="index_page">
+          <tm-pagination conf="paginationConfmm2"></tm-pagination>
+        </div>
+      </div>
+      <div class="layer-footer">
+        <button class="greenButton" ng-click="closeQueryConnect()">确定</button>
+      </div>
+    </div>
+  </div>
+  <div class="content_div content1-div">
+    <form name="registForm">
+      <div class="queryCriteria">
+                  <span class="queryCriteria_title">
+                      <label ng-show="!isCancelFlag">报案登记</label>
+                      <label ng-show="isCancelFlag">报案登记(已撤销)</label>
+                      <div ng-click="searchConditionShow=!searchConditionShow" class="cur fr">
+                        <i class="iconfont click_img" ng-show="searchConditionShow">&#xe667;</i>
+                        <i class="iconfont click_img" ng-hide="searchConditionShow">&#xe668;</i>
+                      </div>
+                  </span>
+        <div class="condition_table">
+          <ul class="clearfix half-ul" ng-show="!searchConditionShow">
+            <li class="condition_td fl half-li">
+              <label>险种名称</label>
+              <div class="half-div">
+                <input ng-model="check.riskCName"
+                       ng-disabled="true" type="text"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li" ng-show="check.prpLregistDto.registNo" >
+              <label>报案号</label>
+              <div class="half-div">
+                <input ng-model="check.prpLregistDto.registNo" maxlength="19" ng-disabled="true" type="text"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li" ng-hide="check.prpLregistDto.registNo"></li>
+            <li class="condition_td fl half-li">
+              <label>保单号码</label>
+              <div class="half-div">
+                <input ng-model="check.prpLregistDto.policyNo" ng-attr-title="{{check.prpLregistDto.policyNo}}" style="width: 65%" type="text" ng-disabled="true" class="danger_short" />
+                <span class='fl danger_btn' ng-click="showRelateInfo()">关联</span>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>已出险次数</label>
+              <div class="half-div">
+                <input ng-model="check.perilCount" ng-disabled="true" type="text" class="danger_short" />
+                <span class='fl danger_btn' ng-click="openPerilCount()">查看</span>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>被保险人代码</label>
+              <div class="half-div">
+                <input ng-model="check.prpLregistDto.insuredCode" ng-disabled="true" type="text"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>被保险人名称</label>
+              <div class="half-div danger-div">
+                <input ng-model="check.prpLregistDto.insuredName" ng-disabled="true" type="text"  />
+                <!--<span class='fl danger_btn1'>出险时保单信息</span>-->
+              </div>
+            </li>
+          <!--</ul>-->
+          <!--<ul class="clearfix half-ul">-->
+            <li class="condition_td fl long-li ">
+              <label>保险期间</label>
+              <div class="half-div">
+                <div class="data-box">
+                  <input type="text" id="startDate" class="date-long-input fl date" ng-model="check.prpLregistDto.startDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                  <span class='fl long-span'>零时起至</span>
+                  <input type="text" id="endDate" class="date-long-input fl date" ng-model="check.prpLregistDto.endDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                  <span class='fl long-span'>二十四时止</span>
+                </div>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>出险时间</label>
+              <div class="half-div">
+                <div class="data-box">
+                  <!--注册页面不禁用；查看修改都需要禁用-->
+                  <input style="width: 83%" type="text" id="start" ng-required="true" ng-disabled="!addFlag"   name="出险时间" ng-model="check.prpLregistDto.damageStartDate"
+                         class="date-long-input fl date"
+                         ng-class="{'showStyle':showFlag}" class="editStyle"
+                         jedate format="YYYY-MM-DD hh:mm:ss">
+                  <!---->
+                  <!--custom-validator="rules"-->
+
+                  <!--<span class='fl long-span'>零时起至</span>-->
+                  <!--<input type="text" id="end" ng-model="check.prpLregistDto.end" class="date-long-input fl date" jedate format="YYYY-MM-DD">-->
+                  <!--<span class='fl long-span'>二十四时起至</span>-->
+                </div>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>输单日期</label>
+              <div class="half-div danger-div">
+                <input type="text" ng-disabled="true" ng-model="check.prpLregistDto.inputDate" />
+              </div>
+            </li>
+            <!--修改和注册都不禁用 查看页面禁用---------start--->
+            <li class="condition_td fl half-li">
+                <label><i class="i-col">*</i>受损标的</label>
+                <div class="half-div">
+                    <ui-select ng-disabled="showFlag"  ng-model="check.prpLregistDto.lossName" ng-show="!showFlag"  >
+                        <ui-select-match   placeholder="查询或选择...">
+                            {{$select.selected.codeCName}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="code.codeCode as code in lossItemList | filter: $select.search">
+                            <span ng-bind="code.codeCName"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <input ng-disabled="showFlag" ng-show="showFlag"  ng-class="{'showStyle':showFlag}" class="editStyle" ng-required="true"  type="text" ng-model="check.prpLregistDto.lossName"  />
+                </div>
+
+
+
+
+
+              <!--<div class="half-div">-->
+                <!--&lt;!&ndash;my-illegal-word 校验不能输入的特殊字符， 以“|"分割；&ndash;&gt;-->
+                <!--&lt;!&ndash;my-max-length 校验输入最大字符数 以传入数字；&ndash;&gt;-->
+                <!--&lt;!&ndash;warn-text 错误后的提示信息 各自自定义指令校验的提示:以各自指令的名字属性,提示语为值的一个对象传入&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text"&ndash;&gt;-->
+                       <!--&lt;!&ndash;ng-required="true"&ndash;&gt;-->
+                       <!--&lt;!&ndash;my-illegal-word="^|_FIELD_SEPARATOR_|_GROUP_SEPARATOR_"&ndash;&gt;-->
+                       <!--&lt;!&ndash;my-max-length="120" maxLength="120"&ndash;&gt;-->
+                       <!--&lt;!&ndash;warn-text="{myIllegalWord:'^为系统保留字符，不允许输入'}"&ndash;&gt;-->
+                       <!--&lt;!&ndash;ng-disabled="showFlag"&ndash;&gt;-->
+                       <!--&lt;!&ndash;ng-model="check.prpLregistDto.lossName"  />&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--<input  style="color: #333"-->
+                      <!--type="text"-->
+                     <!--ng-required="true"-->
+                     <!--my-max-length="120" maxLength="120"-->
+                     <!--warn-text="{myIllegalWord:'^为系统保留字符，不允许输入'}"-->
+                     <!--ng-disabled="showFlag"-->
+                     <!--ng-model="check.prpLregistDto.lossName"/>-->
+        <!--</div>-->
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>出险原因</label>
+              <div class="half-div">
+                <ui-select ng-disabled="showFlag" ng-required="true" ng-model="check.prpLregistDto.damageCode"  >
+                  <ui-select-match   placeholder="查询或选择...">
+                    {{$select.selected.codecname}}
+                  </ui-select-match>
+                  <ui-select-choices repeat="code.codecode as code in codeListData.DamageCode | filter: $select.search">
+                    <span ng-bind="code.codecname"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>出险地点</label>
+              <div class="half-div">
+                <input ng-disabled="showFlag"  ng-class="{'showStyle':showFlag}" class="editStyle" ng-required="true"  type="text" ng-model="check.prpLregistDto.damageAddress"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li" >
+              <label>详细出险原因</label>
+              <div class="half-div"ng-click="click()" >
+                <textarea ng-class="{'showStyle':showFlag}" rows="2" cols="33" disabled  ng-model="listdetail" style="width: 83%;height: 28px;resize:none" ></textarea>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>报案人</label>
+              <div class="half-div">
+                <input  ng-class="{'showStyle':showFlag}" class="editStyle"
+                        type="text"
+                        ng-pattern="regData.chineseNumber"
+                        my-max-length="20"
+                       my-illegal-word="^|_FIELD_SEPARATOR_|_GROUP_SEPARATOR_"
+                       warn-text="{'ErrPattern':'报案人格式输入错误，请修改！',myIllegalWord:'^为系统保留字符，不允许输入',itemName:'报案人'}"
+                       ng-required="true"
+                       ng-disabled="showFlag"
+                       ng-model="check.prpLregistDto.reportorName"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>报案方法</label>
+              <div class="half-div">
+                <!--<select ng-disabled="showFlag"     ng-model="check.prpLregistDto.reportType"></select>-->
+                <ui-select ng-disabled="showFlag" ng-model="check.prpLregistDto.reportType"  >
+                  <ui-select-match  allow-clear placeholder="查询或选择...">
+                    {{$select.selected.codeCName}}
+                  </ui-select-match>
+                  <ui-select-choices repeat="code.codeCode as code in codeListData1 | filter: $select.search">
+                    <span ng-bind="code.codeCName"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>报案时间</label>
+              <div class="half-div">
+                <input class="date-long-input fl date" ng-class="{'showStyle':showFlag}" class="editStyle"
+                       ng-disabled="showFlag"
+                       ng-required="true"
+                       type="text"
+                       ng-model="check.prpLregistDto.reportDate"
+                       name="报案时间"
+                       id="reportDate"
+                       class="date"
+                       jedate
+                       format="YYYY-MM-DD hh:mm:ss"
+                />
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>赔付数量</label>
+              <div class="half-div">
+                <!--赔付数量不能大于承保数量-->
+                <input type="text" class=""
+                       ng-class="{'showStyle':showFlag,danger_short:check.riskType==='H'||check.riskType==='I'}" class="editStyle"
+                       ng-disabled="showFlag"
+                       ng-required="true"
+                       ng-model="check.prpLregistDto.lossesNumber"
+                       ng-pattern = "regData.positiveNumber"
+                       my-maxnumber="{{check.statQuantity}}"
+                       warn-text="{myMaxnumber:'赔付数量不能大于承保数量',itemName:'赔付数量'}"
+                />
+                <div class="select_arrow"><i class="caretSelf"></i></div>
+                <select class="fl danger_select"  class="editStyle" ng-if="check.riskType==='H' || check.riskCode == '3224' || check.riskCode == '3237'" ng-disabled="showFlag">
+                  <option ng-class="{'showStyle':showFlag}">亩</option>
+                </select>
+                <select class="fl danger_select"  class="editStyle" ng-if="check.riskType==='I' && check.riskCode != '3224' && check.riskCode != '3237'" ng-disabled="showFlag">
+                  <option ng-class="{'showStyle':showFlag}">头</option>
+                </select>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>联系人</label>
+              <div class="half-div">
+                <!--<select ng-model="check.prpLregistDto.linkerName"  ng-required="true"  ng-disabled="showFlag" ></select>-->
+                <input ng-class="{'showStyle':showFlag}" class="editStyle"
+                       type="text"
+                       my-max-length="20"
+                       my-illegal-word="^|_FIELD_SEPARATOR_|_GROUP_SEPARATOR_"
+                       warn-text="{'ErrPattern':'联系人格式输入错误，请修改！',myIllegalWord:'^为系统保留字符，不允许输入',itemName:'联系人'}"
+                       ng-pattern="regData.chineseNumber"
+                       ng-required="true"
+                       ng-disabled="showFlag"
+                       ng-model="check.prpLregistDto.linkerName"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>联系电话</label>
+              <div class="half-div">
+                <input ng-class="{'showStyle':showFlag}" class="editStyle"
+                       type="text"
+                       maxlength="20"
+                       warn-text="联系电话"
+                       ng-disabled="showFlag"
+                       ng-required="true" ng-pattern="regData.phone"
+                       ng-model="check.prpLregistDto.phoneNumber"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>币别</label>
+              <div class="half-div">
+                <!--<select ng-disabled="showFlag"  ng-model="check.prpLregistDto.estiCurrency"></select>-->
+                <code-type base-code="Currency" ng-disabled="showFlag" ng-model="check.prpLregistDto.esticurrency"></code-type>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label><i class="i-col">*</i>报损金额</label>
+              <div class="half-div">
+                <input ng-class="{'showStyle':showFlag}" class="editStyle"
+                       type="text" ng-disabled="showFlag" ng-pattern="regData.positiveNumber"
+                       maxlength="14"
+                       warn-text="报损金额"
+                       ng-model="check.prpLregistDto.estimateLoss"  />
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>出险地邮政编码</label>
+              <div class="half-div">
+                <input  ng-class="{'showStyle':showFlag}" class="editStyle"
+                        type="text"
+                       ng-disabled="showFlag"
+                ng-pattern="regData.postCode"
+                ng-model="check.prpLregistDto.addressCode" maxlength="6" warn-text="邮政编码" />
+              </div>
+            </li>
+            <!--修改和注册都不禁用 查看页面禁用---------end--->
+            <!--<li class="condition_td fl long-li" ng-if="check.riskCode!=3220">-->
+            <!--<label>详细出险原因</label>-->
+            <!--<div class="half-div">-->
+              <!--&lt;!&ndash;<input type="text" ng-disabled="true" ng-model="check.prpLregistDto.inputDate" />&ndash;&gt;-->
+              <!--&lt;!&ndash;<check-box ng-model="checkedList" data="{{checkBoxData}}"></check-box>&ndash;&gt;-->
+              <!--<check-box ng-model="check.prpLregistDto.damageMessage"  ng-disabled="showFlag" data="{{codeListData.DamageDetail}}"></check-box>-->
+            <!--</div>-->
+            <!--</li>-->
+          </ul>
+        </div>
+      </div>
+      <div class="queryDanger" ng-if="check.riskType==='I'&&check.riskCode!='3224'&&check.riskCode!='3237'">
+                  <span class="queryCriteria_title">
+                      <label>耳标号定损清单</label>
+                  </span>
+        <div class="btn_tr clearfix mt20">
+          <span  style="float: right;margin-right: 10%" ng-click="importlist()" ng-if="check.editType!='SHOW'">导入定损清单</span>
+          <span  style="float: right" class="btn" ng-click="downloadlist()" >下载清单</span>
+        </div>
+      </div>
+      <div class="queryDanger">
+                  <span class="queryCriteria_title">
+                      <label>出险摘要</label>
+                  </span>
+        <div class="input-content-box">
+          <textarea rows="5"
+                    my-max-length="80"
+                    warn-text="{'itemName':'出险摘要'}"
+                    ng-disabled="showFlag" ng-model="check.prpLregistDto.context"></textarea>
+        </div>
+      </div>
+      <div class="queryDanger">
+                  <span class="queryCriteria_title">
+                      <label>巨灾等级</label>
+                      <span class="click_img" ></span>
+                  </span>
+        <div class="condition_table">
+          <ul class="clearfix half-ul">
+            <li class="condition_td fl half-li">
+              <label>巨灾一级代码</label>
+              <div class="half-div">
+                <code-type base-code="CatastropheCode" ng-model="check.prpLregistDto.catastropheCode1" ng-disabled="showFlag" ></code-type>
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>巨灾二级名称</label>
+              <div class="half-div">
+                <input ng-disabled="showFlag"  ng-class="{'showStyle':showFlag}" class="editStyle" type="text"   ng-model="check.prpLregistDto.catastropheName2" />
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </form>
+    <div class="btn_tr clearfix mt20" ng-if="showFlag">
+      <span ng-click="policyPrint()">打印抄件</span>
+      <span ng-click="return()">返 回</span>
+    </div>
+    <div class="btn_tr clearfix mt20" ng-if="!showFlag">
+      <span ng-click="submitRegist('save')">暂 存</span>
+      <span  class="btn"  ng-disabled="flag"   ng-click="submitRegist('sub')">提 交</span>
+      <span ng-click="return()">取 消</span>
+    </div>
+  </div>
+</div>
+<!--详细出险原因-->
+<div ng-if="showRelative" style="position: fixed;z-index: 1000;left:40%;top:30%;">
+  <div class="mask zIndex"></div>
+  <div class="tip_success_info printLayer orderIntLayer">
+    <div class="modal-header">
+      <h1 class="font-large" >详细出险原因</h1>
+    </div>
+    <li class="condition_td fl long-li">
+      <label style="margin-top: 2%" >详细出险原因</label>
+      <div style="width: 70%;margin-top: 2%" class="half-div">
+        <!--<input type="text" ng-disabled="true" ng-model="check.prpLregistDto.inputDate" />-->
+        <!--<check-box ng-model="checkedList" data="{{checkBoxData}}"></check-box>-->
+        <check-box ng-model="check.prpLregistDto.damageMessage"  ng-disabled="showFlag" data="{{codeListData.DamageDetail}}"></check-box>
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+        <button class="btn-success" ng-click="goRelevanceList()">确定</button>
+        <button class="btn-cancel" ng-click="closeModal()">取消</button>
+      </div>
+  </div>
+</div>
+
+<!-- 关联弹层-->
+<!--<div ui-view="connect"></div>-->
+<div class="orderlayerBox" style="max-height:700px " ng-show="relateInfo">
+  <div class="mask zIndex"></div>
+  <div class="tip_success_info printLayer orderIntLayer">
+    <div class="remove_header">
+      <span>保单信息</span>
+      <i class="icon iconfont" ng-click="closeRelative()">&#xe632;</i>
+    </div>
+    <div class="info_container">
+      <div >
+        <!--<div class="remove_header">-->
+        <!--<span>保单信息</span>-->
+        <!--</div>-->
+        <div class="condition_table">
+          <ul class="clearfix">
+            <li class="condition_td fl long-li">
+              <label>保单号</label>
+              <input type="text" style="width: 37%" ng-model="relateInfoDto.prpCmainDto.policyNo" disabled="disabled">
+              <span class='fl danger_btn' ng-click="policyShow(check.prpLregistDto.policyNo)">出险时保单信息</span>
+            </li>
+            <li class="condition_td fl long-li">
+              <label>保险期限</label>
+              <!--<input type="text" ng-model="relateInfoDto.prpCmainDto.insuredName"  maxlength="19" disabled="disabled">-->
+              <div class="data-box">
+                <input type="text" id="startDate1" style="width: 30%" class="date-long-input fl date" ng-model="relateInfoDto.prpCmainDto.startDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                <span class='fl long-span'>零时起至</span>
+                <input type="text" id="endDate1" style="width: 30%" class="date-long-input fl date" ng-model="relateInfoDto.prpCmainDto.endDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                <span class='fl'>二十四时止</span>
+              </div>
+            </li>
+            <li class="condition_td fl long-li">
+              <label>被保险人名称</label><input type="text" style="width: 37%" ng-model="relateInfoDto.prpCmainDto.insuredName"  disabled="disabled">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="queryCriteria" style="border-top: none;width: 100%;">
+        <div class="remove_header">
+          <span>批单信息</span>
+        </div>
+        <table class="condition_table" style="margin-top: 0px">
+          <tr class="tr_top">
+            <td class="w8">序号</td>
+            <td class="w8">批单号码</td>
+            <td class="w8">核批完成日期</td>
+          </tr>
+          <tr class="tr_content F2F2F2" ng-repeat="result in relateInfoDto.prpPheadDtoList">
+            <td ng-bind="$index+1"></td>
+            <td ng-bind="result.endorseNo" ></td>
+            <td ng-bind="result.underwriteEndDate"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="queryCriteria" style="border-top: none;width: 100%;">
+        <div class="remove_header">
+          <span>理赔信息</span>
+        </div>
+        <table class="condition_table" style="margin-top: 0px">
+          <thead>
+          <tr class="tr_top">
+            <td class="w8">序号</td>
+            <td class="w8">报案号</td>
+            <td class="w8">出险时间</td>
+            <td class="w8">赔付金额</td>
+            <td class="w8">流程图</td>
+          </tr>
+          </thead>
+          <tbody  style="height: 100px;overflow-y: scroll;">
+          <tr class="tr_content F2F2F2" style="height: 42px;line-height: 42px;" ng-repeat="result in relateInfoDto.prpLregistDtoList">
+            <td ng-bind="$index+1"></td>
+            <td ng-bind="result.registNo" ></td>
+            <td ng-bind="result.damageStartDate"></td>
+            <td ng-bind="result.estimateLoss"></td>
+            <td class="local-sec" ng-click="showFlow(result)">查看</td>
+          </tr>
+          </tbody >
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

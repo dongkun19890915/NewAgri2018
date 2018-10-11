@@ -1,0 +1,63 @@
+<!--下载清分表-->
+<div class="index_con">
+    <div class="index_list">
+        <div class="index_tit"><h6>下载清分文件</h6></div>
+        <ng-form name="downLoadClearFileForm" novalidate="novalidate">
+        <ul class="list_ul list_ul_bor">
+            <li>
+                <span>清分类型：</span>
+            </li>
+            <li class="li_full" >
+                <div class="marr43">
+                    <label class="radio on" ng-class="{true:'on',false:''}[policySelected]" ng-click="businessType1()">
+                        <input type="radio" class="hide" value="1" name="businessType" checked="checked" ng-model="clearType"/><em>保单清分文件</em>
+                    </label>
+                    <label class="radio" ng-class="{true:'on',false:''}[endorseSelected]" ng-click="businessType2()">
+                        <input type="radio" class="hide" value="2" name="businessType" ng-model="clearType"/><em>批单清分文件</em>
+                    </label>
+                    <label class="radio" ng-class="{true:'on',false:''}[claimsSelected]" ng-click="businessType3()">
+                        <input type="radio" class="hide" value="3" name="businessType"  ng-model="clearType"/><em>理赔清分文件</em>
+                    </label>
+                </div>
+            </li>
+            <li><em>*</em><span>清分日期：</span></li>
+            <li>
+                <input type="text" id="operateDate" jedate class="date-input fl date"  ng-model="clearDate" format="YYYY-MM-DD" max-date="{{maxDate}}" required warn-text="清分日期" readonly/>
+            </li>
+        </ul>
+        </ng-form>
+        <div class="pending_btn">
+            <div class="pending_btn1">
+                <span class="a_search" ng-click="clearFileSearch()">搜 索</span>
+                <span class="a_reset" ng-click="clearFileReset()">重 置</span>
+            </div>
+        </div>
+    </div>
+    <div class="index_list index_list_table">
+        <div class="index_tit">
+            <h6 class="fl">清分文件列表</h6>
+        </div>
+        <div class="noData" ng-if="initDatalist"></div>
+        <div class="noData" ng-if="withoutData">
+            <span>暂无数据</span>
+        </div>
+        <table class="table table-striped table-bordered table-hover" ng-if="existingData">
+            <tr>
+                <th class="t_first">
+                    <span class="span_text">文件名称</span>
+                </th>
+                <th class="t_last">
+                    <span class="span_text">操作</span>
+                </th>
+            </tr>
+            <tr ng-repeat="d in answerData">
+                <td class="t_first" ng-bind="d.fileName"></td>
+                <td class="t_last"><span class="a_col" ng-click="downLoadTable(d)">下载清分文件</span></td>
+            </tr>
+        </table>
+    </div>
+    <!--按钮-->
+    <div class="index_btn1">
+        <span class="submit" ng-click="onEdit()">退 出</span>
+    </div>
+</div>

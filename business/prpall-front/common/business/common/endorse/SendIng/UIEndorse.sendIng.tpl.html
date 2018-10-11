@@ -1,0 +1,109 @@
+<div class="main">
+    <div class="section1" style="height:auto;">
+        <div class="position">
+            <span class="ml10">当前位置：</span>
+            <span class="local-fir">凭证短信管理 > </span>
+            <span class="local-sec">凭证短信发送</span>
+        </div>
+        <div class="queryCriteria">
+            <div class="table_title1">
+                <span class="table_color">凭证短信发送</span>
+            </div>
+            <div class="layer-footer1">
+                <ul class="layer-ul1">
+                    <li>
+                        <label class="fr" style="width: 68%">
+                            <div>
+                                <input ng-model="reqMessageDto.policyNo" type="text"
+                                       class="fl layer_input" style="width:72%;"/>
+                                <!--<textarea ng-model="noticeConditionDto.reqMessageDto.policy" rows="5" style="width: 71%;" class="teaL fl"></textarea>-->
+                            </div>
+                        </label>
+                        <label class="fr teaR" style="width: 32%;"><i class="mes_sign">*</i> <span
+                        >保单号</span></label>
+                    </li>
+                    <li>
+                        <div class="fr" style="width: 68%">
+                            <div class="teaL">
+                                <button class="greenButton" ng-click="getSendNumber()">关联保单</button>
+                            </div>
+                        </div>
+                        <label class="fr teaR" style="width: 32%;"></label>
+                    </li>
+                    <li>
+                        <label class="fr" style="width: 68%">
+                            <div>
+                                <span style="margin-left:-72px; margin-right: 40px" class="fl">{{sendNumber}}</span><br><br>
+                            </div>
+                        </label>
+                        <label class="fr teaR" style="width: 32%;"><i class="mes_sign">*</i> <span >号码个数</span></label>
+                    </li>
+                    </li>
+
+                    <li style="padding-top:10px;position: relative;overflow:visible;" class="clearfix">
+                        <label class="fr teaR" style="width: 32%;float:left !important;"><i class="mes_sign">*</i>
+                            <span>短信模板</span></label>
+                        <label class="fr" style="width: 48.2%;float:left !important;position: absolute;left:32%;">
+                            <ui-select ng-model="reqMessageDto.noticeName"  style="margin-top:6px;"  ng-change="change($select.selected)" >
+                                <ui-select-match placeholder="查询或选择..." ng-click="findNoticeContent()">
+                                   <span ng-bind="$select.selected.noticeName" style="position: relative;top:-13px;">
+                                    </span>
+                                </ui-select-match>
+                                <ui-select-choices repeat="item in (itemArray | filter:$select.search)">
+                                    <span ng-bind="item.noticeName"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </label>
+                    </li>
+
+                    <li>
+                        <label class="fr" style="width: 68%">
+                            <div>
+                                <textarea  maxlength="250" ng-model="reqMessageDto.noticeContent" ng-change="tolCount();changdu()" rows="5" style="width: 71%;" class="teaL fl"></textarea>
+                            </div>
+                        </label>
+                        <label class="fr teaR" style="width: 32%;"><i class="mes_sign">*</i> <span
+                        >短信内容</span></label>
+                    </li>
+
+                    <li>
+                        <div class="fr teaL" style="width: 30%;">
+                            <input ng-model="reqMessageDto.immediatelySend" style="position: relative;top:-3px;" type="checkbox" ng-click="immediatelySend()"
+                                                                          required><span>即时发送</span></div>
+                        <label class="fr teaL" style="width: 21%;"><span>预定时间后，按预定时间发送</span></label>
+                        <div class="fr teaL" style="width: 17%;margin-right: 5px">
+                            <input style="width: 160px;" ng-disabled="disable" type="text" id="idDataStart2" jedate
+                                   class=" proposal_date layer_input  disp fl teaL"
+                                   ng-model="reqMessageDto.sendTime"
+                                   required/>
+                        </div>
+                        <label class="fr teaR" style="width: 15%;"><i class="mes_sign">*</i> <span
+                        >预定时间</span></label>
+                    </li>
+                    <li>
+                        <label class="fr" style="width: 68%">
+                            <div>
+                                <span class="fl" style="text-align: left">{{count}}字/{{sendNumber}}条</span>
+                            </div>
+                        </label>
+                        <label class="fr teaR" style="width: 32%;"><span
+                        >短信字数</span></label>
+                    </li>
+                    <li>
+                        <label class="smsScheme_contain_wRight teaR">
+                            <label><span
+                            ></span></label>
+                            <div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+                <button class="greenButton" ng-click="confirm()">确认发送</button>
+                <button class="greenButton1" ng-click="reset()">内容重置</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

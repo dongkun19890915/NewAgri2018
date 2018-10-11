@@ -1,0 +1,132 @@
+<div class="main">
+    <div class="section1" style="height:auto;">
+    <div class="position">
+        <span class="ml10 uptext">当前位置：</span>
+        <span class="local-fir uptext1">投保模版管理 > </span>
+        <span class="local-fir">投保模版查询</span>
+    </div>
+    <div class="queryCriteria">
+        <div class="queryResult_title clearfix">
+            <span class="fl">查询条件</span>
+            <span class="click_img" ng-click="addFrom()">
+                <img ng-src="{{SRC}}" alt=""/>
+            </span>
+        </div>
+        <div class="condition_table">
+            <ul>
+                <li>
+                    <ul class="clearfix">
+                        <li class="condition_td teaR fl">
+                            <label>模版号码</label><input type="text" ng-model="proposal.prpTmain.proposalNo" class="">
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>模版名称</label><input type="text" ng-model="proposal.prpTmain.appliName" class="">
+                        </li>
+                        <li class="condition_td teaL fl">
+                            <label>创建日期</label>
+                            <input style="width: 28%" type="text" id="idDataStart2" jedate
+                                   class="date-input proposal_date " ng-model="proposal.prpTmain.operateStartDate"
+                                   format="YYYY-MM-DD" required readonly/>
+                            <i class="fl">-</i>
+                            <input style="width: 28%" type="text" id="idDataEnd2" jedate
+                                   class="date-input proposal_date " ng-model="proposal.prpTmain.operateEndDate"
+                                   format="YYYY-MM-DD"
+                                   required readonly/>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="clearfix">
+                        <li class="condition_td teaR fl">
+                            <label>适用机构</label><input type="text" ng-model="proposal.prpTmain.insuredName" class="">
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>险种</label><input type="text" ng-model="proposal.prpTmain.insuredCode" class="">
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>标的</label><input type="text" ng-model="proposal.prpTmain.insuredCode" class="">
+                        </li>
+                    </ul>
+                </li>
+                <li ng-if="conditionShow">
+                    <ul class="clearfix">
+                        <li class="condition_td teaR fl">
+                            <label>创建人名称</label>
+                            <input type="text" ng-model="proposal.prpTmain.sumAmount" ng-keypress="pressDecimal($event)"/>
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>投保人名称</label><input type="text" ng-model="proposal.prpTmain.sumPremium" ng-keypress="pressDecimal($event)"/>
+                        </li>
+                        <li class="condition_td teaL fl">
+                            <label>被保险人名称</label><input type="text" ng-model="proposal.prpTmain.comCode">
+                        </li>
+                    </ul>
+                    <ul class="clearfix">
+                        <li class="condition_td teaL fl">
+                            <label>政策商业标志</label>
+                            <select ng-model="proposal.prpTmain.BusinessType1.codeName"
+                                    ng-options="proposal.prpTmain.BusinessType1.codeName as o.codeName for o in proposal.prpTmain.BusinessType1"
+                                    ng-click="getData()">
+                                <option value="">请选择</option>
+                                <!--<option>中央政策性</option>-->
+                                <!--<option>商业性</option>-->
+                                <!--<option>地方政策性</option>-->
+                            </select>
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>有效标志字段</label>
+                            <select ng-model="proposal.prpTmain.BusinessType1.codeName">
+                                <option>有效</option>
+                                <option>无效</option>
+                            </select>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+            <div class="btn_tr clearfix">
+                <span class="fl" ng-click="submit()">查询</span>
+                <span class="fr" ng-click="reset()">重置</span>
+            </div>
+        </div>
+
+        <div class="queryResult1">
+            <div class="queryResult1_title ">
+                <i class="fl">查询结果</i>
+            <label class="fr">批量删除</label>
+        </div>
+        <table>
+            <tr class="tr_top">
+                <td class="w5">
+                    <input type="checkbox" ng-model="select_all" ng-change="selectAll()">全选
+                </td>
+                <td class="w14_28">模版号码</td>
+                <td class="w14_28">模版名称</td>
+                <td class="w14_28">模版创建人</td>
+                <td class="w14_28">创建日期</td>
+                <td class="w14_28">状态</td>
+                <td class="w14_28">操作</td>
+            </tr>
+            <tr class="tr_content F2F2F2" ng-repeat="info in proposal.prpTmain.QueryList track by $index">
+                <td>
+                    <input ng-model="info.checked" type="checkbox" ng-change="selectOne()"/>
+                </td>
+                <td class="C2DBE61 cur" ui-sref="UIproposalshow" ng-bind="info.proposalNo"></td>
+                <td ng-bind="info.appliName"></td>
+                <td ng-bind="info.operatorCode">王五</td>
+                <td ng-bind="info.inputdate">2017-11-08</td>
+                <td ng-bind="info.flag">待提交</td>
+                <td>
+                    <img class="cur" src="common/images/chenpeng/revise.png" ng-click="revise('type')" title="修改" alt="修改">
+                    <img src="common/images/chenpeng/stop.png" title="停用" alt="撤单">
+                    <img src="common/images/chenpeng/delete.png" title="删除" alt="删除">
+                </td>
+            </tr>
+        </table>
+        <div class="index_page">
+            <tm-pagination conf="paginationConfmm"></tm-pagination>
+        </div>
+    </div>
+    </div>
+</div>
+</div>

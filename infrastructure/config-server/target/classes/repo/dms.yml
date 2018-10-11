@@ -1,0 +1,26 @@
+server:
+    port: 9001
+    #context-path: /dms-rest
+spring:
+    datasource:
+        name: dmsDatasource
+        url: jdbc:oracle:thin:@192.168.0.8:1521:agri
+        driver-class-name: oracle.jdbc.OracleDriver
+        username: gyic2
+        #password: gyic_222
+        password: ENC(KZDf3fjob0fAOwzHpB4dMe9KnXo0DVYi)
+        connectionTimeout: 2000
+
+ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 5000
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000
+
+dms:
+      ValiStatus: 1

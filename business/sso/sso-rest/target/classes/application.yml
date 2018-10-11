@@ -1,0 +1,6 @@
+logging:
+  level:
+    com.sinosoft.sso: DEBUG
+
+token:
+  expiration: 3600

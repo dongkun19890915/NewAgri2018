@@ -1,0 +1,77 @@
+<!--被保险人及投保标的信息-->
+<div class="index_list_table">
+    <div class="index_pos" ng-if="processImport">
+        <div class="pos_abs"></div>
+        <span>数据正在处理中，请稍等</span>
+                    <span class="span_loading_img">
+                        <div class="spinner">
+                            <div class="spinner-container container1">
+                                <div class="circle1"></div>
+                                <div class="circle2"></div>
+                                <div class="circle3"></div>
+                                <div class="circle4"></div>
+                            </div>
+                            <div class="spinner-container container2">
+                                <div class="circle1"></div>
+                                <div class="circle2"></div>
+                                <div class="circle3"></div>
+                                <div class="circle4"></div>
+                            </div>
+                            <div class="spinner-container container3">
+                                <div class="circle1"></div>
+                                <div class="circle2"></div>
+                                <div class="circle3"></div>
+                                <div class="circle4"></div>
+                            </div>
+                        </div>
+                    </span>
+    </div>
+    <div class="index_tit">
+        <h6 class="fl">被保险人及投保标的信息</h6>
+        <div class="fr">
+            <div class="div_a" ng-click="addshowInsure()">
+                <i></i><span>添加</span>
+            </div>
+            <div class="div_a" ng-click="showBatchImport()">
+                <i class="i_1"></i><span>批量导入</span>
+            </div>
+            <div class="div_a" ng-click="deleteInsureAll()">
+                <i class="i_2"></i><span>批量删除</span>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th class="t_first">序号</th>
+            <th ng-click="col='proposalNo';desc=!desc" class="hide">投保单号</th>
+            <th ng-click="col='insuredName';desc=!desc">被保险人姓名</th>
+            <th ng-click="col='identifyNumber';desc=!desc">证件号码</th>
+            <th ng-click="col='address';desc=!desc">投保标的地址</th>
+            <th ng-click="col='amount';desc=!desc">保险金额（万元）</th>
+            <th ng-click="col='premium';desc=!desc">保费（元）</th>
+            <th class="t_last">操作</th>
+        </tr>
+        <tr ng-repeat="d in insureDatas|orderBy:col:desc">
+            <td class="t_first" ng-bind="(paginationConf.currentPage-1) * paginationConf.itemsPerPage+$index+1"></td>
+            <td ng-bind="d.proposalNo" class="hide"></td>
+            <td ng-bind="d.insuredName"></td>
+            <td ng-bind="d.identifyNumber"></td>
+            <td ng-bind="d.address"></td>
+            <td ng-bind="(d.amount/10000).toFixed(2)"></td>
+            <td ng-bind="(d.premium).toFixed(2)"></td>
+            <td class="t_last">
+                <span class="a_edit" ng-click="editInsure(d.proposalNo,d.serialNo)">修改</span><span>|</span><span class="a_delete" ng-click="deleteInsure(d.proposalNo,d.serialNo)">删除</span>
+            </td>
+        </tr>
+    </table>
+    <div class="index_page">
+        <div>
+                        <span class="fl" ng-if="showErrMsg">上传结果：<em class="em_color_fail" ng-if="partsFailure">存在失败记录</em>
+                            <em class="em_color_suc" ng-if="uploadSuc">上传成功</em>
+                        </span>
+            <span class="fl span_col"  ng-if="downloadSpan" ng-click="showDownloadErrTable()">下载失败记录</span>
+            <span class="fl a_download" ng-click="downloadInsuredAll()"><i class="i_4"></i><span class="fl">下载清单</span></span>
+        </div>
+        <tm-pagination conf="paginationConf"></tm-pagination>
+    </div>
+</div>

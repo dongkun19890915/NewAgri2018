@@ -1,0 +1,74 @@
+<ul class="index_process">
+    <li class="li_finish"><i></i><span>1.批改信息录入</span></li>
+    <li class="li_active"><i class="i_1_1"></i><span>2.批改信息确认</span></li>
+    <li><i class="i_2"></i><span>3.完成</span></li>
+</ul>
+<div class="index_con">
+    <!--批改基本信息-->
+    <div class="index_list">
+        <div class="index_tit"><h6>批改基本信息</h6></div>
+        <ul class="list_ul list_ul2">
+            <li><span>批改类型：</span></li>
+            <li><span class="fl" ng-bind="endorseResultDto.endorTypeName"></span></li>
+
+            <li><em>*</em><span>批改生效日：</span></li>
+            <li><span class="fl" ng-bind="endorseResultDto.validDate"></span><span class="fl">&nbsp;&nbsp;0时</span></li>
+        </ul>
+    </div>
+    <!--批改内容-->
+    <div class="index_list">
+        <div class="index_tit"><h6>批改内容</h6></div>
+        <div class="correct_content">
+            <span data-ng-bind-html="endorseResultDto.endorseText"></span>
+        </div>
+    </div>
+    <div class="index_list list_money">
+        <p>应收保费：<b ng-bind="endorseResultDto.chgSumPremium|number:2"></b>元 </p>
+    </div>
+    <!--核批决定-->
+    <div class="index_list">
+        <div class="index_tit"><h6>核批决定</h6></div>
+        <ul class="list_ul">
+            <li>
+                <em>*</em><span>核批决定：</span>
+            </li>
+            <li class="li_full notion_decision">
+                <label class="mar_right2" ng-class="{true:'on',false:'radio'}[invoiceSpeFlag]" ng-click="invoiceClick()">
+                    <input type="radio" class="hide" ng-model="uwNotionDto.handleType" value="0" name="trafficIns" checked="checked" /><em>核批通过</em>
+                </label>
+                <label class="mar_right2" ng-class="{true:'on',false:'radio'}[invoiceEleFlag]" ng-click="invoiceClick1()">
+                    <input type="radio" class="hide" ng-model="uwNotionDto.handleType" value="1" name="trafficIns" /><em>返回录入人员补充信息</em>
+                </label>
+                <label class="mar_right2" ng-class="{true:'on',false:'radio'}[invoicePapFlag]" ng-click="invoiceClick2()">
+                    <input type="radio" class="hide" ng-model="uwNotionDto.handleType" value="2" name="trafficIns" /><em>核批不通过</em>
+                </label>
+            </li>
+            <li><span>核批意见：</span></li>
+            <li class="li_remark">
+                <div>
+                    <textarea name="" maxlength="85"  ng-maxlength="85" id="" cols="30" rows="10" ng-model="uwNotionDto.handleText"></textarea>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="index_btn">
+            <span class="policy_info" ng-click="nuclearViewClick()">
+                <i></i><em>查看核批记录</em>
+            </span>
+            <span class="a_2">
+                <i class="i_5" ></i><em ng-click="goBack()">返回</em>
+            </span>
+        <!--   <span>
+               <i class="i_2"></i><em>删除</em>
+           </span>-->
+    </div>
+    <div class="index_btn1">
+        <span class="submit" ng-click="nuclearSubmitClick()">确认</span>
+        <span class="edit" ng-click="onEdit()">退出</span>
+    </div>
+    <!--查看核批意见-->
+    <div ng-hide="endorseNuclearLayer" data-ng-include="'components/prpins/endorse/tpl/endorseNuclearLayer.html'"></div>
+    <!-- 提示框-->
+    <div data-ng-include="'components/prpins/underwrite/tpl/showAlertMsgPage.html'"></div>
+</div>

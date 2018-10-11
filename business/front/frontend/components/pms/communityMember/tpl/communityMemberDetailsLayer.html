@@ -1,0 +1,31 @@
+<!--共保体成员公司点击版次号弹层-->
+<div ng-hide="communityMemberDetailsLayer">
+    <div class="mask"></div>
+    <div class="group_search member_details">
+        <div class="remove_header">
+            <span>共同体成员公司比例</span>
+            <a href="javascript:void(0)"><i ng-click="communityMemberDetailsClose()"></i></a>
+        </div>
+        <div class="insure_content">
+            <table>
+                <tr>
+                    <th class="member_first" ng-click="list='riskName';desc=!desc">产品名称</th>
+                    <th class="member_first" ng-click="list='comCName';desc=!desc">共同体成员公司</th>
+                    <th class="member_second" ng-click="list='coinsRate';desc=!desc">所占比例(%)</th>
+                </tr>
+            </table>
+            <div class="tbody_scroll">
+                <table>
+                    <tr ng-repeat="d in versionNumber | orderBy:list:desc">
+                        <td class="member_first1" ng-bind="d.riskName"></td>
+                        <td class="member_first1" ng-bind="d.comCName"></td>
+                        <td class="member_second1" ng-bind="d.coinsRate"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="config_button move_up">
+            <button ng-click="communityMemberDetailsClose()">退 出</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="mask zIndex"></div>
+<div class="group_search person_search zIndex1">
+    <div class="remove_header">
+        <span>被保险人客户搜索</span>
+        <a href="javascript:void(0)"><i ng-click="insuredNewBlurClose()"></i></a>
+    </div>
+    <div class="insure_content">
+        <div class="insured_table">
+            <table>
+                <tr>
+                    <th class="td_empty t_first"></th>
+                    <th ng-click="col='customerName';desc=!desc">姓名</th>
+                    <th ng-click="col='sexName';desc=!desc">性别</th>
+                    <th ng-click="col='credentialsTypeName';desc=!desc">证件类型</th>
+                    <th ng-click="col='credentialsNumber';desc=!desc">证件号码</th>
+                    <th ng-click="col='email';desc=!desc">电子邮箱</th>
+                </tr>
+                <tr ng-repeat="d in insuredDatas|orderBy:col:desc"  ng-click="insuredTdRadio($index)">
+                    <td class="t_first">
+                        <!--<label class="td_i1" ng-class="{true:'td_i1',false:'td_i2'}"><input type="radio" value="1" class="hide"/></label>-->
+                        <input type="radio" name="customRadio" ng-checked="$index == num2" ng-click="insuredNum($index)" ng-bind="d.customerCode">
+                    </td>
+                    <td ng-bind="d.customerName"></td>
+                    <td ng-bind="d.sexName"></td>
+                    <td ng-bind="d.credentialsTypeName"></td>
+                    <td ng-bind="d.credentialsNumber"></td>
+                    <td ng-bind="d.email"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="index_page">
+            <tm-pagination conf="insuredCusConf"></tm-pagination>
+        </div>
+    </div>
+    <div class="layer_btn1">
+        <button class="button_sure" ng-click="insuredConfirm()">确认</button>
+        <button class="button_cancel" ng-click="insuredNewBlurClose()">取消</button>
+    </div>
+</div>

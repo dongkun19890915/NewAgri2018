@@ -1,0 +1,201 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔支付情况统计表查询页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/7
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<!-- start统计表查询页面 内容 -->
+<div class="main commentWidth">
+    <div class="section">
+        <div class="content_div content1-div">
+            <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>查询条件</label>
+                    <div class="cur fr">
+                     <!--   <i class="iconfont click_img">&#xe667;</i>
+                        <i class="iconfont click_img hide">&#xe668;</i>-->
+                    </div>
+                </span>
+                <div class="condition_table mt20">
+                    <form name="agriPaymentForm">
+                    <ul class='clearfix half-ul'>
+                        <li class="condition_td fl half-li">
+                            <label>赔款书号</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.compensateNo" style="color: #333;"
+                                       ng-change="changeendorseNo(queryDto.compensateNo)"
+                                       ng-pattern="regData.compensateNo"
+                                       maxlength="25" ng-minLength="15"
+                                       warn-text="{'ErrPattern':'赔款书号格式错误，请修改!',itemName:'赔款书号'}"
+                                />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>保单号</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.policyNo" style="color: #333;"
+                                       ng-change="changeendorseNo(queryDto.policyNo)"
+                                       ng-pattern="regData.number"
+                                       maxlength="21" ng-minLength="15"
+                                       warn-text="{'ErrPattern':'保单号格式错误，请修改!',itemName:'保单号'}"
+                                />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>报案号</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.registNo" style="color: #333;"
+                                       ng-change="changeendorseNo(queryDto.registNo)"
+                                       ng-pattern="regData.number"
+                                       maxlength="21" ng-minLength="15"
+                                       warn-text="{'ErrPattern':'报案号格式错误，请修改!',itemName:'报案号'}"
+                                />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>保险人</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.insuredName" style="color: #333;"
+                                       ng-pattern="regData.chineseNumber"
+                                       warn-text="{'ErrPattern':'保险人格式错误，请修改!',itemName:'保险人'}"
+                                />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>赔款类型</label>
+                            <div class="half-div">
+                                <ui-select ng-model="queryDto.paymentType">
+                                    <ui-select-match placeholder="请选择">
+                                        <span ng-bind="$select.selected.codeName"></span>
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="item in (PAYMENTTYPE | filter:$select.search)">
+                                        <span ng-bind="item.codeName"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>核赔通过时间</label>
+                            <div class="half-div condition-div">
+                                <div class="data-box">
+                                    <input type="text" class="date-input date fl" id="StatStartDate" ng-model="queryDto.underWriteEndDateStart"   name="核赔通过时间" style="color: #333;" max-date="{{queryDto.underWriteEndDateStart}}" jedate format="YYYY-MM-DD"/><span class="data-span">-</span>
+                                    <input type="text" class="date-input date fl" id="StatEndDate" ng-model="queryDto.underWriteEndDateEnd" name="核赔通过时间" value="1" style="color: #333;" min-date="{{queryDto.underWriteEndDateEnd}}" jedate format="YYYY-MM-DD"/>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>案件类型</label>
+                            <div class="half-div">
+                                <label><input type="checkbox" class="ieCheckBox" ng-true-value="true" ng-false-value="false" ng-model="infoToView.typeCase.typeCaseComCode" style="margin: 0px;margin-left: 23px;width: 16px;" />本机构</label>
+                                <label><input type="checkbox" class="ieCheckBox" ng-true-value="true" ng-false-value="false" ng-model="infoToView.typeCase.typeCaseNot" style="margin: 0px;margin-left: 23px;width: 16px;" />代查勘</label>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>支付类型</label>
+                            <div class="half-div">
+                                <label><input class="ieCheckBox" type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="infoToView.typePayment.typePaymentP3" style="margin: 0px;margin-left: 23px;width: 16px;" />实赔</label>
+                                <label><input class="ieCheckBox" type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="infoToView.typePayment.typePaymentP1" style="margin: 0px;margin-left: 23px;width: 16px;" />预赔</label>
+                            </div>
+                        </li>
+                    </ul>
+                    </form>
+                    <div class="btn_tr clearfix">
+                        <span  ng-click="query()">查询</span><span ng-click="resetForm()">重置</span>
+                    </div>
+                </div>
+            </div>
+            <div class="queryResult">
+                <div class="queryResult_title clearfix">
+                    <span class="fl tit-color font-bold">查询结果列表</span>
+                </div>
+                <table>
+                    <thead>
+                    <tr class="tr_top">
+                        <th>序号</th>
+                        <th>报案号码</th>
+                        <th>赔款计算书号</th>
+                        <th class="w14_28">被保险人</th>
+                        <th class="w11_11">核赔通过日期</th>
+                        <th>赔款类型</th>
+                        <th>总赔款</th>
+                        <th>未录入金额</th>
+                        <th>在途金额</th>
+                        <th>已支付金额</th>
+                        <th class="w6">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <div class="process-box" style="overflow-x: auto;margin-left: 200px;overflow-y: hidden" id="items">
+                            <tr class="tr_content" ng-repeat="result in paymentList" >
+                                <td>{{$index+1}}</td>
+                                <td ng-model="result.registNo"><div class="w50oh w100oh" ng-attr-title="{{result.registNo}}">{{result.registNo}}</div></td>
+                                <td ng-model="result.compensateNo">
+                                    <div class="w100oh w50oh" style="white-space: nowrap;" ng-attr-title="{{result.compensateNo}}">
+                                        {{result.compensateNo}}
+                                    </div>
+                                </td>
+                                <td ng-model="result.insuredName">{{result.insuredName}}</td>
+                                <td ng-model="result.underWriteEndDate">{{result.underWriteEndDate}}</td>
+                                <td ng-model="result.paymentTypeName">{{result.paymentTypeName}}</td>
+                                <td ng-model="result.totalPayAmount">{{result.totalPayAmount}}</td>
+                                <td ng-model="result.noEnterAmount">{{result.noEnterAmount}}</td>
+                                <td ng-model="result.onTheWayAmount" style="position: relative;"  name="onTheWay" ng-mouseover="showDetail($event,result,$index)" ng-mouseleave="hideDetail($event)">
+                                    {{result.onTheWayAmount}}
+                                    <div id="onTheWayDiv" ng-show="$index==indexFlag" style="position: absolute;left:80%;width: 200%;top:40%;background: #fff;z-index:5;height:auto;overflow-y: auto; border: 2px solid #2DBE61;" >
+                                        <div class="info_container" style="max-height:none;height:auto;">
+                                            <table>
+                                                <tr>
+                                                    <td>支付状态</td>
+                                                    <td>金额</td>
+                                                </tr>
+                                                <tr class="tr_content" ng-repeat="onTheWayResult in onTheWayList">
+                                                    <td ng-model="onTheWayResult.thirdPayFlag">{{onTheWayResult.thirdPayFlag}}</td>
+                                                    <td ng-model="onTheWayResult.payAmount">{{onTheWayResult.payAmount}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!--<p ng-show="explain">
+                                       <b>第三方识别概念</b><br>
+                                       委托出单点对客户进行身份识别，或委托法人单位（投保人）对本单位参保人员（被保险人）进行身份识别（如团意险因参保员工过多，我司为逐一取得参保人员身份证明，而委托参保公司进行身份识别）的团单业务，并符合非自热人或自然人身份识别规则。对出单点出单的及团单业务，设定选择权：是，委托第三方识别/否，公司逐一取得客户身份资料并自行识别。
+                                   </p>-->
+                                <td ng-model="result.payedAmount">{{result.payedAmount}}</td>
+                                <td class='local-sec'>
+                                    <label ng-click="goSee(result)">查看更多</label>
+                                </td>
+                            </tr>
+                        </div>
+                    </tbody>
+                </table>
+                <div ng-show="prplregist===null||prplregist.length==0" ng-class="{'not-query':prplregist===null,'query-null':prplregist.length==0}"></div>
+                <div class="index_page">
+                    <tm-pagination conf="paginationConf"></tm-pagination>
+                </div>
+            </div>
+
+            <!--<div class="hover-box" ng-show="true" ng-mouseover="hover = true"  ng-mouseleave="hover = false">&lt;!&ndash;  style="visibility:hidden;" id="ddd"&ndash;&gt;
+                <div class="bg">
+
+                    <tr>
+                            <td>支付状态</td>
+                            <td>金额</td>
+                    </tr>
+                    <tr class="tr_content" ng-repeat="onTheWayResult in onTheWayList">
+                        <td ng-model="onTheWayResult.thirdPayFlag">{{onTheWayResult.thirdPayFlag}}</td>
+                        <td ng-model="onTheWayResult.payAmount">{{onTheWayResult.payAmount}}</td>
+                    </tr>
+                </div>
+            </div>-->
+            <div class="btn_tr clearfix mt20">
+                <span ng-click="exp()">导出EXCEL</span>
+                <span ng-click="goBack()">返回</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>

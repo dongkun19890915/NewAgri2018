@@ -1,0 +1,62 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔立案任务---索赔资料清单弹层
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/12 
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="orderlayerBox" ng-show="checkInforListFlag">
+  <div class="mask zIndex"></div>
+  <div class="tip_success_info printLayer orderIntLayer bg-fff">
+    <div class="remove_header">
+      <span>索赔资料清单</span>
+      <i class="icon iconfont" ng-click="close()">&#xe632;</i>
+    </div>
+    <div class="info_container">
+      <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>索赔资料清单</label>
+                    <span class="click_img" ></span>
+                </span>
+        <div class="condition_table">
+          <ul class='clearfix half-ul mt20'>
+            <li class="condition_td fl half-li">
+              <label>报案号码</label>
+              <div class="half-div">
+                <input type="text" ng-model="claim.prpLcertifyCollect.businessNo" maxlength="19" ng-disabled="true">
+              </div>
+            </li>
+            <li class="condition_td fl half-li">
+              <label>保单号</label>
+              <div class="half-div">
+                <input type="text" ng-model="claim.prpLcertifyCollect.policyNo" ng-disabled="true">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>索赔申请</label>
+                    <span class="click_img" ></span>
+                </span>
+        <div class="condition_table mt20">
+          <ul class="clearfix damage-short-ul">
+            <li class="condition_td fl half-li long-li">
+              <label>是否选中</label>
+              <div class="half-div">
+                <check-box  ng-model="claim.prpLcertifyCollect.checkList" data='{{claim.prpLcertifyCollect.checkBoxList}}' ng-required="claim.prpLcertifyCollect.flag" ng-disabled="false"></check-box>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="btn_tr clearfix">
+        <span>保存</span>
+        <span>放弃</span>
+      </div>
+    </div>
+  </div>
+</div>

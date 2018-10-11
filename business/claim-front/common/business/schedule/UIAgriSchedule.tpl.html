@@ -1,0 +1,135 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔班表管理页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/11/29
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+*             ZhaoWenjie    11.29       班表管理页面搭建
+****************************************************************************
+-->
+<div class="section">
+  <div class="content_div content1-div">
+    <div class="queryCriteria">
+			<span class="queryCriteria_title">
+              <label>查询条件</label>
+          </span>
+      <div class="condition_table">
+        <ul class="clearfix half-ul">
+          <li class="condition_td fl half-li">
+            <label><i class="i-col">*</i>班表机构</label>
+            <div class="half-div">
+              <select base-code="Deptname" style="color: #333 !important;width: 100%;"
+                      ng-options="codes.comCode as codes.comCName for codes in Deptname"
+                      ng-model="jobManagerDto.handleDept" ng-change="staffInDuty()">
+              </select>
+              <!--<code-type base-code="deptname" ng-model="jobManagerDto.deptname"></code-type>-->
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label><i class="i-col">*</i>班表月份</label>
+            <div class="half-div">
+              <input type="text" style="width: 100%; color: #333 ;" class="date-input date fl ng-isolate-scope ng-pristine ng-valid"  id="StatStartDate" ng-model="jobManagerDto.month" jedate="" format="YYYY-MM">
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label><i class="i-col">*</i>险类</label>
+            <div class="half-div">
+
+
+              <select base-code="ClassCode" style="color: #333 !important;width: 100%;"
+                      ng-options="codes.codecode as codes.codecname for codes in ClassCode"
+                      placeholder="查询或选择..."
+                      ng-model="jobManagerDto.classCode">
+              </select>
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>当班人员</label>
+            <div class="half-div">
+              <select base-code="HandlerName" style="color: #333 !important;width: 100%;"
+                      ng-options="codes.handlerCode as codes.handlerName for codes in HandlerName"
+                      ng-model="jobManagerDto.handlerCode">
+              </select>
+            </div>
+          </li>
+        </ul>
+        <div class="btn_tr btn-th1 clearfix">
+          <!--<span class="fl" ui-sref="UIAgriScheduleAdd">新班表</span>-->
+          <span class="fl" ng-click="goScheduleAdd()">新增班表</span>
+          <!--<span class="fl" ng-click="regionalSetting=!regionalSetting;">区域设置</span>-->
+          <span class="fl" ng-click="goScheduleShow()">查询</span>
+        </div>
+      </div>
+    </div>
+    <!-- 关联弹层 -->
+
+    <div class="orderlayerBox" ng-show="queryRegional">
+      <div class="mask zIndex"></div>
+      <div class="tip_success_info printLayer orderIntLayer1">
+        <div class="remove_header">
+          <span>查询结果列表</span>
+          <i class="icon iconfont" ng-click="queryRegional=!queryRegional;">&#xe632;</i>
+        </div>
+        <div style="max-height:520px;overflow-y: auto;">
+          <table class="regional-table">
+            <thead>
+            <tr class="tr_top">
+              <td >序号</td>
+              <td>班表机构</td>
+              <td>当班人员</td>
+              <td>班表月份</td>
+              <td>险类</td>
+              <td>维护人员</td>
+              <td>维护时间</td>
+              <td>操作</td>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="tr_content"     ng-repeat="result in dispatchList">
+              <td ng-bind="$index+1"></td>
+
+              <td ng-bind="result.deptName"
+                  class="pointer" style="color: #2DBE61"
+                  ng-click="regionalAdd('institution','1')"
+                  ng-disabled="true">
+              </td>
+              <td ng-bind="result.handlerName"
+                  class="pointer" style="color: #2DBE61"
+                  ng-click="regionalAdd('personal','1')" >
+              </td>
+              <td ng-bind="result.month"/> </td>
+              <!--99非农非车险，05非车险。暂未加入农险-->
+              <td ng-if="result.classCode=='31'">种植险</td>
+              <td ng-if="result.classCode=='32'">养殖险</td>
+              <td ng-bind="result.operator"/> </td>
+              <td ng-bind="result.modifyTime"/> </td>
+              <td>
+                <div class="operation">
+                  <button class="" ng-click="regionalAdd('institution','0')">修改</button>
+                  <button class="" ng-click="regionalAdd('institution','1')">查询</button>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+
+          <div ng-show="prpLregist===null||prpLregist.length==0" ng-class="{'not-query':prpLregist === null,'query-null':prpLregist.length==0}"></div>
+          <div class="index_page">
+            <tm-pagination conf="paginationConf"></tm-pagination>
+          </div>
+
+        </div>
+
+        <!--<div class="btn_tr btn-half btn-th1 clearfix">-->
+        <!--<span class="fl">保存</span>-->
+        <!--<span class="fr no-bg" ng-click="queryRegional=!queryRegional">放弃</span>-->
+        <!--</div>-->
+      </div>
+    </div>
+
+
+  </div>
+</div>

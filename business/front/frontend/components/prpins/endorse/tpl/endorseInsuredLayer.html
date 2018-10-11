@@ -1,0 +1,164 @@
+<!--被保险人及其标的-->
+<div class="mask"></div>
+<div class="revise_insurant">
+    <ng-form novalidate="novalidate" name="endorseInsuredForm">
+        <div class="remove_header">
+            <span>被保险人及标的</span>
+                <span class="insurant" ng-show="InsuredSameShows" ng-class="{'click_checked':toggle}" ng-click="endorseInsuredSame()">
+                    <a href="javascript:void(0)">
+                        <i></i>
+                    </a>同投保人
+                </span>
+            <a href="javascript:void(0)"><i ng-click="endorseInsuredClose()"></i></a>
+        </div>
+        <div class="layerOver">
+            <ul class="list_ul list_ul_bor list_ul_wid">
+                <li>
+                    <em>*</em><span>姓名：</span>
+                </li>
+                <li>
+                    <input type="text" ng-model="prpCopyInsuredPropDto.insuredName"  ng-blur="insuredNewBlur()" required maxlength="30" warn-text="姓名"/>
+                </li>
+                <li></li>
+                <li></li>
+                <li>
+                    <span><em>*</em>证件类型：</span>
+                </li>
+                <li>
+                    <div class="ui-select">
+                        <code-type ng-required="true" class="seletc_bor" base-code="PersonalIdentifyType" ng-model='prpCopyInsuredPropDto.identifyType' ng-disabled="false" is-fuzzy="true"></code-type>
+                    </div>
+                </li>
+                <li>
+                    <span><em>*</em>证件号码：</span>
+                </li>
+                <li>
+                    <input type="text" name="identifyName" ng-model="prpCopyInsuredPropDto.identifyNumber" warn-text="" sv-credit="prpCopyInsuredPropDto.identifyType"  required maxlength="20"/>
+                </li>
+                <li>
+                    <span>证件到期日：</span>
+                </li>
+                <li>
+                    <input type="text" id="identityEndDate_Prop" jedate format="YYYY-MM-DD" class="date-input fl date" ng-model="prpCopyInsuredPropDto.identityEndDate" maxlength="10" readonly/>
+                </li>
+                <li>
+                    <span>性别：</span>
+                </li>
+                <li>
+                    <div class="marr43">
+                        <label class="mar_right" ng-class="{true:'radio',false:'on'}[insuredSexManFlag]" ng-click="radioSexClick2()">
+                            <input type="radio" class="hide" value="1" name="trafficIns" ng-model="prpCopyInsuredPropDto.sex"/><em>男</em>
+                        </label>
+                        <label ng-class="{true:'on',false:'radio'}[insuredSexWomanFlag]" ng-click="radioSexClick3()">
+                            <input type="radio" checked="checked" class="hide" value="2" name="trafficIns" ng-model="prpCopyInsuredPropDto.sex"/><em>女</em>
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span>手机号码：</span>
+                </li>
+                <li>
+                    <input type="text" value="" ng-model="prpCopyInsuredPropDto.mobile" maxlength="11" warn-text="手机号码" ng-pattern="/^1[3-8][0-9]{9}$/" />
+                </li>
+                <li>
+                    <span>电子邮箱：</span>
+                </li>
+                <li>
+                    <input type="email" name="email" ng-model="prpCopyInsuredPropDto.email" ng-minlength="5" maxlength="40" warn-text="电子邮箱" ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/"/>
+                </li>
+                <li>
+                    <span>联系地址：</span>
+                </li>
+                <li class="long_width"><input type="text" maxlength="100" ng-model="prpCopyInsuredPropDto.insuredAddress"></li>
+            </ul>
+            <ul class="list_ul revise_info list_ul_insured">
+                <li>
+                    <span><em>*</em>投保房屋所在区县：</span>
+                </li>
+                <li class="long_width">
+                    <span class="fl select">{{prpCopyInsuredPropDto.provinceName}}</span>
+                    <span class="fl select">{{prpCopyInsuredPropDto.cityName}}</span>
+                    <span class="fl select">{{prpCopyInsuredPropDto.townName}}</span>
+                </li>
+                <li>
+                    <span><em>*</em>乡镇/街道/小区/门牌号：</span>
+                </li>
+                <li class="long_width">
+                    <input type="text" ng-model="prpCopyInsuredPropDto.address" maxlength="100" required warn-text="乡镇/街道/小区/门牌号">
+                </li>
+                <li>
+                    <span>纬度(六位小数)：</span>
+                </li>
+                <li>
+                    <input type="text" ng-model="prpCopyInsuredPropDto.latitude" maxlength="15" warn-text="" readonly/>
+                </li>
+                <li>
+                    <span>经度(六位小数)：</span>
+                </li>
+                <li>
+                    <input type="text" ng-model="prpCopyInsuredPropDto.longitude" maxlength="15" warn-text="" readonly/><!--ng-pattern="/^[0-9]+([.]{0,1}[0-9]{1,2})$/"-->
+                </li>
+                <li>
+                    <span><em>*</em>住宅类型：</span>
+                </li>
+                <li class="li_home">
+                    <input type="text" ng-model="prpCopyInsuredPropDto.houseTypeName" readonly>
+                </li>
+                <li>
+                    <span>建筑类型：</span>
+                </li>
+                <li class="auto_width">
+                    <input type="text" ng-model="prpCopyInsuredPropDto.buildTypeName" readonly>
+                    <em class="em_last" ng-if="prpCopyInsuredPropDto.buildTypeName =='楼房'">（位于第{{prpCopyInsuredPropDto.buildFloor}}层）</em>
+                    <em class="em_last" ng-if="prpCopyInsuredPropDto.buildTypeName =='平房'"></em>
+                    </label>
+                </li>
+                <li>
+                    <span><em>*</em>建筑结构：</span>
+                </li>
+                <li>
+                    <span class="fl">{{prpCopyInsuredPropDto.buildStructureName}}</span>
+                </li>
+                <li ng-if="structFlag">
+                    <span>其他结构备注：</span>
+                </li>
+                <li ng-if="structFlag">
+                    <input type="text" ng-model="prpCopyInsuredPropDto.buildStructureDes" readonly />
+                </li>
+                <li>
+                    <span>建筑面积：</span>
+                </li>
+                <li class="insured_width">
+                    <span class="fl">{{prpCopyInsuredPropDto.buildArea}}㎡</span>
+                </li>
+                <li>
+                    <span>建造时间：</span>
+                </li>
+                <li>
+                    <input type="text" id="buildDate" class="date-input fl" ng-model="prpCopyInsuredPropDto.buildDate" readonly>
+                </li>
+                <li>
+                    <span>是否整修：</span>
+                </li>
+                <li>
+                    <input type="text" ng-model="prpCopyInsuredPropDto.repairFlagName" readonly>
+                </li>
+                <li ng-if="buildTime">
+                    <span>整修时间：</span>
+                </li>
+                <li ng-if="buildTime">
+                    <input type="text" class="date-input fl" id="repairDate" ng-model="prpCopyInsuredPropDto.repairDate">
+                </li>
+                <li>
+                    <span><em>*</em>保险金额：</span>
+                </li>
+                <li class="insured_width">
+                    <span class="fl">{{prpCopyInsuredPropDto.amount}}万元</span>
+                </li>
+            </ul>
+            <div class="index_btn1">
+                <span  class="submit" ng-click="endorseInsuredSave()">确 定</span>
+            </div>
+        </div>
+    </ng-form>
+</div>

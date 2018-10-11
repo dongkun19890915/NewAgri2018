@@ -1,0 +1,482 @@
+<!-- 公用头部 -->
+<div class="main">
+<div class="content_div section commentWidth">
+    <div class="position">
+        <span class="ml10">当前位置：</span>
+        <span class="local-fir">条款版本管理 > </span>
+        <span class="local-sec">条款查询</span>
+    </div>
+    <div class="queryCriteria">
+        <span class="queryCriteria_title">
+            <label>查询条件</label>
+            <span class="click_img" ng-click="addFrom()">
+                <img ng-src="{{SRC}}" alt=""/>
+            </span>
+        </span>
+        <div class="condition_table" id="pt4">
+            <ul class="clearfix">
+                <li class="condition_td teaR fl">
+                    <label>条款代码</label>
+                    <div class="half-div">
+                        <input style="width:92%" type="text" warn-text="条款代码"  maxlength="40"  ng-blur="checkclauseCode($event,proposal.PrpDclauseCodeDto.clauseCode)" ng-class="{'checkOutBdRed':check.clauseCode}" ng-model="proposal.PrpDclauseCodeDto.clauseCode" ng-change="changeclauseCode(proposal.PrpDclauseCodeDto.clauseCode)" class=""><!-- ng-pattern="regData.code" -->
+                        <s ng-bind="check.clauseCode"></s>
+                    </div>
+                </li>
+                <li class="condition_td teaC fl">
+                    <label>条款名称</label>
+                    <div class="half-div">
+                        <input type="text" style="width:92%;"  maxlength="40"  ng-model="proposal.PrpDclauseCodeDto.clauseName"><!--  ng-pattern="regData.Chinese"-->
+                        <!--<s ng-bind="check.clauseName1"></s>  ng-blur="checkclauseName1($event,proposal.PrpDclauseCodeDto.clauseName)" ng-class="{'checkOutBdRed':check.clauseName1}" warn-text="条款名称"-->
+                    </div>
+                </li>
+                <li class="condition_td teaC fl">
+                    <label>条款创建日期</label>
+                    <input style="width: 27%;position: relative;left:-3px;" type="text" id="idDataStart2" jedate
+                           class="date-input proposal_date " ng-model="proposal.PrpDclauseCodeDto.createDateStart" ng-change="compareDate11(proposal.PrpDclauseCodeDto.createDateStart,proposal.PrpDclauseCodeDto.createDateEnd)"
+                           format="YYYY-MM-DD" required readonly/><!-- ng-init="proposal.PrpDclauseCodeDto.createDateStart=''+getdate.year+'-'+number(getdate.month+1)+'-'+'01'"-->
+                    <i class="fl">-</i>
+                    <input style="width: 26%;position: relative;right:2px;" type="text" id="idDataEnd2" jedate
+                           class="date-input proposal_date " ng-model="proposal.PrpDclauseCodeDto.createDateEnd" ng-change="compareDate1(proposal.PrpDclauseCodeDto.createDateStart,proposal.PrpDclauseCodeDto.createDateEnd)"
+                           format="YYYY-MM-DD"
+                           required readonly/><!-- ng-init="proposal.PrpDclauseCodeDto.createDateEnd=''+getdate.year+'-'+number(getdate.month+1)+'-'+number(getdate.day)"-->
+                </li>
+                <!--<li class="condition_td teaL fl">
+                    <label>适用机构</label>
+                    <div class="half-div">
+                        <input type="text" style="width:92%;" warn-text="适用机构" maxlength="40" ng-blur="checkcomCode($event,proposal.PrpDclauseCodeComDto.comCode)" ng-class="{'checkOutBdRed':check.comCode}" ng-model="proposal.PrpDclauseCodeComDto.comCode" class="">&lt;!&ndash; ng-pattern="regData.number"&ndash;&gt;
+                        <s ng-bind="check.comCode"></s>
+                    </div>
+                </li>-->
+
+                <li class="condition_td teaL fl">
+                    <label>适用机构</label>
+                    <div class="codeType codeNoBor"  >
+                        <ui-select history ng-model="proposal.PrpDclauseCodeComDto.comCode"
+                                   ng-click="getComCodeList()"
+                        >
+                            <ui-select-match placeholder="查询或选择..." ng-attr-title="{{$select.selected.comCName}}">
+                                {{$select.selected.comCName}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="code.comCode as code in selectListData.comCodeList | filter: $select.search">
+                                <span ng-bind="code.comCName" ng-attr-title="{{code.comCName}}"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </li>
+                <li class="condition_td teaR fl">
+                    <label>创建人名称</label>
+                    <div class="half-div">
+                        <input type="text" style="width:92%;" warn-text="创建人名称"  maxlength="40" ng-blur="checkcreatedby($event,proposal.PrpDkindDto.createdby)" ng-class="{'checkOutBdRed':check.createdby}" ng-model="proposal.PrpDkindDto.createdby"><!-- ng-pattern="regData.Chinese" -->
+                        <s ng-bind="check.createdby"></s>
+                    </div>
+                </li>
+                <li class="condition_td teaR fl">
+                    <label>险种</label>
+                    <div class="half-div">
+                        <ui-select  style="width: 91%;" ng-model="proposal.PrpDclauseCodeDto.riskCode" ng-click="queryByValid($select.selected)" ><!--ng-disabled="proposalQueryHide"-->
+                            <ui-select-match   placeholder="查询或选择..." ng-attr-title="{{$select.selected.riskCName}}">
+                                {{$select.selected.riskCName}}
+                                <div ng-if="$select.selected.riskCName!=null?false:true">{{proposal.prpMmodelMainRequest.riskCName}}</div>
+                            </ui-select-match>
+                            <ui-select-choices repeat="code.riskCode as code in riskCodeList | filter: $select.search">
+                                <span ng-bind="code.riskCName" ng-attr-title="{{code.riskCName}}"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </li>
+                <li ng-show="clauseManageShow">
+                    <ul class="clearfix">
+                        <li class="condition_td teaC fl">
+                            <label>标的</label>
+                            <div class="half-div">
+                                <input type="text"style="width:92%;" warn-text="标的" maxlength="40" ng-blur="checkitemCode($event,proposal.PrpDclauseCodeDto.itemCode)" ng-class="{'checkOutBdRed':check.itemCode}" ng-model="proposal.PrpDclauseCodeDto.itemCode" class=""><!-- ng-pattern="regData.code"-->
+                                <s ng-bind="check.itemCode"></s>
+                            </div>
+                        </li>
+                        <li class="condition_td teaL fl">
+                            <label>政策/商业标志</label>
+                            <div class="codeType" style="width: 55%">
+                                <code-type base-code="BusinessType1"  ng-model="proposal.PrpDclauseCodeDto.BusinessType1" ng-init="proposal.PrpDclauseCodeDto.BusinessType1='01'" ></code-type>
+                            </div>
+                            <!--<select ng-model="proposal.PrpDclauseCodeDto.businessType" ng-init="proposal.prpTmainDto.businessType='01'">-->
+                            <!--<option value="01" >中央政策性</option>-->
+                            <!--<option value="02" >商业性</option>-->
+                            <!--<option value="03" >地方政策性</option>-->
+                            <!--</select>-->
+                        </li>
+                        <li class="condition_td teaL fl">
+                            <label>有效标准字段</label>
+                            <select ng-model="proposal.PrpDclauseCodeDto.validStatus1" ng-init="proposal.PrpDclauseCodeDto.validStatus1='1'">
+                                <!--<option value="" >所有</option>-->
+                                <option value="1" >有效</option>
+                                <option value="0" >无效</option>
+                            </select>
+                        </li>
+                    </ul>
+                </li>
+               <!-- <li ng-show="clauseManageShow">
+                    <ul class="clearfix">
+                        <li class="condition_td teaL fl">
+                            <label>有效标准字段</label>
+                            <select ng-model="proposal.PrpDclauseCodeDto.validStatus1" ng-init="proposal.PrpDclauseCodeDto.validStatus1='1'">
+                                &lt;!&ndash;<option value="" >所有</option>&ndash;&gt;
+                                <option value="1" >有效</option>
+                                <option value="0" >无效</option>
+                            </select>
+                        </li>
+                    </ul>
+                </li>-->
+            </ul>
+            <div class="btn_tr clearfix">
+                <span class="fl" ng-click="submit();button()">查询</span>
+                <span class="fr" ng-click="reset()">重置</span>
+            </div>
+        </div>
+    </div>
+    <div class="queryResult">
+        <div class="queryResult_title clearfix">
+            <span class="fl">查询结果</span>
+            <label class="fr" ng-click="goBackDashboard();">返回</label>
+            <label class="fr" ng-click="flg('批删',null);">全部删除</label>
+            <label class="fr" ng-click="test();configPrintSet();sign();writeclause();reset1()">新建</label>
+        </div>
+        <table>
+            <tr class="tr_top">
+                <td class="w8 check-box1">
+                    <label class="fl checkbox-label1"  ng-class="{'checkbox-checked':select_all==true}" ng-click="selectAll(info)"><!--box.checked=!box.checked-->
+                        <span></span>
+                        <input type="checkbox" name="checkbox" class="hide" ng-model="select_all"><em>全选</em>
+                    </label>
+                </td>
+                <td>条款代码</td>
+                <td>条款名称</td>
+                <td>创建日期</td>
+                <td>条款创建人</td>
+                <td>状态</td>
+                <td>操作</td>
+            </tr>
+            <tr class="tr_content F2F2F2" ng-repeat="info in proposal.prpTmain.clauseQueryList track by $index">
+                <td class="check-box1" >
+                    <!--<input ng-model="info.checked" type="checkbox" ng-change="selectOne(info)"/>-->
+                    <label class="fl checkbox-label1 " ng-class="{'checkbox-checked':info.checked==true}" ng-click="selectOne(info)"><!--box.checked1=!box.checked1-->
+                        <span></span>
+                        <input type="checkbox" name="checkbox" class="hide" ng-model="info.checked">
+                    </label>
+                </td>
+                <td class="C2DBE61 cur">
+                    <span ng-click="readonlyclause();configPrintSet('look');coinsurance();sign2();clauseQueryDetail(info.clauseCode);" ng-bind="info.clauseCode" ></span>
+                </td>
+                <td ng-bind="info.clauseName"></td>
+                <td ng-bind="info.createDate"></td>
+                <td ng-bind="info.operatorName"></td>
+                <td> {{info.validStatus1=='1'?'有效':'无效' }}
+                </td>
+
+
+                <td>
+                    <img class="cur" ng-click="upisSelect(info);configPrintSet();sign1();writeclause();clauseQueryDetail(info.clauseCode);" src="common/images/chenpeng/revise.png" title="修改" alt="修改">
+                    <img class="cur" ng-if="info.validStatus1=='1'" src="common/images/chenpeng/stop.png" ng-click="disableClause(info)" ng-show="info.isable" title="停用" alt="停用">
+                    <img class="cur" ng-if="info.validStatus1!='1'" src="common/images/chenpeng/start.png" ng-click="disableClause(info)" ng-show="info.isable" title="启用" alt="启用">
+                    <img class="cur" src="common/images/chenpeng/delete.png" ng-click="flg('单删',info)" title="删除" alt="删除" >
+                </td>
+            </tr>
+        </table>
+        <div ng-show="isEmptyObject(proposal.prpTmain.clauseQueryList)||proposal.prpTmain.clauseQueryList.length==0" ng-class="{'not-query':isEmptyObject(proposal.prpTmain.clauseQueryList),'query-null':proposal.prpTmain.clauseQueryList.length==0}" class="not-query"></div>
+        <div class="index_page">
+            <tm-pagination conf="paginationConfmm"></tm-pagination>
+        </div>
+    </div>
+</div>
+
+<!--条款详情弹层-->
+<div class="printLayerBox" ng-show="clauseDetailsShow">
+    <!--控制弹层-->
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info clause_manage" style="top:68px;height:570px;position: fixed;left:50%;margin-left:-500px;">
+        <!--条款详情样式-->
+        <div class="clause_header">
+            <span>条款详情</span>
+            <i class="icon iconfont plusAndReduce" ng-click="configPrintSet()">&#xe632;</i>
+        </div>
+        <div class="clause-model" style="height:430px;">
+            <div class="clause_information" style="overflow-x: visible;">
+                <div class="clause_queryResult_title clearfix">
+                    <span class="table_color">创建条款</span>
+                </div>
+                <div class="clause_information_right">
+                    <ul class="clause_con_left left" style="height:auto;">
+                        <li>
+                            <label class="teaR">
+                                <i class="mes_sign">*</i>
+                                <span class="mesColor">年份</span>
+                            </label>
+                            <input ng-model="proposal.PrpDclauseCode.createYear" ng-init="proposal.PrpDclauseCode.createYear=''+getdate.year"  type="text"
+                               disabled="disabled"/>
+                        </li>
+                        <li>
+                            <label class="teaR">
+                                <i class="mes_sign">*</i>
+                                <span class="mesColor">条款名称</span>
+                            </label>
+                            <!--<input ng-model="proposal.PrpDclauseCode.clauseName" warn-text="条款名称" type="text" ng-blur="checkclauseName($event,proposal.PrpDclauseCode.clauseName)"-->
+                                   <!--ng-class="{'checkOutBdRed':check.clauseName}" ng-disabled="proposalQueryHide" />&lt;!&ndash;  ng-pattern="regData.Chinese"&ndash;&gt;-->
+                                <!--<s ng-bind="check.clauseName"></s>-->
+                            <label style="position: relative">
+                                    <input ng-model="proposal.PrpDclauseCode.clauseName" style="position: relative" maxlength="40" ng-disabled="proposalQueryHide" type="text"/>
+                                             <!-- warn-text="条款名称" placeholder="省/市/县、区+农作物名称"   ng-pattern="proposalClauseRegex"-->
+                            </label>
+                        </li>
+                        <li>
+                            <label class="teaR">
+                                <span class="mesColor">政策性</span>
+                            </label>
+                            <div class="codeType pt4" style="width:57%">
+                                <code-type base-code="BusinessType1"  ng-model="proposal.PrpDclauseCode.BusinessType1" ng-init="proposal.PrpDclauseCode.BusinessType1='01'" ng-disabled="proposalQueryHide"></code-type>
+                            </div>
+                            <!--<select ng-model="proposal.PrpDclauseCode.businessType"-->
+                            <!--ng-options="PolicyType.codeCode as PolicyType.codeName for PolicyType in PolicyType"-->
+                            <!--ng-disabled="proposalQueryHide" >-->
+                            <!--<option value="">中央政策性</option>-->
+                            <!--</select>-->
+                        </li>
+                        <li>
+                            <label class="teaR">
+                                <!--<i class="mes_sign">*</i>-->
+                                <span class="mesColor">备注</span>
+                            </label>
+                            <input ng-model="proposal.PrpDclauseCode.remark" type="text" ng-disabled="proposalQueryHide" />
+                        </li>
+                    </ul>
+                    <ul class="clause_con_right left">
+                        <li class="clearfix">
+                            <label class="teaR fl">
+                                <i class="mes_sign">*</i>
+                                <span class="mesColor">险种</span>
+                            </label>
+                            <div class="clearfix fl pt4" style="width: 59.4%;margin-left: 4px;">
+                                <ui-select ng-model="proposal.PrpDclauseCode.riskCode" ng-click="queryByValid($select.selected)" ng-disabled="proposalQueryHide" ng-change="clearclause()">
+                                    <ui-select-match   placeholder="查询或选择..." ng-attr-title="{{$select.selected.riskCName}}">
+                                        {{$select.selected.riskCName}}
+                                        <div ng-if="$select.selected.riskCName!=null?false:true">{{proposal.PrpDclauseCode.riskCName}}</div>
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="code.riskCode as code in riskCodeList | filter: $select.search">
+                                        <span ng-bind="code.riskCName" ng-attr-title="{{code.riskCName}}"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </li>
+                        <li>
+                            <label class="teaR">
+                                <i class="mes_sign">*</i>
+                                <span class="mesColor">有效期</span>
+                            </label>
+                            <input  id="StartDate" ng-change="compareStartDate(proposal.PrpDclauseCode.startDate,proposal.PrpDclauseCode.endDate)" ng-model="proposal.PrpDclauseCode.startDate"jedate class="date_wid date" type="text" format="YYYY-MM-DD" ng-disabled="proposalQueryHide"
+                                     ng-init="proposal.PrpDclauseCode.startDate=''+getdate.year+'-'+number(getdate.month+1)+'-'+'01'" required/>   <!--ng-change="compareDate(proposal.PrpDclauseCode.startDate,proposal.PrpDclauseCode.endDate)"-->
+                            <i class="mesColor">-</i>
+                            <input  id="EndDate" ng-change="compareStartDate(proposal.PrpDclauseCode.startDate,proposal.PrpDclauseCode.endDate)" ng-model="proposal.PrpDclauseCode.endDate" jedate class="date_wid date" type="text" format="YYYY-MM-DD" ng-disabled="proposalQueryHide"
+                                    ng-init="proposal.PrpDclauseCode.endDate=''+getdate.year+'-'+number(getdate.month+1)+'-'+number(getdate.day)" required/>
+                            <!--<input  id="EndDate" ng-model="proposal.PrpDclauseCode.endDate" jedate class="date_wid date" type="text" format="YYYY-MM-DD" ng-disabled="proposalQueryHide" ng-change="verifyDate(proposal.PrpDclauseCode.startDate,proposal.PrpDclauseCode.endDate)"/>-->
+                        </li>
+                        <li>
+                            <label class="teaR">
+                                <span class="mesColor">条款代码</span>
+                            </label>
+                            <input ng-model="proposal.PrpDclauseCode.clauseCode" type="text" disabled="disabled"/>
+                        </li>
+                        <li>
+                            <label class="teaR">
+                                <i class="mes_sign">*</i>
+                                <span class="mesColor">条款状态</span>
+                            </label>
+                            <select ng-model="proposal.PrpDclauseCode.validStatus" ng-init="proposal.PrpDclauseCode.validStatus='1'" ng-disabled="proposalQueryHide"  type="text" >
+                                <option value=""  selected hidden></option>
+                                <option  value="1" >启用</option>
+                                <option  value="0">停用</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div  class="clause_information1">
+                <div class="clause_queryResult_title">
+                    <span class="table_color" ng-model="proposal.PrpDclauseCodeDto.provence">适用机构</span>
+                    <i class="mes_sign">*</i>
+                </div>
+                <div style="height: 30px">
+                    <label class="fr "  style="width: 100px;height: 100px;margin-right:80%">
+                        <div class="" id="comTreeClause" >
+                            <!--<input type="text" required readonly class="upinput" style="width: 565px;"/>-->
+                            <com-tree multiple ng-disabled="messageHide"  ng-value="swflogDto.handleName" url="queryCompanyTree" ng-model="swflogDto.handleCode" ng-required="true" ng-change="queryCheckAndLossPeople()"   switchFlag="true"></com-tree>
+                            <!--<com-tree multiple ng-value="swflogDto.handleName" ng-model="swflogDto.handleCode" ng-change="queryCheckAndLossPeople()" switchFlag="true"> </com-tree>-->
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!--险别配置-->
+            <div  class="clause_information1 pt4">
+                <div class="clause_queryResult_title">
+                    <span class="table_color">险别配置</span>
+                    <i class="mes_sign">*</i>
+                </div>
+                <div class="queryResult1">
+                    <table>
+                        <tr class="clause_tr_top">
+                            <td class="w5">序号</td>
+                            <td class="w8">险别代码</td>
+                            <td class="w8">险别名称</td>
+                            <td class="w8">主险/附加险</td>
+                            <td class="w8">标的</td>
+                            <td class="w8">是否计入保额</td>
+                            <td class="w8">费率分位</td>
+                            <td class="w8">险别内容</td>
+                            <td class="w8" ng-show="operate1">操作</td>
+                        </tr>
+                        <tr class="tr_content F2F2F2" ng-repeat="info in proposal.prpTmain.clausemanageQueryList track by $index">
+                            <td >{{$index+1}}</td>
+                            <td>
+                                <div class="codeType">
+                                    <ui-select ng-model="info.kindCode" ng-click="selectKind()" ng-change="change($select.selected,$index)" ng-disabled="proposalQueryHide">
+                                        <ui-select-match   placeholder="查询或选择..." >
+                                            {{$select.selected.kindCode}}
+                                            <div ng-if="$select.selected.kindCode!=null?false:true">{{info.kindCode}}</div>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="code.kindCode as code in kindCodeList | filter: $select.search" style="width: 370%;opacity: 1;" >
+                                            <span ng-bind="code.kindCode+'-'+code.kindCName" ></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </td>
+                            <!--<input ng-init="info.kindCode" type="text" ng-disabled="proposalQueryHide" ></td>-->
+                            <td ng-bind="info.kindCName" ></td>
+                            <td ng-bind="(info==undefined||!info.calculateFlag )? '':((info.calculateFlag.substr(2,1))=='1'?'主险':(((info.calculateFlag.substr(2,1))=='2')?'附加险':''))" ></td>
+                            <td >
+                                <div class="codeType max_w">
+                                    <ui-select ng-model="info.itemCName" ng-click="selectItem($index)" ng-change="change1($select.selected,$index);checkSubsidyType(info.itemCName,$index)" ng-disabled="proposalQueryHide">
+                                        <ui-select-match placeholder="查询或选择...">
+                                            {{$select.selected.itemCName}}
+                                            <div ng-if="$select.selected.itemCName!=null?false:true">{{info.itemCName}}</div>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="code.itemCName as code in itemCodeList | filter: $select.search" style="opacity: 0; width: 200%;">
+                                            <span ng-bind="code.itemCode+'-'+code.itemCName"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </td>
+                            <td ng-bind="(!info.calculateFlag) ?'':((info.calculateFlag|limitTo:1:2)=='Y'?'是':'否')"></td>
+                            <td ng-bind="curtor"></td>
+                            <td   ng-init="info.g" ng-disabled="coinsuranceCount" ng-click="configPrintSetkind($index);kindDetail(info)" ><i class="cur mesColor" ng-show="!proposalQueryHide">添加</i><i ng-show="proposalQueryHide" class="cur mesColor">查看</i></td>
+                            <!--<td ng-show="operate1_4" ng-init="info.g" ng-disabled="coinsuranceCount" ng-click="coinsurance1()" ><i class="cur mesColor">详情</i></td>-->
+                            <div class="printLayerBox" ng-show="consoleShowkind">
+                                <div class="mask zIndex"></div>
+                                <div class="tip_success_info clause1_manage" style="left:37%;background-color: #fff;height:auto;">
+                                    <!--险别内容详情样式-->
+                                    <div class="clause_header" >
+                                        <span>险别内容</span>
+                                        <i class="icon iconfont plusAndReduce" ng-click="configPrintSetkind1()" >&#xe632;</i>
+                                    </div>
+                                    <div class="clause2_manage">
+                                        <textarea ng-disabled="proposalQueryHide" style="width: 96%;resize:none;display:block;margin:20px auto;height: 200px;padding:6px;" ng-model="kindContext"  class="clause2_manage"></textarea>
+                                    </div>
+                                    <div class="clause_td">
+                                        <label ng-click="configPrintSetkind('w');addcontent()"><i ng-show="!proposalQueryHide">确定</i><i ng-show="proposalQueryHide">取消</i></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <td ng-show="operate1_1">
+                                <img class="cur" src="common/images/chenpeng/delete.png" ng-click="deleteCoins1($index)" title="删除" alt="删除" >
+                            </td>
+                        </tr>
+                    </table>
+                    <!--<div ng-show="clauseDetailsConfirmShow" >-->
+                    <!--<table>-->
+                    <!--<td class="tr_top">-->
+                    <!--<textarea style="width: 100%;height: 200px;;padding-left: 5%" ng-bind="kindcContext" class="clause2_manage"></textarea>-->
+                    <!--<label class="tr_top2" ng-click="coinsurance()">确定</label>-->
+                    <!--</td>-->
+                    <!--</table>-->
+                    <!--</div>-->
+                    <div ng-show="agentFeeShow1_4">
+                        <table>
+                            <td class="tr_top">
+                                <input type="text" class="tr_top1" ng-disabled="proposalQueryHide" >
+                            </td>
+                        </table>
+                    </div>
+                </div>
+                <div class="clause_add" ng-show="operate1_2">
+                    <img class="cur fr mt10" src="common/images/chenpeng/add.png" ng-disabled="proposalQueryHide" ng-click="addCoins();" title="新增" alt="新增">
+                </div>
+            </div>
+
+            <!--保险责任-->
+            <div  class="clause_information1 pt4">
+                <div class="clause_queryResult_title">
+                    <span class="table_color">保险责任</span>
+                    <i class="mes_sign">*</i>
+                </div>
+                <div class="queryResult1">
+                    <table>
+                        <tr class="clause_tr_top">
+                            <td>序号</td>
+                            <td>代码</td>
+                            <td>名称</td>
+                            <td>内容</td>
+                            <td ng-show="operate2">操作</td>
+                        </tr>
+                        <tr class="tr_content F2F2F2" ng-repeat="info in proposal.prpTmain.clausemanageQueryList1 track by $index" >
+                            <td >{{$index+1}}</td>
+                            <td >
+                                <li ng-bind="info.insuranceCode2"></li>
+                            </td>
+                            <td>
+                                <div class=" codeType max_w"  ng-click="queryPrpDclauseInfo()">
+                                    <ui-select ng-model="info.insuranceCode" ng-change="changeclause($select.selected,$index)"  ng-disabled="proposalQueryHide">
+                                        <ui-select-match  placeholder="查询或选择..." >
+                                            {{info.clauseName}}
+                                            <div ng-if="$select.selected.clauseName!=null?false:true">{{info.insuranceName}}</div>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="code.insuranceCode as code in prpDclauseDtoList | filter: $select.search">
+                                            <span ng-bind="code.clauseName" ng-attr-title="{{prpDclauseDto.clauseName}}"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </td>
+
+                            <td ng-click="configPrintSet2($index,info.clauseName,info.insuranceName);insuranceDetail(info)"><i class="cur mesColor" ng-show="!proposalQueryHide">添加</i><i class="cur mesColor" ng-show="proposalQueryHide">详情</i></td>
+                            <td ng-show="operate2_1">
+                                <img class="cur" src="common/images/chenpeng/delete.png" ng-click="deleteCoins2($index)" title="删除" alt="删除" >
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clause_add" ng-show="operate2_2">
+                    <img class="cur fr mt10" src="common/images/chenpeng/add.png" ng-disabled="proposalQueryHide" ng-click="addCoins1();" title="新增" alt="新增">
+                </div>
+                <div class="printLayerBox" ng-show="consoleShow">
+                    <div class="mask zIndex"></div>
+                    <div class="tip_success_info clause1_manage" style="background: #fff;height:auto;left:37%;">
+                        <!--保险责任内容详情样式-->
+                        <div class="clause_header">
+                            <span>{{consoleShowTitle}}</span>
+                            <i class="icon iconfont plusAndReduce" ng-click="configPrintSet3()">&#xe632;</i>
+                        </div>
+                        <div class="clause2_manage">
+                            <textarea style="width: 90%;height: 200px;padding:6px;display: block;margin:20px auto;resize: none;" ng-model="str" class="clause2_manage" ng-disabled="proposalQueryHide"></textarea>
+                        </div>
+                        <div class="clause_td">
+                            <label ng-click="configPrintSet2('w');detail()"><i ng-show="!proposalQueryHide">确定</i><i ng-show="proposalQueryHide">取消</i></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clause_td">
+            <label ng-click="message2('0')" class="btn" style="line-height: 16px;" ng-disbaled="saveTemporaryDisabled" ng-show="momentsave">暂存</label>
+            <label ng-click="message2('1')" class="btn" style="line-height: 16px;" ng-disbaled="saveTemporaryDisabled" ng-show="save">保存</label>
+            <label ng-click="message2('2')" class="btn" style="line-height: 16px;" ng-disbaled="saveTemporaryDisabled" ng-show="modify">保存</label>
+            <label ng-click="reset1()" ng-show="reset2">重置</label>
+        </div>
+    </div>
+</div>
+</div>

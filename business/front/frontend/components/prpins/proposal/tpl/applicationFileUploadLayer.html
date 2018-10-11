@@ -1,0 +1,124 @@
+<div ng-show="FileLayer" ng-controller="applicationFileUploadLayerCtrl">
+    <div class="mask">
+        <div class="index_list index_list2">
+            <div class="index_pos" ng-if="processImport">
+                <div class="pos_abs"></div>
+                <div class="span_loading_img">
+                    <div class="spinner">
+                        <div class="spinner-container container1">
+                            <div class="circle1"></div>
+                            <div class="circle2"></div>
+                            <div class="circle3"></div>
+                            <div class="circle4"></div>
+                        </div>
+                        <div class="spinner-container container2">
+                            <div class="circle1"></div>
+                            <div class="circle2"></div>
+                            <div class="circle3"></div>
+                            <div class="circle4"></div>
+                        </div>
+                        <div class="spinner-container container3">
+                            <div class="circle1"></div>
+                            <div class="circle2"></div>
+                            <div class="circle3"></div>
+                            <div class="circle4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="insure" ng-class="{true: 'fileUp', false: ''}[isActive]">
+        <ng-form novalidate="novalidate" name="fileUploadForm">
+            <div class="remove_header">
+                <span>文件上传</span>
+                <a href="javascript:void(0)"><i ng-click="FilehideInsure()"></i></a>
+            </div>
+            <div class="content_overflow">
+            <div class="insure_content">
+                    <div class="file_list">
+                        <span><i></i>文件列表</span>
+                    </div>
+                    <div class="fileTableOver">
+                         <div class="fileTable">
+                             <table>
+                                 <tr>
+                                     <th class="t_first">文件名称</th>
+                                     <th>文件类型</th>
+                                     <th>上传日期</th>
+                                     <th>投保单号</th>
+                                     <th ng-if="imgFile.prpImgFileMainDto.bussType == 'E'">批改申请号</th>
+                                     <th>备注</th>
+                                     <th>操作</th>
+                                 </tr>
+                                 <tr ng-repeat="d in uploadFileList|orderBy:col:desc">
+                                     <td class="t_first">
+                                         <a ng-if="d.isImg" href="{{d.imgUrl}}" data-lightbox="example-set" data-title="{{$index+1}}">
+                                             {{d.fileName}}
+                                         </a>
+                                         <a ng-if="!d.isImg" download  ng-click="showImgFile(d)">
+                                             {{d.fileName}}
+                                         </a>
+                                     </td>
+                                     <td>{{d.fileLx}}</td>
+                                     <td>{{d.createTime|date:"yyyy-mm-dd"}}</td>
+                                     <td>{{d.proposalNo}}</td>
+                                     <td ng-if="imgFile.prpImgFileMainDto.bussType == 'E'">{{d.applyNo}}</td>
+                                     <td>{{d.remark}}</td>
+                                     <td>
+                                         <a href="javascript:void(0)" ng-if="imgFile.prpImgFileMainDto.bussNo == d.bussNo" ng-click="deleteImgFile(d)">删除</a>
+                                     </td>
+                                 </tr>
+                             </table>
+                    </div>
+                    </div>
+                   
+                    <div class="file_list">
+                        <span><i></i>上传文件</span>
+                    </div>
+                    <ul class="list_ul list_ul_1">
+                        <li>
+                          <em>*</em><span>文件类型：</span>
+                        </li>
+                        <li>
+                            <div class="ui-select" ng-show="imgFileT">
+                                <code-type class="seletc_bor" base-code="ProposalFileType"  ng-disabled="false" is-fuzzy="false" ng-model="imgFile.prpImgFileIndexDto.typePath"  required id="uploadWjlxT"></code-type>
+                            </div>
+                            <div class="ui-select" ng-show="imgFileE">
+                                <code-type class="seletc_bor" base-code="EndorFileType"  ng-disabled="false" is-fuzzy="false" ng-model="imgFile.prpImgFileIndexDto.typePath" required id="uploadWjlxE"></code-type>
+                            </div>
+                        </li>
+                        <li class="file_name">
+                            <em>*</em><span>文件名称：</span>
+                        </li>
+                        <li class="">
+                            <input type="text" value="" ng-model="imgFile.prpImgFileIndexDto.fileName" required warn-text="" maxlength="30"/>
+                        </li>
+                        <li class="clear_both">
+                            <span>上传文件：</span>
+                        </li>
+                        <li class="file_up">
+                            <div class="file-box">
+                                <input type='text' ng-model="imgFile.showFilePath" warn-text="" class='txt fl'/>
+                                <input type='button' class='btn fl' value='浏览'/>
+                                <input type="file" class="file fl"  nv-file-select="" uploader="fileUploader"/>
+                                <input type="submit" name="submit" class="btn_up fl"  value="上传" ng-disabled="!fileUploader.getNotUploadedItems().length" ng-click="submitUploadFile()"/>
+                            </div>
+                        </li>
+
+                        <li class="clear_both">
+                            <span>备注信息：</span>
+                        </li>
+                        <li class="file_info">
+                            <input type="text"  value="" ng-model="imgFile.prpImgFileIndexDto.remark" maxlength="30" ng-maxlength="30"/>
+                        </li>
+                    </ul>
+            </div>
+            </div>
+        </ng-form>
+        <!--单个删除公共提示-->
+        <div data-ng-include="'components/prpins/proposal/tpl/publicDeleteLayerOne.html'"></div>
+        <!--校验弹层-->
+        <div data-ng-include="'components/prpins/proposal/tpl/insuredOnlyOneLayer.html'"></div>
+    </div>
+</div>

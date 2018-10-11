@@ -1,0 +1,123 @@
+<!--清单导入-->
+<div class="main">
+    <div class="queryCriteria mt20">
+        <span class="queryCriteria_title">
+            <label>清单导入</label>
+        </span>
+        <div class="condition_table">
+            <ul class="clearfix half-ul">
+                <li class="condition_td fl half-li">
+                    <label>保单号</label>
+                    <div class="half-div">
+                        <input  type="text" maxlength="21" style="color: #333 ;" ng-pattern="regexp.code"  warn-text="保单号"  ng-model="plantUpLoadDto.policyNo">
+                    </div>
+                </li>
+                <li class="condition_td fl half-li">
+                    <label>报案号</label>
+                    <div class="half-div">
+                        <input style="width: 68%;color: #333 ;" type="text" maxlength="21"  ng-pattern="regexp.code"  warn-text="报案号"  ng-model="plantUpLoadDto.registNo">
+                        <button style="margin: 0 0 0 5px;min-width: 17%;" class="btn-success" ng-click="getRegistNo()">关联</button>
+                    </div>
+                </li>
+                <li class="condition_td fl half-li">
+                    <label>清单号码</label>
+                    <div class="half-div">
+                        <input  type="text" ng-maxlength="30" ng-pattern="regexp.code"  warn-text="清单号码"  style="color: #333 ;"  ng-model="plantUpLoadDto.listNo">
+                    </div>
+                </li>
+                <!--<li class="condition_td fl half-li">-->
+                    <!--<label>清单名称</label>-->
+                    <!--<div class="half-div">-->
+                        <!--<input type="text "  warn-text="清单名称" ng-pattern="regexp.Chinese" ng-model="plantUpLoadDto.listAlias">-->
+                    <!--</div>-->
+                <!--</li>-->
+                <li class="condition_td fl half-li">
+                    <label>清单绘制日期</label>
+                    <div class="half-div">
+                        <input type="text" id="DataStart2" jedate
+                                class="date-input date fl" style="color: #333 ;" ng-model="plantUpLoadDto.listBeginTime"
+                                ng-init="plantUpLoadDto.listBeginTime=''+getdate.year+'-'+(getdate.month)+'-'+getdate.day"
+                                format="YYYY-MM-DD"
+                                required readonly/>
+                    </div>
+                </li>
+                <li class="condition_td fl half-li">
+                    <label>险种大类</label>
+                    <div class="half-div">
+                        <select  warn-text="险种大类" style="color: #333 ;" ng-model="plantUpLoadDto.riskCode">
+                            <option value="" selected disabled>请选择</option>
+                            <option value="31">种植险</option>
+                            <option value="32">养殖险</option>
+                        </select>
+                    </div>
+                </li>
+                <!--<li class="condition_td fl half-li">-->
+                    <!--<label>清单备注</label>-->
+                    <!--<div class="half-div">-->
+                        <!--<input type="text " ng-pattern="regexp.Chinese" warn-text="清单备注"  ng-model="plantUpLoadDto.remark">-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+            <ul class="clearfix half-ul">
+                <li class="condition_td fl half-li">
+                    <div style="margin-left: 25%;">
+                        <label id="uploadFile" style="width: 64%;">
+                            <input  type="file" id="inventoryUpload" style="border: none;width: 100%" file-model="listFile" accept=".xls,.xlsx"/>
+                        </label>
+                    </div>
+                    <span class="fon">
+                        <a id="listdownLoadURLhref" target="_blank" ng-click="getDownLoadURL()">下载清单模版</a>
+                    </span>
+                </li>
+            </ul>
+            <div class="btn_tr clearfix">
+                <span ng-click="fileUpload()">导入</span>
+                <!--<span ng-show="showSave" ng-click="saveGisList()" ng-disabled="alreadyFlag">提交</span>-->
+                <span ng-click="queryList()">查询</span>
+                <span ng-click="resetForm()">重置</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="queryResult">
+        <div class="queryResult_title clearfix">
+            <span class="fl ">清单信息</span>
+        </div>
+        <table>
+            <tr class="tr_top">
+                <td class="w8">清单号码</td>
+                <td class="w8">报案号</td>
+                <td class="w8">保单号</td>
+                <td class="w10">农户代码</td>
+                <td class="w8">农户姓名</td>
+                <td class="w8" ng-if="riskType == 'readBreedingList'">耳标号</td>
+                <td class="w8" ng-if="riskType == 'readBreedingList'">赔偿金额</td>
+                <td class="w8" ng-if="riskType == 'readPlantingList'">承保面积</td>
+                <td class="w8" ng-if="riskType == 'readPlantingList'">损失面积</td>
+                <td class="w8" ng-if="riskType == 'readPlantingList'">损失率</td>
+                <td class="w8" ng-if="riskType == 'readPlantingList'">备注</td>
+                <td class="w8">操作</td>
+            </tr>
+            <tr class="tr_content F2F2F2" ng-repeat="result in plantUpLoadDto.QueryList">
+                <!-- <td><input type="radio"  name="select" ng-click="isSelected($index)"/></td> -->
+                <td ng-bind="result.listNo"></td>
+                <td ng-bind="result.registNo"></td>
+                <td ng-bind="result.policyNo"></td>
+                <td ng-bind="result.fCode"></td>
+                <td ng-bind="result.fName"></td>
+                <td ng-bind="result.earConNo" ng-if="riskType == 'readBreedingList'"></td>
+                <td ng-bind="result.payAmount" ng-if="riskType == 'readBreedingList'"></td>
+                <td ng-bind="result.insureArea" ng-if="riskType == 'readPlantingList'"></td>
+                <td ng-bind="result.lossArea" ng-if="riskType == 'readPlantingList'"></td>
+                <td ng-bind="result.lossRate" ng-if="riskType == 'readPlantingList'"></td>
+                <td ng-bind="result.remark" ng-if="riskType == 'readPlantingList'"></td>
+                <td><button class="btn-cancel" ng-click="deleteByListNo(result)">撤销</button></td>
+            </tr>
+        </table>
+        <div ng-show="plantUpLoadDto.QueryList===null||plantUpLoadDto.QueryList.length==0" ng-class="{'not-query':plantUpLoadDto.QueryList === null,'query-null':plantUpLoadDto.QueryList.length==0}"></div>
+        <div class="index_page">
+            <tm-pagination conf="paginationConf"></tm-pagination>
+        </div>
+    </div>
+</div>
+

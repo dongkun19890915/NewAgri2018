@@ -1,0 +1,51 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔并案管理-立案任务处理页面---电子单证弹层
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/12 
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="orderlayerBox" ng-show="checkEleDocumentFlag">
+  <div class="mask zIndex"></div>
+  <div class="tip_success_info printLayer orderIntLayer bg-fff">
+    <div class="remove_header">
+      <span>电子单证</span>
+      <i class="icon iconfont" ng-click="close()">&#xe632;</i>
+    </div>
+    <div class="info_container">
+      <div class="btn_tr clearfix">
+        <span class="org_btn mt20">单证查看</span>
+        <span class="org_btn">单证上传</span>
+      </div>
+      <div class="queryResult">
+        <div class="queryResult_title clearfix">
+          <span class="fl tit-color">理赔联系记录</span>
+        </div>
+        <table>
+          <tr class="tr_top">
+            <td>序号</td>
+            <td>时间</td>
+            <td>操作员</td>
+            <td>内容</td>
+            <td>操作</td>
+          </tr>
+          <tr class="tr_content" ng-repeat="result in prpList">
+            <td ng-bind="result.serialNo">1</td>
+            <td ng-bind="result.inputDate"></td>
+            <td ng-bind="result.operatorCode"></td>
+            <td><input type="text" name="" ng-model="result.context"></td>
+            <td class="remove-a">删除</td>
+          </tr>
+        </table>
+        <p class='add_p bor-bottom'>添加</p>
+        <!--<div class="index_page">-->
+          <!--<tm-pagination conf="paginationConfmm"></tm-pagination>-->
+        <!--</div>-->
+      </div>
+
+    </div>
+
+  </div>
+</div>

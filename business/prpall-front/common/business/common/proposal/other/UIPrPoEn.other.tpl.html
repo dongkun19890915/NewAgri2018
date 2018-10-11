@@ -1,0 +1,241 @@
+<!--其他信息-->
+<div id="others" class="others_information" style="min-height: 0;" ng-class="{othersInformation:!isHideOther}">
+    <!--其他信息的上半部分-->
+    <div class="others_information_first clearfix pt4">
+        <div class="others_information_left fl contract_information_left">
+            <i class="iconfont">&#xe619;</i>
+            <p  ng-show="isHideOther">其它信息</p>
+        </div>
+        <div class="others_information_right fl" id="othersInformationRight" style="position: relative;" ng-class="{otherInformation:PremiumShow&&(otherQueryHide||endorseFlag)}">
+            <div class="fl other1" ng-show="isHideOther">
+                <label><i class="mes_sign" ng-show="queryHide">*</i><span class="mesColor">共保标志</span></label>
+                <div class="clearfix codeType codeTypeDetail">
+                    <code-type base-code="CoinsFlag"  ng-model="proposal.prpTmainDto.coinsFlag" ng-init="proposal.prpTmainDto.coinsFlag='0'" ng-change="watchange();checkCoinsTreaty()" limit="{flag:proposal.prpTmainDto.comCode,init:'0'}"  ng-disabled="otherQueryHide||endorseFlag"></code-type>
+                </div>
+            </div>
+            <div class="fl other2" ng-show="PremiumShow">
+                <label  ng-show="isHideOther"><i class="mes_sign">*</i><span class="mesColor">保单缴费类型</span></label>
+                <div class="clearfix codeType codeTypeDetail"  ng-show="isHideOther">
+                    <code-type base-code="PolicyPayType" ng-model="proposal.prpTmainDto.coinsPremiumType"
+                               ng-init="proposal.prpTmainDto.coinsPremiumType='0'"  ng-change="changeCoinsPremiumType()"  ng-disabled="otherQueryHide||endorseFlag||disabledFlag"></code-type>
+                </div>
+                <!--<select ng-model="proposal.prpMainDto.coinsPremiumType" ng-options="coinsPremiumType.codeCode as coinsPremiumType.codeName for coinsPremiumType in coinsPremiumType" ng-disabled="proposalQueryHide"  ng-change="changeCoinsPremiumType()" required >-->
+                <!--<option value="">请选择</option>-->
+                <!--&lt;!&ndash;<option value="">按保单100%收取</option>&ndash;&gt;-->
+                <!--&lt;!&ndash;<option value="">按我方公保份额收取</option>&ndash;&gt;-->
+                <!--</select>-->
+            </div>
+            <div class="fl" style="width: 24%;"   ng-show="PremiumShow&&(otherQueryHide||endorseFlag)" >
+                <button  ng-show="isHideOther" class="btn btn-success"  ng-click="lookCoinInformation()">查看</button>
+                <button  ng-show="isHideOther" class="btn btn-success"  ng-click="">分保信息</button>
+            </div>
+            <div ng-click="isShowOther()" class="stretch cur" style="position: absolute; top:-22px;right:6px;">
+                <i class="iconfont" ng-show="!isHideOther">&#xe667;</i>
+                <i class="iconfont" ng-show="isHideOther">&#xe668;</i>
+            </div>
+            <div class="information_right_warn" style="line-height: 22px;width: 96%;"><p ng-show="!isHideOther" class="">其它信息</p></div>
+        </div>
+    </div>
+    <!--其他信息向下半部分的表格部分-->
+    <div class="others_information_second pt4" style="min-height: 0;" ng-show="isHideOther" >
+        <!--ng-show="showCoins"-->
+        <div class="coinsurance_table" ng-show="showCoins" style="overflow-x: visible;">
+            <div class="table_title">
+                <span class="table_color">主共保信息录入</span>
+                <i class="fr" style="cursor: pointer;position: relative;right:-7px;padding: 10px; top:-10px;" ng-click="coinsIsHide();">
+                    <i class="iconfont fs_20" ng-show="!isHidcoins">&#xe667;</i>
+                    <i class="iconfont fs_20" ng-show="isHidcoins">&#xe668;</i>
+                </i>
+            </div>
+            <table id="Coins" ng-show="isHidcoins">
+                <tr class="tr_top">
+                    <td class="w5">序号</td>
+                    <td class="w11" style="width:102px;">主保单号码选项</td>
+                    <td class="w10">主保单号码</td>
+                    <td class="w8" style="width: 116px;">共保身份</td>
+                    <td class="w8">是否首席</td>
+                    <td class="w14">共保人机构代码</td>
+                    <td class="w10">共保人名称</td>
+                    <td class="w14">共保份额(%)</td>
+                    <td class="w14">共保保额</td>
+                    <td class="w14">共保保费</td>
+                    <td class="w5">操作</td>
+                </tr>
+                <tr class="tr_content tr_bg" ng-repeat="coins in proposal.prpTcoinsDtoList track by $index">
+                    <td>{{$index+1}}</td>
+                    <td class="small_sel">
+                        <code-type  base-code="MainPolicyNo" ng-model="coins.policyNo" ng-disabled="otherQueryHide||endorseFlag||disabledFlag"></code-type>
+                    </td>
+                    <td>
+                        <!--清单号存在时-->
+                        <input class="rd_only_bg" ng-attr-title="{{coins.mainProposalNo}}" readonly type="text" ng-blur="checkNo" ng-model="coins.mainProposalNo" ng-disabled="otherQueryHide||endorseFlag||disabledFlag"/>
+                    </td>
+                    <td class="small_sel">
+                        <code-type ng-if="$index!=0"  base-code="CoinsIdentity" ng-model="coins.coinsType" ng-change="changeCoinsType($index)"  limit="{flag:coinsTypeFlag,init:'2'}" ng-disabled="otherQueryHide||endorseFlag||disabledFlag"></code-type>
+                    </td>
+                    <td class="small_sel">
+                        <code-type ng-if="$index!=0"  style="width: 100%" base-code="IsChief" ng-model="coins.chiefFlag" ng-disabled="otherQueryHide||endorseFlag||disabledFlag"></code-type>
+                    </td>
+                    <td >
+                        <input type="text" ng-if="$index==0" style="border: none" ng-model="coins.coinsCode" ng-attr-title='{{coins.coinsCode}}' ng-init="coins.coinsCode=0" readonly/>
+                        <input type="text" ng-if="$index>0&&coins.coinsType==1" ng-attr-title='{{coins.coinsCode}}' style="border: none;" ng-model="coins.coinsCode" ng-disabled="otherQueryHide||endorseFlag||disabledFlag"/>
+                        <div class="uiSelectWidth2">
+                            <ui-select ng-if="$index>0&&coins.coinsType==3"  ng-model="coins.coinsCode"  ng-change="dataToSame($select.selected,$index)" ng-disabled="otherQueryHide||endorseFlag||disabledFlag">
+                                <ui-select-match   placeholder="查询或选择..." ng-attr-title="{{$select.selected.reinsCode}}">
+                                    {{$select.selected.reinsCode}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="code.reinsCode as code in coinsComCodeList | filter: $select.search">
+                                    <span ng-bind="code.reinsCode" ng-attr-title="{{code.reinsCode}}"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </td>
+                    <td >
+                        <input ng-if="$index==0" style="border: none" type="text" ng-model="coins.coinsName" ng-attr-title="{{coins.coinsName}}" ng-init="coins.coinsName='共保合计'" readonly/>
+                        <input ng-if="$index>0&&coins.coinsType==1" style="border: none" type="text" ng-attr-title="{{coins.coinsName}}"  ng-model="coins.coinsName" readonly/>
+                        <div class="uiSelectWidth" style="max-width:242px;" >
+                            <ui-select ng-if="$index>0&&coins.coinsType==3"  ng-model="coins.coinsName"  ng-change="dataToSame($select.selected,$index)" ng-disabled="otherQueryHide||endorseFlag||disabledFlag||showCoins">
+                                <ui-select-match   placeholder="查询或选择..." ng-attr-title="{{$select.selected.shortName}}">
+                                    {{$select.selected.shortName}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="code.shortName as code in coinsComCodeList | filter: $select.search">
+                                    <span ng-bind="code.shortName" ng-attr-title="{{code.shortName}}"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </td>
+                    <td>
+                        <input ng-if="$index==0" style="border: none" type="text" maxlength="14" ng-model="coins.coinsRate" ng-init="coins.coinsRate=100" readonly/>
+                        <input ng-if="$index!=0" ng-model="coins.coinsRate " maxlength="14" ng-blur="absuDeduRateForm(coins.coinsRate)"  input onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" ng-disabled="otherQueryHide||endorseFlag||disabledFlag">
+                    </td>
+                    <td>
+                        <input ng-model="coins.coinsSumAmount" type="text" maxlength="14" ng-disabled="otherQueryHide||endorseFlag||disabledFlag" input onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                    </td>
+                    <td>
+                        <input ng-model="coins.coinsSumPremium" maxlength="14" type="text" ng-disabled="otherQueryHide||endorseFlag||disabledFlag" input onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                    </td>
+                    <td>
+                        <button class="btn btn-success fr mt10 mr10" ng-click="deleteCoins($index)" ng-hide="otherQueryHide||endorseFlag||disabledFlag" style="position: relative;top:-6px;">删除</button>
+                    </td>
+                </tr>
+            </table>
+            <table style="display:none" ng-show="isHidcoins">
+                <td> <input type="hidden" name="proposal.prpTcoinsSchema.CoinsMiddle_Flag" description="共保中信息批改标志"></td>
+                <tr>
+                <td>手续费：</td>
+                <td>
+                    <select ng-model ="proposal.prpTcoinsSchema.proportionFlag1">
+                        <option value="0">份额计入</option>
+                        <option value="1" selected>全额计入</option>
+                        <option value="2">全额承担</option>
+                    </select>
+                </td>
+            </tr>
+                <tr>
+                    <td>特殊因子费：</td>
+                    <td>
+                        <select ng-model ="proposal.prpTcoinsSchema.proportionFlag2">
+                            <option value="0">份额计入</option>
+                            <option value="1" selected>全额计入</option>
+                        </select>
+                    </td>
+                </tr>
+
+
+            </table>
+            <div class="clearfix" ng-show="showCoins" ng-show="isHidcoins">
+                <div class="basic_information_scale fl radio-box" style="width: 50%" ng-show="isHidcoins">
+                    <span class="mesColor teaR" style="width:20%">手续费:</span>
+                    <radio ng-change="checkedBoxChange1()" base-code="coinAgentFee" ng-disabled="otherQueryHide||endorseFlag" ng-model="checkedBox1"></radio>
+                </div>
+                <div class="basic_information_scale fl radio-box"  style="width: 50%" ng-show="isHidcoins">
+                    <span class="mesColor teaR" style="width:20%">特殊因子费:</span>
+                    <radio ng-change="checkedBoxChange2()" base-code="coinMiddleCostFee" ng-disabled="otherQueryHide||endorseFlag" ng-model="checkedBox2"></radio>
+                </div>
+            </div>
+            <div class="coinsurance_result" ng-show="isHidcoins">
+                <button class="btn btn-success fr mt10 mr10" ng-click="addCoins();" ng-disabled="otherQueryHide||endorseFlag||disabledFlag">新增</button>
+                <button class="btn btn-success fr mt10 mr10"
+                        ng-click="coinsCount();showpage()" ng-disabled="otherQueryHide||endorseFlag||disabledFlag">计算
+                </button>
+                <button class="btn btn-success fr mt10 mr10" ng-click="cancelCoin()" ng-disabled="otherQueryHide||endorseFlag||disabledFlag">取消</button>
+                <!--<button class="btn btn-success fr mt10 mr10" ng-click="coinsCount()" ng-disabled="otherQueryHide||endorseFlag||disabledFlag">确定</button>-->
+            </div>
+        </div>
+        <!--手续费-->
+        <!--ng-show="agentFeeShow&&showCoins"-->
+        <div class="commission" ng-show="proposal.otherAgentFeeShow&&showCoins">
+            <div class="table_title">
+                <span class="table_color">手续费/经纪费、特殊因子联共保信息</span>
+                <i class="fr" style="cursor: pointer;position: relative;right:-7px;padding: 10px; top:-10px;" ng-click="commissionIsHide();">
+                    <i class="iconfont fs_20" ng-show="!isHidcommission">&#xe667;</i>
+                    <i class="iconfont fs_20" ng-show="isHidcommission">&#xe668;</i>
+                </i>
+            </div>
+            <div ng-if="isHide">
+                <table ng-show="isHidcommission">
+                    <tr class="tr_top">
+                        <td>序号</td>
+                        <td>共保人名称</td>
+                        <td>币别</td>
+                        <td>保额</td>
+                        <td>保费</td>
+                        <td>手续费/经纪费</td>
+                        <td>特殊因子费</td>
+                        <td>出单费</td>
+                    </tr>
+                    <tr class="tr_content tr_bg" ng-repeat="coin in proposal.prpTcoinsDetailDtoList">
+                        <td>{{$index+1}}</td>
+                        <td>{{coin.coinsName}}</td>
+                        <td>{{proposal.prpTfeeDto.currency1}}</td>
+                        <td><input type="text" ng-model="coin.coinsAmount" input onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" ng-disabled="otherQueryHide||endorseFlag||disabledFlag||proposal.otherAgentFeeShow"/></td>
+                        <td><input type="text" ng-model="coin.coinsPremium" input onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" ng-disabled="otherQueryHide||endorseFlag||disabledFlag||proposal.otherAgentFeeShow"/></td>
+                        <td ng-model="coin.agentFee">0</td>
+                        <td ng-model="coin.middleCostFee">0</td>
+                        <td ng-model="coin.operateFee">0</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <!--缴费计划-->
+        <div class="commission" ng-show="proposal.otherAgentFeeShow&&showCoins">
+            <div class="table_title">
+                <span class="table_color">共保方缴费计划</span>
+                <i class="fr" style="cursor: pointer;position: relative;right:-7px;padding: 10px; top:-10px;" ng-click="feeIsHide();">
+                    <i class="iconfont fs_20" ng-show="!isHidFee">&#xe667;</i>
+                    <i class="iconfont fs_20" ng-show="isHidFee">&#xe668;</i>
+                </i>
+            </div>
+            <div ng-if="isHide">
+                <table ng-show="isHidFee">
+                    <tr class="tr_top">
+                        <td>序号</td>
+                        <td>共保人代码</td>
+                        <td>共保人名称</td>
+                        <td>缴费原因</td>
+                        <td>缴费起期</td>
+                        <td>缴费止期</td>
+                        <td>币别</td>
+                        <td>应缴比例</td>
+                        <td>应缴金额</td>
+                        <td>实缴金额</td>
+                    </tr>
+                    <tr class="tr_content tr_bg" ng-repeat="coin in proposal.prpTplanCoinsDtoList track by $index">
+                        <td>{{$index+1}}</td>             <!--<td>{{coin.serialNo}}</td>-->
+                        <td>{{coin.coinsCode}}</td>
+                        <td>{{coin.coinsName}}</td>
+                        <td>{{coin.reason}}</td>
+                        <td>{{coin.planStartDate }}</td>
+                        <td>{{coin.planDate}}</td>
+                        <td>{{coin.currency}}</td>
+                        <td>{{coin.planRate}}</td>
+                        <td><input type="text" ng-model="coin.planFee" input onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" ng-disabled="otherQueryHide||endorseFlag||disabledFlag||proposal.otherAgentFeeShow"/></td>
+                        <td><input type="text" ng-model="coin.realPay"  input onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" ng-disabled="otherQueryHide||endorseFlag||disabledFlag||proposal.otherAgentFeeShow"/></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

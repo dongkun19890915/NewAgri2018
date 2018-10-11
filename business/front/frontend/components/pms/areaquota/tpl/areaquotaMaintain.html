@@ -1,0 +1,60 @@
+<!--区域销售限额跳转页面-->
+<div class="index_con">
+    <ng-form novalidate="novalidate" name="areaquotaMaintainForm">
+    <div class="index_list" ng-init="areaquotaQuery()">
+        <div class="index_tit">
+            <h6>区域销售限额维护</h6>
+        </div>
+        <ul class="list_ul">
+            <li class="hide"><input type="text" ng-model="savereaLimitsDto.riskCode"></li>
+            <li class="hide"><input type="text" ng-model="savereaLimitsDto.riskName"></li>
+            <li>
+                <em>*</em><span>生效日期：</span>
+            </li>
+            <li>
+                <input type="text" id="operateDate" jedate class="date-input fl date"  ng-model="savereaLimitsDto.effectDate" format="YYYY-MM-DD" required warn-text="生效日期" readonly/>
+            </li>
+        </ul>
+        <div class="insure_content insure_content_layer1">
+            <table>
+                <tbody>
+                <tr>
+                    <th class="hide">区域代码</th>
+                    <th class="t_first">省/自治区/直辖市</th>
+                    <th>区域销售限额（单位：亿元）</th>
+                </tr>
+                <tr ng-repeat="d in areaquotaNewData|orderBy:col">
+                    <td class="hide" ng-bind="d.areaCode"></td>
+                    <td ng-bind="d.areaCName"></td>
+                    <td>
+                        <input type="text" ng-model="d.salesLimit" ng-pattern="/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/" maxlength="10" ng-blur="Calculation()"  required warn-text="请输入正数，最多保留两位小数，" />
+                    </td>
+                    <!--
+                    ng-pattern="/^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$/"
+                    -->
+                </tr>
+                <tr>
+                    <td>全国</td>
+                    <td>
+                        <input class="bor" type="text" readonly="" ng-model="totalResult">
+                        <!--<span>{{totalResult}}</span>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="index_btn1 index_btn2">
+        <button class="submit" ng-class="{'ngdisable':buttonSure}" ng-disabled="buttonSure" ng-click="areaquotaSave()">确 认</button>
+        <span class="edit" ng-click="areaquotaBack()">退 出</span>
+    </div>
+    </ng-form>
+    <!--弹层---保存成功-->
+    <div data-ng-include="'components/pms/areaquota/tpl/areaquotaSuccessLayer.html'"></div>
+    <!--弹层---保存失败-提示信息-->
+    <div data-ng-include="'components/pms/areaquota/tpl/areaquotaErrorInfoLayer.html'"></div>
+    <!--弹层---保存失败（无响应）-->
+    <div data-ng-include="'components/pms/areaquota/tpl/areaquotaFailLayer.html'"></div>
+    <!--弹层---退出确认-->
+    <div data-ng-include="'components/pms/areaquota/tpl/areaquotaMaintainBackLayer.html'"></div>
+</div>

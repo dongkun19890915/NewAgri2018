@@ -1,0 +1,28 @@
+<div>
+    <div class="modal-header">
+        <h1 class="font-large">领款人信息</h1>
+        <i class="icon iconfont modal-header-close" ng-click="closeModal()">&#xe632;</i>
+    </div>
+    <div id="content_basic"  class="modal-body" name="payInfoListDiv">
+        <table id="payInfoList" cellpadding="0" cellspacing="0" border="1" bordercolor="#3A81C8">
+            <thead>
+                <tr class="tr_top">
+                    <td class="title" style="width:5%" align="center">选择</td>
+                    <td class="title" style="width:25%" align="center">计算书</td>
+                    <td class="title" style="width:25%" align="center">户名</td>
+                    <td class="title" style="width:20%" align="center">账号</td>
+                    <td class="title" style="width:20%" align="center">开户银行</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr_content" ng-repeat="(index,result) in payAccountList">
+                    <th><input type="radio" name="compensateNo" ng-click="chooseOne1(result);"></th>
+                    <th>{{result.compensateNo}}</th>
+                    <th>{{result.receiverName}}</th>
+                    <th>{{result.account}}</th>
+                    <th>{{result.bank}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

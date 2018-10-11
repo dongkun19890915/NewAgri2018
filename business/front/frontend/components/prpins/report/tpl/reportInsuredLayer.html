@@ -1,0 +1,155 @@
+<!--弹层-->
+<div ng-show="reportInsuredLayer" ng-controller="reportInsuredLayerCtrl">
+    <div class="mask zIndex"></div>
+    <div class="revise_insurant zIndex1">
+        <div class="remove_header">
+            <span>被保险人及标的</span>
+            <span class="insurant hide"><a href="javascript:void(0)"><i></i></a>同投保人</span>
+            <a href="javascript:void(0)"><i ng-click="reportProposalLookClose()"></i></a>
+        </div>
+        <div class="layerOver">
+            <ul class="list_ul list_ul_bor list_ul_wid list_ulEndorse">
+                <li>
+                    <em>*</em><span >姓名：</span>
+                </li>
+                <li>
+                    <input class="fl" ng-model="PrpTinsuredPropDto.insuredName"  readonly="readonly" >
+                </li>
+                <li></li>
+                <li></li>
+                <li>
+                    <em>*</em><span>证件类型：</span>
+                </li>
+                <li>
+                    <input class="fl" ng-model="PrpTinsuredPropDto.identifyTypeName" readonly="readonly">
+                </li>
+                <li>
+                    <em>*</em><span>证件号码：</span>
+                </li>
+                <li>
+                    <input class="fl" ng-model="PrpTinsuredPropDto.identifyNumber" readonly="readonly">
+                </li>
+                <li>
+                    <span>证件到期日：</span>
+                </li>
+                <li>
+                    <input class="fl" ng-model="PrpTinsuredPropDto.identityEndDate" readonly="readonly">
+                </li>
+                <li>
+                    <span>性别：</span>
+                </li>
+                <li>
+                    <input class="fl"  ng-if="PrpTinsuredPropDto.sex==1"  value="男" readonly="readonly">
+                    <input class="fl"  ng-if="PrpTinsuredPropDto.sex==2"  value="女" readonly="readonly">
+                    <!--<input class="fl" ng-model="PrpTinsuredPropDto.sex==1?'男':'女'" >-->
+                </li>
+                <li>
+                    <span>手机号码：</span>
+                </li>
+                <li>
+                    <input class="fl" ng-model="PrpTinsuredPropDto.mobile" readonly="readonly">
+                </li>
+                <li>
+                    <span>电子邮箱：</span>
+                </li>
+                <li>
+                    <input class="fl" ng-model="PrpTinsuredPropDto.email" readonly="readonly">
+                </li>
+                <li >
+                    <span>联系地址：</span>
+                </li>
+                <li  class="long_width">
+                    <input class="fl" ng-model="PrpTinsuredPropDto.insuredAddress" readonly="readonly">
+                </li>
+            </ul>
+            <ul class="list_ul list_ul_bor list_ul_wid list_ulEndorse">
+                <li>
+                    <em>*</em><span>投保房屋所在区县：</span>
+                </li>
+                <li  class="long_width">
+                    <input   style="width: 30%;margin-left: 5px;" ng-model="PrpTinsuredPropDto.provinceName" readonly="readonly">
+                    <input   style="width: 30%;margin-left: 5px;" ng-model="PrpTinsuredPropDto.cityName" readonly="readonly">
+                    <input   style="width: 30%;margin-left: 5px;" ng-model="PrpTinsuredPropDto.townName" readonly="readonly">
+                    <!--<span class="fl lineheight40">{{PrpTinsuredPropDto.provinceName+"  "+PrpTinsuredPropDto.cityName+"  "+PrpTinsuredPropDto.townName}}</span>-->
+                </li>
+                <li>
+                    <em>*</em><span>乡镇/街道/小区/门牌号：</span>
+                </li>
+                <li class="long_width">
+                    <input  class="fl"  ng-model="PrpTinsuredPropDto.address" readonly="readonly">
+                </li>
+                <li>
+                    <span>纬度(六位小数)：</span>
+                </li>
+                <li>
+                    <input  class="fl"  ng-model="PrpTinsuredPropDto.latitude" readonly="readonly">
+                </li>
+                <li>
+                    <span>经度(六位小数)：</span>
+                </li>
+                <li>
+                    <input  class="fl"  ng-model="PrpTinsuredPropDto.longitude" readonly="readonly">
+                </li>
+                <li>
+                    <span><em>*</em>住宅类型：</span>
+                </li>
+                <li class="li_radio">
+                    <input  class="fl"  ng-model="PrpTinsuredPropDto.houseTypeName" readonly="readonly">
+                </li>
+                <li>
+                    <span>建筑类型：</span>
+                </li>
+                <li>
+                    <span class="fl" ng-if="PrpTinsuredPropDto.buildType=='01'">{{PrpTinsuredPropDto.buildTypeName}}（位于第 <span class="floor_num">{{PrpTinsuredPropDto.buildFloor}}</span>  层）</span>
+                    <span class="fl" ng-if="PrpTinsuredPropDto.buildType=='02'">{{PrpTinsuredPropDto.buildTypeName}}</span>
+                </li>
+                <li>
+                    <em>*</em><span>建筑结构：</span>
+                </li>
+                <li class="li_question">
+                    <input  class="fl"  ng-model="PrpTinsuredPropDto.buildStructureName" readonly="readonly">
+                </li>
+                <li ng-if="structFlag">
+                    <span>其他结构备注：</span>
+                </li>
+                <li class="li_question" ng-if="structFlag">
+                    <input  class="fl"  ng-model="PrpTinsuredPropDto.buildStructureDes" readonly="readonly">
+                </li>
+                <li>
+                    <span>建筑面积：</span>
+                </li>
+                <li>
+                    <input  class="fl"  ng-model="PrpTinsuredPropDto.buildArea" readonly="readonly"><span  class="fl">㎡</span>
+                </li>
+                <li>
+                    <span>建造时间：</span>
+                </li>
+                <li>
+                    <span  class="fl"  ng-bind="PrpTinsuredPropDto.buildDate | date:'yyyy-MM-dd'"   > </span>
+                </li>
+                <li>
+                    <span>是否整修：</span>
+                </li>
+                <li>
+                    <input  class="fl" ng-if="PrpTinsuredPropDto.repairFlag =='Y'"  value="是" readonly="readonly">
+                    <input  class="fl" ng-if="PrpTinsuredPropDto.repairFlag =='N'"  value="否" readonly="readonly">
+                </li>
+                <li ng-if="PrpTinsuredPropDto.repairFlag =='Y'">
+                    <span>整修日期：</span>
+                </li>
+                <li ng-if="PrpTinsuredPropDto.repairFlag =='Y'">
+                    <span  class="fl"  ng-bind="PrpTinsuredPropDto.repairDate|date:'yyyy-MM-dd'"></span>
+                </li>
+                <li>
+                    <em>*</em><span>保险金额：</span>
+                </li>
+                <li>
+                    <span class="fl">{{PrpTinsuredPropDto.amount/10000|number:2}}万元</span>
+                </li>
+            </ul>
+            <div class="config_button">
+                <button ng-click="reportProposalLookClose()">确 定</button>
+            </div>
+        </div>
+    </div>
+</div>

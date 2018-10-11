@@ -1,0 +1,214 @@
+<!--更改关系人-->
+<ul class="index_process">
+    <li class="li_active"><i></i><span>1.批改信息录入</span></li>
+    <li><i class="i_1_1"></i><span>2.批改信息确认</span></li>
+    <li><i class="i_2"></i><span>3.完成</span></li>
+</ul>
+<div class="index_con">
+    <ng-form novalidate="novalidate" name="endorseInsuredForm">
+        <!--保单基本信息-->
+        <div class="index_list">
+            <div class="index_tit"><h6>保单基本信息</h6></div>
+            <ul class="list_ul list_ul1">
+                <li><span>保单号码：</span></li>
+                <li><span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.policyNo"></span></li>
+                <li><em>*</em><span>投保日期：</span></li>
+                <li>
+                    <span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.operateDate |date:'yyyy-MM-dd'">2016-07-20</span>
+
+                </li>
+                <li><em>*</em><span>保单生效日：</span></li>
+                <li><span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.startDate |date:'yyyy-MM-dd'">2017-07-19</span><span class="fl">&nbsp;&nbsp;0时</span></li>
+                <li><span>保单终止日：</span></li>
+                <li><span class="fl"  ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.endDate |date:'yyyy-MM-dd'">2017-07-19&nbsp;&nbsp;&nbsp;&nbsp;24时</span><span class="fl">&nbsp;&nbsp;24时</span></li>
+            </ul>
+        </div>
+        <!--批改基本信息-->
+        <div class="index_list">
+            <div class="index_tit"><h6>批改基本信息</h6></div>
+            <ul class="list_ul">
+                <li><span>批改类型：</span></li>
+                <li>
+                    <span ng-bind="endorseReturnDto.prpPheadDto.endorType" class="hide"></span>
+                    <span class="fl" ng-bind="endorseReturnDto.prpPheadDto.endorTypeName"></span>
+                </li>
+
+                <li><span>批改申请号码：</span></li>
+                <li><span class="fl" ng-bind="endorseReturnDto.prpPheadDto.applyNo"></span></li>
+
+                <li><em>*</em><span >批改申请日：</span></li>
+                <li>
+                    <input type="text" id="endorDate" class="date-input fl bor box_shadow" ng-model="endorseReturnDto.prpPheadDto.endorDate" required readonly>
+                </li>
+                <li>
+                    <em>*</em><span>批改生效日：</span></li>
+                <li>
+                    <span class="fl"  ng-bind="endorseReturnDto.prpPheadDto.validDate" ></span>
+                    <span class="fl">&nbsp;&nbsp;0时</span>
+                </li>
+                <li><span>批改原因说明：</span></li>
+                <li class="long_width"><input type="text"  maxlength="40" class="fl" ng-model="endorseReturnDto.prpPheadDto.reasonText"/></li>
+            </ul>
+        </div>
+        <!--业务相关信息-->
+        <div class="index_list">
+            <div class="index_tit"><h6>业务相关信息</h6></div>
+            <ul class="list_ul">
+                <li><em>*</em><span>业务来源：</span></li>
+                <li>
+                    <span class="fl" ng-bind="endorseReturnDto.copyPolicyDto.prpCopyMainDto.businessNatureName"></span>
+                </li>
+                <li><em>*</em><span>出单省级机构：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.comCodeName">
+                </li>
+                <li><em>*</em><span>出单分支机构代码：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.cityCode">
+                </li>
+                <li><span>业务归属机构代码：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.makeCom">
+                </li>
+                <li><span>渠道代码：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handlerCode">
+                </li>
+                <li><span>渠道名称：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handlerName">
+                </li>
+                <li><span>协议代码：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.contractNo">
+                </li>
+                <li></li>
+                <li></li>
+                <li><em>*</em><span>归属业务员代码：</span></li>
+                <li>
+                    <input type="text" required readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handler1Code">
+                </li>
+                <li><em>*</em><span>归属业务员姓名：</span></li>
+                <li>
+                    <input type="text" required readonly class="fl bor box_shadow" ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.handler1Name">
+                </li>
+                <li><em>*</em><span>录单人员代码：</span></li>
+                <li>
+                    <input type="text" required readonly class="fl bor box_shadow"  ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.operatorCode">
+                </li>
+                <li><em>*</em><span>录单人员姓名：</span></li>
+                <li>
+                    <input type="text" required readonly class="fl bor box_shadow"  ng-model="endorseReturnDto.copyPolicyDto.prpCopyMainDto.operatorName">
+                </li>
+                <li><span>批改录入人员代码：</span></li>
+                <li>
+                    <input type="text" maxlength="10" ng-pattern="/^[A-Za-z0-9]*$/" warn-text="{'NonEmpty':'批改录入人员代码不能为空','ErrPattern':'批改录入人员代码只能输入字母和数字'}" class="fl" value=""  ng-model="endorseReturnDto.prpPheadDto.operatorCode" >
+                </li>
+                <li><span>批改录入人员姓名：</span></li>
+                <li>
+                    <input type="text" maxlength="15" class="fl" ng-model="endorseReturnDto.prpPheadDto.operatorName"  warn-text="">
+                </li>
+            </ul>
+        </div>
+        <!--投保人姓名-->
+        <div class="index_list">
+            <div class="index_tit"><h6>投保人信息</h6></div>
+            <ul class="list_ul list_tit">
+                <li><span>投保人类型：</span></li>
+                <li class="li_tabs">
+                    <div class="marr43">
+                        <label class="mar_right" ng-class="{true:'on',false:'radio'}[insTypeLeft]">
+                            <input type="radio" value="1" class="hide" name="trafficIns" ng-model="endorseReturnDto.copyPolicyDto.prpCopyInsuredDto.insuredType" disabled/>
+                            <em>个人</em>
+                        </label>
+                        <label ng-class="{true:'radio',false:'on'}[insTypeRight]">
+                            <input type="radio" class="hide" value="2" name="trafficIns" ng-model="endorseReturnDto.copyPolicyDto.prpCopyInsuredDto.insuredType" disabled/>
+                            <em>团体</em>
+                        </label>
+                    </div>
+                </li>
+                <li ng-if="personalFlag"><em>*</em><span>姓名：</span></li>
+                <li ng-if="personalFlag"><input type="text" class="fl" ng-blur="personnalSearch()" ng-model="endorseReturnDto.copyPolicyDto.prpCopyInsuredDto.insuredName" required="required" ng-maxlength="30" maxlength="30" warn-text="姓名"/></li>
+                <li ng-if="!personalFlag"><em>*</em><span>名称：</span></li>
+                <li ng-if="!personalFlag"><input type="text" class="fl" ng-model="endorseReturnDto.copyPolicyDto.prpCopyInsuredDto.insuredName" ng-blur="groupSearch()"  required maxlength="60" warn-text="名称"/></li>
+            </ul>
+            <div class="list_tab">
+                <div data-ng-include="changeInsureType"></div>
+            </div>
+        </div>
+        <!--被保险人及投保标的信息-->
+        <div class="index_list index_list_table">
+            <div class="index_tit">
+                <h6 class="fl">被保险人及投保标的信息</h6>
+                <div class="fr  search_box">
+                    <div class="fr check_search">
+                        <input type="text"  ng-model="insuredFuzzyQueryConditionDto.address" mc-placeholder="按投标的地址搜索"><i ng-click="serachInsured()"></i>
+                    </div>
+                    <div class="fr check_search">
+                        <input type="text" ng-model="insuredFuzzyQueryConditionDto.identifyNumber" mc-placeholder="按证件号码搜索"><i ng-click="serachInsured()"></i>
+                    </div>
+                    <div class="fr check_search">
+                        <input type="text" ng-model="insuredFuzzyQueryConditionDto.insuredName" mc-placeholder="按姓名搜索"><i  ng-click="serachInsured()"></i>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th class="t_first">序号</th>
+                    <th ng-click="col='insuredName';desc=!desc">被保险人姓名</th>
+                    <th ng-click="col='identifyNumber';desc=!desc">证件号码</th>
+                    <th ng-click="col='address';desc=!desc">投保标的地址</th>
+                    <th ng-click="col='amount';desc=!desc">保险金额（万元）</th>
+                    <th ng-click="col='premium';desc=!desc">保费(元)</th>
+                    <th class="t_last">操作</th>
+                </tr>
+                <tr ng-repeat="d in endorseInsuredData|orderBy:col:desc">
+                    <td class="t_first"  ng-bind="(paginationConf.currentPage-1) * paginationConf.itemsPerPage+$index+1"></td>
+                    <td ng-bind="d.insuredName"></td>
+                    <td ng-bind="d.identifyNumber"></td>
+                    <td ng-bind="d.address"></td>
+                    <td ng-bind="d.amount/10000|number:2"></td>
+                    <td ng-bind="d.premium|number:2"></td>
+                    <td class="t_last">
+                        <span class="a_edit" ng-click="endorseInsuredUpdate(d.serialNo)">修改</span>
+                    </td>
+                </tr>
+            </table>
+            <div class="index_page">
+                <a ng-click="downloadInsuredAll()" class="fl a_download"><i class="i_4"></i><span>下载清单</span></a>
+                <tm-pagination conf="paginationConf"></tm-pagination>
+            </div>
+        </div>
+        <!--btn-->
+        <div class="index_btn">
+            <span  ng-click="FileshowInsure()">
+                <i class="i_1" ></i><em>上传</em>
+            </span>
+            <span ng-click="deleteshowInsure()">
+                <i class="i_2"></i><em>删除</em>
+            </span>
+            <span ng-click="saveEndorseInsured()">
+                <i class="i_3"></i><em>暂存</em>
+            </span>
+        </div>
+        <div class="index_btn1">
+            <span class="submit" ng-click="endorseInsuredNext()">下一步</span>
+            <span class="edit" ng-click="onEdit()">退出</span>
+        </div>
+        <!---->
+    </ng-form>
+</div>
+<!--弹层---文件上传-->
+<div data-ng-include="'components/prpins/proposal/tpl/applicationFileUploadLayer.html'"></div>
+<!--弹层---删除-->
+<div ng-if="!deleteLayer" data-ng-include="'components/prpins/endorse/tpl/endorseDeleteLayer.html'"></div>
+<!--弹层---修改-->
+<div ng-show="!insuredLayer" data-ng-include="'components/prpins/endorse/tpl/endorseInsuredLayer.html'"></div>
+<!--个单被保险人-->
+<div data-ng-include="'components/prpins/proposal/tpl/insuredOnlyOneLayer.html'"></div>
+<!--个人客户搜索-->
+<div ng-if="personnalSearchLayer" data-ng-include="'components/prpins/customer/tpl/customerLayer.html'"></div>
+<!--被保险人客户搜索-->
+<div ng-if="insuredPersonSearchLayer" data-ng-include="'components/prpins/customer/tpl/insuredNameLayer.html'"></div>
+<!--团体客户搜索-->
+<div ng-if="groupSearchLayer" data-ng-include="'components/prpins/customer/tpl/teamLayer.html'"></div>

@@ -1,0 +1,1203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="e05aab14-dcc7-49a5-b417-f61b13425ff0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/business/agriprpall/agriprpall-api/agriprpall-api.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/business/dms/dms-rest/dms-rest.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/business/txnlist/txnlist-rest/txnlist-rest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/agriclaim/agriclaim-api/agriclaim-api.iml" afterPath="$PROJECT_DIR$/business/agriclaim/agriclaim-api/agriclaim-api.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/agriclaim/agriclaim-core/agriclaim-core.iml" afterPath="$PROJECT_DIR$/business/agriclaim/agriclaim-core/agriclaim-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/agriclaim/agriclaim-rest/agriclaim-rest.iml" afterPath="$PROJECT_DIR$/business/agriclaim/agriclaim-rest/agriclaim-rest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/agriprpall/agriprpall-core/agriprpall-core.iml" afterPath="$PROJECT_DIR$/business/agriprpall/agriprpall-core/agriprpall-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/agriprpall/agriprpall-core/src/main/java/com/sinosoft/agriprpall/core/proposalmanage/service/impl/UndwrtSubmitServiceImpl.java" afterPath="$PROJECT_DIR$/business/agriprpall/agriprpall-core/src/main/java/com/sinosoft/agriprpall/core/proposalmanage/service/impl/UndwrtSubmitServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/agriprpall/agriprpall-rest/agriprpall-rest.iml" afterPath="$PROJECT_DIR$/business/agriprpall/agriprpall-rest/agriprpall-rest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/dms/dms-core/dms-core.iml" afterPath="$PROJECT_DIR$/business/dms/dms-core/dms-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/fileserver/fileserver-client/fileserver-client.iml" afterPath="$PROJECT_DIR$/business/fileserver/fileserver-client/fileserver-client.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/fileserver/fileserver-server/fileserver-server.iml" afterPath="$PROJECT_DIR$/business/fileserver/fileserver-server/fileserver-server.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/fileserver/fileserver.iml" afterPath="$PROJECT_DIR$/business/fileserver/fileserver.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/ims/ims-core/ims-core.iml" afterPath="$PROJECT_DIR$/business/ims/ims-core/ims-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/ims/ims-rest/ims-rest.iml" afterPath="$PROJECT_DIR$/business/ims/ims-rest/ims-rest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/notice/notice-api/notice-api.iml" afterPath="$PROJECT_DIR$/business/notice/notice-api/notice-api.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/notice/notice-core/notice-core.iml" afterPath="$PROJECT_DIR$/business/notice/notice-core/notice-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/notice/notice-rest/notice-rest.iml" afterPath="$PROJECT_DIR$/business/notice/notice-rest/notice-rest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/txnlist/txnlist-api/txnlist-api.iml" afterPath="$PROJECT_DIR$/business/txnlist/txnlist-api/txnlist-api.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/txnlist/txnlist-core/txnlist-core.iml" afterPath="$PROJECT_DIR$/business/txnlist/txnlist-core/txnlist-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/infrastructure/registry/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/infrastructure/registry/src/main/resources/application.yml" />
+    </list>
+    <ignored path="$PROJECT_DIR$/business/sso/sso-core/target/" />
+    <ignored path="$PROJECT_DIR$/business/pms/pms-core/target/" />
+    <ignored path="$PROJECT_DIR$/infrastructure/config-server/target/" />
+    <ignored path="$PROJECT_DIR$/business/fileserver/fileserver-client/target/" />
+    <ignored path="$PROJECT_DIR$/business/pms/target/" />
+    <ignored path="$PROJECT_DIR$/business/framework-agri-core/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriprpall/agriprpall-core/target/" />
+    <ignored path="$PROJECT_DIR$/business/fileserver/fileserver-server/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriprpall/agriprpall-api/target/" />
+    <ignored path="$PROJECT_DIR$/business/parent/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriprpall/target/" />
+    <ignored path="$PROJECT_DIR$/business/uap/target/" />
+    <ignored path="$PROJECT_DIR$/business/dms/dms-rest/target/" />
+    <ignored path="$PROJECT_DIR$/business/gateway/target/" />
+    <ignored path="$PROJECT_DIR$/business/txnlist/txnlist-api/target/" />
+    <ignored path="$PROJECT_DIR$/business/dms/dms-api/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriclaim/agriclaim-core/target/" />
+    <ignored path="$PROJECT_DIR$/business/txnlist/txnlist-rest/target/" />
+    <ignored path="$PROJECT_DIR$/business/notice/notice-core/target/" />
+    <ignored path="$PROJECT_DIR$/infrastructure/zipkin/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriclaim/agriclaim-api/target/" />
+    <ignored path="$PROJECT_DIR$/business/sso/sso-rest/target/" />
+    <ignored path="$PROJECT_DIR$/business/ims/ims-rest/target/" />
+    <ignored path="$PROJECT_DIR$/business/dms/target/" />
+    <ignored path="$PROJECT_DIR$/business/txnlist/txnlist-core/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriclaim/agriclaim-rest/target/" />
+    <ignored path="$PROJECT_DIR$/business/ims/ims-api/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriclaim/target/" />
+    <ignored path="$PROJECT_DIR$/business/dms/dms-core/target/" />
+    <ignored path="$PROJECT_DIR$/business/fileserver/target/" />
+    <ignored path="$PROJECT_DIR$/business/pms/pms-rest/target/" />
+    <ignored path="$PROJECT_DIR$/infrastructure/admin/target/" />
+    <ignored path="$PROJECT_DIR$/business/pms/pms-api/target/" />
+    <ignored path="$PROJECT_DIR$/infrastructure/turbine/target/" />
+    <ignored path="$PROJECT_DIR$/business/notice/target/" />
+    <ignored path="$PROJECT_DIR$/business/txnlist/target/" />
+    <ignored path="$PROJECT_DIR$/business/ims/ims-core/target/" />
+    <ignored path="$PROJECT_DIR$/business/ims/target/" />
+    <ignored path="$PROJECT_DIR$/business/sso/sso-api/target/" />
+    <ignored path="$PROJECT_DIR$/business/sso/target/" />
+    <ignored path="$PROJECT_DIR$/infrastructure/registry/target/" />
+    <ignored path="$PROJECT_DIR$/business/notice/notice-rest/target/" />
+    <ignored path="$PROJECT_DIR$/infrastructure/parent/target/" />
+    <ignored path="$PROJECT_DIR$/business/notice/notice-api/target/" />
+    <ignored path="$PROJECT_DIR$/business/agriprpall/agriprpall-rest/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="UIAgriDispatch.Edit.tpl.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/business/claim-front/common/business/dispatch/UIAgriDispatch.Edit.tpl.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="81" column="41" lean-forward="false" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
+              <folding>
+                <marker date="1527555698970" expanded="true" signature="25497:25708" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeleteEndorseServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/business/agriprpall/agriprpall-core/src/main/java/com/sinosoft/agriprpall/core/endorsemanage/queryendorse/service/impl/DeleteEndorseServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1802">
+              <caret line="147" column="49" lean-forward="false" selection-start-line="147" selection-start-column="49" selection-end-line="147" selection-end-column="49" />
+              <folding>
+                <marker date="1527148761266" expanded="true" signature="20941:21023" ph="{...}" />
+                <marker date="1527148761266" expanded="true" signature="21016:21023" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UndwrtSubmitServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/business/agriprpall/agriprpall-core/src/main/java/com/sinosoft/agriprpall/core/proposalmanage/service/impl/UndwrtSubmitServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9367">
+              <caret line="599" column="72" lean-forward="false" selection-start-line="599" selection-start-column="72" selection-end-line="599" selection-end-column="72" />
+              <folding>
+                <marker date="1527148761971" expanded="true" signature="40221:40501" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pms.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/pms.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrpDitemServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/business/pms/pms-core/src/main/java/com/sinosoft/pms/core/kernel/service/impl/PrpDitemServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1530">
+              <caret line="112" column="143" lean-forward="false" selection-start-line="112" selection-start-column="143" selection-end-line="112" selection-end-column="143" />
+              <folding>
+                <marker date="1527148765697" expanded="true" signature="8967:8974" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgriPrpallUndwrtDeleteEndorseService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/business/agriprpall/agriprpall-api/src/main/java/com/sinosoft/agriprpall/api/client/undwrtclient/AgriPrpallUndwrtDeleteEndorseService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="37" column="39" lean-forward="false" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/infrastructure/registry/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+              <folding>
+                <marker date="1527148745223" expanded="true" signature="0:16" ph="server: &lt;1 key&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>查询</find>
+      <find>queryDispatcherPrpLJobManagerByCondition</find>
+      <find>CustomerServicesSoapBindingStub</find>
+      <find>webagri</find>
+      <find>webserviceUrl3</find>
+      <find>${webservice.webAgriPrpallService.url</find>
+      <find>webserviceUrl1</find>
+      <find>reCaseSubmit</find>
+      <find>sysconfig</find>
+      <find>董坤</find>
+      <find>validStatus</find>
+      <find>myProps</find>
+    </findStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/infrastructure/registry/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/business/agriprpall/agriprpall-api/src/main/java/com/sinosoft/agriprpall/api/client/undwrtclient/AgriPrpallUndwrtService.java" />
+        <option value="$PROJECT_DIR$/business/agriprpall/agriprpall-core/src/main/java/com/sinosoft/agriprpall/core/proposalmanage/service/impl/UndwrtSubmitServiceImpl.java" />
+        <option value="$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/pms.yml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../Maven/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="D:\JavaRelation\Maven\repos\NewAgri1\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="registry" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="1" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource ProjectPane="true" />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="NewAgri2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewAgri2018" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewAgri2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewAgri2018" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewAgri2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewAgri2018" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="config-server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewAgri2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewAgri2018" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="config-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewAgri2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewAgri2018" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="config-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewAgri2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewAgri2018" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="config-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewAgri2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewAgri2018" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="config-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="repo" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/infrastructure/zipkin/pom.xml" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.51783895" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DmsWebApplication">
+    <configuration name="AgriclaimWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.agriclaim.web.AgriclaimWebApplication" />
+      <module name="agriclaim-rest" />
+      <envs />
+    </configuration>
+    <configuration name="AgriprpallWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.agriprpall.web.AgriprpallWebApplication" />
+      <module name="agriprpall-rest" />
+      <envs />
+    </configuration>
+    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.config.ConfigServerApplication" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <module name="config-server" />
+      <envs />
+    </configuration>
+    <configuration name="DmsWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.dms.web.DmsWebApplication" />
+      <module name="dms-rest" />
+      <envs />
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.gateway.GatewayApplication" />
+      <module name="gateway" />
+      <envs />
+    </configuration>
+    <configuration name="IMSWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.ims.web.IMSWebApplication" />
+      <module name="ims-rest" />
+      <envs />
+    </configuration>
+    <configuration name="NoticeWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.notice.NoticeWebApplication" />
+      <module name="notice-rest" />
+      <envs />
+    </configuration>
+    <configuration name="PmsWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.pms.PmsWebApplication" />
+      <module name="pms-rest" />
+      <envs />
+    </configuration>
+    <configuration name="RegistryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.registry.RegistryApplication" />
+      <module name="registry" />
+      <envs />
+    </configuration>
+    <configuration name="SsoWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.sso.SsoWebApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <module name="sso-rest" />
+      <envs />
+    </configuration>
+    <configuration name="TurbineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.turbine.TurbineApplication" />
+      <module name="turbine" />
+      <envs />
+    </configuration>
+    <configuration name="TxnListWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.txnlist.web.TxnListWebApplication" />
+      <module name="txnlist-rest" />
+      <envs />
+    </configuration>
+    <configuration name="ZipkinApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sinosoft.zipkin.ZipkinApplication" />
+      <module name="zipkin" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <list size="13">
+      <item index="0" class="java.lang.String" itemvalue="Spring Boot.DmsWebApplication" />
+      <item index="1" class="java.lang.String" itemvalue="Spring Boot.GatewayApplication" />
+      <item index="2" class="java.lang.String" itemvalue="Spring Boot.SsoWebApplication" />
+      <item index="3" class="java.lang.String" itemvalue="Spring Boot.TxnListWebApplication" />
+      <item index="4" class="java.lang.String" itemvalue="Spring Boot.IMSWebApplication" />
+      <item index="5" class="java.lang.String" itemvalue="Spring Boot.AgriclaimWebApplication" />
+      <item index="6" class="java.lang.String" itemvalue="Spring Boot.PmsWebApplication" />
+      <item index="7" class="java.lang.String" itemvalue="Spring Boot.NoticeWebApplication" />
+      <item index="8" class="java.lang.String" itemvalue="Spring Boot.AgriprpallWebApplication" />
+      <item index="9" class="java.lang.String" itemvalue="Spring Boot.RegistryApplication" />
+      <item index="10" class="java.lang.String" itemvalue="Spring Boot.ConfigServerApplication" />
+      <item index="11" class="java.lang.String" itemvalue="Spring Boot.TurbineApplication" />
+      <item index="12" class="java.lang.String" itemvalue="Spring Boot.ZipkinApplication" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim\agriclaim-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim\agriclaim-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim\agriclaim-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim\agriclaim-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim\agriclaim-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriclaim\agriclaim-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall\agriprpall-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall\agriprpall-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall\agriprpall-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall\agriprpall-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall\agriprpall-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\agriprpall\agriprpall-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms\dms-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms\dms-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms\dms-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms\dms-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms\dms-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\dms\dms-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\fileserver" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\fileserver" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\fileserver\fileserver-client" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\fileserver\fileserver-client" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\fileserver\fileserver-server" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\fileserver\fileserver-server" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\framework-agri-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\framework-agri-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\gateway" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\gateway" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims\ims-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims\ims-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims\ims-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims\ims-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims\ims-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\ims\ims-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice\notice-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice\notice-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice\notice-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice\notice-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice\notice-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\notice\notice-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\parent" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\parent" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms\pms-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms\pms-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms\pms-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms\pms-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms\pms-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\pms\pms-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso\sso-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso\sso-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso\sso-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso\sso-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso\sso-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\sso\sso-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist\txnlist-api" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist\txnlist-api" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist\txnlist-core" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist\txnlist-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist\txnlist-rest" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\txnlist\txnlist-rest" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\uap" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\business\uap" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\admin" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\admin" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\config-server" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\config-server" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\parent" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\parent" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\registry" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\registry" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\turbine" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\turbine" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\zipkin" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018\infrastructure\zipkin" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\JavaRelation\Workpaces\NewAgri2018" />
+          <option name="myCopyRoot" value="D:\JavaRelation\Workpaces\NewAgri2018" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e05aab14-dcc7-49a5-b417-f61b13425ff0" name="Default" comment="" />
+      <created>1523948713040</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1523948713040</updated>
+      <workItem from="1523948714721" duration="2831000" />
+      <workItem from="1524133064536" duration="3638000" />
+      <workItem from="1524219141788" duration="989000" />
+      <workItem from="1524556890556" duration="39000" />
+      <workItem from="1524556961750" duration="3800000" />
+      <workItem from="1524614934585" duration="5053000" />
+      <workItem from="1526440843484" duration="2290000" />
+      <workItem from="1527145332987" duration="2566000" />
+      <workItem from="1527554233141" duration="3708000" />
+      <workItem from="1531121791530" duration="2136000" />
+      <workItem from="1536558560131" duration="1462000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="28512000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.14605543" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23294243" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.69083154" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23051947" sideWeight="0.85394454" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3107676" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/agriclaim.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/business/dispatch/UIAgriDispatch.Edit.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/config.dev.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="116" column="115" lean-forward="false" selection-start-line="116" selection-start-column="75" selection-end-line="116" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriclaim/agriclaim-api/src/main/java/com/sinosoft/agriclaim/api/jobmanage/PrpLJobManagerApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="68" lean-forward="false" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="31" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/fileserver.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/platform.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/registry/src/main/resources/application-peer2.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/registry/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding>
+            <marker date="1527148745223" expanded="true" signature="0:16" ph="server: &lt;1 key&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/business/dispatch/UIAgriDispatch.Edit.tpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="59" lean-forward="false" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
+          <folding>
+            <marker date="1527555698970" expanded="true" signature="25497:25708" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/agriclaim.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/business/dispatch/UIAgriDispatch.Edit.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/config.dev.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="116" column="115" lean-forward="false" selection-start-line="116" selection-start-column="75" selection-end-line="116" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriclaim/agriclaim-api/src/main/java/com/sinosoft/agriclaim/api/jobmanage/PrpLJobManagerApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="68" lean-forward="false" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="31" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/fileserver.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/platform.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/registry/src/main/resources/application-peer2.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/registry/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding>
+            <marker date="1527148745223" expanded="true" signature="0:16" ph="server: &lt;1 key&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/business/dispatch/UIAgriDispatch.Edit.tpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="14" lean-forward="false" selection-start-line="75" selection-start-column="14" selection-end-line="75" selection-end-column="14" />
+          <folding>
+            <marker date="1527555698970" expanded="true" signature="25497:25708" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/agriclaim.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/agriprpall.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/fileserver.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/txnlist.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/platform.yml" />
+    <entry file="file://$PROJECT_DIR$/business/agriclaim/agriclaim-core/src/main/java/com/sinosoft/agriclaim/core/businessutilmanage/service/impl/ClaimBoxInitServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/admin/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-263">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/txnlist.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/agriprpall.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/parent/target/classes/META-INF/build-info.properties" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/parent/parent (2) (com.sinosoft.infrastructure).iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/agriclaim.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/business/dispatch/UIAgriDispatch.Edit.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/config.dev.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="116" column="115" lean-forward="false" selection-start-line="116" selection-start-column="75" selection-end-line="116" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriclaim/agriclaim-api/src/main/java/com/sinosoft/agriclaim/api/jobmanage/PrpLJobManagerApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="80" column="68" lean-forward="false" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="31" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/fileserver.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/platform.yml" />
+    <entry file="file://$PROJECT_DIR$/infrastructure/registry/src/main/resources/application-peer2.yml" />
+    <entry file="file://$PROJECT_DIR$/项目管理/开发管理/理赔二组开发文档/02开发过程/双核代码/双核代码/NewAgriPrpallUndwrtService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="81" column="18" lean-forward="false" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriprpall/agriprpall-api/src/main/java/com/sinosoft/agriprpall/api/client/undwrtclient/AgriPrpallUndwrtService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriclaim/agriclaim-core/src/main/java/com/sinosoft/agriclaim/core/compensatemanage/service/impl/CompensateServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="132" column="14" lean-forward="true" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/demo/demo-core/src/main/java/com/sinosoft/demo/core/customer/entity/YmlConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/claim-front/common/business/dispatch/UIAgriDispatch.Edit.tpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" column="41" lean-forward="false" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
+          <folding>
+            <marker date="1527555698970" expanded="true" signature="25497:25708" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriprpall/agriprpall-core/src/main/java/com/sinosoft/agriprpall/core/endorsemanage/queryendorse/service/impl/DeleteEndorseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="147" column="49" lean-forward="false" selection-start-line="147" selection-start-column="49" selection-end-line="147" selection-end-column="49" />
+          <folding>
+            <marker date="1527148761266" expanded="true" signature="20941:21023" ph="{...}" />
+            <marker date="1527148761266" expanded="true" signature="21016:21023" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriprpall/agriprpall-core/src/main/java/com/sinosoft/agriprpall/core/proposalmanage/service/impl/UndwrtSubmitServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9367">
+          <caret line="599" column="72" lean-forward="false" selection-start-line="599" selection-start-column="72" selection-end-line="599" selection-end-column="72" />
+          <folding>
+            <marker date="1527148761971" expanded="true" signature="40221:40501" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/pms/pms-core/src/main/java/com/sinosoft/pms/core/kernel/service/impl/PrpDitemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="112" column="143" lean-forward="false" selection-start-line="112" selection-start-column="143" selection-end-line="112" selection-end-column="143" />
+          <folding>
+            <marker date="1527148765697" expanded="true" signature="8967:8974" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/agriprpall/agriprpall-api/src/main/java/com/sinosoft/agriprpall/api/client/undwrtclient/AgriPrpallUndwrtDeleteEndorseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="37" column="39" lean-forward="false" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/registry/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding>
+            <marker date="1527148745223" expanded="true" signature="0:16" ph="server: &lt;1 key&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/config-server/src/main/resources/repo/pms.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>fileserver-server:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.51783895" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring (agriclaim-core)|Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.51783895" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.51783895" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ims</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.51783895" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.51783895" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,141 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔特殊赔案申请跳转页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/11/28
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="section" style="height:auto;">
+    <div class="content_div content1-div">
+        <div class='damage clearfix'>
+            <span class='fl damage_span' ng-click="showCompensateComm()">理赔沟通</span>
+            <span class='fl damage_span' ng-click="showElectronicDocu()">电子单证</span>
+        </div>
+        <div class="queryCriteria">
+        <span class="queryCriteria_title">
+          <label>申请信息处理</label>
+        </span>
+            <div class="condition_table">
+                <ul class="clearfix half-ul">
+                    <li class="condition_td fl half-li">
+                        <label>报案号</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryPrepayApplyInfo.registNo" ng-disabled="true">
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>立案号</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryPrepayApplyInfo.businessNo" maxlength="19" ng-disabled="true" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>保单号码</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryPrepayApplyInfo.policyNo" ng-disabled="true"/>
+                        </div>
+                    </li>
+
+                    <li class="condition_td fl half-li">
+                        <label>赔案类型</label>
+                        <div class="half-div">
+                            <code-type ng-model="queryPrepayApplyInfo.typeFlag" base-code="TypeFlag"></code-type>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>申请时间</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryPrepayApplyInfo.flowInTime" ng-disabled="true"/>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li clearfix">
+                        <label class='fl'>申请人</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryPrepayApplyInfo.userName" ng-disabled="true"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="queryDanger">
+        <span class="queryCriteria_title">
+         <label class="tit-color font-bold"><i class='i-col'>*</i>申请原因</label>
+        </span>
+            <div class="input-content-box">
+                <textarea rows="4" ng-show="!seeFlag" ng-required="true" ng-model="queryPrepayApplyInfo.titleStr"></textarea>
+            </div>
+        </div>
+
+        <div class="queryResult">
+            <div class="queryResult_title clearfix">
+                <span class="fl tit-color font-bold">已有特殊赔案信息</span>
+            </div>
+
+            <table class="condition-table">
+
+                <thead>
+                <tr class="tr_top">
+                    <td>序号</td>
+                    <td>特殊赔案号</td>
+                    <td>立案号</td>
+                    <td>保单号</td>
+                    <td>类型</td>
+                    <td>状态</td>
+
+                </tr>
+                </thead>
+
+                <tfoot>
+                <tr class="tr_content" ng-repeat="result in queryPrepayApplyInfo.swfLogDtoList">
+                    <td ng-bind="$index+1"></td>
+                    <td ng-bind="result.keyOut"></td>
+                    <td ng-bind="result.keyIn"></td>
+                    <td ng-bind="result.policyNo"></td>
+                    <td>
+                        <span ng-show="result.typeFlag==='5'">预赔</span>
+                    </td>
+                    <td>
+                        <span ng-show="result.nodeStatus==='0'">未处理</span>
+                        <span ng-show="result.nodeStatus==='2'">正在处理</span>
+                        <span ng-show="result.nodeStatus==='4'">已处理</span>
+                        <span ng-show="result.nodeStatus==='6'">核赔通过</span>
+                        <span ng-show="result.nodeStatus==='3'">核赔退回</span>
+                        <span ng-show="result.nodeStatus==='5'">核赔不通过</span>
+                        <!--<span ng-show="result.nodeStatus | statusFilter"></span>-->
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
+
+        <div class="btn_tr clearfix mt20" ng-show="!seeFlag">
+            <span  class="btn"  ng-disabled="flag" ng-click="submitApply()">提交</span>
+            <span ng-click="goBack()">取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 弹层---我的信息 -->
+<div ng-show="prepayMessage" ><!-- class="layer-message"-->
+    <div class="mask"></div>
+    <div style="width:50%;height: auto;background:#fff;border-radius:5px;overflow: hidden;position:fixed;top:40%;left:50%;margin-left:-370px;z-index: 1001;"><!--class=layer-content-->
+        <div class="layer-header"><!---->
+            <span>提示</span>
+            <i class="icon iconfont" ng-click="goBack()">&#xe632;</i>
+        </div>
+        <div>
+            <input style="width:50%;height:40px;position:relative;" ng-model="errMsg"/>
+        </div>
+        <div>
+            <input style="width:30%;color:#2DBE61;height:40px;position:relative;" ng-click="goPrepaySee(result)" ng-model="businessNo"/>
+        </div>
+        <div>
+            <input type="hidden">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="main">
+    <div class="section" style="height:auto;">
+        <div class="position">
+            <span>当前位置：</span>
+            <span class="local-fir">支付信息维护> 支付信息录入 > </span>
+            <span class="local-sec">清单支付</span>
+        </div>
+        <div class="content_div content1-div">
+            <div class="queryResult">
+                <div class="queryResult_title clearfix">
+                    <span class="fl" style="color: #2DBE61;font-weight: bold">清单列表</span>
+                </div>
+                <table>
+                    <tr class="tr_top">
+                        <td class="w5">序号</td>
+                        <td class="w8">批单号码</td>
+                        <td class="w8">保单号码</td>
+                        <td class="w8">农户姓名</td>
+                        <td class="w8">领款人姓名</td>
+                        <td class="w8">领款人证件号码</td>
+                        <td class="w8">结算金额</td>
+                        <td class="w8">银行大类</td>
+                        <td class="w8">银行卡号</td>
+                        <td class="w8">手机号码</td>
+                    </tr>
+                    <tr class="tr_content F2F2F2" ng-repeat="info in QueryList track by $index">
+                        <td ng-bind="$index+1"></td>
+                        <td>
+                            <div class="w50" ng-bind="endorseNo" ng-attr-title="{{endorseNo}}"></div>
+                        </td>
+                        <td>
+                            <div class="w50" ng-bind="policyNo" ng-attr-title="{{policyNo}}"></div>
+                        </td>
+                        <td ng-bind="info.fName"></td>
+                        <td ng-bind="info.receiverName"></td>
+                        <td ng-bind="info.certifyNo"></td>
+                        <td ng-bind="info.chgPremium"></td>
+                        <td ng-bind="info.bankType"></td>
+                        <td ng-bind="info.bankAccount"></td>
+                        <td ng-bind="info.mobilePhone"></td>
+                    </tr>
+                </table>
+                <div class="index_page">
+                    <tm-pagination conf="paginationConfmm"></tm-pagination>
+                </div>
+            </div>
+            <div class="clause_td">
+                <label ng-click="uploadShowPage()" ng-show="isEdit">导入清单</label>
+                <label ng-click="downloadShowPage()" ng-show="isEdit">下载清单</label>
+                <label ng-click="cancel()" ng-show="isEdit">取消</label>
+                <label ng-click="downloadPayList()" ng-show="!isEdit">下载支付清单</label>
+                <label ng-click="cancel()" ng-show="!isEdit">返回</label>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .condition_td5{width: 50%;margin-top: 18px}
+    .condition_td5 span{display:inline-block;width: 9%;dding-right: 1%;color: #999;margin-left: 65px;margin-top: 5px}
+    .a-upload {height: 40px;left: 14px;line-height: 34px;position: relative;cursor: pointer;color: #888;border-radius: 4px;overflow: hidden;display: inline-block;*display: inline;*zoom: 1}
+    .a-upload input {font-size: 16px;cursor: pointer;border: 1px solid #ddd;background: #fafafa;padding-left: 0px;}
+    .importButton{display: inline-block; width: 100px;height: 30px;border-radius: 3px; position: relative;top:-20px;background: #2DBE61;cursor: pointer;margin-left: 30px;font-size: 14px;line-height: 30px;text-align: center;color: #fff;}
+</style>
+<!-- 导入清单弹层 -->
+<div class="leadinginBox" ng-show="uploadShow" >
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info clause_manage" style="top:80px;height: 230px;left:50%;margin-left:-500px;">
+        <div class="pay_header">
+            <span>导入清单</span>
+            <i class="icon iconfont plusAndReduce" ng-click="uploadShowPage()">&#xe632;</i>
+        </div>
+        <div class="clause_td" style="text-align: left">
+            <button class="btn btn-success" ng-click="downloadTemplate()" style="margin-left: 30px;">下载模板</button>
+            <button class="btn btn-success" ng-click="downloadEndorseList()" style="margin-left: 30px;">下载批改清单</button>
+        </div>
+        <div>
+            <ul>
+                <li style="float: left;height: 60px;line-height: 60px;margin-left: 30%;">支付清单导入:</li>
+                <li style="float: left" class="condition_td5 fl">
+                    <a href="javascript:" class="a-upload">
+                        <input type="file" id="file" nv-file-select ng-click="clearItems();" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" uploader="uploader"/>
+                    </a>
+                    <i class="importButton" ng-click="uploader.uploadAll()">导入</i>
+                </li>
+            </ul>
+        </div>
+        <div class="clause_td"  style="padding-top: 20px;">
+            <label ng-click="uploadPayListExcel()">确定</label>
+            <label ng-click="uploadShowPage()">返回</label>
+        </div>
+    </div>
+</div>
+<!-- 下载清单弹层 -->
+<div class="leadinginBox" ng-show="downloadShow" >
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info clause_manage" style="left:50%;margin-left:-500px;top:80px;height: 230px">
+        <div class="pay_header">
+            <span>下载清单</span>
+            <i class="icon iconfont plusAndReduce" ng-click="downloadShowPage()">&#xe632;</i>
+        </div>
+        <div class="clause_td " style="text-align: left">
+            <button class="btn btn-success" ng-click="downloadEndorseList()" style="margin-left: 30px;">下载批改清单</button>
+            <button class="btn btn-success" ng-click="downloadPayList()" style="margin-left: 30px;" ng-disabled="!payListState">下载支付清单</button>
+        </div>
+        <div class="clause_td"  style="padding-top: 20px;">
+            <label ng-click="downloadShowPage()">返回</label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<!--保单基本信息-->
+<div class="index_tit"><h6>保单基本信息</h6></div>
+<ul class="list_ul">
+    <li class="hide"><input type="text" ng-model="policy.prpTmain.riskCode"></li>
+    <li><span>投保单号：</span></li>
+    <li><input type="text" class="fl bor shadowno" ng-model="policy.prpTmain.proposalNo" readonly /></li>
+    <li><em>*</em><span>投保日期：</span></li>
+    <li><input type="text"  id="operateDate" jedate  format="YYYY-MM-DD" class="date-input fl date" ng-model="policy.prpTmain.operateDate" max-date="{{maxOperateDate}}" required readonly warn-text="投保日期"></li>
+    <li><em>*</em><span>保单生效日：</span></li>
+    <li>
+        <input type="text" id="startDate_date" class="date-input fl date date_wid" ng-model="policy.prpTmain.startDate" jedate format="YYYY-MM-DD" min-date="{{minStartDate}}" max-date="{{maxStartDate}}" required skinCell="jedateblue" readonly warn-text="保单生效日"><span class="fl inputreadonly1">&nbsp;&nbsp;0时</span>
+    </li>
+    <li><span>保单终止日：</span></li>
+    <li><input class="inputreadonly" type="text" ng-model="policy.prpTmain.endDate" readonly><span class="fl inputreadonly1"> 24时</span></li>
+</ul>

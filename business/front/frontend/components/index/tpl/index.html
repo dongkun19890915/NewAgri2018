@@ -1,0 +1,57 @@
+<div class="ind_top">
+    <div class="home_page_header">
+        <div class="fast_Insure fl">
+            <div class="Insure_container">
+               <!--  <ng-form novalidate="novalidate" name="indexForm" > -->
+                    <i class="fl"></i>
+                    <span class="fl">{{'application'|translate}}：</span>
+                    <select class="form-control fl" ng-model="fileDto.riskCode" ng-options="x.riskCode as x.riskCName for x in riskList" required>
+                        <option value="">-{{'option'|translate}}-</option>
+                    </select>
+                    <div class="fl" ng-click="indexApplication()" translate="insure-now"></div>
+                <!-- </ng-form> -->
+            </div>
+        </div>
+        <div class="reatment_policy fl">
+            <div class="Insure_container" ng-click="indexSupendProposal()">
+                <i class="fl"></i>
+                <span class="fl">待处理投保单</span>
+                <div class="fl" ng-bind="policyNum.quantity"></div>
+            </div>
+        </div>
+        <div class="reatment_correction fr">
+            <div class="Insure_container" ng-click="indexSupendEndorse()">
+                <i class="fl"></i>
+                <span class="fl">待处理批改</span>
+                <div class="fl" ng-bind="endorseNum.quantity"></div>
+            </div>
+        </div>
+    </div>
+    <ng-form novalidate="novalidate" name="proposalForm" >
+    <div class="index_con index_con_box">
+        <textarea sino-kind-editor ng-model="info.content" data-editor-config="config"></textarea>
+        <!--<textarea ng-model="info.content" data-editor-config="config"></textarea>-->
+        <!--<input ng-model="info.content" data-editor-config="config"></input>-->
+    </div>
+    </ng-form>
+    <div class="index_con index_con_box">
+        <div class="home_main_box">
+            <div class="home_main_header">
+                <i></i><span>&nbsp;省份保单数据</span>
+            </div>
+            <div id="home_main">
+                <map-chart config="mapConfig" data="mapMultiple"></map-chart>
+            </div>
+        </div>
+        <div class="number_main_box">
+            <div class="number_main_header">
+                <i></i><span>&nbsp;全国历史数据</span>
+            </div>
+            <div id="number_main">
+                <line-chart config="lineConfig" data="lineMultiple"></line-chart>
+            </div>
+        </div>
+    </div>
+    <!-- 个单被保险人 -->
+    <div data-ng-include="'components/prpins/proposal/tpl/insuredOnlyOneLayer.html'"></div>
+</div>

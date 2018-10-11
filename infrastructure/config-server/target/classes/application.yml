@@ -1,0 +1,51 @@
+server:
+    port: ${config.server.port:8000}
+    #context-path: /config-server
+
+spring:
+    application:
+        name: CONFIG-SERVER
+    cloud:
+        config:
+            discovery:
+                enabled: true
+            server:
+                default-label: dev
+                svn:
+                    uri: svn://svn.sinongo.com/prpins/SourceCode/config/
+                    username: configUser
+                    password: config1432
+                native:
+                    search-locations: classpath:/repo
+    profiles:
+        active: native
+        #active: subversion
+    #rabbitmq:
+      #host: 47.94.96.232
+      #port: 5672
+      #username: rabbit
+      #password: rabbit321
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: ${config.registry.url:http://localhost:8001/eureka/}
+        registry-fetch-interval-seconds: 30
+    instance:
+        lease-renewal-interval-in-seconds: 30
+        preferIpAddress: true
+        metadata-map:
+            user: ${security.user.name}
+            password: ${security.user.password}
+        #  configPath: ${server.context-path}
+
+security:
+    user:
+        name: config
+        password: config321
+
+logging:
+    level:
+        org.springframework.cloud.config.server: DEBUG
+        org.springframework.boot.env.PropertySourcesLoader: TRACE
+
+

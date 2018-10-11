@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinosoft.fileserver.dao.TFileShortLinkMapper" >
+	<resultMap id="BaseResultMap" type="com.sinosoft.fileserver.entity.TFileShortLink" >
+			<result column="ShortLinkId" property="shortLinkId" jdbcType="VARCHAR" ></result>
+			<result column="InvalidTime" property="invalidTime" jdbcType="TIMESTAMP" ></result>
+			<result column="FileId" property="fileId" jdbcType="VARCHAR" ></result>
+			<result column="CreateTime" property="createTime" jdbcType="TIMESTAMP" ></result>
+			<result column="CreateBy" property="createBy" jdbcType="VARCHAR" ></result>
+			<result column="UpdateTime" property="updateTime" jdbcType="TIMESTAMP" ></result>
+			<result column="UpdateBy" property="updateBy" jdbcType="VARCHAR" ></result>
+			<result column="IsDeleted" property="isDeleted" jdbcType="CHAR" ></result>
+	</resultMap>
+	<sql id="Example_Where_Clause" >
+		<where >
+			<foreach collection="oredCriteria" item="criteria" separator="or" >
+				<if test="criteria.valid" >
+					<trim prefix="(" suffix=")" prefixOverrides="and" >
+						<foreach collection="criteria.criteria" item="criterion" >
+							<choose >
+								<when test="criterion.noValue" >
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue" >
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue" >
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue" >
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List" >
+		        ShortLinkId,
+InvalidTime,
+FileId,
+CreateTime,
+CreateBy,
+UpdateTime,
+UpdateBy,
+IsDeleted
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sinosoft.fileserver.entity.TFileShortLinkExample" >
+		select
+		<if test="distinct" >
+			distinct
+		</if>
+		'true' as QUERYID,
+		<include refid="Base_Column_List" ></include>
+		from TFileShortLink
+		<if test="_parameter != null" >
+			<include refid="Example_Where_Clause" ></include>
+		</if>
+		<if test="orderByClause != null" >
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.sinosoft.fileserver.entity.TFileShortLinkKey" >
+		select
+		<include refid="Base_Column_List" ></include>
+		from TFileShortLink
+		where
+		 ShortLinkId = #{shortLinkId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="com.sinosoft.fileserver.entity.TFileShortLinkKey" >
+		delete from TFileShortLink
+		where
+		 ShortLinkId = #{shortLinkId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.sinosoft.fileserver.entity.TFileShortLink" >
+		insert into TFileShortLink  (ShortLinkId,
+		InvalidTime,
+		FileId,
+		CreateTime,
+		CreateBy,
+		UpdateTime,
+		UpdateBy,
+		IsDeleted
+		)
+		values (#{shortLinkId,jdbcType=VARCHAR},
+		#{invalidTime,jdbcType=TIMESTAMP},
+		#{fileId,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{createBy,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBy,jdbcType=VARCHAR},
+		#{isDeleted,jdbcType=CHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.sinosoft.fileserver.entity.TFileShortLink" >
+		insert into TFileShortLink
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+				<if test="shortLinkId != null" >
+					ShortLinkId,
+				</if>
+				<if test="invalidTime != null" >
+					InvalidTime,
+				</if>
+				<if test="fileId != null" >
+					FileId,
+				</if>
+				<if test="createTime != null" >
+					CreateTime,
+				</if>
+				<if test="createBy != null" >
+					CreateBy,
+				</if>
+				<if test="updateTime != null" >
+					UpdateTime,
+				</if>
+				<if test="updateBy != null" >
+					UpdateBy,
+				</if>
+				<if test="isDeleted != null" >
+					IsDeleted
+				</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+				<if test="shortLinkId != null" >
+					ShortLinkId,jdbcType=VARCHAR,
+				</if>
+				<if test="invalidTime != null" >
+					InvalidTime,jdbcType=TIMESTAMP,
+				</if>
+				<if test="fileId != null" >
+					FileId,jdbcType=VARCHAR,
+				</if>
+				<if test="createTime != null" >
+					CreateTime,jdbcType=TIMESTAMP,
+				</if>
+				<if test="createBy != null" >
+					CreateBy,jdbcType=VARCHAR,
+				</if>
+				<if test="updateTime != null" >
+					UpdateTime,jdbcType=DATE,
+				</if>
+				<if test="updateBy != null" >
+					UpdateBy,jdbcType=VARCHAR,
+				</if>
+				<if test="isDeleted != null" >
+					IsDeleted,jdbcType=CHAR
+				</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.sinosoft.fileserver.entity.TFileShortLink" >
+		update TFileShortLink
+		<set >
+					<if test="invalidTime  != null" >InvalidTime = #{invalidTime ,jdbcType=TIMESTAMP} , </if>
+					<if test="fileId  != null" >FileId = #{fileId ,jdbcType=VARCHAR} , </if>
+					<if test="createTime  != null" >CreateTime = #{createTime ,jdbcType=TIMESTAMP} , </if>
+					<if test="createBy  != null" >CreateBy = #{createBy ,jdbcType=VARCHAR} , </if>
+					<if test="updateTime  != null" >UpdateTime = #{updateTime ,jdbcType=TIMESTAMP} , </if>
+					<if test="updateBy  != null" >UpdateBy = #{updateBy ,jdbcType=VARCHAR} , </if>
+					<if test="isDeleted  != null" >IsDeleted = #{isDeleted ,jdbcType=CHAR} </if>
+		</set>
+		where
+			ShortLinkId = #{shortLinkId ,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.sinosoft.fileserver.entity.TFileShortLink" >
+		update TFileShortLink
+		set
+						<if test="invalidTime  != null" >InvalidTime = #{invalidTime ,jdbcType=TIMESTAMP}, </if>
+			<if test="fileId  != null" >FileId = #{fileId ,jdbcType=VARCHAR}, </if>
+			<if test="createTime  != null" >CreateTime = #{createTime ,jdbcType=TIMESTAMP}, </if>
+			<if test="createBy  != null" >CreateBy = #{createBy ,jdbcType=VARCHAR}, </if>
+			<if test="updateTime  != null" >UpdateTime = #{updateTime ,jdbcType=TIMESTAMP}, </if>
+			<if test="updateBy  != null" >UpdateBy = #{updateBy ,jdbcType=VARCHAR}, </if>
+			<if test="isDeleted  != null" >IsDeleted = #{isDeleted ,jdbcType=CHAR}</if>
+		where
+			<if test="shortLinkId  != null" >
+				ShortLinkId = #{shortLinkId ,jdbcType=VARCHAR}
+			</if>
+	</update>
+</mapper>

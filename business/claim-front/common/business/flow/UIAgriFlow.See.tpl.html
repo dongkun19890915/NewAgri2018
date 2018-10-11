@@ -1,0 +1,190 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔  流程查询 查看页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/11/28
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+            zhaowenjie     2017.12.7    流程查询 查看页面
+****************************************************************************
+-->
+<div class="section">
+  <div class="queryCriteria">
+      <span class="queryCriteria_title" style="text-align: center">
+        <label class="query-label11">工作流流程图</label>
+        <label class="query-label fr" ng-click="goPrpLMessageShow()">查看留言</label>
+      </span>
+    <div class="process">
+      <div class="left-con fl">
+        <div class="process-left">
+          <h2>工作流程说明</h2>
+          <!--<ul ng-repeat="result in flowTreeList">-->
+          <!--<li>1. <span ng-bind="result.flowStatusName"></span></li>-->
+          <!--<li>2. <span ng-bind="result.isSpecialCase"></span></li>-->
+          <!--<li>3. <span ng-bind="result.creatDateName"></span></li>-->
+          <!--<li>4. <span ng-bind="result.closeDateName"></span></li>-->
+          <!--</ul>-->
+          <ul>
+            <li>1. <span ng-bind="flowTreeList.flowStatusName"></span></li>
+            <li>2. <span ng-bind="flowTreeList.isSpecialCase"></span></li>
+            <li>3. <span ng-bind="flowTreeList.creatDateName"></span></li>
+            <li><span ng-show="flowTreeList.closeDateName">4.</span> <span ng-bind="flowTreeList.closeDateName"></span></li>
+          </ul>
+        </div>
+          <div class="process-right mt20">
+            <h2>节点标题颜色说明</h2>
+            <ul>
+              <!--<li><i class="i-yellow"></i><span>未处理</span></li>-->
+              <li><i class="untreated"></i><span>未处理</span></li>
+              <li><i class="processing"></i><span>正在处理</span></li>
+              <li><i class="retroversion"></i><span>回退处理</span></li>
+              <li><i class="handled"></i><span>已处理</span></li>
+              <li><i class="receded"></i><span>已回退</span></li>
+              <li><i class="revoked"></i><span>已撤销</span></li>
+            </ul>
+          </div>
+      </div>
+      <div style="overflow-x: auto" class="fl">
+        <div class="process-box" style="overflow-x: auto;margin-left: 200px;overflow-y: hidden" id="items">
+          <div class="items">
+            <div ng-repeat="item in treeList" class="item-box">
+              <div ng-repeat="i in item" ng-class="'flow-box-'+$index" class="item">
+                <ul ng-class="'nodeStatus-'+(i.nodeStatus=i.nodeStatus==0?1:i.nodeStatus)" ng-mouseover="hover = true" ng-mouseleave="hover = false" class="node">
+                  <li class="one" ng-bind="i.nodeName" ng-show="!flowseeflag" class="pointer" ng-click="goRegist(item,i.nodePosLayer)">报案</li>
+                  <li class="one" ng-bind="i.nodeName" class="pointer" ng-show="flowseeflag" disabled>报案</li>
+                  <li class="two"><span ng-bind="i.handlerName"></span><span ng-bind="i.stopTimeDesc"></span></li>
+                  <li class="three" ng-bind="i.nodeStatusName">已处理</li>
+                </ul>
+                <!--<i class="iconfont icon-bottom" ng-show="i.bottom">&#xe601;</i>-->
+                <!--<i class="iconfont icon-right" ng-show="i.right">&#xea29;</i>-->
+                <!--<div class="icon-right-bottom" ng-show="i.rightBottom">-->
+                <!--<i class="iconfont">&#xe634;</i>-->
+                <!--</div>-->
+                <!--<div class="icon-bottom-left" ng-show="i.bottomLeft">-->
+                <!--<i class="iconfont">&#xea2b;</i>-->
+                <!--<div>-->
+                <div ng-class="{true: icon.type}[true]" ng-repeat="icon in i.lineList"
+                     ng-style="{width:icon.width,height:icon.height}">
+                  <i class="iconfont" ng-show="icon.type==='icon-bottom-left'">&#xea2b;</i>
+                  <i class="iconfont" ng-show="icon.type==='icon-right'">&#xea29;</i>
+                  <i class="iconfont" ng-show="icon.type==='icon-bottom'">&#xe601;</i>
+                  <i class="iconfont" ng-show="icon.type==='icon-right-bottom'">&#xea2c;</i>
+                </div>
+                <div class="hover-box" ng-class="{'hide':i.logNo==null}" ng-show="hover" ng-mouseover="hover = true"
+                     ng-mouseleave="hover = false">
+                  <div class="bg"></div>
+                  <ul>
+                    <li style="width: 180%">
+                      业务号：<span ng-bind="i.businessNo"></span>
+                    </li>
+                    <li>
+                      处理人员：<span ng-bind="i.handlerName"></span>
+                    </li>
+                    <li>
+                      流入时间：<span ng-bind="i.flowInTime"></span>
+                    </li>
+                    <li>
+                      处理时间：<span ng-bind="i.handleTime"></span>
+                    </li>
+                    <li>
+                      流出时间：<span ng-bind="i.submitTime"></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<ul class="ul-big nodeStatus-4 mt20">
+          <li class="one">已支付</li>
+          <li class="no-bg">理算书号：<span ng-bind="flowTreeList.compensateNo"></span></li>
+          <li class="no-bg">被保险人：<span ng-bind="flowTreeList.insuredName"></span></li>
+          <li class="no-bg">该计算书已支付赔款总额：<span ng-bind="flowTreeList.payReffee"></span></li>
+          <li class="no-bg">最后支付日期：<span ng-bind="flowTreeList.payRefdate"></span></li>
+        </ul>-->
+      </div>
+
+    </div>
+    <!--<div class="process-right fr">-->
+    <!--<h2>节点标题颜色说明</h2>-->
+    <!--<ul>-->
+    <!--&lt;!&ndash;<li><i class="i-yellow"></i><span>未处理</span></li>&ndash;&gt;-->
+    <!--<li><i class="untreated"></i><span>未处理</span></li>-->
+    <!--<li><i class="processing"></i><span>正在处理</span></li>-->
+    <!--<li><i class="retroversion"></i><span>回退处理</span></li>-->
+    <!--<li><i class="handled"></i><span>已处理</span></li>-->
+    <!--<li><i class="receded"></i><span>已回退</span></li>-->
+    <!--<li><i class="revoked"></i><span>已撤销</span></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+  </div>
+</div>
+<div class="queryCriteria mt20">
+      <span class="queryCriteria_title" style="text-align: center">
+        <label>工作流流程图</label>
+      </span>
+  <div class="workflow">
+    <table>
+      <thead>
+      <tr>
+        <th>节点号</th>
+        <th>节点名称</th>
+        <th>业务号</th>
+        <th>处理人员</th>
+        <th>流入时间</th>
+        <th>处理时间</th>
+        <th>流出时间</th>
+        <th>当前状态</th>
+      </tr>
+      </thead>
+      <tbody ng-repeat="item in treeList">
+      <tr ng-repeat="i in item">
+        <td ng-bind="i.nodeNo"></td>
+        <td ng-bind="i.nodeName"></td>
+        <td ng-bind="i.businessNo"></td>
+        <td ng-bind="i.handlerName"></td>
+        <td ng-bind="i.flowInTime"></td>
+        <td ng-bind="i.handleTime"></td>
+        <td ng-bind="i.submitTime"></td>
+        <td ng-bind="i.nodeStatusName"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="btn_tr clearfix mt20">
+  <span ng-show="!flowseeflag"   ng-click="goBack()">返回</span>
+  <span ng-show="flowseeflag"  ng-click="goBack1()">返回</span>
+</div>
+</div>
+<!--查看留言弹层-->
+<div class="orderlayerBox" ng-show="queryPrpLMessage">
+  <div class="mask zIndex"></div>
+  <div class="tip_success_info printLayer orderIntLayer1" style="width: 60%;margin-top: 4%">
+    <div class="remove_header">
+      <span>查看留言</span>
+      <i class="icon iconfont" ng-click="queryPrpLMessage=!queryPrpLMessage;">&#xe632;</i>
+    </div>
+
+    <table class="regional-table" width="50%">
+      <thead>
+      <tr class="tr_top">
+        <td class="w9">序号</td>
+        <td class="w14_28">时间</td>
+        <td class="w19">节点类型</td>
+        <td class="w14_28">留言人</td>
+        <td>记录信息</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="tr_content" ng-repeat="result in prpLMessageList">
+        <td ng-bind="$index+1"></td>
+        <td ng-bind="result.inputDate"></td>
+        <td ng-bind="result.nodeType"></td>
+        <td ng-bind="result.operatorName"/></td>
+        <td ng-bind="result.context"/> </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

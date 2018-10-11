@@ -1,0 +1,29 @@
+<!--删除批改-->
+<div class="mask"></div>
+<div class="mask_remove">
+    <ng-form novalidate="novalidate" name="deleteEndorseForm" >
+        <ul>
+            <li class="remove_header">
+                <span>删除批改</span>
+                <a href="javascript:void(0)" ng-click="surrendDeleteClose()"><i></i></a>
+            </li>
+            <li class="remove_content1">
+                <span class="fl"><em>*</em>删除原因：</span>
+                <div class="fl ui-select select_wid">
+                    <code-type required class="seletc_bor" base-code="EndorseDelRes" ng-model='endorseUpdateConditionDto.delReasonCode' ng-disabled="false" is-fuzzy="false"></code-type>
+                </div>
+            </li>
+            <li class="remove_content2">
+                <span class="fl">说明信息：</span>
+                <input type="text" ng-if="!delReasonFlag" required class="fl" maxlength="200" ng-model="endorseUpdateConditionDto.delReasonDesc"/>
+                <input type="text" ng-if="delReasonFlag"  class="fl" maxlength="200" ng-model="endorseUpdateConditionDto.delReasonDesc"/>
+            </li>
+            <li class="remove_button">
+                <div>
+                    <a href="javascript:void(0)" class="button_sure" ng-click="surrendDeleteConfirm()">确认</a>
+                    <a href="javascript:void(0)" class="button_cancel" ng-click="surrendDeleteClose()">取消</a>
+                </div>
+            </li>
+        </ul>
+    </ng-form>
+</div>

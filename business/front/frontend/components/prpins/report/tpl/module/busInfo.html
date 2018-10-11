@@ -1,0 +1,49 @@
+<div class="index_tit"><h6>业务相关信息</h6></div>
+<ul class="list_ul list_ul1">
+    <li><em>*</em><span>业务来源：</span></li>
+    <li>
+        <input type="text" ng-model="policyDto.prpCmainDto.businessNature" class="hide">
+        <span class="fl"  ng-bind="policyDto.prpCmainDto.businessNatureName" ></span></li>
+
+    <li><em>*</em><span>出单省级机构：</span></li>
+    <li><span class="fl" ng-bind="policyDto.prpCmainDto.comCodeName"></span></li>
+
+    <li><em>*</em><span>出单分支机构代码：</span></li>
+    <li><span class="fl" ng-bind="policyDto.prpCmainDto.cityCode"></span></li>
+
+    <li><span>业务归属机构代码：</span></li>
+    <li><span class="fl" ng-bind="policyDto.prpCmainDto.makeCom"></span></li>
+
+    <li><span>渠道人员代码：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCmainDto.handlerCode" class="fl">
+    </li>
+
+    <li><span>渠道人员名称：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCmainDto.handlerName" class="fl">
+    </li>
+    <li><span>协议代码：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCmainDto.contractNo" class="fl">
+    </li>
+    <li></li>
+    <li></li>
+
+    <li><em>*</em><span>归属业务员代码：</span></li>
+    <li><span class="fl" required ng-bind="policyDto.prpCmainDto.handler1Code"   ></span></li>
+
+    <li><em>*</em><span>归属业务员姓名：</span></li>
+    <li>
+        <input type="text" required readonly ng-model="policyDto.prpCmainDto.handler1Name" class="fl">
+    </li>
+
+    <li><em>*</em><span>录单人员代码：</span></li>
+    <li><span class="fl" required  ng-bind="policyDto.prpCmainDto.operatorCode"></span></li>
+
+    <li><em>*</em><span>录单人员姓名：</span></li>
+    <li>
+        <input type="text" required readonly ng-model="policyDto.prpCmainDto.operatorName" class="fl">
+    </li>
+
+</ul>

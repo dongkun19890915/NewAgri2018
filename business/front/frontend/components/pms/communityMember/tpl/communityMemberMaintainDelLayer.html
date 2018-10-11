@@ -1,0 +1,21 @@
+<!--信息提示--删除-->
+<div ng-hide="communityMemberMaintainDelLayer">
+    <div class="mask">
+    </div>
+    <div class="tip_success_info">
+        <div class="remove_header">
+            <span>信息提示</span>
+            <a href="javascript:void(0)"><i ng-click="deleteFalse()"></i></a>
+        </div>
+        <div class="info_container">
+            <i class="tip_2"></i>
+            <span>您确定删除吗？</span>
+        </div>
+        <li class="remove_button">
+            <div>
+                <button class="button_sure" ng-click="deleteSure()">确 认</button>
+                <button class="button_cancel" ng-click="deleteFalse()">取 消</button>
+            </div>
+        </li>
+    </div>
+</div>

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>新一代农险业务系统</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" media="screen" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/ico.png" media="screen" />
+	<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="js/jquery.json-2.4.js"></script>
+	<script type="text/javascript" src="js/jquery.form.js"></script>
+	<script type="text/javascript" src="js/jquery.keypad/jquery.plugin.js"></script>
+	<script type="text/javascript" src="js/jquery.keypad/jquery.keypad.js"></script>
+	<script type="text/javascript" src="js/jquery.mloading.js"></script>
+	<script type="text/javascript" src="js/urlUtil.js"></script>
+	<link href="js/jquery.keypad/jquery.keypad.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery.mloading.css" rel="stylesheet" />
+	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	<link href="css/serect.css" rel="stylesheet" type="text/css" />
+	<style>
+		::-ms-clear, ::-ms-reveal{display: none;}
+	</style>
+
+</head>
+<body>
+
+<div class="main">
+	<div class="section">
+
+		<div id="loginBox" class="login-box">
+			<!--div class=" index_top1 ">
+                <div class="row">
+                    <div class="logo fl">
+                        <img class = "img1" src="images/logo-nx.jpg" alt="" />
+                    </div>
+                </div>
+            </div-->
+			<div class="login-left">
+				<p class="p1">新一代农险业务系统</p>
+				<p class="p2">· 诚信&nbsp;· 专业&nbsp;· 协作&nbsp;· 创新</p>
+			</div>
+			<div class="login-right">
+
+				<div class="login-righta">
+					<div class="login-top">账号登录</div>
+					<div class="err_tip hide">
+						<em>×</em><span></span>
+					</div>
+					<!--<form>-->
+						<div class="login-con">
+							<i class="iconfont i-login">&#xe635;</i>
+							<input type="text" id="userCode" name="userCode" placeholder="请输入用户名" />
+							<div class="clear"></div>
+						</div>
+						<div class="login-con" style="position: relative;">
+							<i class="iconfont i-login">&#xe608;</i>
+							<input type="password" id="passWord" name="passWord"  placeholder="请输入密码" />
+							<div class="clear"></div>
+							<a href="javascript:void(0);" id="trigerKeypad" style="position: absolute;top:13px;right:10px;">
+								<img src="images/keypad.png" style="width:31px;height:15px;"/>
+							</a>
+						</div>
+						<div class="login-btn">
+							<input type="button" id="submit" value="登录" />
+
+						</div>
+					<!--</form>-->
+				</div>
+			</div>
+		</div>
+		<div class="footer1">
+			<p class="copy">国元农业保险股份有限公司 版权所有</p>
+		</div>
+	</div>
+
+
+</div>
+
+<!--div class="main login_main">
+    <div class="container-fluid index_top login_top">
+        <div class="row">
+            <div class="logo fl">
+                <img src="images/logo.png" alt="" /><span>Spring Cloud 版本</span>
+
+            </div>
+        </div>
+    </div>
+    <form id="loginForm">
+        <div class="login">
+            <img src="images/login_bg.jpg" class="login_img"/>
+            <div class="login_con">
+                <div class="login_con1">
+                    <div class="login_cen">
+                        <h3>欢迎登</h3>
+                        <div class="login_load hide">
+                        </div>
+                        <div class="login_container">
+                        <div class="err_tip hide">
+                            <em>×</em><span></span>
+                        </div>
+                        <ul class="login_ul">
+                            <li><span>账号</span>
+                            <input type="text" id="userCode"
+                                name="userCode" placeholder="请输入您的账号" /></li>
+                            <li><span>密码</span>
+                            <input type="password"  id="passWord"
+                                name="passWord" placeholder="请输入您的密码" /></li>
+                            <li class="li_hei" id="forgot">
+                                <em>忘记密码？</em></li>
+                        </ul>
+                        <div class="login_btn" id="submit">登 录</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        <div class="mask hide">
+</div>
+<div class="email_post hide">
+    <ul>
+        <li class="remove_header">
+            <span>找回密码</span>
+            <a  class="button_exit" href="javascript:void(0)"><i></i></a>
+        </li>
+        <div class="err_tip hide">
+          <em>×</em><span></span>
+        </div>
+        <li class="remove_content2">
+            <span class="fl">登陆账号：</span><input type="text" class="fl" id="userCode1"/>
+        </li>
+        <li class="remove_button">
+            <div>
+                <button class="button_sure" id="sure" >确 认</button>
+                <button class="button_cancel">取 消</button>
+            </div>
+        </li>
+    </ul>
+</div>
+</div-->
+
+<input type="hidden" id="rootPath" th:value="${rootPath}"/>
+<input type="hidden" id="resourcePath" th:value="${resourcePath}"/>
+<input type="hidden" id="returnURL" th:value="${ReturnUrl}"/>
+<input type="hidden" id="logoutPath" th:value="${logoutPath}"/>
+<input type="hidden" id="authPath" th:value="${authPath}"/>
+<input type="hidden" id="statusPath" th:value="${statusPath}"/>
+<input type="hidden" id="referer" th:value="${referer}"/>
+</body>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript">
+    //解决 IE8 不支持console
+    window.console = window.console || (function () {
+        var c = {}; c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile
+            = c.clear = c.exception = c.trace = c.assert = function () { };
+        return c;
+    })();
+</script>
+</html>

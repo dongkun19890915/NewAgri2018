@@ -1,0 +1,1435 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔理算任务编辑页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/04
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<!--内容-->
+<div class="main">
+    <div class="section" >
+        <div class="content_div content1-div">
+            <div class='damage clearfix'>
+                <span class='fl damage_span' ng-click="showCompensateComm()">理赔沟通</span>
+                <span class='fl damage_span' ng-click="showElectronicDocu()">电子单证</span>
+                <span class='fl damage_span' ng-click="showSurveyReport()">调查报告</span>
+            </div>
+            <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>赔款计算书</label>
+                </span>
+                <div class="condition_table">
+                    <ul class="clearfix half-ul">
+                        <li class="condition_td fl half-li">
+                            <label>险种名称</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.riskName" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>计算书号</label>
+                            <div class="half-div">
+                                <input type="text"  maxlength="23" ng-model="queryDto.compensateNo" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>保单号码</label>
+                            <div class="half-div">
+                                <input type="text" style="width: 65%" ng-attr-title="{{queryDto.policyNo}}"  class="danger_short " maxlength="19" ng-model="queryDto.policyNo" value='' disabled="disabled"/>
+                                <span class='fl danger_btn' ng-click="showRelateInfo()">关联</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>立案号</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.claimNo" maxlength="19" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>被保险人名称</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.insuredName" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>投保人名称</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.appliName"  disabled="disabled" />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>被保险人风险等级</label>
+                            <div class="half-div">
+                                <input type="text"  ng-model="queryDto.prpLCompensateDtoExt.insuredRiskLevel" disabled="disabled" />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>投保人风险等级</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.appliRiskLevel" disabled="disabled" />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>保险期间</label>
+                            <!--后台返回无此字段；接收后自行拼接-->
+                            <div class="half-div">
+
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.insuredPeriod" disabled="disabled" />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>币别</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.currencyCodeAndName" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>保险金额</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.sumAmount" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>受损标的</label>
+                            <div class="half-div">
+                                <input type="text" ng-disabled="true" ng-model="queryDto.prpLCompensateDtoExt.lossCode" disabled="disabled"/>
+                                <input type="text" ng-show="false" ng-model="queryDto.prpLCompensateDtoExt.lossName" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>出险时间</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.damageDate" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>出险地点</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.damageAddress" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>出险原因</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.damageName" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>已出险次数</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.perilCount" class="danger_short " disabled/>
+                                <span class='fl danger_btn' ng-click="openPerilCount()">查看</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>赔付次数</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.times" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>有效保额</label>
+                            <div class="half-div">
+                                <input type="text"  ng-model="queryDto.validAmount" disabled="disabled"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>是否涉诉</label>
+                            <div class="half-div">
+                                <!--<radio ng-model="queryDto.prpLCompensateDtoExt.lawsuitFlag" base-code="remark_flag"></radio>-->
+                                <code-type base-code="remark_flag" ng-disabled="!checkFlag" ng-model="queryDto.prpLCompensateDtoExt.lawsuitFlag"></code-type>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>是否自动结案</label>
+                            <div class="half-div">
+                                <!--<radio ng-model="queryDto.prpLCompensateDtoExt.finallyFlag" base-code="remark_flag"></radio>-->
+                                <code-type base-code="remark_flag" ng-disabled="!checkFlag" ng-model="queryDto.prpLCompensateDtoExt.finallyFlag"></code-type>
+                            </div>
+                        </li>
+                        <!--<li class="condition_td fl half-li">
+                            <label>是否理赔公示</label>
+                            <div class="half-div">
+                                &lt;!&ndash;<radio ng-model="queryDto.claimNotification" base-code="remark_flag"></radio>&ndash;&gt;
+                                <code-type base-code="remark_flag" ng-disabled="!checkFlag" ng-model="queryDto.prpLCompensateDtoExt.claimNotification"></code-type>
+                            </div>
+                        </li>-->
+                        <!--<li class="condition_td fl half-li">
+                            <label>是否无公害化处理</label>
+                            <div class="half-div">
+                                &lt;!&ndash;<radio ng-model="queryDto.inncentTreatment" base-code="remark_flag"></radio>&ndash;&gt;
+                                <code-type base-code="remark_flag" ng-disabled="!checkFlag" ng-model="queryDto.prpLCompensateDtoExt.inncentTreatment"></code-type>
+                            </div>
+                        </li>-->
+                        <li class="condition_td fl half-li">
+                            <label>零赔付原因</label>
+                            <div class="half-div">
+                                <!--<select name="" >-->
+                                <!--<option></option>-->
+                                <!--</select>-->
+                                <code-type base-code="zeroLoss" ng-disabled="!checkFlag" ng-model="queryDto.prpLCompensateDtoExt.zeroLossType" ></code-type>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="mriskSwitch&&queryDto.riskCode!='3149'">
+                            <label><i class='i-col'>
+                            </i>生长期：</label>
+                            <div class="half-div">
+                                <!--<select style="height: 30px;color: #000000;" ng-model="queryDto.prpLCompensateDtoExt.growthPeriod" ng-disabled="!checkFlag" ng-change="updateGrowthPeriod(growthPeriod)">
+                                    <option style="color: #000000;" value="" disabled selected>请选择</option>
+                                    <option style="color: #000000;" value="01">苗期</option>
+                                    <option style="color: #000000;" value="02">拔节期</option>
+                                    <option style="color: #000000;" value="03">抽穗扬花期</option>
+                                    <option style="color: #000000;" value="04">成熟期</option>
+                                </select>-->
+                                <ui-select  ng-model="queryDto.prpLCompensateDtoExt.growthPeriod" ng-change="updateNeedTime(needTime)" ng-disabled="!checkFlag" >
+                                    <ui-select-match  allow-clear placeholder="查询或选择...">
+                                        {{$select.selected.growthName}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="code.growthCode as code in codeListData.GrowthList | filter: $select.search">
+                                        <span ng-bind="code.growthName"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label><i class='i-col'>*</i>赔付数量</label>
+                            <div class="half-div">
+                                <input  type="text" class="danger_short" ng-disabled="!checkFlag"
+                                        ng-model="queryDto.prpLCompensateDtoExt.lossesNumber"
+                                        ng-pattern="regData.integer" warn-text="{'ErrPattern':'赔付数量只能为正整数，请修改！',itemName:'赔付数量'}"
+                                />
+                                <div class="select_arrow"><i class="caretSelf"></i></div>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='H'||queryDto.riskCode==='3224'||queryDto.riskCode==='3237'" ng-disabled="!mriskSwitch">
+                                    <option>亩</option>
+                                </select>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='I'&&queryDto.riskCode!='3224'&&queryDto.riskCode!='3237'" ng-disabled="!mriskSwitch">
+                                    <option>头</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="!mriskSwitch">
+                            <label><i class='i-col'>*</i>扑杀数量</label>
+                            <div class="half-div">
+                                <input  type="text" class="danger_short"
+                                        ng-model="queryDto.prpLCompensateDtoExt.killQuantity"
+                                />
+                                <div class="select_arrow"><i class="caretSelf"></i></div>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='H'||queryDto.riskCode==='3224'||queryDto.risckCode==='3237'" ng-disabled="!mriskSwitch">
+                                    <option>亩</option>
+                                </select>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='I'&&queryDto.riskCode!='3224'&&queryDto.riskCode!='3237'" ng-disabled="!mriskSwitch">
+                                    <option>头</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="!mriskSwitch">
+                            <label><i class='i-col'>*</i>死亡数量</label>
+                            <div class="half-div">
+                                <input type="text"   class="danger_short"
+                                       ng-model="queryDto.prpLCompensateDtoExt.deathQuantity"
+                                />
+                                <div class="select_arrow"><i class="caretSelf"></i></div>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='H'||queryDto.riskCode==='3224'||queryDto.riskCode==='3237'" ng-disabled="!mriskSwitch">
+                                    <option>亩</option>
+                                </select>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='I'&&queryDto.riskCode!='3224'&&queryDto.riskCode!='3237'" ng-disabled="!mriskSwitch">
+                                    <option>头</option>
+                                </select>
+                            </div>
+                        </li>
+                    <!--种植险-->
+                    <!--<ul class="clearfix half-ul" ng-if="mriskSwitch">-->
+                        <li class="condition_td fl half-li" ng-if="mriskSwitch">
+                            <label><i class='i-col'>*</i>受益户次</label>
+                            <div class="half-div">
+                                <input  type="text" ng-model="queryDto.prpLCompensateDtoExt.damageInsured" ng-disabled="!checkFlag" />
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="mriskSwitch">
+                            <label><i class='i-col'>*</i>受灾面积</label>
+                            <div class="half-div">
+                                <input type="text" class="danger_short"
+                                       ng-model="queryDto.prpLCompensateDtoExt.disasterArea"
+                                       ng-disabled="!checkFlag"
+                                />
+                                <div class="select_arrow"><i class="caretSelf"></i></div>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='H'||queryDto.riskCode==='3224'||queryDto.riskCode==='3237'" ng-disabled="!mriskSwitch">
+                                    <option>亩</option>
+                                </select>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='I'&&queryDto.riskCode!='3224'&&queryDto.riskCode!='3237'" ng-disabled="!mriskSwitch">
+                                    <option>头</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="mriskSwitch">
+                            <label><i class='i-col'>*</i>成灾面积</label>
+                            <div class="half-div">
+                                <input  type="text" class="danger_short" ng-disabled="!checkFlag"
+                                        ng-model="queryDto.prpLCompensateDtoExt.affectedArea"/>
+                                <div class="select_arrow"><i class="caretSelf"></i></div>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='H'||queryDto.riskCode==='3224'||queryDto.riskCode==='3237'" ng-disabled="!mriskSwitch">
+                                    <option>亩</option>
+                                </select>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='I'&&queryDto.riskCode!='3224'&&queryDto.riskCode!='3237'" ng-disabled="!mriskSwitch">
+                                    <option>头</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="mriskSwitch">
+                            <label><i class='i-col'>*</i>绝产面积</label>
+                            <div class="half-div">
+                                <input  type="text" class="danger_short" ng-disabled="!checkFlag"
+                                        ng-model="queryDto.prpLCompensateDtoExt.noProductionArea"
+                                />
+                                <div class="select_arrow"><i class="caretSelf"></i></div>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='H'||queryDto.riskCode==='3224'||queryDto.riskCode==='3237'" ng-disabled="!mriskSwitch">
+                                    <option>亩</option>
+                                </select>
+                                <select class="fl danger_select" ng-disabled="!checkFlag" ng-if="queryDto.riskType==='I'&&queryDto.riskCode!='3224'&&queryDto.riskCode!='3237'" ng-disabled="!mriskSwitch">
+                                    <option>头</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="queryDto.riskCode==='3224'||queryDto.risckCode==='3237'" ng-disabled="!checkFlag">
+                            <label><i class='i-col'>*</i>出险方式：</label>
+                            <div class="half-div">
+                                <select style="height: 30px;color: #000000;" ng-model="queryDto.prpLCompensateDtoExt.damageWay" ng-change="updateDamageDegree(queryDto.prpLCompensateDtoExt.damageWay)">
+                                    <option style="color: #000000;" value="" disabled selected>请选择</option>
+                                    <option style="color: #000000;" value="kt">溃塘</option>
+                                    <option style="color: #000000;" value="mt">漫塘</option>
+                                    <option style="color: #000000;" value="ft">泛塘</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="queryDto.riskCode==='3224'||queryDto.risckCode==='3237'"  ng-disabled="!checkFlag">
+                            <label ng-if="damageDegreeFlag=='kt'"><i class='i-col'>*</i>溃塘程度：</label>
+                            <label ng-if="damageDegreeFlag=='mt'"><i class='i-col'>*</i>漫塘时间：</label>
+                            <div class="half-div">
+                                <select style="height: 30px;color: #000000;" ng-model="queryDto.prpLCompensateDtoExt.damageDegree" ng-if="damageDegreeFlag=='kt'">
+                                    <option style="color: #000000;" value="" disabled selected>请选择</option>
+                                    <option style="color: #000000;" value="0.2">0.5%＜I≤1%</option>
+                                    <option style="color: #000000;" value="0.4">1%＜I≤5%</option>
+                                    <option style="color: #000000;" value="0.6">5%＜I</option>
+                                </select>
+                                <select style="height: 30px;color: #000000;" ng-model="queryDto.prpLCompensateDtoExt.damageDegree" ng-if="damageDegreeFlag=='mt'">
+                                    <option style="color: #000000;" value="" disabled selected>请选择</option>
+                                    <option style="color: #000000;" value="0.2">T≤24小时</option>
+                                    <option style="color: #000000;" value="0.4">24小时＜T≤72小时</option>
+                                    <option style="color: #000000;" value="0.6">72小时＜T</option>
+                                </select>
+                            </div>
+                        </li>
+                    <!--</ul>-->
+                    </ul>
+                    <!--养殖险-->
+                    <ul class="clearfix half-ul" ng-if="!mriskSwitch">
+                        <li class="condition_td fl half-li">
+                            <label><i class='i-col'>*</i>受益户次</label>
+                            <div class="half-div">
+                                <input  type="text" ng-model="queryDto.prpLCompensateDtoExt.damageInsured" />
+                            </div>
+                        </li>
+                        <!--<li class="condition_td fl half-li">-->
+                        <!--<label><i class='i-col'>*</i>绝产面积</label>-->
+                        <!--<div class="half-div">-->
+                        <!--<input  type="text" ng-model="queryDto.NoProductionArea" />-->
+                        <!--</div>-->
+                        <!--</li>-->
+                    </ul>
+                    <ul  class="clearfix half-ul">
+                        <li class="condition_td fl half-li" ng-if="queryDto.coinsFlag!=0">
+                            <label>共保赔付类型</label>
+                            <div class="half-div">
+                                <select ng-model="queryDto.prpLCompensateDtoExt.coinsPaidLossType">
+                                    <option value="1">按赔案100%赔付</option>
+                                    <option value="2">按我方共保份额赔付</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li" ng-if="queryDto.coinsFlag!=0">
+                            <label>共保协议号</label>
+                            <div class="half-div">
+                                <input  type="text" ng-model="queryDto.coinsTreatyNo"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="queryCriteria mt20">
+                <span class="queryCriteria_title">
+                    <label>赔付信息</label>
+                    <span class="btn fr condition_label" ng-disabled="!checkFlag" ng-click="down()">清单下载</span>
+                    <span class="btn fr condition_label" ng-disabled="!checkFlag" ng-click="importPayList()">导入支付清单</span>
+                    <span class="btn fr condition_label" ng-disabled="!checkFlag" ng-click="importList()">导入理赔清单</span>
+                    <span class="btn fr condition_label" ng-disabled="!checkFlag" ng-click="relevanceLists()">关联清单</span>
+                </span>
+                <div class="condition-table mt20">
+                    总赔付金额：<span ng-bind="sumAmount"></span>&nbsp;元
+                </div>
+            </div>
+            <div class="queryCriteria mt20">
+                <span class="queryCriteria_title">
+                    <label>赔付费用</label>
+                </span>
+                <table class="compensate-table">
+                    <tr class="tr_top">
+                        <td class="w90" ng-show="false">险别代码</td>
+                        <td class="w90">险别名称</td>
+                        <td class="w90" ng-show="false">费用代码</td>
+                        <td class="w90">费用名称</td>
+                        <td>待查勘机构</td>
+                        <td class="w90">支付类型</td>
+                        <td>赔款接受人</td>
+                        <td class="w18td w14_28">币别</td>
+                        <td>费用金额</td>
+                        <td>预计费用</td>
+                        <td>计入赔款金额</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr class="tr_content" ng-repeat="prpLChargeDtoExt in queryDto.prpLChargeDtoExtList">
+                        <td ng-show="false">
+                            <select ng-model="prpLChargeDtoExt.kindCode" ng-attr-title="{{prpLChargeDtoExt.kindCode}}" ng-disabled="!checkFlag" ng-change="updateRelevanced('kindName',$index,prpLChargeDtoExt.kindCode)">
+                                <option value="" selected disabled>请选择</option>
+                                <option ng-repeat="kind in kindCodeList" value="{{kind.kindCode}}">{{kind.kindCode}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select ng-model="prpLChargeDtoExt.kindName"   ng-attr-title="{{prpLChargeDtoExt.kindName}}" ng-disabled="!checkFlag" ng-change="updateRelevanced('kindCode',$index,prpLChargeDtoExt.kindName)">
+                                <option value="" selected disabled>请选择</option>
+                                <option ng-show="1!=1"  value="{{prpLChargeDtoExt.kindName}}" selected disabled>{{prpLChargeDtoExt.kindName}}</option>
+                                <option ng-repeat="kind in kindCodeList" value="{{kind.kindName}}">{{kind.kindName}}</option>
+                            </select>
+                        </td>
+                        <td ng-show="false">
+                            <!--<select name="" ng-model="prpLChargeDtoExt.chargeCode"></select>-->
+                            <select ng-model="prpLChargeDtoExt.chargeCode" ng-attr-title="{{prpLChargeDtoExt.chargeCode}}"  ng-disabled="!checkFlag" ng-change="updateRelevanced('codecname',$index,prpLChargeDtoExt.chargeCode)">
+                                <option value="" selected disabled>请选择</option>
+                                <option ng-repeat="charge in chargeList" value="{{charge.codecode}}">{{charge.codecode}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--<select name="" ng-model="prpLChargeDtoExt.chargeName"></select>-->
+                            <select  ng-model="prpLChargeDtoExt.chargeName"  ng-attr-title="{{prpLChargeDtoExt.chargeName}}" ng-disabled="!checkFlag" ng-change="updateRelevanced('codecode',$index,prpLChargeDtoExt.chargeName)">
+                                <option value="" selected disabled>请选择</option>
+                                <option ng-show="1!=1"   value="{{prpLChargeDtoExt.chargeName}}" selected disabled>{{prpLChargeDtoExt.chargeName}}</option>
+                                <option ng-repeat="charge in chargeList" value="{{charge.codecname}}">{{charge.codecname}}</option>
+                            </select>
+                        </td>
+                        <td><input type="text" ng-disabled="!checkFlag" ng-model="prpLChargeDtoExt.checkDeptName"/></td>
+                        <td>
+                            <select ng-model="prpLChargeDtoExt.payObjectType" ng-disabled="!checkFlag">
+                                <option value="" selected disabled>请选择</option>
+                                <option value="A">内部</option>
+                                <option value="B">外部</option>
+                            </select>
+                        </td>
+                        <td><input type="text" ng-model="prpLChargeDtoExt.payObjectName" ng-disabled="!checkFlag"/></td>
+                        <td><code-type  ng-model="prpLChargeDtoExt.currency" ng-init="prpLChargeDtoExt.currency='CNY'" base-code="Currency" ng-disabled="true"></code-type></td>
+                        <td><input  type="text" name="chargeAmount" ng-model="prpLChargeDtoExt.chargeAmount" ng-disabled="!checkFlag" ng-change="ruleVerify('number',prpLChargeDtoExt.chargeAmount,'chargeAmount')"/></td>
+                        <td><input type="text" name="prechargeAmount" ng-model="prpLChargeDtoExt.prechargeAmount" ng-disabled="!checkFlag" ng-change="ruleVerify('number',prpLChargeDtoExt.prechargeAmount,'prechargeAmount')" /></td>
+                        <td><input  type="text" name="sumRealPay" ng-model="prpLChargeDtoExt.sumRealPay" ng-disabled="!checkFlag" ng-change="ruleVerify('number',prpLChargeDtoExt.sumRealPay,'sumRealPay')"/></td>
+                        <td><span class="btn iconfont pointer" ng-disabled="!checkFlag" ng-click="delDtoExt('prpLChargeDtoExtList',$index)">&#xe668;</span></td>
+                    </tr>
+                </table>
+                <p class='add_p bor-bottom'><span class="btn" ng-disabled="!checkFlag"  ng-click="addDtoExt('prpLChargeDtoExtList')">添加</span></p>
+            </div>
+            <div class="queryCriteria mt20">
+                <span class="queryCriteria_title">
+                    <label>赔付汇总信息</label>
+                    <i class="iconfont click_img reduce">&#xe667;</i>
+                    <!--<i class="iconfont click_img plus">&#xe668;</i>-->
+                    <span class="btn fr condition_label" ng-disabled="!checkFlag" ng-click="summarizing()">汇总</span>
+                </span>
+                <ul class="clearfix half-ul mt20">
+                    <li class="condition_td fl half-li">
+                        <label>赔款币种</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLCompensateDtoExt.currencyCodeAndName"  disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>赔款金额</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLCompensateDtoExt.sumDutyPaid" disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>已预付赔款</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLCompensateDtoExt.sumPrePaid" disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>已预付费用</label>
+                        <div class="half-div">
+                            <input type="text"ng-model="queryDto.prpLCompensateDtoExt.sumPreChargeAmount" disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>本次赔付金额</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLCompensateDtoExt.sumThisPaid" disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>其他费用</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLCompensateDtoExt.sumNoDutyFee" disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>赔款合计</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLCompensateDtoExt.sumPaid" disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>操作员</label>
+                        <div class="half-div">
+                            <input type="text"  ng-model="queryDto.prpLCompensateDtoExt.handleCodeAndName"  disabled="disabled" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>操作日期</label>
+                        <div class="half-div">
+                            <input type="text" id="statisticSym" class="date-long-input fl date" ng-model="queryDto.prpLCompensateDtoExt.statisticSym" jedate format="YYYY-MM-DD" ng-disabled="true" />
+                            <!--<input type="text" ng-model="queryDto.prpLCompensateDtoExt.statisticSym"   disabled="disabled" />-->
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li condition_li">
+                        <label>备注</label>
+                        <div class="half-div">
+                            <textarea name="" ng-disabled="!checkFlag" ng-model="queryDto.prpLCompensateDtoExt.remark"  rows="4"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="queryResult pb20">
+                <div class="queryResult_title clearfix">
+                    <span class="fl tit-color font-bold">特别约定</span>
+                </div>
+                <table>
+                    <tr class="tr_top">
+                        <td>序号</td>
+                        <td>特约代码</td>
+                        <td>特约名称</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr class="tr_content" ng-repeat=" result in queryDto.prpCengageDtoList">
+                        <td ng-bind="$index+1"></td>
+                        <td ng-bind="result.clauseCode"></td>
+                        <td ng-bind="result.clauses"></td>
+                        <td><span class='local-sec' ng-click="swichEngageDetil(result)">查看</span></td>
+                    </tr>
+                </table>
+            </div>
+            <!--<div class="content_div content1-div mt20">
+                <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>支付对象</label>
+                </span>
+                    <div class="condition_table">
+                        <table class="condition-table mt20">
+                            <tr class="tr_top tr_content">
+                                <td>序号</td>
+                                <td>支付对象</td>
+                                <td>操作</td>
+                            </tr>
+                            <tr class="tr_content" ng-repeat="prpLsumpayDto in queryDto.prpLsumpayDtoList">
+                                <td><input type="text" disabled="disabled" ng-model="prpLsumpayDto.serialNo"/></td>
+                                <td>
+                                    <div class="condition_table">
+                                        <ul class="clearfix">
+                                            <li class="condition_td fl half-li">
+                                                <label>银行名称:</label>
+                                                <div class="half-div">
+                                                    <ui-select style="width: 68%;" ng-model="prpLsumpayDto.accountBank" ng-change="updateRelevanced('accountCode',$index,$select.selected)" >
+                                                        <ui-select-match   placeholder="查询或选择...">
+                                                            {{$select.selected.codeName}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="code.codeName as code in BankList | filter: $select.search">
+                                                            <span ng-bind="code.codeName"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                    <ui-select style="width: 32%;" ng-model="prpLsumpayDto.accountCode" ng-change="updateRelevanced('accountBank',$index,$select.selected)" >
+                                                        <ui-select-match   placeholder="查询或选择...">
+                                                            {{$select.selected.codeCode}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="code.codeCode as code in BankList | filter: $select.search">
+                                                            <span ng-bind="code.codeCode"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>账户名:</label>
+                                                <div class="half-div">
+                                                    <input type="text"   ng-model="prpLsumpayDto.accountName"/>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>第三方机构ID:</label>
+                                                <div class="half-div">
+                                                    &lt;!&ndash;<input type="text"  ng-model="prpLsumpayDto.taxdentifId"/>&ndash;&gt;
+                                                    <select ng-model="prpLsumpayDto.taxdentifId">
+                                                        <option value="" selected disabled>请选择</option>
+                                                        <option ng-repeat="_taxdentifId in taxdentifIds"
+                                                                value="{{_taxdentifId.id}}_FIELD_SEPARATOR_{{_taxdentifId.comCName}}_FIELD_SEPARATOR_{{_taxdentifId.taxPayAccount}}_FIELD_SEPARATOR_{{_taxdentifId.accountCode}}_FIELD_SEPARATOR_{{_taxdentifId.accountName}}
+                                                                    _FIELD_SEPARATOR_{{_taxdentifId.cantonalCode}}_FIELD_SEPARATOR_{{_taxdentifId.cantonalName}}_FIELD_SEPARATOR_{{_taxdentifId.presidialCode}}_FIELD_SEPARATOR_{{_taxdentifId.presidialName}}_FIELD_SEPARATOR_
+                                                                    {{_taxdentifId.relateBankCOde}}_FIELD_SEPARATOR_{{_taxdentifId.relateBankName}}_FIELD_SEPARATOR_{{_taxdentifId.taxBankName}}_FIELD_SEPARATOR_{{_taxdentifId.accountPropertyFlag}}_FIELD_SEPARATOR_{{_taxdentifId.atsBankCode}}
+                                                                    _FIELD_SEPARATOR{{_taxdentifId.atsAreaCode}}_FIELD_SEPARATOR{{_taxdentifId.cardType}}_FIELD_SEPARATOR{{_taxdentifId.atsBankName}}_FIELD_SEPARATOR{{_taxdentifId.atsAreaName}}"
+                                                        >
+                                                            {{_taxdentifId.id}}-{{_taxdentifId.taxDentifNumber}}-{{_taxdentifId.taxPayName}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label style="width: 100%;text-align: left;">(可根据纳税人识别码模糊查询，只有费用的时候才需要登陆)</label>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>账号:</label>
+                                                <div class="half-div">
+                                                    <input type="text"  ng-model="prpLsumpayDto.accountNo_first" />
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>账号确认(请再次输入账号):</label>
+                                                <div class="half-div">
+                                                    <input type="text"   ng-model="prpLsumpayDto.accountNo" ng-blur="verifyAccount(prpLsumpayDto.accountNo_first,prpLsumpayDto.accountNo,$index)" />
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>账户属性:</label>
+                                                <div class="half-div">
+                                                    <select >
+                                                        <option value="0">对公</option>
+                                                        <option value="1">对私</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>赔款类型:</label>
+                                                <div class="half-div">
+                                                    &lt;!&ndash;<input type="text"   ng-model="prpLsumpayDto.payType"/>&ndash;&gt;
+                                                    <select ng-model="prpLsumpayDto.payType">
+                                                        <option value="01">赔款</option>
+                                                        <option value="02">费用</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>赔款金额:</label>
+                                                <div class="half-div">
+                                                    <input type="text"  ng-model="prpLsumpayDto.sumthisPay"/>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>币别:</label>
+                                                <div class="half-div">
+                                                    <code-type  ng-model="prpLsumpayDto.currency" base-code="Currency"></code-type>
+                                                    &lt;!&ndash;<input type="text"  ng-model="prpLsumpayDto.currency"/>&ndash;&gt;
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>费用代码:</label>
+                                                <div class="half-div">
+                                                    &lt;!&ndash;<input type="text" ng-model="prpLsumpayDto.chargeCode" />&ndash;&gt;
+                                                    <ui-select style="width: 68%;" ng-model="prpLsumpayDto.chargeName" ng-change="updateRelevanced('chargeCode2',$index,$select.selected)" >
+                                                        <ui-select-match   placeholder="查询或选择...">
+                                                            {{$select.selected.codecname}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="code.codecname as code in chargeList | filter: $select.search">
+                                                            <span ng-bind="code.codecname"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                    <ui-select style="width: 32%;" ng-model="prpLsumpayDto.chargeCode" ng-change="updateRelevanced('chargeName2',$index,$select.selected)" >
+                                                        <ui-select-match   placeholder="查询或选择...">
+                                                            {{$select.selected.codecode}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="code.codecode as code in chargeList | filter: $select.search">
+                                                            <span ng-bind="code.codecode"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>卡/折标识:</label>
+                                                <div class="half-div">
+                                                    &lt;!&ndash;<input type="text" ng-model="prpLsumpayDto.cardType" />&ndash;&gt;
+                                                    <select ng-model="prpLsumpayDto.cardType">
+                                                        <option value="1">01-卡</option>
+                                                        <option value="2">02-折</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>省市名称:</label>
+                                                <div class="half-div">
+                                                    <ui-select style="width: 68%;" ng-model="prpLsumpayDto.presidial" ng-change="updateRelevanced('cantonal',$index,$select.selected)" >
+                                                        <ui-select-match   placeholder="查询或选择...">
+                                                            {{$select.selected.codeName}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="code.codeName as code in AreaList | filter: $select.search">
+                                                            <span ng-bind="code.codeName"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                    <ui-select style="width: 32%;" ng-model="prpLsumpayDto.cantonal" ng-change="updateRelevanced('presidial',$index,$select.selected)" >
+                                                        <ui-select-match   placeholder="查询或选择...">
+                                                            {{$select.selected.codeCode}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="code.codeCode as code in AreaList | filter: $select.search">
+                                                            <span ng-bind="code.codeCode"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>结算方式:</label>
+                                                <div class="half-div">
+                                                    &lt;!&ndash;<input type="text"  ng-model="prpLsumpayDto.settlementMode"/>&ndash;&gt;
+                                                    <select ng-model="prpLsumpayDto.settlementMode">
+                                                        <option value="1">01-传统模式转账</option>
+                                                        <option value="2" selected>02-资金平台转账</option>
+                                                        <option value="3">03-传统模式支票</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li class="condition_td fl half-li">
+                                                <label>付款备注信息:</label>
+                                                <div class="half-div">
+                                                    <input type="text" ng-model="prpLsumpayDto.remarkInfo" />
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="iconfont pointer" ng-click="delDtoExt('prpLsumpayDtoList',$index)">&#xe668;</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <p class='add_p bor-bottom'><span  ng-click="addDtoExt('prpLsumpayDtoList')">添加</span></p>
+                    </div>
+                </div>
+            </div>-->
+            <!--种殖险赔付标的信息------------s------->
+            <div class="queryCriteria mt20" ng-if="false">
+                <span class="queryCriteria_title" >
+                    <label>赔付标的信息</label>
+                    <span  ng-if="mriskSwitch&&editType=='ADD'">
+                        <label class="query-label fr" >查看</label>
+                        <label class="query-label fr"  >上传理赔清单</label>
+                        <label class="query-label fr" >关联并下载清单</label>
+                    </span>
+                </span>
+                <ul class="clearfix half-ul mt20">
+                    <li class="condition_td fl half-li">
+                        <label>被保险人</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLLossDtoExtList[0].familyName" />
+                            <!--  <select name="李兰"></select>-->
+                        </div>
+                    </li>
+
+                </ul>
+                <table class="condition-table mt20">
+                    <tr class="tr_top tr_content">
+                        <td>标的序号</td>
+                        <td>承保险别</td>
+                        <td>损失标的</td>
+                        <td>赔付面积</td>
+                        <td>
+                            <span>出险面积</span>
+                            <span>保险金额</span>
+                        </td>
+                        <td>
+                            <span>出险面积</span>
+                            <span>有效保额</span>
+                        </td>
+                        <td>赔付比例%</td>
+                        <td>损失率%</td>
+                        <td>免赔率%</td>
+                        <td>赔偿金额</td>
+                    </tr>
+                    <tr class="tr_content tr-input" ng-repeat="SS in queryDto.SSS">
+                        <!--种植险 或者查看时 禁用-->
+                        <td >1</td>
+                        <td><select  ng-disabled="mriskSwitch||showFlag"></select></td>
+                        <td></td>
+                        <td  ></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <!--种植险 或者查看时 禁用-->
+                    </tr>
+                </table>
+                <h2 class="prompting">赔付金额：单位保额“赔付比例”“定损面积”损失率</h2>
+            </div>
+            <!--种殖险赔付标的信息------------e------->
+
+            <!--养殖险赔付标的信息------------s------->
+            <div class="queryCriteria mt20" ng-if="false">
+                <span class="queryCriteria_title" >
+                    <label>赔付标的信息</label>
+                </span>
+                <ul class="clearfix half-ul mt20">
+                    <li class="condition_td fl half-li">
+                        <label>被保险人</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryDto.prpLLossDtoExtList[0].familyName" />
+                            <!--  <select name="李兰"></select>-->
+                        </div>
+                    </li>
+
+                </ul>
+                <table class="condition-table mt20">
+                    <tr class="tr_top tr_content">
+                        <td>标的序号</td>
+                        <td>承保险别</td>
+                        <td>损失标的</td>
+                        <td>保险金额</td>
+                        <td>保险价值</td>
+                        <td>核定损失</td>
+                        <td>残值</td>
+                        <td>赔付比例%</td>
+                        <td>免赔率%</td>
+                        <td>免赔额</td>
+                        <td>赔偿金额</td>
+                        <!--非查看才有增删操作项-->
+                        <td ng-if="!showFlag"></td>
+                    </tr>
+                    <tr class="tr_content tr-input" ng-repeat=" result in queryDto.prpLLossDtoExtList">
+                        <!--禁用-->
+                        <td><input  type="text" ng-model="result.serialNo" disabled="disabled"/></td>
+                        <!--<td><select  ng-disabled="showFlag"></select></td>
+                        <td>能繁母猪</td>-->
+                        <td><input ng-disabled="showFlag" type="text" ng-model="result.kindName"/></td>
+                        <td><input  type="text" ng-model="result.lossName" disabled="disabled"/></td>
+                        <td><input ng-disabled="showFlag" type="text" ng-model="result.amount"/></td>
+                        <td><input ng-disabled="showFlag" type="text" ng-model="result.itemValue"/></td>
+                        <td><input  ng-disabled="showFlag" type="text" ng-model="result.sumLoss"/></td>
+                        <td><input  ng-disabled="showFlag" type="text" ng-model="result.sumRest"/></td>
+                        <td><input  ng-disabled="showFlag" type="text" ng-model="result.claimRate"/></td>
+                        <td><input  ng-disabled="showFlag" type="text" ng-model="result.deductibleRate"/></td>
+                        <td><input  ng-disabled="showFlag" type="text" ng-model="result.deductible"/></td>
+                        <td><input  ng-disabled="showFlag" type="text" ng-model="result.sumrealPay"/></td>
+                        <!--查看时 禁用-->
+
+                        <!--非查看才有增删操作项-->
+                        <td ng-if="!showFlag"><span class="iconfont pointer" ng-click="delDtoExt('prpLLossDtoExtList',$index)">&#xe668;</span></td>
+                    </tr>
+                </table>
+                <p class="add_p bor-bottom"><span ng-click="addDtoExt('prpLLossDtoExtList')">添加</span></p>
+                <h2 class="prompting">赔付金额：单位保额“赔付比例”“定损面积”损失率</h2>
+            </div>
+            <!--养殖险赔付标的信息------------e------->
+
+            <div class="queryCriteria mt20 pb10" ng-if="false">
+                <span class="queryCriteria_title">
+                    <label>耳标号清单</label>
+                    <label class="fr condition_label">耳标号验证</label>
+                </span>
+                <table class="condition-table mt20">
+                    <tr class="tr_top tr_content">
+                        <td>农户代码</td>
+                        <td>证件号码</td>
+                        <td>姓名</td>
+                        <td>开户行名称</td>
+                        <td>银行账号</td>
+                        <td>耳标号</td>
+                        <td>赔偿金额</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr class="tr_content" ng-repeat=" result in queryDto.prpLCompensateEarDtoList">
+                        <td><input type="text" ng-model="result.fcode" disabled="disabled"/></td>
+                        <td><input type="text" ng-model="result.idCard" /></td>
+                        <td><input type="text" ng-model="result.name" /></td>
+                        <td><input type="text" ng-model="result.bank" /></td>
+                        <td><input type="text" ng-model="result.account" /></td>
+                        <td><input type="text" ng-model="result.earNo" /></td>
+                        <td><input type="text" ng-model="result.estimateLoss" /></td>
+                        <td>
+                            <span class="iconfont pointer" ng-click="delDtoExt('prpLCompensateEarDtoList',$index)">&#xe668;</span>
+                        </td>
+                    </tr>
+                </table>
+                <p class='add_p bor-bottom'><span  ng-click="addDtoExt('prpLCompensateEarDtoList')">添加</span></p>
+            </div>
+            <!--<div class="queryResult pb10">-->
+            <!--<div class="queryResult_title clearfix">-->
+            <!--<span class="fl tit-color font-bold">支付信息</span>-->
+            <!--<label class="fr condition_label" ng-click="openCompensateSettleListPage()">查看支付信息</label>-->
+            <!--<label class="fr condition_label">关联支付信息</label>-->
+            <!--<label class="fr condition_label" ng-click="compenstatePayInfo=!compenstatePayInfo">缮制支付信息</label>-->
+            <!--</div>-->
+            <!--<table class="condition-table">-->
+            <!--<tr class="tr_top tr_content">-->
+            <!--<td>收款人全称</td>-->
+            <!--<td>身份证号码</td>-->
+            <!--<td>联系人电话</td>-->
+            <!--<td>银行名称</td>-->
+            <!--<td></td>-->
+            <!--<td>银行账号</td>-->
+            <!--<td>待支付金额</td>-->
+            <!--<td>操作</td>-->
+            <!--</tr>-->
+            <!--<tr class="tr_content tr-input">-->
+            <!--<td><input type="text"/></td>-->
+            <!--<td><input type="text"/></td>-->
+            <!--<td><input type="text"/></td>-->
+            <!--<td><input type="text"/></td>-->
+            <!--<td><input type="text"/></td>-->
+            <!--<td><input type="text"/></td>-->
+            <!--<td><input type="text"/></td>-->
+            <!--<td><a class="remove-a" href="javascript:void(0)">删除</a></td>-->
+            <!--</tr>-->
+            <!--</table>-->
+            <!--<p class='add_p bor-bottom'>添加</p>-->
+            <!--</div>-->
+            <div class="content_div content1-div mt20">
+                <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>理算报告</label>
+                </span>
+                    <div class="condition_table">
+                        <textarea  ng-disabled="showFlag" class="text-textarea" ng-model="queryDto.prpLLTextDto.context" rows="5"></textarea>
+                </div>
+                </div>
+            </div>
+            <div class="content_div content1-div mt20">
+                <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>赔款计算过程</label>
+                    <span class="btn fr condition_label" ng-disabled="!checkFlag" ng-click="queryClaimBillSummary()">生成赔款计算过程</span>
+                </span>
+                    <div class="condition_table">
+                        <textarea class="text-textarea" ng-model="queryDto.contextPayCalcul" rows="4" disabled="disabled"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="content_div content1-div mt20" ng-if="queryDto.coinsFlag!=0">
+                <div class="queryCriteria">
+                    <span class="queryCriteria_title">
+                        <label>共保信息</label>
+                        <span class="fr condition_label" ng-click="coinsSummarizing()">汇总</span>
+                    </span>
+                    <ul class="clearfix half-ul mt20">
+                        <li class="condition_td fl half-li">
+                            <label>我方赔款金额</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.coinsSelfSumPaid"  disabled
+                                       warn-text="{'ErrPattern':'我方赔款金额只能输入数字!',itemName:'我方赔款金额'}"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>共保总赔付金额</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.coinsSumPaid" disabled
+                                       warn-text="{'ErrPattern':'共保总赔付金额只能输入数字!',itemName:'共保总赔付金额'}"/>
+                            </div>
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>共保垫付金额</label>
+                            <div class="half-div">
+                                <input type="text" ng-model="queryDto.prpLCompensateDtoExt.coinsOtherPaid" disabled
+                                       warn-text="{'ErrPattern':'共保垫付金额只能输入数字!',itemName:'共保垫付金额'}"/>
+                            </div>
+                        </li>
+                    </ul>
+                    <table class="compensate-table">
+                        <tr class="tr_top">
+                            <td class="w90">序号</td>
+                            <td class="w90">共保人代码</td>
+                            <td class="w90">共保人名称</td>
+                            <td class="w90">共保比例</td>
+                            <td class="w90">共保赔付金额</td>
+                        </tr>
+                        <tr class="tr_content" ng-repeat="ccoinsDto in queryDto.ccoinsDtoList">
+                            <td>
+                                <input type="text" ng-model="ccoinsDto.serialNo" disabled/>
+                            </td>
+                            <td>
+                                <input type="text"  ng-model="ccoinsDto.coinsCode" disabled/>
+                            </td>
+                            <td>
+                                <input type="text"  ng-model="ccoinsDto.coinsName" disabled/>
+                            </td>
+                            <td>
+                                <input type="text"  ng-model="ccoinsDto.coinsRate" disabled/>
+                            </td>
+                            <td>
+                                <input type="text"  ng-model="ccoinsDto.coinsAmount" ng-pattern="regData.positiveNumber"
+                                       warn-text="{'ErrPattern':'共保垫付金额只能输入数字!',itemName:'共保垫付金额'}" disabled/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="content_div content1-div mt20">
+                <div class="queryCriteria">
+                    <span class="queryCriteria_title">
+                        <label>付款说明</label>
+                    </span>
+                    <div class="condition_table">
+                        <textarea class="text-textarea" ng-disabled="!checkFlag" ng-disabled="showFlag" ng-model="queryDto.contextPayText" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn_tr clearfix mt20" ng-show="!checkFlag">
+                <span ng-click="cancel1()">返 回</span>
+            </div>
+            <div class="btn_tr clearfix mt20" ng-show="checkFlag">
+                <span class="btn"  ng-click="hold('sav')">暂 存</span>
+                <span class="btn"  ng-disabled="flag" ng-click="hold('sub')">提 交</span>
+                <span class="btn" ng-click="showTraceInfo()">审核意见</span>
+                <span class="btn" ng-click="giveup()">放弃任务</span>
+                <span class="btn" ng-click="cancel()">取 消</span>
+            </div>
+
+            <!--关联清单弹框-->
+            <div ng-if="showRelative" style="position: fixed;z-index: 1000;left:40%;top:30%;">
+                <div class="mask zIndex"></div>
+                <div class="tip_success_info printLayer orderIntLayer">
+                    <div class="modal-header">
+                        <h1 class="font-large">关联清单</h1>
+                        <i class="icon iconfont modal-header-close" ng-click="closeModal()">&#xe632;</i>
+                    </div>
+                    <div class="modal-body">
+                        <div class="queryResult">
+                            <div class="queryResult_title clearfix">
+                                <span class="fl tit-color font-bold">定损清单列表</span>
+                            </div>
+                            <div style="max-height:320px;overflow-y: auto;">
+                                <table>
+                                    <tr class="tr_top">
+                                        <td>选择</td>
+                                        <td>序列号</td>
+                                        <td>保单号</td>
+                                        <td>报案号</td>
+                                        <td>定损清单号</td>
+                                        <td>清单来源</td>
+                                        <td>绘制日期</td>
+                                        <td>绘制人</td>
+                                    </tr>
+                                    <tr class="tr_content" ng-repeat="info in RelevanceList">
+                                        <td><input type="radio" ng-model="info.checkBoxFlag" ng-click="sendCheckFlag(info)" name="checkBoxFlag" value="1" ng-checked="info.checkBoxFlag==1"/></td>
+                                        <td ng-bind="info.serialNo"></td>
+                                        <td ng-bind="info.policyNo"></td>
+                                        <td ng-bind="info.bizNo"></td>
+                                        <td ng-bind="info.lossListCode"></td>
+                                        <td ng-bind="info.origin=='0'?'金禾':'手动'"></td>
+                                        <td ng-bind="info.listCreateTime"></td>
+                                        <td ng-bind="info.opName"></td>
+                                        <td ng-model="queryDto.registNo" ng-if="false"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button class="btn-success" ng-click="goRelevanceList()">确定</button>
+                        <button class="btn-success" ng-click="downloadlist()">下载</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关联弹层-->
+    <!--<div ui-view="connect"></div>-->
+    <div class="orderlayerBox" style="max-height:700px " ng-show="relateInfo">
+        <div class="mask zIndex"></div>
+        <div class="tip_success_info printLayer orderIntLayer">
+            <div class="remove_header">
+                <span>保单信息</span>
+                <i class="icon iconfont" ng-click="closeRelative()">&#xe632;</i>
+            </div>
+            <div class="info_container">
+                <div >
+                    <!--<div class="remove_header">-->
+                    <!--<span>保单信息</span>-->
+                    <!--</div>-->
+                    <div class="condition_table">
+                        <ul class="clearfix">
+                            <li class="condition_td fl long-li">
+                                <label>保单号</label>
+                                <input type="text" style="width: 37%" ng-model="relateInfoDto.prpCmainDto.policyNo" disabled="disabled">
+                                <span class='fl danger_btn' ng-click="policyShow(queryDto.policyNo)">出险时保单信息</span>
+                            </li>
+                            <li class="condition_td fl long-li">
+                                <label>保险期限</label>
+                                <!--<input type="text" ng-model="relateInfoDto.prpCmainDto.insuredName"  maxlength="19" disabled="disabled">-->
+                                <div class="data-box">
+                                    <input type="text" id="startDate" style="width: 30%" class="date-long-input fl date" ng-model="relateInfoDto.prpCmainDto.startDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                                    <span class='fl long-span'>零时起至</span>
+                                    <input type="text" id="endDate" style="width: 30%" class="date-long-input fl date" ng-model="relateInfoDto.prpCmainDto.endDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                                    <span class='fl'>二十四时止</span>
+                                </div>
+                            </li>
+                            <li class="condition_td fl long-li">
+                                <label>被保险人名称</label><input type="text" style="width: 37%" ng-model="relateInfoDto.prpCmainDto.insuredName"  disabled="disabled">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="queryCriteria" style="border-top: none;width: 100%;">
+                    <div class="remove_header">
+                        <span>批单信息</span>
+                    </div>
+                    <table class="condition_table" style="margin-top: 0px">
+                        <tr class="tr_top">
+                            <td class="w8">序号</td>
+                            <td class="w8">批单号码</td>
+                            <td class="w8">核批完成日期</td>
+                        </tr>
+                        <tr class="tr_content F2F2F2" ng-repeat="result in relateInfoDto.prpPheadDtoList">
+                            <td ng-bind="$index+1"></td>
+                            <td ng-bind="result.endorseNo" ></td>
+                            <td ng-bind="result.underwriteEndDate"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="queryCriteria" style="border-top: none;width: 100%;">
+                    <div class="remove_header">
+                        <span>理赔信息</span>
+                    </div>
+                    <table class="condition_table" style="margin-top: 0px">
+                        <thead>
+                        <tr class="tr_top">
+                            <td class="w8">序号</td>
+                            <td class="w8">报案号</td>
+                            <td class="w8">出险时间</td>
+                            <td class="w8">赔付金额</td>
+                            <td class="w8">流程图</td>
+                        </tr>
+                        </thead>
+                        <tbody  style="height: 100px;overflow-y: scroll;">
+                        <tr class="tr_content F2F2F2" style="height: 42px;line-height: 42px;" ng-repeat="result in relateInfoDto.prpLregistDtoList">
+                            <td ng-bind="$index+1"></td>
+                            <td ng-bind="result.registNo" ></td>
+                            <td ng-bind="result.damageStartDate"></td>
+                            <td ng-bind="result.estimateLoss"></td>
+                            <td class="local-sec" ng-click="showFlow(result)">查看</td>
+                        </tr>
+                        </tbody >
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--双击域-->
+<div class="orderlayerBox"  ng-show="showDbModal">
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info printLayer order_enge">
+        <div class="remove_header">
+            <span ng-bind="modalTitle"></span>
+            <i class="icon iconfont" ng-click="closeModal()">&#xe632;</i>
+        </div>
+        <div class="div_enge" style="padding: 10px;">
+            <select multiple class="form-control"  ng-dblclick="ok()">
+                <option value="1">123</option>
+                <option value="2">123</option>
+            </select>
+        </div>
+    </div>
+</div>
+<!--特别约定查看-->
+<div class="orderlayerBox"  ng-show="engage">
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info printLayer order_enge">
+        <div class="remove_header">
+            <span>特别约定详情</span>
+            <i class="icon iconfont" ng-click="engage=!engage">&#xe632;</i>
+        </div>
+        <div class="div_enge">
+            <textarea  ng-disabled="true" ng-bind="curEngage" class="div_enge textarea"  name=""  row="3"/>
+        </div>
+    </div>
+</div>
+<!-- 索赔清单弹层 -->
+<div class="orderlayerBox" style="display: none" ng-show="showClaim">
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info printLayer orderIntLayer">
+        <div class="remove_header">
+            <span>索赔资料清单</span>
+            <i class="icon iconfont" ng-click="showClaim=!showClaim">&#xe632;</i>
+        </div>
+        <div class="info_container">
+            <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>索赔资料清单</label>
+                    <span class="click_img" ></span>
+                </span>
+                <div class="condition_table">
+                    <ul class="clearfix">
+                        <li class="condition_td fl half-li">
+                            <label>险种名称</label><input type="text" disabled="disabled">
+                        </li>
+                        <li class="condition_td fl half-li">
+                            <label>报案号</label><input type="text" maxlength="19" disabled="disabled">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>索赔申请</label>
+                    <span class="click_img" ></span>
+                </span>
+                <div class="condition_table">
+                    <ul class="clearfix damage-short-ul">
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>注销照片</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>重开陪案照片</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>保险单/批单</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>保险发票</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li ">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>出险通知书</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>出险现场照片</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>损失清单</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>授权委托书</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>被保险人身份证明</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li ">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>代理人份证明</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>索赔申请书</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>耳号标识</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>防疫证明</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>事故证明书</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li ">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>死亡证明</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>气象部门的证明及技术鉴定材料</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>消防部门的证明及技术鉴定材料</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-long-li">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>政府畜牧防疫监督管理机构出具的真实合法的诊断证明</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl damage-short-li ">
+                            <div class='clearfix damage-short-box'>
+                                <input type="checkbox" name="" class='fl'>
+                                <span class='fl damage-short-span'>其他材料</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn_tr clearfix">
+                    <span class="fl">保存</span>
+                    <span class="fr">放弃</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--缮制支付信息弹层-->
+<div class="orderlayerBox" style="display: none"  ng-show="compenstatePayInfo">
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info printLayer orderIntLayer">
+        <div class="remove_header">
+            <span>支付信息</span>
+            <i class="icon iconfont" ng-click="compenstatePayInfo=!compenstatePayInfo">&#xe632;</i>
+        </div>
+        <div class="main">
+            <div class="section" style="height:auto;">
+                <div class="content_div content1-div">
+                    <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>支付信息</label>
+                    <span class="click_img" ></span>
+                </span>
+                        <div class="condition_table">
+                            <ul class="clearfix half-ul">
+                                <li class="condition_td fl half-li">
+                                    <label>保单清单号</label>
+                                    <div class="half-div">
+                                        <input type="text" />
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>赔付清单号</label>
+                                    <div class="half-div">
+                                        <input type="text" />
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>报案号</label>
+                                    <div class="half-div">
+                                        <input type="text" maxlength="19" />
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>立案号</label>
+                                    <div class="half-div">
+                                        <input type="text" maxlength="19" />
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>计算书号</label>
+                                    <div class="half-div">
+                                        <input type="text" maxlength="23" />
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>数据来源</label>
+                                    <div class="half-div">
+                                        <input type="text" />
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>投保险种</label>
+                                    <div class="half-div">
+                                        <input type="text" />
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>当前节点</label>
+                                    <div class="half-div">
+                                        <input type="text" />
+                                    </div>
+                                </li>
+                            </ul>
+                            <table class="condition-table mt40">
+                                <tr class="tr_top">
+                                    <td>序号</td>
+                                    <td>收款人全称</td>
+                                    <td>身份证</td>
+                                    <td>银行名称</td>
+                                    <td>支行名称</td>
+                                    <td>银行账号</td>
+                                    <td>联系人电话</td>
+                                    <td>待支付金额</td>
+                                </tr>
+                                <tr class="tr_content">
+                                    <td>
+                                        <span>1</span>
+                                    </td>
+                                    <td>
+                                        <span>132131</span>
+                                    </td>
+                                    <td>
+                                        <span>132131</span>
+                                        <span>1421312</span>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <span>132131</span>
+                                        <span>1421312</span>
+                                    </td>
+                                    <td></td>
+                                    <td>100.00</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_tr btn-half btn-div">
+                    <ul class="clearfix half-ul">
+                        <li class="condition_td fl half-li">
+                            <label>支付清单导入</label>
+                            <div class="half-div">
+                                <input type="text"/>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="fl">浏览......</span>
+                            <span class="fl">导入支付清单</span>
+                            <span class="fl">导入支付清单模板</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

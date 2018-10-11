@@ -1,0 +1,26 @@
+<!--缴费计划信息-->
+<div class="index_list_table">
+    <div class="index_tit">
+        <h6 class="fl">缴费计划信息</h6>
+        <div class="fr">
+            <div class="div_a" ng-click="reckon()">
+                <i></i><span>重新计算</span>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th class="t_first" ng-click="col='serialNo';desc=!desc">序号</th>
+            <th ng-click="col='payReasonName';desc=!desc">缴费类型</th>
+            <th ng-click="col='planFee';desc=!desc" class="t_last">缴费金额（元）</th>
+        </tr>
+        <tr ng-repeat="d in planDtos|orderBy:col:desc">
+            <td class="t_first" ng-bind="d.serialNo"></td>
+            <td ng-bind="d.payReasonName"></td>
+            <td ng-bind="d.planFee.toFixed(2)" class="t_last"></td>
+        </tr>
+    </table>
+    <!--<div class="index_page">
+        <tm-pagination conf="planPageConf"></tm-pagination>
+    </div>-->
+</div>

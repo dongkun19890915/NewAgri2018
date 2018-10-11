@@ -1,0 +1,200 @@
+<!--主体内容-->
+<div class="application_entering">
+    <!--险种方案弹层-->
+    <!--<div ng-controller="UIPrPoEnRiskSchemeCtrl"  data-ng-include="'common/business/common/proposal/riskScheme/UIPrPoEn.riskScheme.layer.html'"></div>-->
+    <!--保存弹层-->
+    <div ng-show="showSave"  class="all_payment layer-model">
+        <div class="large-layer-content save_success">
+            <div class="all_payment_head layer-header">
+                <span>保存成功</span>
+                <i class="icon iconfont" ng-click="closeShowSave()">&#xe62f;</i>
+            </div>
+            <div class="layer-con save_success_contain">
+                <!--<img src="" alt="">-->
+                <h2><i class="iconfont icon fs_20">&#xe602;</i>投保单保存成功</h2>
+                <h2 ng-bind="proposalNo"></h2>
+            </div>
+            <div class="layer-footer">
+                <button class="greenButton" ng-click="commitUnderwrite(proposalNo,'hebao')">提交核保</button>
+                <!--<button class="greenButton" ng-click="resetRisk()">继续完善</button>-->
+                <button class="greenButton" ng-click="issueAgain()">再录一单</button>
+            </div>
+        </div>
+    </div>
+    <div ng-show="showSave1"  class="all_payment layer-model">
+        <div class="large-layer-content save_success">
+            <div class="all_payment_head layer-header">
+                <span>暂存成功</span>
+            </div>
+            <div class="layer-con save_success_contain">
+                <!--<img src="" alt="">-->
+                <h2><i class="iconfont icon fs_20">&#xe602;</i>投保单暂存成功</h2>
+                <h2 ng-bind="proposalNo"></h2>
+            </div>
+            <div class="layer-footer" style="margin-bottom:20px;">
+                <!--<button class="greenButton" ng-click="resetRisk1()">继续完善</button>-->
+                <button class="greenButton" ng-click="issueAgain()">再录一单</button>
+                <button class="greenButton" ng-click="goBackDashboard();" style="margin-left:40px;">返回</button>
+            </div>
+        </div>
+    </div>
+    <!--核保信息详情-->
+    <div ng-show="policyInfo" class="all_payment layer-model">
+        <div class="large-layer-content all_payment_contain" style="top:15%;padding-bottom: 15px;">
+            <div class="all_payment_head layer-header">
+                <span>核保信息详情</span>
+                <i class="icon iconfont" ng-click="closepolicyInfoShow()">&#xe62f;</i>
+            </div>
+
+            <div class="layer-con all_payment_content1" style="padding:0;">
+                <div class="queryResult" ng-repeat="examine in examineList track by $index">
+                    <table border="1" bordercolor = "#ffffff"  style=" background-color:  rgba(182, 182, 182, 0.32);;"cellspacing = "2">
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">级别名称：</td>
+                            <td style="width: 25%;"  colspan="3" ng-bind="examine.nodeName"></td>
+                        </tr>
+                        <tr class="poen-tr" >
+                            <td style="width: 25%;">处理人员：</td>
+                            <td style="width: 25%;" ng-bind="examine.operatorName"></td>
+                            <td style="width: 25%;">处理部门：</td>
+                            <td style="width: 25%;" ng-bind="examine.deptCode"></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">级别状态：</td>
+                            <td style="width: 25%;" ng-bind="examine.nodeStatusName"></td>
+                            <td style="width: 25%;">流向：</td>
+                            <td style="width: 25%;" ng-bind="examine.flowStatusName"></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">提交时间：</td>
+                            <td style="width: 25%;" ng-bind="examine.submitTime"></td>
+                            <td style="width: 25%;">处理完毕时间：</td>
+                            <td style="width: 25%;" ng-bind="examine.submitTime"></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;" >审核意见：</td>
+                            <td style="width: 25%;" colspan="3"><textarea style="width: 90%;height: 40px;margin-top: 3px;" ng-bind="examine.handleText" disabled="policyInfo"></textarea></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">审核信息：</td>
+                            <td style="width: 25%;" colspan="3" ng-bind="examine.handleTextInfo"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--重复性校验弹框-->
+    <div class="all_payment layer-model" ng-show="relativeInsureListCode">
+        <div class="large-layer-content relationListNo_layer" style="top:30% !important;">
+            <div class="all_payment_head layer-header">
+                <span>温馨提示</span>
+            </div>
+            <div class="layui-layer-content" style="padding:30px;line-height: 34px;font-size: 18px !important;">
+                <p>疑似性重复投保，请确认是否继续？</p>
+                <p>您可点击如下【查看详情】按钮，查看造成疑似投保的有效保单列表</p>
+                <p><span class="highlight-text" ng-click="lookDetailRelativeInsureList()">查看详情</span></p>
+            </div>
+            <div class="layer-footer">
+                <button class="greenButton" style="margin-right:80px;" ng-click="goRelativeInsureListCode(proposal.insureMainListDto.insureListCode)">继续</button>
+                <button class="greenButton" ng-click="closeRelativeInsureListCode()">取消</button>
+            </div>
+        </div>
+    </div>
+    <!--有效保单列表弹框-->
+    <div class="all_payment layer-model" ng-show="showDetailRelativeInsure">
+        <div class="large-layer-content relationListNo_layer">
+            <div class="all_payment_head layer-header">
+                <span>保单列表</span>
+                <i class="icon iconfont" ng-click="closeDetailRelativeInsureList()">&#xe62f;</i>
+            </div>
+            <div class="queryResult" style="max-height:450px;overflow-y: auto;">
+                <table>
+                    <tr class="tr_top">
+                        <td >保单号</td>
+                        <td>投保人名称</td>
+                        <td >起保日期</td>
+                        <td >终保日期</td>
+                        <td >制单人</td>
+                    </tr>
+                    <tr class="tr_content F2F2F2" ng-repeat="relativeInsure in detailRelativeInsureList track by $index">
+                        <td ng-bind="relativeInsure.policyNo" ng-click="getPolicyInfo(relativeInsure.policyNo)" style="color:#5a9cff;cursor: pointer;"></td>
+                        <td ng-bind="relativeInsure.appliName"></td>
+                        <td ng-bind="relativeInsure.startDate"></td>
+                        <td ng-bind="relativeInsure.endDate"></td>
+                        <td ng-bind="relativeInsure.operatorName"></td>
+                    </tr>
+                </table>
+                <div class="index_page">
+                    <tm-pagination conf="paginationConfmm4"></tm-pagination>
+                </div>
+            </div>
+            <div class="layer-footer">
+                <button class="greenButton" ng-click="closeDetailRelativeInsureList()">取消</button>
+            </div>
+        </div>
+    </div>
+    <!--第一层-->
+    <div ng-show="!policyScheme">
+    <div class="application_entering_first" ng-show="!showRiskScheme" ng-class="{'applicationFirst':!policyScheme&& systemFlag=='undwrt'}">
+        <ul class="container"  ng-show="!showClaim">
+            <li class="fl">
+                <button class="btn btn-success" ng-show="!hideUploadImage" ng-disabled="proposalQueryHide || UploadImage" ng-click="upLoading()">上传影像</button>
+                <button class="btn btn-success" ng-disabled="ImageView" ng-click="checkVideo()">影像查看</button>
+                <button class="btn btn-success" ng-show="!DownloadButton" ng-disabled="DownloadHouseholdList" ng-click="DownLoadButton()">分户清单下载</button>
+                <button class="btn btn-success" ng-show="!ViewUnderWriteInfoButton" ng-disabled="ViewUnderWriteInfo" ng-click="getViewTrace()">查看核保信息</button>
+                <button class="btn btn-success" ng-show="!pereviousButton" ng-click="perevious($event)">上一步</button>
+                <button class="btn btn-success" ng-show="!hideReturn" ng-click="returnButton()" ng-hide="systemFlag=='undwrt'">返回</button>
+            </li>
+            <li class="fr" ng-show="!showInfoHide">
+                <button ng-click="showSaveSuccess(1)" class="btn btn-success" ng-disabled="saveTemporaryDisabled">保存</button>
+                <button ng-click="showSaveSuccess(0)" class="btn btn-success" ng-disabled="saveTemporaryDisabled">暂存</button>
+                <button class="btn btn-success" ng-class="" ng-click="underSubmit()" ng-disabled="proposalQueryHide || underSubmitHide">提交核保</button>
+                <!--<button class="btn btn-success">存为模板</button>-->
+            </li>
+        </ul>
+    </div>
+    </div>
+    <!--右边的菜单栏  楼梯-->
+    <div id="navbar-example" ng-show="!showRiskScheme" class="application_entering_asider">
+        <ul class="application_entering_con">
+            <li ng-click="goScroll('basic')" class=" cur">
+                <i class="iconfont icon modal-scrollbar" >&#xe615;</i>
+                <p>基本</p>
+            </li>
+            <li ng-click="goScroll('contract')"  class="cur">
+                <i class="iconfont icon modal-scrollbar" >&#xe60e;</i>
+                <p>合同</p>
+            </li>
+            <li ng-click="goScroll('client')" class="cur">
+                <i class="iconfont icon modal-scrollbar" >&#xe612;</i>
+                <p>客户</p>
+            </li>
+            <li ng-click="goScroll('others')"  class="cur">
+                <i class="iconfont icon modal-scrollbar" >&#xe619;</i>
+                <p>其他</p>
+            </li>
+        </ul>
+    </div>
+    <!--主体内容-->
+    <div data-spy="scroll" ng-class="{navbarExample:!authSystemFlag}" data-target="#navbar-example"  class="application_entering_section">
+        <!--填写信息部分-->
+        <div  class="application_entering_mes">
+            <!--险种方案-->
+            <div ui-view="UIPrPoEnRiskScheme"></div>
+            <!--<div  data-ng-include="'common/business/common/proposal/riskScheme/UIPrPoEn.riskScheme.tpl.html'"></div>-->
+            <!--基本信息-->
+            <div ui-view="UIPrPoEnMainHead" ng-show="!showRiskScheme"></div>
+            <!--<div ng-controller="UIPrPoEnMainHeadCtrl" data-ng-include="'common/business/common/proposal/mainHead/UIPrPoEn.mainHead.tpl.html'"></div>-->
+            <!--合同信息-->
+            <div ui-view="UIPrPoEnMainAgri" ng-show="!showRiskScheme"></div>
+            <!--<div ng-controller="UIPrPoEnMainAgriCtrl"  data-ng-include="'common/business/common/proposal/mainAgri/UIPrPoEn.mainAgri.tpl.html'"></div>-->
+            <!--客户信息-->
+            <div ui-view="UIPrPoEnAgriInsured" ng-show="!showRiskScheme"></div>
+            <!--<div ng-controller="UIPrPoEnAgriInsuredCtrl" data-ng-include="'common/business/common/proposal/agriInsured/UIPrPoEn.agriInsured.tpl.html'"></div>-->
+            <!--其他信息-->
+            <div ui-view="UIPrPoEnOther" style="z-index: 1988" ng-show="!showRiskScheme"></div>
+            <!--<div ng-controller="UIPrPoEnOtherCtrl"  data-ng-include="'common/business/common/proposal/other/UIPrPoEn.other.tpl.html'"></div>-->
+        </div>
+    </div>
+</div>

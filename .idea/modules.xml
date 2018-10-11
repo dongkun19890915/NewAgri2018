@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/NewAgri2018.iml" filepath="$PROJECT_DIR$/.idea/NewAgri2018.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/admin/admin.iml" filepath="$PROJECT_DIR$/infrastructure/admin/admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriclaim/agriclaim.iml" filepath="$PROJECT_DIR$/business/agriclaim/agriclaim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriclaim/agriclaim-api/agriclaim-api.iml" filepath="$PROJECT_DIR$/business/agriclaim/agriclaim-api/agriclaim-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriclaim/agriclaim-core/agriclaim-core.iml" filepath="$PROJECT_DIR$/business/agriclaim/agriclaim-core/agriclaim-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriclaim/agriclaim-rest/agriclaim-rest.iml" filepath="$PROJECT_DIR$/business/agriclaim/agriclaim-rest/agriclaim-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriprpall/agriprpall.iml" filepath="$PROJECT_DIR$/business/agriprpall/agriprpall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriprpall/agriprpall-api/agriprpall-api.iml" filepath="$PROJECT_DIR$/business/agriprpall/agriprpall-api/agriprpall-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriprpall/agriprpall-core/agriprpall-core.iml" filepath="$PROJECT_DIR$/business/agriprpall/agriprpall-core/agriprpall-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/agriprpall/agriprpall-rest/agriprpall-rest.iml" filepath="$PROJECT_DIR$/business/agriprpall/agriprpall-rest/agriprpall-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/config-server/config-server.iml" filepath="$PROJECT_DIR$/infrastructure/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/dms/dms.iml" filepath="$PROJECT_DIR$/business/dms/dms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/dms/dms-api/dms-api.iml" filepath="$PROJECT_DIR$/business/dms/dms-api/dms-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/dms/dms-core/dms-core.iml" filepath="$PROJECT_DIR$/business/dms/dms-core/dms-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/dms/dms-rest/dms-rest.iml" filepath="$PROJECT_DIR$/business/dms/dms-rest/dms-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/fileserver/fileserver.iml" filepath="$PROJECT_DIR$/business/fileserver/fileserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/fileserver/fileserver-client/fileserver-client.iml" filepath="$PROJECT_DIR$/business/fileserver/fileserver-client/fileserver-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/fileserver/fileserver-server/fileserver-server.iml" filepath="$PROJECT_DIR$/business/fileserver/fileserver-server/fileserver-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/framework-agri-core/framework-agri-core.iml" filepath="$PROJECT_DIR$/business/framework-agri-core/framework-agri-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/gateway/gateway.iml" filepath="$PROJECT_DIR$/business/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/ims/ims.iml" filepath="$PROJECT_DIR$/business/ims/ims.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/ims/ims-api/ims-api.iml" filepath="$PROJECT_DIR$/business/ims/ims-api/ims-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/ims/ims-core/ims-core.iml" filepath="$PROJECT_DIR$/business/ims/ims-core/ims-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/ims/ims-rest/ims-rest.iml" filepath="$PROJECT_DIR$/business/ims/ims-rest/ims-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/notice/notice.iml" filepath="$PROJECT_DIR$/business/notice/notice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/notice/notice-api/notice-api.iml" filepath="$PROJECT_DIR$/business/notice/notice-api/notice-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/notice/notice-core/notice-core.iml" filepath="$PROJECT_DIR$/business/notice/notice-core/notice-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/notice/notice-rest/notice-rest.iml" filepath="$PROJECT_DIR$/business/notice/notice-rest/notice-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/parent/parent (1) (com.sinosoft.sc).iml" filepath="$PROJECT_DIR$/business/parent/parent (1) (com.sinosoft.sc).iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/parent/parent (2) (com.sinosoft.infrastructure).iml" filepath="$PROJECT_DIR$/infrastructure/parent/parent (2) (com.sinosoft.infrastructure).iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/pms/pms.iml" filepath="$PROJECT_DIR$/business/pms/pms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/pms/pms-api/pms-api.iml" filepath="$PROJECT_DIR$/business/pms/pms-api/pms-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/pms/pms-core/pms-core.iml" filepath="$PROJECT_DIR$/business/pms/pms-core/pms-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/pms/pms-rest/pms-rest.iml" filepath="$PROJECT_DIR$/business/pms/pms-rest/pms-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/registry/registry.iml" filepath="$PROJECT_DIR$/infrastructure/registry/registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/sso/sso.iml" filepath="$PROJECT_DIR$/business/sso/sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/sso/sso-api/sso-api.iml" filepath="$PROJECT_DIR$/business/sso/sso-api/sso-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/sso/sso-core/sso-core.iml" filepath="$PROJECT_DIR$/business/sso/sso-core/sso-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/sso/sso-rest/sso-rest.iml" filepath="$PROJECT_DIR$/business/sso/sso-rest/sso-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/turbine/turbine.iml" filepath="$PROJECT_DIR$/infrastructure/turbine/turbine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/txnlist/txnlist.iml" filepath="$PROJECT_DIR$/business/txnlist/txnlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/txnlist/txnlist-api/txnlist-api.iml" filepath="$PROJECT_DIR$/business/txnlist/txnlist-api/txnlist-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/txnlist/txnlist-core/txnlist-core.iml" filepath="$PROJECT_DIR$/business/txnlist/txnlist-core/txnlist-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/txnlist/txnlist-rest/txnlist-rest.iml" filepath="$PROJECT_DIR$/business/txnlist/txnlist-rest/txnlist-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/uap/uap.iml" filepath="$PROJECT_DIR$/business/uap/uap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/zipkin/zipkin.iml" filepath="$PROJECT_DIR$/infrastructure/zipkin/zipkin.iml" />
+    </modules>
+  </component>
+</project>

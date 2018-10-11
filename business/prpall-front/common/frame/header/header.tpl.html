@@ -1,0 +1,168 @@
+<div class="main head-con">
+    <div class="TopNav clearfix bj-none con">
+        <div class="TN-left fl">
+            <span class="Logo"></span>
+            <span class="name">农险承保系统</span>
+        </div>
+        <div class="TN-right fr">
+            <ul class="clearfix">
+                <li class="fl cus_point">
+                    <i class="iconfont icon-help">&#xe62a;</i>
+
+
+                    <select  value="" class="top-select" id="comInfo" ng-change="isChange(value);" ng-model="value" ng-init="value=0">
+                        <option  ng-value="info.comCode"  ng-repeat="info in comCodeList track by $index" ng-bind="info.comCName" ng-selected="code==info.comCode"></option>
+                    </select>
+
+                </li>
+                <li ng-show="mainViewFlag" class="fl cus_point"  ui-sref="dashboard">
+                    <i class="iconfont icon-help">&#xe604;</i>
+                    <span class='li-text' ng-click="goBackDashboard();">主页</span>
+                </li>
+                <li ng-show="mainViewFlag"  class="fl">
+                    <i class="iconfont icon-help">&#xea27;</i>
+                    <span class='li-text help-span'>帮助</span>
+                </li>
+                <li ng-show="mainViewFlag" class="fl drop-down cur" ng-mouseover="dropDownShow=true;" ng-mouseleave="dropDownShow=false;">
+                    <img src="common/images/man.png" ng-show="user.sex==1"  alt="头像"  class="man-img" >
+                    <img src="common/images/women.png" ng-show="user.sex==2"  alt="头像"  class="man-img" >
+                    <span ng-bind="user.userName"></span>
+                    <img src="common/images/select_bj.png" alt="">
+                    <div class=""  ng-show="dropDownShow">
+                        <i></i>
+                        <ul>
+                            <li ng-click="logout()">重新登录</li>
+                            <li ng-click="cpw()">修改密码</li>
+                            <li ng-click="message()">个人资料</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 弹层---修改密码 -->
+<div class="layer-password myInfo"  style="display:none">
+    <div class="mask"></div>
+    <div class="layer-content">
+        <div class="layer-header">
+            <span>修改用户密码</span>
+            <i class="icon iconfont" ng-click="delete_5()">&#xe632;</i>
+        </div>
+        <div class="layer-con">
+            <form id="cpwform">
+            <div class="layer-con1">
+                <ul class="layer-ul">
+                    <li>
+                        <span>用户工号</span>
+                        <input   ng-model="proposal.userCode" readonly disabled type="text"/>
+                    </li>
+                    <li style="position: relative;">
+                        <span>原始密码</span>
+                        <input ng-model="proposal.originalPassword"  ng-class="{red:proposal.originalPasswordError||proposal.Error}" minlength="6" maxlength="20" type="{{typePass ? 'text' : 'password'}}" />
+                        <span class="cur passEye"  ng-class="{'openEye':typePass}" ng-model="typePass" ng-click="change()"></span><!--ng-blur="originalPasswordBlur($event)"-->
+                        <!--<p ng-bind="proposal.originalPasswordError"></p>-->
+                    </li>
+                    <li  style="position: relative;">
+                        <span>新密码</span>
+                        <input  ng-model="proposal.newPassword" ng-class="{red:proposal.newPasswordError}" ng-blur="newPasswordBlur($event)"  type="{{typePass2 ? 'text' : 'password'}}" minlength="6" maxlength="20"/>
+                        <span class="cur passEye"  ng-class="{'openEye':typePass2}" ng-model="typePass2" ng-click="change2()"></span>
+                        <p ng-bind="proposal.newPasswordError"></p>
+                    </li>
+                    <li style="position: relative;">
+                        <span>重复新密码</span>
+                        <input ng-model="proposal.password" ng-class="{red:proposal.passwordError}" ng-blur="passwordBlur($event)" minlength="6" maxlength="20" type="{{typePass3 ? 'text' : 'password'}}"/>
+                        <span class="cur passEye"  ng-class="{'openEye':typePass3}" ng-model="typePass3" ng-click="change3()"></span>
+                        <p ng-bind="proposal.passwordError"></p>
+                        <p ng-bind="proposal.Error" ></p>
+                    </li>
+                    <li>
+                        <span>规则说明</span>
+                        <ruby><i>新密码由6-20位字母和数字混合组成</i></ruby>
+
+                    </li>
+                </ul>
+            </div>
+                </form>
+
+        </div>
+        <div class="layer-footer layer-foot h70">
+            <span class="layer-ok" ng-click="check(proposal.originalPassword,proposal.newPassword,proposal.password)">确 定</span>
+        </div>
+    </div>
+</div>
+<!-- 弹层---我的信息 -->
+<div class="layer-message myInfo"  style="display:none">
+    <div class="mask"></div>
+    <div class="layer-content">
+        <div class="layer-header">
+            <span>我的信息</span>
+            <i class="icon iconfont" ng-click="delete_6()">&#xe632;</i>
+        </div>
+        <div class="layer-con">
+            <div class="layer-con1">
+            	<ul class="layer-ul fl">
+            		<article>我的信息</article>
+            		<aside class="iconfont-man"><img src="common/images/man.png"  alt="头像"  class="man1-img"></aside>
+            		<aside class="iconfont-woman" style="display:none"><img src="common/images/women.png"  alt="头像" class="man1-img" ></aside>
+            	</ul>
+            	
+            	
+             <!--   <img class="img-head" src="common/images/head.png" alt=""/>-->
+                <ul class="layer-ul fr">
+                    <li>
+                        <span><i>*</i>姓名</span>
+                        <input ng-model="proposal.myName"  ng-class="{red:proposal.myNameError}" maxlength="7" ng-blur="myNameBlur($event)" type="text"/>
+                        <p ng-bind="proposal.myNameError"></p>
+                    </li>
+                   <li>
+                        <span><i>*</i>性别</span>
+                        <div class="radio-con">
+                            <span class="man active" ng-model="proposal.mySex" ng-click='male()'><i class="iconfont"></i>男</span>
+                            <span class="woman" ng-model="proposal.mySex" ng-click='female()'><i class="iconfont"></i>女</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span><i>*</i>身份证号码</span>
+                        <input ng-model="proposal.myIdNumber" ng-class="{red:proposal.myIdNumberError}" ng-blur="myIdNumberBlur($event)" maxlength="18" type="text"/>
+                        <p ng-bind="proposal.myIdNumberError"></p>
+                    </li>
+                    <li>
+                        <span><i>*</i>电话号码</span>
+                        <input ng-model="proposal.myTelNember" ng-class="{red:proposal.myTelNemberError}" ng-blur="myTelNemberBlur($event)" ng-keypress="pressDecimal($event)" maxlength="13" type="text"/>
+                        <p ng-bind="proposal.myTelNemberError"></p>
+                    </li>
+                    <li>
+                        <span><i>*</i>邮箱</span>
+                        <input id ="input2" ng-model="proposal.myEmail" maxlength="50" ng-class="{red:proposal.myEmailError}" ng-blur="myEmailBlur($event)" list="input_list" type="text"/>
+                        <p ng-bind="proposal.myEmailError"></p>
+                        <datalist id="input_list"></datalist>
+                    </li>
+                   <li>
+                        <span>生日</span>
+                        <input ng-model="proposal.myBirthday" ng-class="{red:proposal.myBirthdayError}" ng-blur="myBirthdayBlur($event)" type="text"/>
+                       <p ng-bind="proposal.myBirthdayError"></p>
+                    </li>
+                    <li>
+                        <span>QQ</span>
+                        <input ng-model="proposal.myQQ" ng-class="{red:proposal.myQQError}" ng-keypress="pressDecimal($event)" ng-blur="myQQBlur($event)" maxlength="20" type="text"/>
+                        <p ng-bind="proposal.myQQError"></p>
+                    </li>
+                    <li>
+                        <span>微信</span>
+                        <input ng-model="proposal.myWeChat" maxlength="50" type="text"/>
+
+                    </li>
+                    <li>
+                        <span>家庭住址</span>
+                        <input ng-model="proposal.myAddress"  ng-attr-title="{{proposal.myAddress}}" maxlength="60" type="text"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layer-footer h70">
+            <span class="layer-ok" ng-click="saveMyInfo()">保 存</span>
+        </div>
+    </div>
+</div>

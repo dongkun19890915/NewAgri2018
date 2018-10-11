@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinosoft.pms.core.kernel.dao.PrpDItemTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.sinosoft.pms.core.kernel.entity.PrpDItemType" >
+		<result column="ItemCode" property="itemCode" jdbcType="VARCHAR" />
+		<result column="ItemName" property="itemName" jdbcType="VARCHAR" />
+		<result column="ItemTypeBase" property="itemTypeBase" jdbcType="VARCHAR" />
+		<result column="ItemTypeCode" property="itemTypeCode" jdbcType="VARCHAR" />
+		<result column="ItemTypeName" property="itemTypeName" jdbcType="VARCHAR" />
+		<result column="MinAmount" property="minAmount" jdbcType="INTEGER" />
+		<result column="MaxAmount" property="maxAmount" jdbcType="INTEGER" />
+		<result column="Flag" property="flag" jdbcType="VARCHAR" />
+		<result column="Remark" property="remark" jdbcType="VARCHAR" />
+		<result column="CreateTime" property="createTime" jdbcType="DATE" />
+		<result column="CreateBy" property="createBy" jdbcType="VARCHAR" />
+		<result column="UpdateTime" property="updateTime" jdbcType="DATE" />
+		<result column="UpdateBy" property="updateBy" jdbcType="VARCHAR" />
+		<result column="ItemCode" property="itemCode" jdbcType="VARCHAR" />
+		<result column="ItemName" property="itemName" jdbcType="VARCHAR" />
+		<result column="ItemTypeBase" property="itemTypeBase" jdbcType="VARCHAR" />
+		<result column="ItemTypeCode" property="itemTypeCode" jdbcType="VARCHAR" />
+		<result column="ItemTypeName" property="itemTypeName" jdbcType="VARCHAR" />
+		<result column="MinAmount" property="minAmount" jdbcType="INTEGER" />
+		<result column="MaxAmount" property="maxAmount" jdbcType="INTEGER" />
+		<result column="Flag" property="flag" jdbcType="VARCHAR" />
+		<result column="Remark" property="remark" jdbcType="VARCHAR" />
+		<result column="CreateTime" property="createTime" jdbcType="DATE" />
+		<result column="CreateBy" property="createBy" jdbcType="VARCHAR" />
+		<result column="UpdateTime" property="updateTime" jdbcType="DATE" />
+		<result column="UpdateBy" property="updateBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  itemCode,itemName,itemTypeBase,itemTypeCode,itemTypeName,minAmount,maxAmount,flag,remark,createTime,createBy,updateTime,updateBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDItemTypeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from PrpDItemType 
+    where 
+	 ItemCode = #{itemCode,jdbcType=VARCHAR} and ItemTypeBase = #{itemTypeBase,jdbcType=VARCHAR} and ItemTypeCode = #{itemTypeCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDItemTypeKey" >
+    delete from PrpDItemType 
+    where 
+		 ItemCode = #{itemCode,jdbcType=VARCHAR} and ItemTypeBase = #{itemTypeBase,jdbcType=VARCHAR} and ItemTypeCode = #{itemTypeCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDItemType" >
+    insert into PrpDItemType  (ItemCode,ItemName,ItemTypeBase,ItemTypeCode,ItemTypeName,MinAmount,MaxAmount,Flag,Remark,CreateTime,CreateBy,UpdateTime,UpdateBy)
+    values (#{itemCode,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{itemTypeBase,jdbcType=VARCHAR},#{itemTypeCode,jdbcType=VARCHAR},#{itemTypeName,jdbcType=VARCHAR},#{minAmount,jdbcType=INTEGER},#{maxAmount,jdbcType=INTEGER},#{flag,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{createTime,jdbcType=DATE},#{createBy,jdbcType=VARCHAR},#{updateTime,jdbcType=DATE},#{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDItemType" >
+    insert into PrpDItemType
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="itemCode != null" >
+        ItemCode,
+		</if>
+<if test="itemName != null" >
+        ItemName,
+		</if>
+<if test="itemTypeBase != null" >
+        ItemTypeBase,
+		</if>
+<if test="itemTypeCode != null" >
+        ItemTypeCode,
+		</if>
+<if test="itemTypeName != null" >
+        ItemTypeName,
+		</if>
+<if test="minAmount != null" >
+        MinAmount,
+		</if>
+<if test="maxAmount != null" >
+        MaxAmount,
+		</if>
+<if test="flag != null" >
+        Flag,
+		</if>
+<if test="remark != null" >
+        Remark,
+		</if>
+<if test="createTime != null" >
+        CreateTime,
+		</if>
+<if test="createBy != null" >
+        CreateBy,
+		</if>
+<if test="updateTime != null" >
+        UpdateTime,
+		</if>
+<if test="updateBy != null" >
+        UpdateBy,
+		</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="itemCode != null" >
+        ItemCode,jdbcType=VARCHAR,
+		</if>
+		<if test="itemName != null" >
+        ItemName,jdbcType=VARCHAR,
+		</if>
+		<if test="itemTypeBase != null" >
+        ItemTypeBase,jdbcType=VARCHAR,
+		</if>
+		<if test="itemTypeCode != null" >
+        ItemTypeCode,jdbcType=VARCHAR,
+		</if>
+		<if test="itemTypeName != null" >
+        ItemTypeName,jdbcType=VARCHAR,
+		</if>
+		<if test="minAmount != null" >
+        MinAmount,jdbcType=INTEGER,
+		</if>
+		<if test="maxAmount != null" >
+        MaxAmount,jdbcType=INTEGER,
+		</if>
+		<if test="flag != null" >
+        Flag,jdbcType=VARCHAR,
+		</if>
+		<if test="remark != null" >
+        Remark,jdbcType=VARCHAR,
+		</if>
+		<if test="createTime != null" >
+        CreateTime,jdbcType=DATE,
+		</if>
+		<if test="createBy != null" >
+        CreateBy,jdbcType=VARCHAR,
+		</if>
+		<if test="updateTime != null" >
+        UpdateTime,jdbcType=DATE,
+		</if>
+		<if test="updateBy != null" >
+        UpdateBy,jdbcType=VARCHAR,
+		</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDItemType" >
+    update PrpDItemType set
+    <set >
+		
+<if test="itemName  != null" >      
+        ItemName = #{itemName ,jdbcType=VARCHAR},</if>
+
+
+<if test="itemTypeName  != null" >      
+        ItemTypeName = #{itemTypeName ,jdbcType=VARCHAR},</if>
+<if test="minAmount  != null" >      
+        MinAmount = #{minAmount ,jdbcType=INTEGER},</if>
+<if test="maxAmount  != null" >      
+        MaxAmount = #{maxAmount ,jdbcType=INTEGER},</if>
+<if test="flag  != null" >      
+        Flag = #{flag ,jdbcType=VARCHAR},</if>
+<if test="remark  != null" >      
+        Remark = #{remark ,jdbcType=VARCHAR},</if>
+<if test="createTime  != null" >      
+        CreateTime = #{createTime ,jdbcType=DATE},</if>
+<if test="createBy  != null" >      
+        CreateBy = #{createBy ,jdbcType=VARCHAR},</if>
+<if test="updateTime  != null" >      
+        UpdateTime = #{updateTime ,jdbcType=DATE},</if>
+<if test="updateBy  != null" >      
+        UpdateBy = #{updateBy ,jdbcType=VARCHAR},</if>
+    </set>
+    where 
+		<if test="itemCode  != null" >
+        ItemCode = #{itemCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="itemTypeBase  != null" >
+        ItemTypeBase = #{itemTypeBase ,jdbcType=VARCHAR} and 
+      </if>	<if test="itemTypeCode  != null" >
+        ItemTypeCode = #{itemTypeCode ,jdbcType=VARCHAR}
+      </if>		
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDItemType" >
+    update PRPDCODE
+    set 
+				
+<if test="itemName  != null" >ItemName = #{itemName ,jdbcType=VARCHAR},</if>		
+		
+		
+<if test="itemTypeName  != null" >ItemTypeName = #{itemTypeName ,jdbcType=VARCHAR},</if>		
+<if test="minAmount  != null" >MinAmount = #{minAmount ,jdbcType=INTEGER},</if>		
+<if test="maxAmount  != null" >MaxAmount = #{maxAmount ,jdbcType=INTEGER},</if>		
+<if test="flag  != null" >Flag = #{flag ,jdbcType=VARCHAR},</if>		
+<if test="remark  != null" >Remark = #{remark ,jdbcType=VARCHAR},</if>		
+<if test="createTime  != null" >CreateTime = #{createTime ,jdbcType=DATE},</if>		
+<if test="createBy  != null" >CreateBy = #{createBy ,jdbcType=VARCHAR},</if>		
+<if test="updateTime  != null" >UpdateTime = #{updateTime ,jdbcType=DATE},</if>		
+<if test="updateBy  != null" >UpdateBy = #{updateBy ,jdbcType=VARCHAR},</if>		
+    where 
+			<if test="itemCode  != null" >
+        ItemCode = #{itemCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="itemTypeBase  != null" >
+        ItemTypeBase = #{itemTypeBase ,jdbcType=VARCHAR} and 
+      </if>	<if test="itemTypeCode  != null" >
+        ItemTypeCode = #{itemTypeCode ,jdbcType=VARCHAR}
+      </if>	
+  </update>
+</mapper>

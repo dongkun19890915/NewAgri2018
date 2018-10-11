@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="admin" />
+        <module name="agriclaim-api" />
+        <module name="agriclaim-core" />
+        <module name="agriclaim-rest" />
+        <module name="agriprpall-api" />
+        <module name="agriprpall-core" />
+        <module name="agriprpall-rest" />
+        <module name="config-server" />
+        <module name="dms-api" />
+        <module name="dms-core" />
+        <module name="dms-rest" />
+        <module name="fileserver-client" />
+        <module name="fileserver-server" />
+        <module name="framework-agri-core" />
+        <module name="gateway" />
+        <module name="ims-api" />
+        <module name="ims-core" />
+        <module name="ims-rest" />
+        <module name="notice-api" />
+        <module name="notice-core" />
+        <module name="notice-rest" />
+        <module name="pms-api" />
+        <module name="pms-core" />
+        <module name="pms-rest" />
+        <module name="registry" />
+        <module name="sso-api" />
+        <module name="sso-core" />
+        <module name="sso-rest" />
+        <module name="turbine" />
+        <module name="txnlist-api" />
+        <module name="txnlist-core" />
+        <module name="txnlist-rest" />
+        <module name="uap" />
+        <module name="zipkin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin" target="1.8" />
+      <module name="agriclaim" target="1.8" />
+      <module name="agriclaim-api" target="1.8" />
+      <module name="agriclaim-core" target="1.8" />
+      <module name="agriclaim-rest" target="1.8" />
+      <module name="agriprpall" target="1.8" />
+      <module name="agriprpall-api" target="1.8" />
+      <module name="agriprpall-core" target="1.8" />
+      <module name="agriprpall-rest" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="dms" target="1.8" />
+      <module name="dms-api" target="1.8" />
+      <module name="dms-core" target="1.8" />
+      <module name="dms-rest" target="1.8" />
+      <module name="fileserver" target="1.8" />
+      <module name="fileserver-client" target="1.8" />
+      <module name="fileserver-server" target="1.8" />
+      <module name="framework-agri-core" target="1.8" />
+      <module name="gateway" target="1.8" />
+      <module name="ims" target="1.8" />
+      <module name="ims-api" target="1.8" />
+      <module name="ims-core" target="1.8" />
+      <module name="ims-rest" target="1.8" />
+      <module name="notice" target="1.8" />
+      <module name="notice-api" target="1.8" />
+      <module name="notice-core" target="1.8" />
+      <module name="notice-rest" target="1.8" />
+      <module name="parent (1) (com.sinosoft.sc)" target="1.8" />
+      <module name="parent (2) (com.sinosoft.infrastructure)" target="1.8" />
+      <module name="pms" target="1.8" />
+      <module name="pms-api" target="1.8" />
+      <module name="pms-core" target="1.8" />
+      <module name="pms-rest" target="1.8" />
+      <module name="registry" target="1.8" />
+      <module name="sso" target="1.8" />
+      <module name="sso-api" target="1.8" />
+      <module name="sso-core" target="1.8" />
+      <module name="sso-rest" target="1.8" />
+      <module name="turbine" target="1.8" />
+      <module name="txnlist" target="1.8" />
+      <module name="txnlist-api" target="1.8" />
+      <module name="txnlist-core" target="1.8" />
+      <module name="txnlist-rest" target="1.8" />
+      <module name="uap" target="1.8" />
+      <module name="zipkin" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

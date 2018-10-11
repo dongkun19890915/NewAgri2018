@@ -1,0 +1,1777 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="ProposalPrint3129"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="policyNo" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="appInsuredName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="insuredName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="insuredInsuredidenty" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="insureAddress" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="postCode" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="mobile" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="insuredIdNum" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="policyType" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="sumInsured" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="remark" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unit1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unit2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unit3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="itemDetailName1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="itemDetailName2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="itemDetailName3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subitemDetailName1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subitemDetailName2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subitemDetailName3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunit1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunit2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunit3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="grossQuantity1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="grossQuantity2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="grossQuantity3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subgrossQuantity1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subgrossQuantity2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subgrossQuantity3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitCost1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitCost2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitCost3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitCost1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitCost2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitCost3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitOutPut1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitOutPut2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitOutPut3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitOutPut1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitOutPut2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitOutPut3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="timesAmount1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="timesAmount2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="timesAmount3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subtimesAmount1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subtimesAmount2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subtimesAmount3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitAmount1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitAmount2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="unitAmount3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitAmount1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitAmount2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subunitAmount3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="amount1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="amount2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="amount3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subamount1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subamount2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subamount3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="deductibleRate1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="deductibleRate2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="deductibleRate3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subdeductibleRate1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subdeductibleRate2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subdeductibleRate3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="rate1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="rate2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="rate3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subrate1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subrate2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subrate3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="adjuStrate1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="adjuStrate2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="adjuStrate3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subadjuStrate1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subadjuStrate2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subadjuStrate3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="addressName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="upSumAmount" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="upSumPremium" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="sumAmount" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="sumPremium" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy03Rate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy03Premuim" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy04Rate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy04Premuim" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy05Rate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy05Premuim" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy07Rate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy07Premuim" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy10Rate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy10Premuim" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy06Rate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="subSidy06Premuim" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="startDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="endDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="argueSolution" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="clauses" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="code1" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="code2" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="code3" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="operateDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="addressCName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="faxNumber" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="reportPhone" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="underWriteName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="operateName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="handlerName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="qrcode" isForPrompting="false" class="java.io.InputStream"/>
+	<parameter name="barcode" isForPrompting="false" class="java.io.InputStream"/>
+	<parameter name="cmEndDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="cmStartDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="gylogo" isForPrompting="false" class="java.io.InputStream"/>
+	<parameter name="proposalNo" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="planStartdate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="planDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="clauseName" isForPrompting="false" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="35"  isSplitAllowed="true" >
+				<image  vAlign="Top" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="35"
+						y="0"
+						width="465"
+						height="35"
+						key="image-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.io.InputStream"><![CDATA[$P{gylogo}]]></imageExpression>
+				</image>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="128"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="326"
+						y="58"
+						width="55"
+						height="15"
+						key="staticText-176"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[投保单号：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="381"
+						y="58"
+						width="132"
+						height="15"
+						key="textField-257"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{proposalNo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="26"
+						y="73"
+						width="419"
+						height="13"
+						key="staticText-177"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" isUnderline="false" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[  欢迎您到国元农业保险股份有限公司投保。在您填写本投保单前，请阅读国元农业保险股份有限公司《]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="19"
+						y="86"
+						width="312"
+						height="13"
+						key="staticText-178"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" isBold="false" isUnderline="false" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[草莓种植小额信贷组合保险条款》及相应附加险条款，应务必注意条款中有关]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="99"
+						width="443"
+						height="13"
+						key="staticText-179"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" isUnderline="false" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[的规定，并听取本公司就条款所做的解释，还可就以上内容要求本公司作出明确说明。]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="23"
+						y="112"
+						width="507"
+						height="14"
+						key="staticText-180"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" isUnderline="false" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[   本投保单经由投保人或其授权人如实填写，并经投保人签章后作为向本公司投保草莓种植小额信贷组合保险的依据。]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Transparent"
+						x="326"
+						y="86"
+						width="202"
+						height="13"
+						key="staticText-181"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险责任、责任免除、赔偿处理和投保人、]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Transparent"
+						x="18"
+						y="99"
+						width="59"
+						height="13"
+						key="staticText-182"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Justified">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[被保险人义务]]></text>
+				</staticText>
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="21"
+						y="36"
+						width="193"
+						height="37"
+						key="image-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.io.InputStream"><![CDATA[$P{barcode}]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="2"
+						y="8"
+						width="533"
+						height="25"
+						key="textField-261"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="18" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{clauseName}==null?"":$P{clauseName}+"投保单"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="437"
+						y="73"
+						width="84"
+						height="13"
+						key="textField-262"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["国元农业"+$P{comName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="639"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="20"
+						y="457"
+						width="78"
+						height="18"
+						key="staticText-49"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[争议处理方式]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="457"
+						width="417"
+						height="18"
+						key="textField-90"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" leftPadding="3" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["2".indexOf($P{argueSolution}+"") > -1 ? "仲裁":"诉讼"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="2"
+						width="78"
+						height="19"
+						key="staticText-80"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ 投保人]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="2"
+						width="165"
+						height="19"
+						key="textField-114"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{appInsuredName}==null?"­­­­­­":$P{appInsuredName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="193"
+						width="78"
+						height="19"
+						key="staticText-90"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险标的项目]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="98"
+						y="193"
+						width="102"
+						height="19"
+						key="staticText-95"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[单位保险金额(元)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="280"
+						y="193"
+						width="101"
+						height="19"
+						key="staticText-96"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险金额(元)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="381"
+						y="193"
+						width="50"
+						height="19"
+						key="staticText-98"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险费率(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="430"
+						y="193"
+						width="85"
+						height="19"
+						key="staticText-99"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险费（元）]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="213"
+						width="102"
+						height="18"
+						key="textField-137"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{unitAmount1}==null?"­­­­­­":$P{unitAmount1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="280"
+						y="213"
+						width="101"
+						height="18"
+						key="textField-140"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{amount1}==null?"­­­­­­":$P{amount1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="381"
+						y="213"
+						width="50"
+						height="18"
+						key="textField-146"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{rate1}==null?"­­­­­­":$P{rate1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="430"
+						y="213"
+						width="85"
+						height="18"
+						key="textField-149"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{adjuStrate1}==null?"­­­­­­":$P{adjuStrate1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="200"
+						y="193"
+						width="80"
+						height="19"
+						key="staticText-101"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险数量]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="200"
+						y="213"
+						width="80"
+						height="18"
+						key="textField-182"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{grossQuantity1}==null?"­­­­­­":$P{grossQuantity1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="114"
+						y="383"
+						width="79"
+						height="19"
+						key="textField-188"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{cmStartDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="402"
+						width="78"
+						height="19"
+						key="staticText-104"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ 保险费合计]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="20"
+						y="383"
+						width="78"
+						height="19"
+						key="staticText-115"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[草莓采收期]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="98"
+						y="383"
+						width="16"
+						height="19"
+						key="staticText-118"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[自]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="193"
+						y="383"
+						width="41"
+						height="19"
+						key="staticText-119"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[零时起至]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="234"
+						y="383"
+						width="86"
+						height="19"
+						key="textField-206"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{cmEndDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="320"
+						y="383"
+						width="195"
+						height="19"
+						key="staticText-120"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[二十四时止]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="20"
+						y="475"
+						width="78"
+						height="66"
+						key="staticText-121"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[特别约定]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="475"
+						width="417"
+						height="66"
+						key="textField-207"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{clauses}==null?" ":(" "+$P{clauses})]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="263"
+						y="2"
+						width="38"
+						height="19"
+						key="staticText-127"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[证件号码]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="301"
+						y="2"
+						width="120"
+						height="19"
+						key="textField-220"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{appInsuredName}==null?"­­­­­­":$P{appInsuredName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="421"
+						y="2"
+						width="21"
+						height="19"
+						key="staticText-128"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[电话]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="2"
+						width="73"
+						height="19"
+						key="textField-221"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{mobile}==null?"­­­­­­":$P{mobile}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="21"
+						width="78"
+						height="19"
+						key="staticText-129"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ 投保人地址]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="21"
+						width="323"
+						height="19"
+						key="textField-222"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{appInsuredName}==null?"­­­­­­":$P{appInsuredName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="421"
+						y="21"
+						width="21"
+						height="19"
+						key="staticText-131"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[邮编]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="21"
+						width="73"
+						height="19"
+						key="textField-224"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{postCode}==null?"­­­­­­":$P{postCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="40"
+						width="78"
+						height="19"
+						key="staticText-132"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ 被保险人]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="40"
+						width="165"
+						height="19"
+						key="textField-225"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{insuredName}==null?"­­­­­­":$P{insuredName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="263"
+						y="40"
+						width="38"
+						height="19"
+						key="staticText-133"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[证件号码]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="301"
+						y="40"
+						width="120"
+						height="19"
+						key="textField-226"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{insuredIdNum}==null?"­­­­­­":"******"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="421"
+						y="40"
+						width="21"
+						height="19"
+						key="staticText-134"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[电话]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="40"
+						width="73"
+						height="19"
+						key="textField-227"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{mobile}==null?"­­­­­­":$P{mobile}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="59"
+						width="78"
+						height="19"
+						key="staticText-135"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[被保险人地址]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="59"
+						width="323"
+						height="19"
+						key="textField-228"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{insureAddress}==null?"­­­­­­":$P{insureAddress}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="421"
+						y="59"
+						width="21"
+						height="19"
+						key="staticText-136"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[邮编]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="59"
+						width="73"
+						height="19"
+						key="textField-229"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{postCode}==null?"­­­­­­":$P{postCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="78"
+						width="78"
+						height="19"
+						key="staticText-137"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[贷款合同编号]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="78"
+						width="283"
+						height="19"
+						key="textField-230"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{insureAddress}==null?"­­­­­­":$P{insureAddress}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="381"
+						y="78"
+						width="40"
+						height="19"
+						key="staticText-138"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[贷款用途]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="421"
+						y="78"
+						width="94"
+						height="19"
+						key="textField-231"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{postCode}==null?"­­­­­­":$P{postCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="97"
+						width="78"
+						height="19"
+						key="staticText-139"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[贷款银行]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="97"
+						width="283"
+						height="19"
+						key="textField-232"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{insureAddress}==null?"­­­­­­":$P{insureAddress}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="381"
+						y="97"
+						width="40"
+						height="19"
+						key="staticText-140"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[担保人]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="421"
+						y="97"
+						width="94"
+						height="19"
+						key="textField-233"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{postCode}==null?"­­­­­­":$P{postCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="116"
+						width="78"
+						height="19"
+						key="staticText-141"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[贷款期限]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="116"
+						width="417"
+						height="19"
+						key="textField-234"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{insureAddress}==null?"­­­­­­":$P{insureAddress}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="135"
+						width="78"
+						height="19"
+						key="staticText-142"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[贷款金额]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="20"
+						y="155"
+						width="495"
+						height="18"
+						key="staticText-143"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[★ 大 棚 草 莓 种 植 保 险]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="316"
+						y="135"
+						width="199"
+						height="19"
+						key="textField-236"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(小写)￥："+$P{sumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="135"
+						width="73"
+						height="19"
+						key="staticText-144"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ (大写)人民币：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="171"
+						y="135"
+						width="145"
+						height="19"
+						key="textField-237"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{upSumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="174"
+						width="78"
+						height="19"
+						key="staticText-145"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[大棚草莓种植地址
+]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="174"
+						width="283"
+						height="19"
+						key="textField-238"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[" "+$P{addressName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="381"
+						y="174"
+						width="61"
+						height="19"
+						key="staticText-146"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[草莓种植面积]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="174"
+						width="73"
+						height="19"
+						key="textField-239"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{grossQuantity1}==null?"­­­­­­":$P{grossQuantity1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="231"
+						width="78"
+						height="19"
+						key="staticText-147"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险金额]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="316"
+						y="231"
+						width="199"
+						height="19"
+						key="textField-240"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(小写)￥："+$P{amount1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="231"
+						width="73"
+						height="19"
+						key="staticText-148"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ (大写)人民币：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="171"
+						y="231"
+						width="145"
+						height="19"
+						key="textField-241"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{upSumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="212"
+						width="78"
+						height="19"
+						key="staticText-149"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[大棚草莓]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="20"
+						y="250"
+						width="495"
+						height="18"
+						key="staticText-150"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[★ 借 款 人 意 外 伤 害 保 险]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="20"
+						y="268"
+						width="78"
+						height="19"
+						key="staticText-151"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险金额]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="316"
+						y="268"
+						width="199"
+						height="19"
+						key="textField-242"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(小写)￥："+$P{sumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="268"
+						width="73"
+						height="19"
+						key="staticText-152"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ (大写)人民币：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="171"
+						y="268"
+						width="145"
+						height="19"
+						key="textField-243"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{upSumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="287"
+						width="78"
+						height="19"
+						key="staticText-153"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险费]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="279"
+						y="287"
+						width="142"
+						height="19"
+						key="textField-244"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(小写)￥："+$P{sumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="287"
+						width="73"
+						height="19"
+						key="staticText-154"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ (大写)人民币：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="171"
+						y="287"
+						width="108"
+						height="19"
+						key="textField-245"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{upSumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="421"
+						y="287"
+						width="21"
+						height="19"
+						key="staticText-155"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[费率]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="287"
+						width="73"
+						height="19"
+						key="textField-246"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{postCode}==null?"­­­­­­":$P{postCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="306"
+						width="495"
+						height="18"
+						key="staticText-156"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[★ 农 业 生 产 小 额 贷 款 保 险]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="20"
+						y="324"
+						width="78"
+						height="19"
+						key="staticText-157"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[赔偿限额]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="316"
+						y="324"
+						width="199"
+						height="19"
+						key="textField-247"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(小写)￥："+$P{sumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="324"
+						width="73"
+						height="19"
+						key="staticText-158"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ (大写)人民币：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="171"
+						y="324"
+						width="145"
+						height="19"
+						key="textField-248"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{upSumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="343"
+						width="78"
+						height="19"
+						key="staticText-159"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保险费]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="279"
+						y="343"
+						width="142"
+						height="19"
+						key="textField-249"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(小写)￥："+$P{sumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="343"
+						width="73"
+						height="19"
+						key="staticText-160"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ (大写)人民币：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="171"
+						y="343"
+						width="108"
+						height="19"
+						key="textField-250"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{upSumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="421"
+						y="343"
+						width="21"
+						height="19"
+						key="staticText-161"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[费率]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="343"
+						width="73"
+						height="19"
+						key="textField-251"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{postCode}==null?"­­­­­­":$P{postCode}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="114"
+						y="362"
+						width="79"
+						height="21"
+						key="textField-252"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{startDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="362"
+						width="78"
+						height="21"
+						key="staticText-162"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[    本组合产品   
+ 保险期间
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="98"
+						y="362"
+						width="16"
+						height="21"
+						key="staticText-163"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[自]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="193"
+						y="362"
+						width="41"
+						height="21"
+						key="staticText-164"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[零时起至]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="234"
+						y="362"
+						width="86"
+						height="21"
+						key="textField-253"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{endDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="320"
+						y="362"
+						width="195"
+						height="21"
+						key="staticText-165"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[二十四时止]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="20"
+						y="439"
+						width="78"
+						height="18"
+						key="staticText-166"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[免赔说明]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="316"
+						y="402"
+						width="199"
+						height="19"
+						key="textField-255"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(小写)￥："+$P{sumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="402"
+						width="73"
+						height="19"
+						key="staticText-168"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ (大写)人民币：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="171"
+						y="402"
+						width="145"
+						height="19"
+						key="textField-256"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{upSumAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="98"
+						y="439"
+						width="417"
+						height="18"
+						key="staticText-169"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[大棚草莓种植保险施行8%的绝对免赔率。]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="89"
+						y="544"
+						width="437"
+						height="14"
+						key="staticText-170"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[1、本人已详细阅读国元农业保险股份有限公司《国元农业安徽省草莓种植小额信贷组合保险条款》及相应附]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Transparent"
+						x="16"
+						y="558"
+						width="516"
+						height="14"
+						key="staticText-171"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[加险条款，并保证本投保单所填各项内容属实；2、贵公司已向本人说明该条款内容，并就合同中有关责任免除、赔偿处理和投]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="16"
+						y="572"
+						width="502"
+						height="15"
+						key="staticText-172"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[保人、被保险人义务等条款内容已作明确说明，本人确已明了其真实含义及法律后果。]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="372"
+						y="595"
+						width="113"
+						height="17"
+						key="staticText-173"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[投保人签字（盖章）]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="380"
+						y="612"
+						width="83"
+						height="17"
+						key="staticText-174"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="黑体" pdfFontName="STSong-Light" size="9" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[日期：]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="25"
+						y="544"
+						width="64"
+						height="14"
+						key="staticText-175"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="黑体" pdfFontName="STSong-Light" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[投保人声明：]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="340"
+						y="422"
+						width="80"
+						height="18"
+						key="textField-258"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{planStartdate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="280"
+						y="422"
+						width="60"
+						height="18"
+						key="staticText-183"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[付费日期]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="420"
+						y="422"
+						width="15"
+						height="18"
+						key="staticText-184"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[至]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="435"
+						y="422"
+						width="80"
+						height="18"
+						key="textField-259"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{planDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="20"
+						y="422"
+						width="78"
+						height="18"
+						key="staticText-185"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<text><![CDATA[ 付费方式]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="98"
+						y="422"
+						width="182"
+						height="18"
+						key="textField-260"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" leftPadding="3" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="9" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				</textField>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

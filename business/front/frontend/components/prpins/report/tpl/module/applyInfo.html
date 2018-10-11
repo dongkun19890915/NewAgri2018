@@ -1,0 +1,86 @@
+<div class="index_tit"><h6>投保人信息</h6></div>
+<ul class="list_ul list_ul1" ng-if="policyDto.prpCinsuredDto.insuredType == '个人' || policyDto.prpCinsuredDto.insuredType == '1'">
+    <li><span>投保人类型：</span></li>
+    <li><span class="fl">个人</span></li>
+
+    <li><em>*</em><span>姓名：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.insuredName" class="fl">
+    </li>
+
+    <li><em>*</em><span>证件类型：</span></li>
+    <li>
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.identifyType">
+    </li>
+    <li><em>*</em><span>证件号码：</span></li>
+    <li>
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.identifyNumber">
+    </li>
+
+    <li><span>证件到期日：</span></li>
+    <li>
+        <!--<input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.identityEndDate">-->
+        <span class="fl" ng-bind="policyDto.prpCinsuredDto.identityEndDate | limitTo:10"></span>
+    </li>
+
+    <li><em>*</em><span>性别：</span></li>
+    <li>
+        <span class="fl" ng-bind="policyDto.prpCinsuredDto.prpCinsuredNatureDto.sex"></span></li>
+    <li><em>*</em><span>手机号码：</span></li>
+    <li>
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.mobile">
+    </li>
+    <li><em ng-if="emailRequiredFlag">*</em><span>电子邮件：</span></li>
+    <li>
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.email" required ng-if="emailRequiredFlag">
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.email" ng-if="!emailRequiredFlag">
+    </li>
+    <li><span>联系地址：</span></li>
+    <li  class="long_width long_height"><span class="fl"   ng-bind="policyDto.prpCinsuredDto.insuredAddress" ></span></li>
+</ul>
+<ul class="list_ul list_ul1" ng-if="policyDto.prpCinsuredDto.insuredType == '团体客户' || policyDto.prpCinsuredDto.insuredType == '2'">
+    <li><span>投保人类型：</span></li>
+    <li><span class="fl"  >团体客户</span></li>
+
+    <li><em>*</em><span>名称：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.insuredName" class="fl">
+    </li>
+    <li><span>组织机构代码：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.prpCinsuredArtifDto.organizeCode" class="fl">
+    </li>
+    <li><span>营业执照号：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.prpCinsuredArtifDto.businessCode" class="fl">
+    </li>
+    <li><span>税务登记号：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.prpCinsuredArtifDto.revenueRegistNo" class="fl">
+    </li>
+    <li><span>社会统一信用代码：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.prpCinsuredArtifDto.creditCode" class="fl">
+    </li>
+    <li><span>联系人：</span></li>
+    <li>
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.linkerName">
+    </li>
+    <li><span>联系电话：</span></li>
+    <li>
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.phoneNumber">
+    </li>
+
+    <li><em>*</em><span>联系人手机号码：</span></li>
+    <li>
+        <input type="text" readonly class="fl" ng-model="policyDto.prpCinsuredDto.mobile">
+    </li>
+    <li><em ng-if="emailRequiredFlag">*</em><span>联系人电子邮箱：</span></li>
+    <li>
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.email" class="fl" required ng-if="emailRequiredFlag">
+        <input type="text" readonly ng-model="policyDto.prpCinsuredDto.email" class="fl" ng-if="!emailRequiredFlag">
+    </li>
+
+    <li><span>联系地址：</span></li>
+    <li class="long_width long_height"><span class="fl"   ng-bind="policyDto.prpCinsuredDto.insuredAddress" ></span></li>
+</ul>

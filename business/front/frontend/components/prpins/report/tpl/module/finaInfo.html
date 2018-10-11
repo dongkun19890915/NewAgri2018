@@ -1,0 +1,20 @@
+<!--财政补贴占比信息-->
+<div class="index_tit"><h6>财政补贴占比信息</h6></div>
+<ul class="list_ul">
+    <li><em>*</em><span>财政补贴比例类型：</span></li>
+    <li>
+        <!--<div class="ui-select">
+            <code-type base-code="SubsidyType" class="seletc_bor" is-fuzzy="false" ng-model="subsidyType"  ng-disabled="false" required warn-text="" ></code-type>
+        </div>-->
+        <input type="text" class="fl box_shadow bor" readonly ng-model="subsidyTypeName">
+        <input type="hidden" readonly ng-model="subsidyType">
+    </li>
+    <li></li>
+    <li></li>
+    <div ng-repeat="subsidy in subsidyList" ng-if="subsidyFlag">
+        <li><span>{{subsidy.subsidyName}}：</span></li>
+        <li>
+            <input type="text" class="read_only" ng-model="subsidy.subsidyRate" readonly><span class="fl">%</span>
+        </li>
+    </div>
+</ul>

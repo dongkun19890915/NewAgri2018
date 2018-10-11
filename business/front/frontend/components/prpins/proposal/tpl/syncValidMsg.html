@@ -1,0 +1,28 @@
+<!--异步核保校验-->
+<div class="index_con">
+    <div class="index_list">
+        <div class="index_tit"><h6>校验提示</h6></div>
+        <ul class="list_ul list_ul1">
+            <li><span>投保单号：</span></li>
+            <li><span class="fl">{{proposalNo}}</span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span>产品：</span></li>
+            <li>
+                <input type="text" value="xxxxxxxx保险" readonly class="fl">
+            </li>
+            <li><span>应收金额：</span></li>
+            <li><span class="fl order_money"><b>{{sumPremium}}</b>元</span></li>
+            <li><span>投保人：</span></li>
+            <li><input type="text" ng-model="applyName" readonly class="fl"></li>
+        </ul>
+        <div>
+            <ul class="list_ul list_ul_cen">
+            <li style="width: 90%;align-content:center"><b>正在处理投保单数据。您可以稍后在“待处理投保单”菜单中查询该投保单继续操作。</b></li>
+            </ul>
+        </div>
+        <div class="div_back">
+            <span class="a_back" ng-click="onEdit()">返回</span>
+        </div>
+    </div>
+</div>

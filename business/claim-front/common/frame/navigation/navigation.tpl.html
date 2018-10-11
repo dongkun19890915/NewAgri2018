@@ -1,0 +1,5 @@
+<div ng-show="authSystemFlag&&navigationShow" class="navigation-content" ng-controller="navigationCtrl">
+    <span ui-sref="dashboard"><em>当前位置 ： </em></span>
+    <span ng-show="parentShow"><em>{{parentMenu}}</em></span><span ng-show="parentShow">></span>
+    <span style="color: #5a9cff;"><em>{{title}}</em></span>
+</div>
