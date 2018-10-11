@@ -1,0 +1,32 @@
+<!--
+****************************************************************************
+* DESC: 农险angular－特殊批改批文信息界面
+* AUTHOR     ：阳光项目组
+* Created by sen on 2017/11/12.
+* --------------------------------------------------------
+*       sunyaohui       2018-01-06     项目部署
+****************************************************************************
+-->
+<div class="content_div content1-div">
+    <div class="position">
+        <span>当前位置：</span>
+        <span class="local-fir">{{Tittle.firstLev}} > </span>
+        <span class="local-fir">{{Tittle.secLev}} > </span>
+        <span class="local-sec">{{Tittle.thirdLev}}</span>
+    </div>
+    <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>批文信息</label>
+                </span>
+        <div style="text-align:center;padding-top: 28px;">
+            <textarea style="resize:none;font-size:16px;margin: 0px;width:780px;height:300px;max-width:780px;max-height:300px;padding:30px;" ng-model="endorseText" ng-change="changeEndorseText(endorseText)"></textarea>
+        </div>
+        <div class="condition_table">
+            <div class="btn_tr clearfix">
+                <button type="button" class="btn-success fl btn_front" ng-click="closeEnderseText()">上一步</button>
+                <button type="button" class="btn-success fr no-bg btn_after" ng-disabled="infoToView.saveEnderseFlag" ng-click="saveEnderseText()">保存</button>
+            </div>
+        </div>
+    </div>
+
+</div>

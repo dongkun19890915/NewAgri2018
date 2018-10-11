@@ -1,0 +1,704 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔报案登记查询页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/8 
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="section" >
+    <div class="content_div content1-div">
+        <div class='damage clearfix'>
+            <span class='fl damage_span' ng-click="showCompensateComm()">理赔沟通</span>
+            <span class='fl damage_span' ng-click="showElectronicDocu()">电子单证</span>
+            <span class='fl damage_span' ng-click="showSurveyReport()">调查报告</span>
+
+
+        </div>
+        <div class="queryCriteria">
+    <span class="queryCriteria_title">
+        <label>查勘定损处理</label>
+       <!-- <i class="iconfont click_img reduce">&#xe667;</i>
+        <i class="iconfont click_img plus">&#xe668;</i>-->
+    </span>
+            <div class="condition_table mt20">
+                <ul class="clearfix half-ul">
+                    <li class="condition_td fl half-li">
+                        <label>险种名称</label>
+                        <div class="half-div">
+                            <input type="text" class="grey"
+                                    ng-model="CheckPageResponseDto.riskName"
+                                   ng-disabled="true"/>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>报案号</label>
+                        <div class="half-div">
+                            <input type="text" class="grey" maxlength="19"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.registNo"
+                                   ng-disabled="true"/>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>保单号码</label>
+                        <div class="half-div">
+                            <input type="text"  style="width: 65%" ng-attr-title="{{CheckPageResponseDto.prpLcheckDto.policyNo}}" class="danger_short grey" ng-model="CheckPageResponseDto.prpLcheckDto.policyNo" value='' ng-disabled="true"/>
+                            <span class='fl danger_btn' ng-click="showRelateInfo()">关联</span>
+                        </div>
+                    </li>
+                    <!--<li class="condition_td fl half-li">-->
+                        <!--<label>立案号</label>-->
+                        <!--<div class="half-div">-->
+                            <!--<input type="text" class="grey" ng-model="CheckPageResponseDto.prpLpropDtoList[0].claimNo" ng-disabled="true"/>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <li class="condition_td fl half-li">
+                        <label>已出险次数</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short grey" value='' ng-model="CheckPageResponseDto.perilCount" ng-disabled="true"/>
+                            <span class='fl danger_btn' ng-click="openPerilCount()">查看</span>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>被保险人姓名</label>
+                        <div class="half-div danger-div">
+                            <!--<input type="text" class="danger_short1"-->
+                            <input type="text"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.insuredName"
+                                   ng-required="true"
+                                   ng-disabled="true"/>
+                            <!--<span class='fl danger_btn1'>出险时保单信息</span>-->
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>出险时间</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   maxlength="10"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.damageStartDate"
+                                   ng-disabled="true"/>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>出险地点</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-disabled="showFlag"
+                                   ng-required="true"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.damageAddress"
+                                   maxlength="60"/>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>查勘性质</label>
+                        <div class="half-div">
+                            <!--<ui-select ng-disabled="showFlag" ng-required="true" ng-model="CheckPageResponseDto.prpLcheckDto.checkNature"  >-->
+                                <!--<ui-select-match   placeholder="查询或选择...">-->
+                                    <!--{{$select.selected.codecname}}-->
+                                <!--</ui-select-match>-->
+                                <!--<ui-select-choices repeat="code.codecode as code in codeListData.CheckNature | filter: $select.search">-->
+                                    <!--<span ng-bind="code.codecname"></span>-->
+                                <!--</ui-select-choices>-->
+                            <!--</ui-select>-->
+                            <code-type base-code="CheckNature" ng-disabled="showFlag" ng-model="CheckPageResponseDto.prpLcheckDto.checkNature"></code-type>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label><i class='i-col'>*</i>查勘日期</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-required="true"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.checkDate"
+                                   jedate
+                                   format="YYYY-MM-DD"
+                                   name="查勘日期"
+                                   value="2"
+                                   id="checkDate"
+                                   class="date"
+                                   />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label><i class='i-col'>*</i>查勘地点</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-required="true"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.checkSite"
+                                   maxlength="30" />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label><i class='i-col'>*</i>查勘人1</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-required="true"
+                                   my-max-length="20" maxlength="20"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.checker1"
+                                   />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>查勘人2</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   my-max-length="20" maxlength="20"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.checker2"
+                                   />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li clearfix">
+                        <label class='fl'><i class='i-col'>*</i>出险原因</label>
+                        <div class="half-div">
+                            <!--<select-->
+                                    <!--ng-required="true"-->
+                                    <!--my-max-length="20" maxlength="20"-->
+                                    <!--ng-disabled="showFlag"-->
+                                    <!--ng-model="CheckPageResponseDto.prpLcheckDto.damageName"-->
+                            <!--&gt;</select>-->
+                            <ui-select ng-disabled="showFlag" ng-required="true" ng-model="CheckPageResponseDto.prpLcheckDto.damageCode"  >
+                                <ui-select-match   placeholder="查询或选择...">
+                                    {{$select.selected.codecname}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="code.codecode as code in codeListData.DamageCode | filter    : $select.search">
+                                    <span ng-bind="code.codecname"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>报损金额CNY</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-disabled="true" ng-pattern="regData.positiveNumber"
+                                   my-max-length="20" maxlength="20"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.registEstimateLoss"
+                                   />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>预估金额CNY</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-disabled="showFlag"
+                                   my-max-length="20" maxlength="20"
+                                   ng-model="CheckPageResponseDto.prpLcheckDto.estimateLoss"
+                                   />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li clearfix">
+                        <label class='fl'>查勘处理单位</label>
+                        <div class="half-div">
+                            <!--<select-->
+                                    <!--ng-required="true"-->
+                                    <!--ng-disabled="showFlag"-->
+                                    <!--ng-model="CheckPageResponseDto.prpLcheckDto.handleUnit"-->
+                            <!--&gt;</select>-->
+                            <com-tree ng-value="CheckPageResponseDto.comName" url="queryUnit" ng-model="CheckPageResponseDto.prpLcheckDto.handleUnit"  ng-disabled="showFlag" class="tree"> </com-tree>
+                        </div>
+                    </li>
+                    <li class="condition_td fl long-li long_li">
+                        <label>备注</label>
+                        <div class="half-div">
+                            <textarea  ng-disabled="showFlag" ng-model="CheckPageResponseDto.prpLcheckDto.remark" class="long_input"cols="3"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="queryDanger">
+            <div class="clearfix" style="border-bottom: 1px solid #d7d7d7;">
+                <span class="queryCriteria_title fl" style="width:40%;">
+                    <label>查勘定损登记</label>
+                </span>
+                <div class="btn_tr clearfix mt20 pl13 fr" ng-show="!showFlag" style="margin-top:4px !important;padding:0;width:26%;" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" >
+                    <!--<span ng-click="downloadList()">理赔清单下载</span>-->
+                    <span ng-click="import()" ng-if="CheckPageRequestDto.editType!='SHOW'" >导入定损清单</span>
+                    <span ng-click="downloadlist()" >下载清单</span>
+                </div>
+                <div class="btn_tr clearfix mt20 pl13 fr" ng-show="!showFlag" style="margin-top:4px !important;padding:0;width:26%;" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'">
+                    <!--<span ng-click="relevanceLists()">关联清单</span>-->
+                    <span ng-click="importlist()" ng-if="CheckPageRequestDto.editType!='SHOW'">导入定损清单</span>
+                    <span ng-click="downloadlist()" >下载清单</span>
+                </div>
+            </div>
+
+            <div class="condition_table">
+                <ul class="clearfix half-ul" ng-if="isAquaculture">
+                    <li class="condition_td fl half-li">
+                        <label>定损时间</label>
+                        <div class="half-div">
+                          <input type="text"
+                                 ng-disabled="showFlag"
+                                 ng-model="CheckPageResponseDto.prpLverifyLossDto.underWriteEndDate"
+                                 jedate
+                                 format="YYYY-MM-DD"
+                                 name="定损时间"
+                                 value="2"
+                                 id="underWriteEndDate"
+                                 class="date-input date fl"
+                          />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>赔付数量</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.lossEsnumBer"
+                                   ng-pattern = "regData.positiveNumber"
+                                   warn-text="{myMaxnumber:'赔付数量不能大于承保数量',itemName:'赔付数量'}"
+                                   my-maxnumber="{{CheckPageResponseDto.statQuantity}}"
+                                   />
+                            <div class="select_arrow"><i class="caretSelf"></i></div>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" ng-disabled="showFlag">
+                                <option>亩</option>
+                            </select>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'" ng-disabled="showFlag">
+                                <option>头</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>出险户次</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-disabled="showFlag"
+                                   ng-pattern="regData.integer"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.damageInsured"
+                                   warn-text="{'ErrPattern':'出险户次格式错误，请修改！',itemName:'出险户次'}"
+                                   />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>死亡数量</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.deathQuantity"
+                                   ng-pattern="regData.integer"
+                                   warn-text="{'ErrPattern':'死亡数量格式错误，请修改！',itemName:'死亡数量'}"
+                                   />
+                            <div class="select_arrow"><i class="caretSelf"></i></div>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" ng-disabled="showFlag">
+                                <option>亩</option>
+                            </select>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'" ng-disabled="showFlag">
+                                <option>头</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>扑杀数量</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.killQuantity"
+                                   ng-pattern="regData.integer"
+                                   warn-text="{'ErrPattern':'扑杀数量格式错误，请修改！',itemName:'扑杀数量'}"
+                                   />
+                            <div class="select_arrow"><i class="caretSelf"></i></div>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" ng-disabled="showFlag">
+                                <option>亩</option>
+                            </select>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'" ng-disabled="showFlag">
+                                <option>头</option>
+                            </select>
+                        </div>
+                    </li>
+                    <!--<li class="condition_td fl half-li">-->
+                        <!--<label>关联损失清单</label>-->
+                        <!--<div class="half-div">-->
+                            <!--<input type="text"-->
+                                   <!--ng-disabled="showFlag"-->
+                                   <!--/>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="condition_td fl half-li" ng-if="CheckPageResponseDto.riskCode==3107">-->
+                        <!--<div class="btn_tr clearfix mt20" ng-show="!showFlag" style="margin-top:0 !important;position: relative;left:70px;">-->
+                            <!--<span >发起调查</span>-->
+                            <!--<span ng-click="relevanceLists()">关联清单</span>-->
+                            <!--<span ng-click="downloadList()">清单下载</span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+                <ul class="clearfix half-ul" ng-if="!isAquaculture">
+                    <li class="condition_td fl half-li">
+                        <label>定损时间</label>
+                        <div class="half-div">
+                          <input type="text"
+                                 ng-disabled="showFlag"
+                                 ng-model="CheckPageResponseDto.prpLverifyLossDto.underWriteEndDate"
+                                 jedate
+                                 format="YYYY-MM-DD"
+                                 name="定损时间"
+                                 value="2"
+                                 id="underWriteEndDate1"
+                                 class="date"
+                          />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>赔付数量</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.lossEsnumBer"
+                                   ng-pattern = "regData.naturalNumber"
+                                   warn-text="{'myMaxnumber':'赔付数量不能大于承保数量',itemName:'赔付数量'}"
+                                   my-maxnumber="{{CheckPageResponseDto.statQuantity}}"
+
+                            />
+                            <div class="select_arrow"><i class="caretSelf"></i></div>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" ng-disabled="showFlag">
+                                <option>亩</option>
+                            </select>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'" ng-disabled="showFlag">
+                                <option>头</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>出险户次</label>
+                        <div class="half-div">
+                            <input type="text"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.damageInsured"
+                                   ng-pattern="regData.number" warn-text="{'ErrPattern':'出险户次格式错误，请修改！',itemName:'出险户次'}"
+                            />
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>受灾面积</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.disasterArea"
+                                   ng-pattern="regData.naturalNumber" warn-text="{'ErrPattern':'受灾面积格式错误，请修改！',itemName:'受灾面积'}"
+                            />
+                            <div class="select_arrow"><i class="caretSelf"></i></div>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" ng-disabled="showFlag">
+                                <option>亩</option>
+                            </select>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'" ng-disabled="showFlag">
+                                <option>头</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>成灾面积</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.affectEDarea"
+                                   ng-pattern="regData.naturalNumber" warn-text="{'ErrPattern':'成灾面积格式错误，请修改！',itemName:'成灾面积'}"
+                            />
+                            <div class="select_arrow"><i class="caretSelf"></i></div>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" ng-disabled="showFlag">
+                                <option>亩</option>
+                            </select>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'" ng-disabled="showFlag">
+                                <option>头</option>
+                            </select>
+                        </div>
+
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>绝产面积</label>
+                        <div class="half-div">
+                            <input type="text" class="danger_short"
+                                   ng-disabled="showFlag"
+                                   ng-model="CheckPageResponseDto.prpLverifyLossDto.noProductionArea"
+                                   ng-pattern="regData.naturalNumber" warn-text="{'ErrPattern':'绝产面积格式错误，请修改！',itemName:'绝产面积'}"
+                            />
+                            <div class="select_arrow"><i class="caretSelf"></i></div>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='H' ||CheckPageResponseDto.riskCode==='3224'||CheckPageResponseDto.riskCode==='3237'" ng-disabled="showFlag">
+                                <option>亩</option>
+                            </select>
+                            <select class="fl danger_select" ng-if="CheckPageResponseDto.riskType==='I' && CheckPageResponseDto.riskCode!='3224'&&CheckPageResponseDto.riskCode!='3237'" ng-disabled="showFlag">
+                                <option>头</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <!--<div class="queryDanger" ng-if="CheckPageResponseDto.riskCode==3220".>
+                  <span class="queryCriteria_title">
+                      <label>耳标号定损清单</label>
+                  </span>
+            </div>-->
+            <!--<div class="btn_tr clearfix mt20" ng-show="mriskSwitch&&!showFlag">-->
+                <!--<span ng-click="" ng-hide="isAquaculture">关联清单</span>-->
+                <!--<span ng-click="" ng-hide="isAquaculture">发起调查</span>-->
+                <!--<span>查 询</span>-->
+            <!--</div>-->
+            <!--<div class="btn_tr clearfix mt20" ng-show="showFlag">-->
+                <!--<span>查询</span>-->
+            <!--</div>-->
+        </div>
+        <!--<div class="queryResult">-->
+            <!--<div class="queryResult_title clearfix">-->
+                <!--<span class="fl tit-color font-bold">定损清单</span>-->
+            <!--</div>-->
+            <!--<table>-->
+                <!--<tr class="tr_top">-->
+                    <!--<td>出险者名称</td>-->
+                    <!--<td>险别名称</td>-->
+                    <!--<td>损失标的名称</td>-->
+                    <!--<td>受损金额</td>-->
+                    <!--<td>剔除金额</td>-->
+                    <!--<td>定损金额</td>-->
+                    <!--<td>备注</td>-->
+                    <!--<td ng-hide="showFlag">操作</td>-->
+                <!--</tr>-->
+                <!--<tr class="tr_content" ng-repeat=" result in CheckPageResponseDto.prpLpropDtoList">-->
+                    <!--<td><select ng-disabled="showFlag" ng-model="result.familyName"></select></td>-->
+                    <!--<td style="width:250px"><select ng-disabled="showFlag" ng-model="result.kindName"></select></td>-->
+                    <!--<td ><input ng-disabled="showFlag" type="text"  ng-model="result.lossItemName"></td>-->
+                    <!--<td><input ng-disabled="showFlag" type="text" maxlength="40" ng-model="result.sumLoss"></td>-->
+                    <!--<td ><input ng-disabled="showFlag" type="text" maxlength="40" ng-model="result.sumReject"></td>-->
+                    <!--<td class="tr" maxlength="40" ng-bind="result.sumdefLoss"></td>-->
+                    <!--<td><input type="text" ng-disabled="showFlag"  ng-model="result.remark"></td>-->
+                    <!--<td class='local-sec' ng-hide="showFlag" ng-click="del($index)">删除</td>-->
+                <!--</tr>-->
+                <!--<tr class="tr_content"  ng-hide="showFlag">-->
+                    <!--<td colspan="7"></td>-->
+                    <!--<td class='local-sec' ng-click="add()">添加</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+            <!--<div class='clearfix demages_ul half-ul'>-->
+                <!--<div class="condition_td fl">-->
+                    <!--<label>受损金额</label>-->
+                    <!--<div class="half-div">-->
+                        <!--<input type="text" maxlength="40" ng-disabled="true"/>-->
+                    <!--</div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+                <!--<div class="condition_td fl">-->
+                    <!--<label>剔除金额合计</label>-->
+                    <!--<div class="half-div">-->
+                        <!--<input type="text"  ng-disabled="true"/>-->
+                    <!--</div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+                <!--<div class="condition_td fl">-->
+                    <!--<label>定损金额合计</label>-->
+                    <!--<div class="half-div">-->
+                        <!--<input type="text"  ng-disabled="true"/>-->
+                    <!--</div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="queryResult" ng-show="isAquaculture">-->
+            <!--<div class="queryResult_title clearfix">-->
+                <!--<span class="fl tit-color font-bold">耳根号清单</span>-->
+                <!--<label class="fr" ng-hide="showFlag">耳根号验证</label>-->
+            <!--</div>-->
+            <!--<table>-->
+                <!--<tr class="tr_top">-->
+                    <!--<td>客户代码</td>-->
+                    <!--<td>证件号码</td>-->
+                    <!--<td>姓名</td>-->
+                    <!--<td>开户行名称</td>-->
+                    <!--<td>银行账号</td>-->
+                    <!--<td>耳标号</td>-->
+                    <!--<td>估损金额</td>-->
+                    <!--<td ng-hide="showFlag">操作</td>-->
+                <!--</tr>-->
+                <!--<tr class="tr_content" ng-repeat=" result in CheckPageResponseDto.prpLCompensateEarDtoList">-->
+                    <!--<td ng-bind="result.fcode"></td>-->
+                    <!--<td ng-bind="result.idCard"></td>-->
+                    <!--<td ng-bind="result.name"></td>-->
+                    <!--<td ng-bind="result.bank"></td>-->
+                    <!--<td ng-bind="result.account"></td>-->
+                    <!--<td >-->
+                        <!--<input type="text"-->
+                               <!--ng-disabled="showFlag"-->
+                               <!--ng-model="result.earNo"-->
+                               <!--style="min-width: 80px"-->
+                               <!--name="">-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<input type="text"-->
+                               <!--ng-disabled="showFlag"-->
+                               <!--ng-model="result.estimateLoss"-->
+                               <!--style="min-width: 80px"-->
+                               <!--name="">-->
+                    <!--</td>-->
+                    <!--<td ng-hide="showFlag" class='local-sec'>删除</td>-->
+                <!--</tr>-->
+                <!--<tr class="tr_content">-->
+                    <!--<td colspan="7"></td>-->
+                    <!--<td class='local-sec' ng-hide="showFlag">添加</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+            <!--&lt;!&ndash;<p class='add_p bor-bottom'>添加</p>&ndash;&gt;-->
+        <!--</div>-->
+        <div class="queryDanger">
+            <span class="queryCriteria_title">
+                <label>查勘定损报告</label>
+            </span>
+            <div class="input-content-box">
+                <textarea
+                        rows="5"
+                        ng-disabled="showFlag"
+                        ng-model="CheckPageResponseDto.context"
+                ></textarea>
+            </div>
+        </div>
+        <!--<div class="btn_three clearfix">-->
+            <!--<span class="fl">暂存</span>-->
+            <!--<span class="fl">提交</span>-->
+            <!--<span class="fl no-bg">取消</span>-->
+        <!--</div>-->
+        <div class="btn_tr clearfix mt20" ng-show="!showFlag">
+            <span class="btn" ng-click="giveup()">放弃任务</span>
+            <span class="btn" ng-click="submitCheck('save')">暂 存</span>
+            <span class="btn"  ng-disabled="flag" ng-click="submitCheck('sub')" >提 交</span>
+            <span class="btn" ng-click="cancel()">取 消</span>
+        </div>
+        <div class="btn_tr clearfix mt20" ng-show="showFlag">
+            <span ng-click="goback()">返 回</span>
+        </div>
+    </div>
+</div>
+<!--关联清单弹框-->
+<div ng-if="showRelative" style="position: fixed;z-index: 1000;left:40%;top:30%;">
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info printLayer orderIntLayer">
+        <div class="modal-header">
+            <h1 class="font-large">关联清单</h1>
+            <i class="icon iconfont modal-header-close" ng-click="closeModal()">&#xe632;</i>
+        </div>
+        <div class="modal-body">
+            <div class="queryResult">
+                <div class="queryResult_title clearfix">
+                    <span class="fl tit-color font-bold">定损清单列表</span>
+                </div>
+                <div style="max-height:320px;overflow-y: auto;">
+                    <table>
+                        <tr class="tr_top">
+                            <td>选择</td>
+                            <td>序列号</td>
+                            <td>保单号</td>
+                            <td>报案号</td>
+                            <td>定损清单号</td>
+                            <td>清单来源</td>
+                            <td>绘制日期</td>
+                            <td>绘制人</td>
+                        </tr>
+                        <tr class="tr_content" ng-repeat="info in RelevanceList">
+                            <td><input type="radio" ng-model="info.checkBoxFlag" ng-click="sendCheckFlag(info)" value="1" name="checkBoxFlag" ng-checked="info.checkBoxFlag==1"/></td>
+                            <td ng-bind="info.serialNo"></td>
+                            <td ng-bind="info.policyNo"></td>
+                            <td ng-bind="info.bizNo"></td>
+                            <td ng-bind="info.lossListCode"></td>
+                            <td ng-bind="info.origin=='0'?'金禾':'手动'"></td>
+                            <td ng-bind="info.listCreateTime"></td>
+                            <td ng-bind="info.opName"></td>
+                            <td ng-model="queryDto.registNo" ng-if="false"></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer" style="text-align: center;">
+            <button class="btn-success" ng-click="goRelevanceList()">确定</button>
+            <button class="btn-cancel" ng-click="closeModal()">返回</button>
+        </div>
+    </div>
+</div>
+<!-- 理赔沟通弹层 -->
+<div ui-view="connect"></div>
+<!-- 关联弹层-->
+<!--<div ui-view="connect"></div>-->
+<div class="orderlayerBox" style="max-height:700px " ng-show="relateInfo">
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info printLayer orderIntLayer">
+        <div class="remove_header">
+            <span>保单信息</span>
+            <i class="icon iconfont" ng-click="closeRelative()">&#xe632;</i>
+        </div>
+        <div class="info_container">
+            <div >
+                <!--<div class="remove_header">-->
+                <!--<span>保单信息</span>-->
+                <!--</div>-->
+                <div class="condition_table">
+                    <ul class="clearfix">
+                        <li class="condition_td fl long-li">
+                            <label>保单号</label>
+                            <input type="text" style="width: 37%" ng-model="relateInfoDto.prpCmainDto.policyNo" disabled="disabled">
+                            <span class='fl danger_btn' ng-click="policyShow(CheckPageResponseDto.prpLcheckDto.policyNo)">出险时保单信息</span>
+                        </li>
+                        <li class="condition_td fl long-li">
+                            <label>保险期限</label>
+                            <!--<input type="text" ng-model="relateInfoDto.prpCmainDto.insuredName"  maxlength="19" disabled="disabled">-->
+                            <div class="data-box">
+                                <input type="text" id="startDate" style="width: 30%" class="date-long-input fl date" ng-model="relateInfoDto.prpCmainDto.startDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                                <span class='fl long-span'>零时起至</span>
+                                <input type="text" id="endDate" style="width: 30%" class="date-long-input fl date" ng-model="relateInfoDto.prpCmainDto.endDate" jedate format="YYYY-MM-DD" ng-disabled="true"/>
+                                <span class='fl'>二十四时止</span>
+                            </div>
+                        </li>
+                        <li class="condition_td fl long-li">
+                            <label>被保险人名称</label><input type="text" style="width: 37%" ng-model="relateInfoDto.prpCmainDto.insuredName"  disabled="disabled">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="queryCriteria" style="border-top: none;width: 100%;">
+                <div class="remove_header">
+                    <span>批单信息</span>
+                </div>
+                <table class="condition_table" style="margin-top: 0px">
+                    <tr class="tr_top">
+                        <td class="w8">序号</td>
+                        <td class="w8">批单号码</td>
+                        <td class="w8">核批完成日期</td>
+                    </tr>
+                    <tr class="tr_content F2F2F2" ng-repeat="result in relateInfoDto.prpPheadDtoList">
+                        <td ng-bind="$index+1"></td>
+                        <td ng-bind="result.endorseNo" ></td>
+                        <td ng-bind="result.underwriteEndDate"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="queryCriteria" style="border-top: none;width: 100%;">
+                <div class="remove_header">
+                    <span>理赔信息</span>
+                </div>
+                <table class="condition_table" style="margin-top: 0px">
+                    <thead>
+                    <tr class="tr_top">
+                        <td class="w8">序号</td>
+                        <td class="w8">报案号</td>
+                        <td class="w8">出险时间</td>
+                        <td class="w8">赔付金额</td>
+                        <td class="w8">流程图</td>
+                    </tr>
+                    </thead>
+                    <tbody  style="height: 100px;overflow-y: scroll;">
+                    <tr class="tr_content F2F2F2" style="height: 42px;line-height: 42px;" ng-repeat="result in relateInfoDto.prpLregistDtoList">
+                        <td ng-bind="$index+1"></td>
+                        <td ng-bind="result.registNo" ></td>
+                        <td ng-bind="result.damageStartDate"></td>
+                        <td ng-bind="result.estimateLoss"></td>
+                        <td class="local-sec" ng-click="showFlow(result)">查看</td>
+                    </tr>
+                    </tbody >
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 电子单证弹层 -->
+<div ui-view="document"></div>

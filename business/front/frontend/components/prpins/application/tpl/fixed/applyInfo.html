@@ -1,0 +1,18 @@
+<!--投保人信息-->
+<ul class="list_ul list_tit">
+    <li><span>投保人类型：</span></li>
+    <li class="li_tabs">
+        <div class="marr43">
+            <label class="mar_right" ng-class="{true:'on',false:'radio'}[vm.insType]"  ng-click="radioClick()"><input type="radio" value="1" class="hide" name="trafficIns" ng-model="vm.policy.prpTinsured.insuredType"/><em>个人</em></label>
+            <label ng-class="{true:'radio',false:'on'}[vm.insType]" ng-click="radioClick1()"><input type="radio" class="hide" value="2" name="trafficIns" ng-model="vm.policy.prpTinsured.insuredType" /><em>团体</em></label>
+        </div>
+    </li>
+    <li ng-if="vm.insType"><em>*</em><span>姓名：</span></li>
+    <li ng-if="vm.insType"><input type="text" class="fl" ng-blur="personnalSearch()" ng-model="vm.policy.prpTinsured.insuredName" required="required" ng-maxlength="30" maxlength="30" warn-text="姓名"/></li>
+    <li ng-if="!vm.insType"><em>*</em><span>名称：</span></li>
+    <li ng-if="!vm.insType"><input type="text" class="fl" ng-model="vm.policy.prpTinsured.insuredName" ng-blur="groupSearch()" required maxlength="60" warn-text="名称"/></li>
+</ul>
+<!--
+<div class="list_tab">
+    <div data-ng-include="changeInsureType"></div>
+</div>-->

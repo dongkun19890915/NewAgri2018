@@ -1,0 +1,64 @@
+<!--异常数据处理-->
+<div class="index_con">
+      <div class="index_list">
+      <div class="index_tit"><h6>异常数据处理</h6></div>
+          <ng-form name="dataRectificationForm" novalidate="novalidate">
+          <ul class="list_ul">
+              <li>
+                  <em>*</em>
+                  <span>清分日期：</span>
+              </li>
+              <li class="li_rect">
+                  <input type="text" id="operateDate" jedate max-date="{{maxDate}}" format="YYYY-MM-DD" class="date-input fl date" ng-model="clearDate" required readonly warn-text="清分日期">
+              </li>
+              <li></li>
+              <li></li>
+              <li>
+                    <span>保单号：</span>
+              </li>
+              <li class="li_remark li_record">
+                    <div class="recordDiv">
+                        <textarea class="recordText" name="" mc-placeholder="输入保单号，以逗号分隔" ng-model="policyNoList" ng-readonly="policyAll"></textarea>
+                    </div>
+                    <label class="checkbox">
+                          <input class="inputcheck" type="checkbox"   name="policy_num"  ng-model="policyAll"/><em>全部保单号</em>
+                    </label>
+              </li>
+              <li>
+                    <span>批单号：</span>
+              </li>
+              <li class="li_remark li_record">
+                    <div class="recordDiv">
+                        <textarea class="recordText" name="" mc-placeholder="输入批单号，以逗号分隔" ng-model="endorseNoList" ng-readonly="endorseAll"></textarea>
+                    </div>
+                    <label class="checkbox">
+                          <input class="inputcheck" type="checkbox" value="1"  name="batch_num" ng-model="endorseAll"/><em>全部批单号</em>
+                    </label>
+              </li>
+
+                <li>
+                      <span>理赔报案号：</span>
+                </li>
+                <li class="li_remark li_record">
+                      <div class="recordDiv">
+                        <textarea class="recordText" name="" mc-placeholder="输入理赔报案号，以逗号分隔"  ng-model="claimsNum" ng-readonly="claimsAll"></textarea>
+                      </div>
+                      <label class="checkbox">
+                          <input class="inputcheck" type="checkbox"  value="2"  name="claims_num" ng-model="claimsAll"/><em>全部理赔报案号</em>
+                      </label>
+                </li>
+                <li ng-show="liError"><span>错误单号：</span></li>
+                <li class="li_remark li_record li_upClear" ng-show="liError">
+                    <div>
+                        <textarea ng-bind="errorInfo" readonly="true"></textarea>
+                    </div>
+                </li>
+          </ul>
+          </ng-form>
+      </div>
+      <!--按钮-->
+      <div class="index_btn1">
+          <button type="submit" class="submit" ng-click="dataRectificationClick()" ng-class="{true: 'cannot_click', false: ''}[canClick]" ng-disabled="canClick">异常数据校正</button>
+          <span class="edit" ng-click="onEdit()">退 出</span>
+      </div>
+</div>

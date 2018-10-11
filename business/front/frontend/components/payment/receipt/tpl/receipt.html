@@ -1,0 +1,267 @@
+<!--索要发票-->
+<div class="index_con">
+    <!--搜索条件-->
+    <div class="index_list">
+        <div class="index_tit"><h6>搜索条件</h6></div>
+        <ul class="list_ul list_ul_bor">
+            <li><span>保单号码：</span></li>
+            <li>
+                <input ng-pattern="/^[A-Za-z0-9]*$/" warn-text="{'ErrPattern':'保单号码只能输入字母和数字'}" ng-maxlength="30" maxlength="30" ng-model="PolicyQueryConditionDto.bizNo" type="text" class="fl">
+            </li>
+
+            <li><span>投保人名称：</span></li>
+            <li><input type="text" ng-model="PolicyQueryConditionDto.applyName" ng-maxlength="30" maxlength="30"  class="fl"></li>
+
+            <li><span>投保人证件类型：</span></li>
+            <li>
+                <div class="ui-select">
+                    <code-type ng-required="true" class="seletc_bor" base-code="IdentifyType" ng-model='PolicyQueryConditionDto.identifyType' ng-disabled="false" is-fuzzy="true"></code-type>
+                </div>
+
+            </li>
+            <li><span>投保人证件号码：</span></li>
+            <li><input type="text" ng-model="PolicyQueryConditionDto.identifyNumber"  class="fl"  warn-text=""  ></li>
+
+        </ul>
+        <div class="pending_btn">
+            <div class="pending_btn1">
+                <span class="a_search"  ng-click="reportQuery()">搜索</span>
+                <span class="a_reset"   ng-click="resetForm()">重置</span>
+            </div>
+        </div>
+    </div>
+    <!--搜索结果-->
+    <div class="index_list index_list_table">
+        <div class="index_tit">
+            <h6 class="fl">搜索结果</h6>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th class="th_empty"></th>
+                <th ng-click="col='policyNo';desc=!desc">保单号码</th>
+                <th ng-click="col='applyName';desc=!desc">投保人名称</th>
+                <th ng-click="col='inputTime';desc=!desc">投保日期</th>
+                <th  ng-click="col='startDate';desc=!desc">保单生效日</th>
+                <th  ng-click="col='sumPremium';desc=!desc"class="t_last">保费</th>
+            </tr>
+            <tr ng-repeat="d in reportData|orderBy:col:desc">
+                <td>
+                   <!-- <i class="td_tip"></i>-->
+                    <input type="radio" ng-click="radioCheck(d)"    name="radioCheck" />
+                </td>
+                <td ng-bind="d.policyNo"></td>
+                <td ng-bind="d.applyName"></td>
+                <td>{{d.inputTime|limitTo:10}}</td>
+                <td ng-bind="d.startDate|date:'yyyy-MM-dd'"></td>
+                <td ng-bind="d.sumPremium" ></td>
+            </tr>
+        </table>
+        <div class="index_page">
+            <tm-pagination conf="paginationConf"></tm-pagination>
+        </div>
+    </div>
+    <div class="index_list">
+        <div class="index_tit"><h6>开票信息</h6></div>
+        <ul class="list_ul">
+            <li>
+                <em>*</em><span>发票类型：</span>
+            </li>
+            <li class="li_full" >
+                <div class="marr43">
+                    <label class="mar_right2" ng-class="{true:'on',false:'radio'}[invoiceSpeFlag]" ng-click="invoiceClick()">
+                        <input type="radio" checked="checked" class="hide" value="0" name="trafficIns" ng-model="prpCinvoiceDto.invoiceType"/><em>增值税专用发票</em>
+                    </label>
+                    <label class="mar_right2" ng-class="{true:'on',false:'radio'}[invoiceEleFlag]" ng-click="invoiceClick1()">
+                        <input type="radio" class="hide" value="2" name="trafficIns" ng-model="prpCinvoiceDto.invoiceType"/><em>增值税普通电子发票</em>
+                    </label>
+                    <label class="mar_right2" ng-class="{true:'on',false:'radio'}[invoicePapFlag]" ng-click="invoiceClick2()">
+                        <input type="radio" class="hide" value="1" name="trafficIns" ng-model="prpCinvoiceDto.invoiceType"/><em>增值税普通纸质发票</em>
+                    </label>
+                </div>
+            </li>
+
+
+            <ng-form novalidate="novalidate" name="proposalForm" >
+         <div ng-hide="invoiceSFlag">
+             <li>
+                 <em >*</em><span>开票名称：</span>
+             </li>
+             <li>
+                 <input type="text" warn-text="开票名称" ng-maxlength="40" maxlength="40" required ng-model="prpCinvoiceDto.invoiceTitle" class="fl">
+             </li>
+            <li>
+                <em >*</em><span>纳税人识别号：</span>
+            </li>
+            <li>
+                <input type="text" ng-pattern="/^[A-Za-z0-9]*$/" warn-text="纳税人识别号" ng-maxlength="30" maxlength="30" required  ng-model="prpCinvoiceDto.taxPayerId" class="fl">
+            </li>
+
+            <li>
+                <em>*</em><span>开票地址：</span>
+            </li>
+            <li>
+                <input type="text" required ng-maxlength="40" maxlength="40" warn-text="开票地址" ng-model="prpCinvoiceDto.address"  class="fl">
+            </li>
+
+            <li>
+                <em>*</em><span>开票电话：</span>
+            </li>
+            <li>
+                <input type="text"  maxlength="20" ng-pattern="/^[0-9]*([\\(,\\),\\+,\\-]*[0-9]*)*$/" required warn-text="开票电话" ng-model="prpCinvoiceDto.phoneNumber" class="fl">
+            </li>
+
+            <li>
+                <em>*</em><span>开户银行名称：</span>
+            </li>
+            <li>
+                <input type="text"  maxlength="20"  required warn-text="开户银行名称" ng-model="prpCinvoiceDto.bankName" class="fl">
+            </li>
+
+            <li>
+                <em>*</em><span>开户银行账号：</span>
+            </li>
+            <li>
+                <input type="text" required ng-maxlength="30" maxlength="30" ng-pattern="/^[A-Za-z0-9]*$/" warn-text="开户银行账号" ng-model="prpCinvoiceDto.accountNo"  class="fl">
+            </li>
+        </div>
+            </ng-form>
+        <ng-form novalidate="novalidate" name="proposalForm2" >
+            <div ng-hide="invoiceEFlag">
+                <li>
+                    <em >*</em><span>开票名称：</span>
+                </li>
+                <li>
+                    <input type="text" warn-text="开票名称" ng-maxlength="40" maxlength="40" required ng-model="prpCinvoiceDto.invoiceTitle" class="fl">
+                </li>
+                <li>
+                    <span>纳税人识别号：</span>
+                </li>
+                <li>
+                    <input type="text" ng-pattern="/^[A-Za-z0-9]*$/" warn-text="纳税人识别号" ng-maxlength="30" maxlength="30" ng-model="prpCinvoiceDto.taxPayerId" class="fl">
+                </li>
+
+                <li>
+                   <span>开票地址：</span>
+                </li>
+                <li>
+                    <input type="text" ng-maxlength="40" maxlength="40"  ng-model="prpCinvoiceDto.address"  class="fl">
+                </li>
+
+                <li>
+                    <span>开票电话：</span>
+                </li>
+                <li>
+                    <input type="text"  maxlength="20" warn-text="开票电话" ng-pattern="/^[0-9]*([\\(,\\),\\+,\\-]*[0-9]*)*$/" ng-model="prpCinvoiceDto.phoneNumber"  class="fl">
+                </li>
+
+                <li>
+                    <span>开户银行名称：</span>
+                </li>
+                <li>
+                    <input type="text" ng-maxlength="20" maxlength="20"   ng-model="prpCinvoiceDto.bankName"  class="fl">
+                </li>
+
+                <li>
+                    <span>开户银行账号：</span>
+                </li>
+                <li>
+                    <input type="text" ng-model="prpCinvoiceDto.accountNo" ng-maxlength="30" maxlength="30" ng-pattern="/^[A-Za-z0-9]*$/" warn-text="开户银行账号"  class="fl">
+                </li>
+            </div>
+        </ng-form>
+        </ul>
+    </div>
+    <!--发票配送信息-->
+    <div class="index_list">
+        <div class="index_tit"><h6>发票配送信息</h6></div>
+        <ul class="list_ul">
+            <li>
+                <em>*</em><span>发票配送方式：</span>
+            </li>
+            <li class="li_full">
+                <div class="marr43">
+                <label  ng-class="{true:'on',false:'radio'}[salesManFlag]" ng-click="sendWayClick()">
+                    <input  type="radio" class="hide"  ng-model="prpCinvoiceDto.sendWay" value="0" name="sendWay" ng-checked="true" /><em>业务员领记配送</em>
+                </label>
+                <label ng-class="{true:'radio',false:'on'}[expressFlag]" ng-click="sendWayClick1()">
+                    <input type="radio" class="hide"  ng-model="prpCinvoiceDto.sendWay" value="1" name="sendWay" /><em>快递</em>
+                </label>
+                </div>
+            </li>
+        <ng-form novalidate="novalidate" name="invoicForm" >
+            <div ng-hide="expressMFlag">
+            <li>
+                <em>*</em><span>收件人：</span>
+            </li>
+            <li>
+                <input type="text"  ng-maxlength="10" maxlength="10" required warn-text="收件人" ng-model="prpCinvoiceDto.recipient" class="fl">
+            </li>
+
+            <li>
+                <em>*</em><span>收件地址：</span>
+            </li>
+            <li>
+                <input type="text" ng-maxlength="40" maxlength="40" required warn-text="收件地址" ng-model="prpCinvoiceDto.recipientAddress"  class="fl">
+            </li>
+
+            <li>
+                <em>*</em><span>邮政编码：</span>
+            </li>
+            <li>
+                <input type="text" required warn-text="邮政编码"  ng-pattern="/^\d{6}$/" ng-maxlength="6" maxlength="6" ng-model="prpCinvoiceDto.recipientPostCode"  class="fl">
+            </li>
+
+            <li>
+                <em>*</em><span >联系电话：</span>
+            </li>
+            <li>
+                <input type="text"  required warn-text="联系电话" ng-model="prpCinvoiceDto.recipientPhone"   maxlength="20" ng-pattern="/^[0-9]*([\\(,\\),\\+,\\-]*[0-9]*)*$/" required class="fl">
+            </li>
+            </div>
+        </ng-form>
+        <ng-form novalidate="novalidate" name="invoicForm2" >
+            <div ng-hide="salesmanMFlag">
+                <li>
+                    <span>收件人：</span>
+                </li>
+                <li>
+                    <input type="text"  ng-maxlength="10" maxlength="10"  ng-model="prpCinvoiceDto.recipient"  class="fl">
+                </li>
+
+                <li>
+                    <span>收件地址：</span>
+                </li>
+                <li>
+                    <input type="text"  ng-maxlength="40" maxlength="40"  ng-model="prpCinvoiceDto.recipientAddress"  class="fl">
+                </li>
+
+                <li>
+                   <span>邮政编码：</span>
+                </li>
+                <li>
+                    <input type="text"  ng-maxlength="6" maxlength="6"  warn-text="邮政编码" ng-pattern="/^\d{6}$/"  ng-model="prpCinvoiceDto.recipientPostCode" class="fl">
+                </li>
+
+                <li>
+                   <span >联系电话：</span>
+                </li>
+                <li>
+                    <input type="text" ng-model="prpCinvoiceDto.recipientPhone"  warn-text="联系电话" ng-maxlength="20" maxlength="20" ng-pattern="/^[0-9]*([\\(,\\),\\+,\\-]*[0-9]*)*$/" class="fl">
+                </li>
+            </div>
+        </ng-form>
+        </ul>
+    </div>
+    <!--按钮-->
+    <div class="index_btn1">
+        <span class="submit" ng-click="onEmail()">提交申请</span>
+        <span class="edit" ng-click="onEdit()">退 出</span>
+    </div>
+
+    <!--弹层---提交申请校验-->
+    <div ng-hide="receiptLayer" data-ng-include="'components/payment/receipt/tpl/receiptsubmitLayer.html'"></div>
+    <!--弹层---提交申请邮箱弹层-->
+    <div ng-hide="onemailLayer" data-ng-include="'components/payment/receipt/tpl/receiptSendEmailLayer.html'"></div>
+    <!-- 提示框-->
+    <div data-ng-include="'components/payment/receipt/tpl/showAlertMsgPage.html'"></div>
+</div>

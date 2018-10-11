@@ -1,0 +1,59 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔调度---短信发送弹层页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/9 
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="orderlayerBox" ng-show="checkSendMessageFlag">
+  <div class="mask zIndex"></div>
+  <div class="printLayer dispa-task">
+    <div class="remove_header">
+      <span>短信发送</span>
+      <i class="icon iconfont" ng-click="close()">&#xe632;</i>
+    </div>
+    <div class="info_container">
+      <ul class='layer_ul'>
+        <li class='clearfix layer_li'>
+          <input type="checkbox" name="" class='fl layer_check'>
+          <span class="condition_td fl layer_span">
+            <label><i class="i-col">*</i>查勘人员</label>
+            <input type="text" class="task" ng-model="ScheduleSaveDto.prpLscheduleMainWFDto.nextHandlerName">
+          </span>
+          <span class="condition_td fl layer_span">
+            <label><i class="i-col">*</i>查勘人员手机号</label>
+            <input type="text" class="task" ng-model="schedule.messageSend.mobilePhones">
+          </span>
+        </li>
+        <li class='clearfix layer_li'>
+          <input type="checkbox" name="" class='fl layer_check'>
+          <span class="condition_td fl layer_span">
+            <label><i class="i-col">*</i>报案人员</label>
+            <input type="text" class="task" ng-model="schedule.prpLregist.reportorName">
+          </span>
+          <span class="condition_td fl layer_span">
+            <label><i class="i-col">*</i>报案人员手机号</label>
+            <input type="text" class="task" ng-model="schedule.messageSend.mobilePhones">
+          </span>
+        </li>
+        <li class='clearfix layer_li'>
+          <input type="checkbox" name="" class='fl layer_check'>
+          <span class="condition_td fl layer_span">
+            <label><i class="i-col">*</i>被保险人</label>
+            <input type="text" class="task" ng-model="schedule.prpCinsured.InsuredName">
+          </span>
+          <span class="condition_td fl layer_span">
+            <label><i class="i-col">*</i>被保险人手机号</label>
+            <input type="text" class="task" ng-model="schedule.messageSend.mobilePhones">
+          </span>
+        </li>
+      </ul>
+      <div class="btn_tr clearfix">
+        <span>确认</span>
+        <span>取消</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔立案任务查询---转交页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/11
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="section">
+  <div class="content_div content1-div">
+    <div class="queryCriteria">
+      <span class="queryCriteria_title">
+          <label>任务转交</label>
+          <span class="click_img"></span>
+      </span>
+      <div class="condition_table">
+        <ul class="clearfix half-ul" style="position: relative;">
+          <li class="condition_td fl half-li" id="fenye">
+            <label>报案号码</label>
+            <div class="half-div" style="width: 42%;">
+              <input type="text" ng-model="swflogDto.registNo" maxlength="19" ng-disabled="true" style="width: 99%;"/>
+            </div>
+            <div style="display: inline-block;" ng-mouseover="showprintListShow()" ng-mouseleave="showprintListHide()" >
+              <label class="button_sure" style="text-align: center;width: 40px;padding-right:0;color:#fff;" >详情</label>
+              <div ng-show="printListShow" style="position: absolute;left:38px;width: 100%;top:28px;background: #fff;z-index:2;height:366px;overflow-y: auto; border: 2px solid #2DBE61;" >
+                <div class="" style="text-align: center;line-height: 36px;background: #f2f2f2;">
+                  <span style="font-size: 16px;">转交详情列表</span>
+                  <!--<i class="icon iconfont plusAndReduce" ng-click="configPrintSet()">&#xe632;</i>-->
+                </div>
+                <div class="info_container" style="max-height:none;height:auto;">
+                  <table>
+                    <tr class="tr_top">
+                      <td class="w5">序列</td>
+                      <td class="w8">报案号</td>
+                      <td >保单号</td>
+                      <td >险种</td>
+                      <td >被保险人</td>
+                      <td >出险标的</td>
+                      <td>流入时间</td>
+                      <!--<td>状态</td>-->
+                      <!--<td>核保信息</td>-->
+                    </tr>
+                    <tr class="tr_content  F2F2F2 check-box1" ng-repeat="info in printlist track by $index">
+                      <td>{{$index+1}}</td>
+                      <td  ng-bind="info.registNo"></td>
+                      <td  ng-bind="info.policyNO"></td>
+                      <td  ng-bind="info.riskCode"></td>
+                      <td  ng-bind="info.insuredName"></td>
+                      <td  ng-bind="info.lossName"></td>
+                      <td  ng-bind="info.flowTime"></td>
+                      <!--<td>{{info.underWriteFlag?info.underWriteFlag=='1'?'通过':info.underWriteFlag=='2'?'不通过':info.underWriteFlag=='3'?'无需核保':info.underWriteFlag=='9'?'待核':'':'初始值'}}</td>-->
+                      <!--<td ng-bind="info.othFlag"></td>-->
+                    </tr>
+                  </table>
+                  <div class="index_page">
+                    <tm-pagination conf="paginationConf"></tm-pagination>
+                  </div>
+                </div>
+                <!--<div class="remove_button no-line">
+                    <button class="button_sure" ng-click="printSure()">确 定</button>
+                </div>-->
+              </div>
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>转交类型</label>
+            <div class="half-div">
+              <input type="text" ng-model="swflogDto.nodeName" ng-disabled="true"/>
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>受理机构</label>
+            <div class="half-div">
+              <!--<com-tree ng-value="swflogDto.handleName" ng-model="swflogDto.handleCode" ng-required="true" > </com-tree>-->
+              <com-tree ng-value="swflogDto.handleName" url="queryUnit" ng-model="swflogDto.handleCode" ng-change="queryCheckSurveyPeople()" class="tree" ng-required="true"> </com-tree>
+              <!--<input type="text" ng-model="swflog[0].nodeName" com-tree readonly/>-->
+              <!--<code-type  base-code="riskType" ng-model="swflog[0].handleCode"></code-type>-->
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>受理人</label>
+            <div class="half-div">
+              <ui-select ng-model="swflogDto.handlerCode" ng-change="textChange($select.selected.codecname);swflogDto.handlerName=$select.selected.codecname;"
+                >
+
+                <ui-select-match  allow-clear placeholder="查询或选择...">
+                  {{$select.selected.codecname}}
+                </ui-select-match>
+                <ui-select-choices repeat="code.codecode as code in handlerList | filter: $select.search">
+                  <span ng-bind="code.codecname"></span>
+                </ui-select-choices>
+              </ui-select>
+              <!--<code-type base-code="riskType" ng-value="swflogDto.handlerName" ng-model="swflogDto.handlerCode"></code-type>-->
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>转交时间</label>
+            <div class="half-div">
+              <input type="text" ng-model="swflogDto.inputDate" ng-disabled="true"/>
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>转交人</label>
+            <div class="half-div">
+              <input type="text" ng-model="swflogDto.operatorName" ng-disabled="true"/>
+            </div>
+          </li>
+          <!--<li><select-list ng-model="swflogDto.operatorCode" base-code="riskType"></select-list></li>-->
+          <li class="condition_td fl long-li long_li">
+            <label>转交描述</label>
+            <div class="half-div condition-dd">
+              <textarea rows="3" class="long_input" ng-model="swflogDto.context"></textarea>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="btn_tr clearfix">
+        <span class="btn"  ng-disabled="flag" ng-click="submitTransfer()">提交</span>
+        <span ng-click="goBack()">放弃</span>
+      </div>
+    </div>
+  </div>
+</div>

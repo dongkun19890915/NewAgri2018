@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinosoft.pms.core.productrule.dao.UtiFormulaMapper" >
+  <resultMap id="BaseResultMap" type="UtiFormula" >
+		<result column="RiskCode" property="riskCode" jdbcType="VARCHAR" ></result>
+		<result column="ClauseCode" property="clauseCode" jdbcType="VARCHAR" ></result>
+		<result column="KindCode" property="kindCode" jdbcType="VARCHAR" ></result>
+		<result column="ComCode" property="comCode" jdbcType="VARCHAR" ></result>
+		<result column="CalFormulaType" property="calFormulaType" jdbcType="VARCHAR" ></result>
+		<result column="FormulaType" property="formulaType" jdbcType="VARCHAR" ></result>
+		<result column="FactorCode" property="factorCode" jdbcType="VARCHAR" ></result>
+		<result column="Source" property="source" jdbcType="VARCHAR" ></result>
+		<result column="FormulaName" property="formulaName" jdbcType="VARCHAR" ></result>
+		<result column="Content" property="content" jdbcType="VARCHAR" ></result>
+		<result column="Accuracy" property="accuracy" jdbcType="INTEGER" ></result>
+		<result column="CreatorCode" property="creatorCode" jdbcType="VARCHAR" ></result>
+		<result column="UpdaterCode" property="updaterCode" jdbcType="VARCHAR" ></result>
+		<result column="ValidDate" property="validDate" jdbcType="DATE" ></result>
+		<result column="InvalidDate" property="invalidDate" jdbcType="DATE" ></result>
+		<result column="ValidStatus" property="validStatus" jdbcType="VARCHAR" ></result>
+		<result column="Flag" property="flag" jdbcType="VARCHAR" ></result>
+		<result column="Remark" property="remark" jdbcType="VARCHAR" ></result>
+		<result column="InsertTimeForHis" property="insertTimeForHis" jdbcType="DATE" ></result>
+		<result column="OperateTimeForHis" property="operateTimeForHis" jdbcType="DATE" ></result>
+		<result column="RiskCode" property="riskCode" jdbcType="VARCHAR" ></result>
+		<result column="ClauseCode" property="clauseCode" jdbcType="VARCHAR" ></result>
+		<result column="KindCode" property="kindCode" jdbcType="VARCHAR" ></result>
+		<result column="ComCode" property="comCode" jdbcType="VARCHAR" ></result>
+		<result column="CalFormulaType" property="calFormulaType" jdbcType="VARCHAR" ></result>
+		<result column="FormulaType" property="formulaType" jdbcType="VARCHAR" ></result>
+		<result column="FactorCode" property="factorCode" jdbcType="VARCHAR" ></result>
+		<result column="Source" property="source" jdbcType="VARCHAR" ></result>
+		<result column="FormulaName" property="formulaName" jdbcType="VARCHAR" ></result>
+		<result column="Content" property="content" jdbcType="VARCHAR" ></result>
+		<result column="Accuracy" property="accuracy" jdbcType="INTEGER" ></result>
+		<result column="CreatorCode" property="creatorCode" jdbcType="VARCHAR" ></result>
+		<result column="UpdaterCode" property="updaterCode" jdbcType="VARCHAR" ></result>
+		<result column="ValidDate" property="validDate" jdbcType="DATE" ></result>
+		<result column="InvalidDate" property="invalidDate" jdbcType="DATE" ></result>
+		<result column="ValidStatus" property="validStatus" jdbcType="VARCHAR" ></result>
+		<result column="Flag" property="flag" jdbcType="VARCHAR" ></result>
+		<result column="Remark" property="remark" jdbcType="VARCHAR" ></result>
+		<result column="InsertTimeForHis" property="insertTimeForHis" jdbcType="DATE" ></result>
+		<result column="OperateTimeForHis" property="operateTimeForHis" jdbcType="DATE" ></result>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  riskCode,clauseCode,kindCode,comCode,calFormulaType,formulaType,factorCode,source,formulaName,content,accuracy,creatorCode,updaterCode,validDate,invalidDate,validStatus,flag,remark,insertTimeForHis,operateTimeForHis
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="UtiFormulaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" ></include>
+    from UtiFormula 
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" ></include>
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="UtiFormulaKey" >
+    select 
+    <include refid="Base_Column_List" ></include>
+    from UtiFormula 
+    where 
+	 RiskCode = #{riskCode,jdbcType=VARCHAR} and  ClauseCode = #{clauseCode,jdbcType=VARCHAR} and  KindCode = #{kindCode,jdbcType=VARCHAR} and  ComCode = #{comCode,jdbcType=VARCHAR} and  CalFormulaType = #{calFormulaType,jdbcType=VARCHAR} and  FormulaType = #{formulaType,jdbcType=VARCHAR} and  FactorCode = #{factorCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="UtiFormulaKey" >
+    delete from UtiFormula 
+    where 
+		 RiskCode = #{riskCode,jdbcType=VARCHAR} and  ClauseCode = #{clauseCode,jdbcType=VARCHAR} and  KindCode = #{kindCode,jdbcType=VARCHAR} and  ComCode = #{comCode,jdbcType=VARCHAR} and  CalFormulaType = #{calFormulaType,jdbcType=VARCHAR} and  FormulaType = #{formulaType,jdbcType=VARCHAR} and  FactorCode = #{factorCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="UtiFormula" >
+    insert into UtiFormula  (RiskCode,ClauseCode,KindCode,ComCode,CalFormulaType,FormulaType,FactorCode,Source,FormulaName,Content,Accuracy,CreatorCode,UpdaterCode,ValidDate,InvalidDate,ValidStatus,Flag,Remark,InsertTimeForHis,OperateTimeForHis)
+    values (#{riskCode,jdbcType=VARCHAR},#{clauseCode,jdbcType=VARCHAR},#{kindCode,jdbcType=VARCHAR},#{comCode,jdbcType=VARCHAR},#{calFormulaType,jdbcType=VARCHAR},#{formulaType,jdbcType=VARCHAR},#{factorCode,jdbcType=VARCHAR},#{source,jdbcType=VARCHAR},#{formulaName,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{accuracy,jdbcType=INTEGER},#{creatorCode,jdbcType=VARCHAR},#{updaterCode,jdbcType=VARCHAR},#{validDate,jdbcType=DATE},#{invalidDate,jdbcType=DATE},#{validStatus,jdbcType=VARCHAR},#{flag,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{insertTimeForHis,jdbcType=DATE},#{operateTimeForHis,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="UtiFormula" >
+    insert into UtiFormula
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="riskCode != null" >
+        RiskCode,
+		</if>
+<if test="clauseCode != null" >
+        ClauseCode,
+		</if>
+<if test="kindCode != null" >
+        KindCode,
+		</if>
+<if test="comCode != null" >
+        ComCode,
+		</if>
+<if test="calFormulaType != null" >
+        CalFormulaType,
+		</if>
+<if test="formulaType != null" >
+        FormulaType,
+		</if>
+<if test="factorCode != null" >
+        FactorCode,
+		</if>
+<if test="source != null" >
+        Source,
+		</if>
+<if test="formulaName != null" >
+        FormulaName,
+		</if>
+<if test="content != null" >
+        Content,
+		</if>
+<if test="accuracy != null" >
+        Accuracy,
+		</if>
+<if test="creatorCode != null" >
+        CreatorCode,
+		</if>
+<if test="updaterCode != null" >
+        UpdaterCode,
+		</if>
+<if test="validDate != null" >
+        ValidDate,
+		</if>
+<if test="invalidDate != null" >
+        InvalidDate,
+		</if>
+<if test="validStatus != null" >
+        ValidStatus,
+		</if>
+<if test="flag != null" >
+        Flag,
+		</if>
+<if test="remark != null" >
+        Remark,
+		</if>
+<if test="insertTimeForHis != null" >
+        InsertTimeForHis,
+		</if>
+<if test="operateTimeForHis != null" >
+        OperateTimeForHis
+		</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="riskCode != null" >
+        RiskCode,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseCode != null" >
+        ClauseCode,jdbcType=VARCHAR,
+		</if>
+		<if test="kindCode != null" >
+        KindCode,jdbcType=VARCHAR,
+		</if>
+		<if test="comCode != null" >
+        ComCode,jdbcType=VARCHAR,
+		</if>
+		<if test="calFormulaType != null" >
+        CalFormulaType,jdbcType=VARCHAR,
+		</if>
+		<if test="formulaType != null" >
+        FormulaType,jdbcType=VARCHAR,
+		</if>
+		<if test="factorCode != null" >
+        FactorCode,jdbcType=VARCHAR,
+		</if>
+		<if test="source != null" >
+        Source,jdbcType=VARCHAR,
+		</if>
+		<if test="formulaName != null" >
+        FormulaName,jdbcType=VARCHAR,
+		</if>
+		<if test="content != null" >
+        Content,jdbcType=VARCHAR,
+		</if>
+		<if test="accuracy != null" >
+        Accuracy,jdbcType=INTEGER,
+		</if>
+		<if test="creatorCode != null" >
+        CreatorCode,jdbcType=VARCHAR,
+		</if>
+		<if test="updaterCode != null" >
+        UpdaterCode,jdbcType=VARCHAR,
+		</if>
+		<if test="validDate != null" >
+        ValidDate,jdbcType=DATE,
+		</if>
+		<if test="invalidDate != null" >
+        InvalidDate,jdbcType=DATE,
+		</if>
+		<if test="validStatus != null" >
+        ValidStatus,jdbcType=VARCHAR,
+		</if>
+		<if test="flag != null" >
+        Flag,jdbcType=VARCHAR,
+		</if>
+		<if test="remark != null" >
+        Remark,jdbcType=VARCHAR,
+		</if>
+		<if test="insertTimeForHis != null" >
+        InsertTimeForHis,jdbcType=DATE,
+		</if>
+		<if test="operateTimeForHis != null" >
+        OperateTimeForHis,jdbcType=DATE
+		</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="UtiFormula" >
+    update UtiFormula set
+    <set >
+<if test="source  != null" >      
+        Source = #{source ,jdbcType=VARCHAR} , </if>
+<if test="formulaName  != null" >      
+        FormulaName = #{formulaName ,jdbcType=VARCHAR} , </if>
+<if test="content  != null" >      
+        Content = #{content ,jdbcType=VARCHAR} , </if>
+<if test="accuracy  != null" >      
+        Accuracy = #{accuracy ,jdbcType=INTEGER} , </if>
+<if test="creatorCode  != null" >      
+        CreatorCode = #{creatorCode ,jdbcType=VARCHAR} , </if>
+<if test="updaterCode  != null" >      
+        UpdaterCode = #{updaterCode ,jdbcType=VARCHAR} , </if>
+<if test="validDate  != null" >      
+        ValidDate = #{validDate ,jdbcType=DATE} , </if>
+<if test="invalidDate  != null" >      
+        InvalidDate = #{invalidDate ,jdbcType=DATE} , </if>
+<if test="validStatus  != null" >      
+        ValidStatus = #{validStatus ,jdbcType=VARCHAR} , </if>
+<if test="flag  != null" >      
+        Flag = #{flag ,jdbcType=VARCHAR} , </if>
+<if test="remark  != null" >      
+        Remark = #{remark ,jdbcType=VARCHAR} , </if>
+<if test="insertTimeForHis  != null" >      
+        InsertTimeForHis = #{insertTimeForHis ,jdbcType=DATE} , </if>
+<if test="operateTimeForHis  != null" >      
+        OperateTimeForHis = #{operateTimeForHis ,jdbcType=DATE} </if>
+    </set>
+    where 
+		<if test="riskCode  != null" >
+        RiskCode = #{riskCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="clauseCode  != null" >
+        ClauseCode = #{clauseCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="kindCode  != null" >
+        KindCode = #{kindCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="comCode  != null" >
+        ComCode = #{comCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="calFormulaType  != null" >
+        CalFormulaType = #{calFormulaType ,jdbcType=VARCHAR} and 
+      </if>	<if test="formulaType  != null" >
+        FormulaType = #{formulaType ,jdbcType=VARCHAR} and 
+      </if>	<if test="factorCode  != null" >
+        FactorCode = #{factorCode ,jdbcType=VARCHAR}
+      </if>		
+  </update>
+  <update id="updateByPrimaryKey" parameterType="UtiFormula" >
+    update UtiFormula
+    set 
+<if test="source  != null" >Source = #{source ,jdbcType=VARCHAR}, </if>		
+<if test="formulaName  != null" >FormulaName = #{formulaName ,jdbcType=VARCHAR}, </if>		
+<if test="content  != null" >Content = #{content ,jdbcType=VARCHAR}, </if>		
+<if test="accuracy  != null" >Accuracy = #{accuracy ,jdbcType=INTEGER}, </if>		
+<if test="creatorCode  != null" >CreatorCode = #{creatorCode ,jdbcType=VARCHAR}, </if>		
+<if test="updaterCode  != null" >UpdaterCode = #{updaterCode ,jdbcType=VARCHAR}, </if>		
+<if test="validDate  != null" >ValidDate = #{validDate ,jdbcType=DATE}, </if>		
+<if test="invalidDate  != null" >InvalidDate = #{invalidDate ,jdbcType=DATE}, </if>		
+<if test="validStatus  != null" >ValidStatus = #{validStatus ,jdbcType=VARCHAR}, </if>		
+<if test="flag  != null" >Flag = #{flag ,jdbcType=VARCHAR}, </if>		
+<if test="remark  != null" >Remark = #{remark ,jdbcType=VARCHAR}, </if>		
+<if test="insertTimeForHis  != null" >InsertTimeForHis = #{insertTimeForHis ,jdbcType=DATE}, </if>		
+<if test="operateTimeForHis  != null" >OperateTimeForHis = #{operateTimeForHis ,jdbcType=DATE}</if>		
+    where 
+			<if test="riskCode  != null" >
+        RiskCode = #{riskCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="clauseCode  != null" >
+        ClauseCode = #{clauseCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="kindCode  != null" >
+        KindCode = #{kindCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="comCode  != null" >
+        ComCode = #{comCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="calFormulaType  != null" >
+        CalFormulaType = #{calFormulaType ,jdbcType=VARCHAR} and 
+      </if>	<if test="formulaType  != null" >
+        FormulaType = #{formulaType ,jdbcType=VARCHAR} and 
+      </if>	<if test="factorCode  != null" >
+        FactorCode = #{factorCode ,jdbcType=VARCHAR}
+      </if>	
+  </update>
+
+
+<select id="selectPremiumFormulaByCondition" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select 
+		<include refid="Base_Column_List" ></include>
+	from UtiFormula u 
+	where 
+		u.validstatus = '1' and
+		(sysdate > u.validdate or u.validdate is null) and
+		(u.invaliddate > sysdate or u.invaliddate is null) and
+		RiskCode = #{riskCode,jdbcType=VARCHAR} and
+		ClauseCode = #{clauseCode,jdbcType=VARCHAR} and
+		KindCode = #{kindCode,jdbcType=VARCHAR} and
+		ComCode = #{comCode,jdbcType=VARCHAR} and
+		FormulaType = #{formulaType,jdbcType=VARCHAR}
+</select>
+
+
+</mapper>

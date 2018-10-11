@@ -1,0 +1,18 @@
+# 服务端口设置
+server:
+  port: 9007
+#短信平台地址
+smsService:
+  url: http://9.0.3.24:9099/gymas/pub_mas.action
+  #生产标识prd，测试环境dev
+  profile: dev
+  #测试环境 手机号码，短信全部发送到该手机上
+  devUserPhone:
+  #模版号
+  moduleCode: '02'
+#邮件发送配置
+mailService:
+  mail_Host: smtp.163.com
+  mail_ServerPort: 25
+  mail_username: 13673647605@163.com
+  mail_Password: ENC(w28u1ZcXB0JyAlAcDmBzEV1B4jDj0ZjY)

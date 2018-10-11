@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.sinosoft.framework:framework-base:2.1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Maven/repos/NewAgri1/repo/com/sinosoft/framework/framework-base/2.1.0-SNAPSHOT/framework-base-2.1.0-20171117.022620-21.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../Maven/repos/NewAgri1/repo/com/sinosoft/framework/framework-base/2.1.0-SNAPSHOT/framework-base-2.1.0-20171117.022620-21-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../Maven/repos/NewAgri1/repo/com/sinosoft/framework/framework-base/2.1.0-SNAPSHOT/framework-base-2.1.0-20171117.022620-21-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,19 @@
+<!--信息提示-->
+<div ng-hide="deleteLayer">
+    <div class="mask"></div>
+    <div class="tip_success_info">
+        <div class="remove_header">
+            <span>信息提示</span>
+            <a href="javascript:void(0)"><i ng-click="deleteCancel()"></i></a>
+        </div>
+        <div class="info_container">
+            <i class="tip_2"></i>
+            <span>您确认删除该文件吗？</span>
+        </div>
+            <li class="remove_button">
+                <div>
+                    <a href="javascript:void(0)" class="button_sure" ng-click="deleteSure()">确认</a>
+                    <a href="javascript:void(0)" class="button_cancel" ng-click="deleteCancel()">取消</a>
+                </div>
+    </div>
+</div>

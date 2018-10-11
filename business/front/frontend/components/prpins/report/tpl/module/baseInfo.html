@@ -1,0 +1,20 @@
+<div class="index_tit"><h6>保单基本信息</h6></div>
+<ul class="list_ul list_ul1">
+    <li><span>保单号码：</span></li>
+    <li><span class="fl"  ng-bind="policyDto.policyNo"  ></span></li>
+
+    <li><span>保单状态：</span></li>
+    <li><span class="fl"  ng-bind="policyDto.prpCmainDto.statusName"   ></span></li>
+
+    <li><span>投保单号码：</span></li>
+    <li><span class="fl"  ng-bind="policyDto.prpCmainDto.proposalNo"   ></span></li>
+
+    <li><em>*</em><span>投保日期：</span></li>
+    <li><span class="fl"   ng-bind="policyDto.prpCmainDto.operateDate"  ></span></li>
+
+    <li><em>*</em><span>保单生效日：</span> </li>
+    <li><span class="fl"  ng-if="policyDto.prpCmainDto.startDate" >{{policyDto.prpCmainDto.startDate | limitTo:10}}&nbsp;0时</span></li>
+
+    <li><span>保单终止日：</span></li>
+    <li><span class="fl" ng-if="policyDto.prpCmainDto.endDate">{{policyDto.prpCmainDto.endDate | limitTo:10}}&nbsp;24时</span></li>
+</ul>

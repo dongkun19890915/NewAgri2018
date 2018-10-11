@@ -1,0 +1,27 @@
+eureka:
+    instance:
+        leaseRenewalIntervalInSeconds: 10
+        preferIpAddress: true
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: ${config.registry.url:http://localhost:8001/eureka/}
+            #defaultZone: http://localhost:8001/registry/eureka/
+
+spring:
+    application:
+        name: agriprpall
+    cloud:
+        config:
+            name: ${spring.application.name}
+            #profile: ${config.profile:default}
+            #label: ${config.label:dev}
+            #uri: http://localhost:8000
+            #username: configServer
+            #password: configServer123
+            discovery:
+                enabled: true
+                serviceId: CONFIG-SERVER
+            fail-fast: true
+            enabled: true

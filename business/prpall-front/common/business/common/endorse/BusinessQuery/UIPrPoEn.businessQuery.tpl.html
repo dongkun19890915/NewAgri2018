@@ -1,0 +1,125 @@
+<div class="main">
+    <div class="section" style="height:600px;">
+        <div class="position">
+            <span class="ml10">当前位置：</span>
+            <span class="local-fir ">业务清单查询 > </span>
+            <span class="local-sec">清单查询</span>
+        </div>
+        <div class="queryCriteria">
+            <div class="listQuery teaL" style="background-color: white">
+                <span style="line-height: 40px; padding-left: 20px;font-size: 16px">查询条件</span>
+                </span>
+            </div>
+            <div class="queryCriteria" style="border-top: 1px solid #D7D7D7">
+                <div class="businessQuer_table">
+                    <ul class="businessQuer_title" style="background-color: white">
+                        <li class="businessQuer_td1 teaR  fl">
+                            <label class="businessQuer_labelcenter">险种大类</label>
+                            <select style="width: 334px;float: left;margin-left: 14px"ng-model="proposal.prpBusinessDto.classCode"  >
+                                <option  value="" ng-model="proposal.prpBusinessDto.classCode"  ng-init="proposal.prpBusinessDto.classCode=''">所有险类</option>
+                                <option  value="31" ng-model="proposal.prpBusinessDto.classCode">种植保险</option>
+                                <option  value="32" ng-model="proposal.prpBusinessDto.classCode">养殖保险</option>
+                            </select>
+                        </li>
+                        <li class="businessQuer_td1 teaL fl">
+                            <i class="mes_sign" style="position: relative;left:-66px;">*</i>
+                            <label class="businessQuer_labelcenter" >清单类型</label>
+                            <span style="width: 55%;">
+                                <input type="radio" name="businessType" ng-model="listType" style="border: none;position: relative;top:-2px;left:-2px;" value="D" ng-click="setdata(0)">当日签单清单
+                                <input type="radio" name="businessType" ng-model="listType" style="border: none;position: relative;top:-2px;left:-2px;" value="W"ng-click="setdata(1)">未缴费保单清单
+                                <input type="radio" name="businessType" ng-model="listType" style="border: none;position: relative;top:-2px;left:-2px;" value="S" ng-click="setdata(1)">应收保费清单
+                            </span>
+                        </li>
+                        <li class="businessQuer_td1 teaR fl ">
+                            <label class="businessQuer_labelcenter">操作时间起期</label>
+                            <input type="text" id="correctEffectDate" jedate class="date-input date " style="width: 334px; background-color: white;float:left;margin-left: 14px"
+                                   ng-model="proposal.prpBusinessDto.startDate" format="YYYY-MM-DD" ng-disabled="proposalQueryHide"
+                                   ng-init="proposal.prpBusinessDto.startDate=''+getdate.year+'-'+number(getdate.month+1)+'-01'"/>
+                        </li>
+                        <li class="businessQuer_td1 teaL fl ">
+                            <label class="businessQuer_labelcenter">操作时间止期</label>
+                            <div>
+                                <input type="text" id="correctDate" jedate class="date-input date " style="width: 334px; background-color: white;position: relative;left: 9px"
+                                       ng-model="proposal.prpBusinessDto.endDate" format="YYYY-MM-DD" ng-disabled="proposalQueryHide"
+                                       ng-init="proposal.prpBusinessDto.endDate=''+(getdate.year)+'-'+number(getdate.month+1)+'-'+number(getdate.day)"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layer-footer1">
+                    <button class="greenButton" ng-click="submit()" style="margin-right:86px;">查询</button>
+                    <label class="greenButton" ng-click="stateToNext();">重置</label>
+                </div>
+            </div>
+            <div ng-show="showPage">
+                <div class="queryResult1" style="line-height: 50px">
+                    <div class="queryResult1_title teaC" style="position: relative;">
+                        <span class="teaC" ng-if="listType == 'D'" >当日签单清单</span>
+                        <span class="teaC"  ng-if="listType == 'W' " >未缴费保单清单</span>
+                        <span class="teaC" ng-if="listType == 'S'"  >应收保费清单</span>
+                        <div class="" style="position: absolute;top:2px;right:0;">
+                            <button class="greenButton" ng-click="excel()" style="margin-right:20px;" >导出EXCEL</button>
+                            <button class="greenButton" ng-click="goBackDashboard(); " style="margin-right:20px;" >返回</button>
+                        </div>
+                    </div>
+                    <p  ng-if="listType == 'D'">
+                        <input type="text" ng-model="proposal.prpBusinessDto.startDate" class="">
+                    </p>
+                    <p  ng-if="listType != 'D'" style="width:50% "  >
+                        <input type="text" ng-model="proposal.prpBusinessDto.startDate"  style="width:17% ">
+                        <span >至</span>
+                        <input type="text" ng-model="proposal.prpBusinessDto.endDate" style="width:18%;margin-left: 4%;"  >
+                    </p>
+                    <table>
+                        <tr class="tr_top">
+                            <td class="w5">序号</td>
+                            <td>保单号码</td>
+                            <td class="w11_11">险种</td>
+                            <td>被保险人</td>
+                            <td class="w9">操作时间</td>
+                            <td class="w5">操作人</td>
+                            <td class="w11_11">保险金额</td>
+                            <td class="w11_11">保险费</td>
+                            <!--<td class="w11_11">已缴保险费</td>-->
+                            <td class="w11_11"  ng-if="listType == 'D'">已缴保险费</td>
+                            <td class="w11_11"  ng-if="listType == 'W'">未缴保险费</td>
+                            <td class="w11_11"  ng-if="listType == 'S'">应收保费</td>
+                        </tr>
+                        <tr class="tr_content F2F2F2"
+                            ng-repeat="(index,info) in proposal.prpBusinesslist.clauseQueryList track by $index">
+                            <td>
+                                {{index+1}}
+                            </td>
+                            <td class="C2DBE61 cur" >
+                                <span  ng-click="getPolicyInfo(info.policyNo)" ng-bind="info.policyNo"></span>
+                            </td>
+                            <td ng-bind="info.riskName"></td>
+                            <td ng-bind="info.insuredName"></td>
+                            <td ng-bind="info.date"></td>
+                            <td ng-bind="info.operatorName"></td>
+                            <td ng-bind="info.sumAmount"></td>
+                            <td ng-bind="info.sumPremium"></td>
+                            <td ng-if="listType == 'D'" ng-bind="info.planFee"></td>
+                            <td ng-if="listType == 'W' || listType == 'S'" ng-bind="info.delinQuentFee"></td>
+                        </tr>
+                        <tr class="tr_content F2F2F2" ng-hide="isEmptyObject(proposal.prpBusinesslist.clauseQueryList)||proposal.prpBusinesslist.clauseQueryList.length==0">
+                            <td >合计:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td  ng-bind="proposal.listTypeD"  ng-model="proposal.listTypeD">{{proposal.listTypeD}}</td>
+                            <td  ng-bind="proposal.listTypeWS"  ng-model="proposal.listTypeWS">{{proposal.listTypeWS}}</td>
+                        </tr>
+                    </table>
+                    <div ng-show="isEmptyObject(proposal.prpBusinesslist.clauseQueryList)||proposal.prpBusinesslist.clauseQueryList.length==0" ng-class="{'query-null':proposal.prpBusinesslist.clauseQueryList.length==0}" class=""></div>
+                    <div class="index_page" id="myIndexPage">
+                        <tm-pagination conf="paginationConfmm"></tm-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

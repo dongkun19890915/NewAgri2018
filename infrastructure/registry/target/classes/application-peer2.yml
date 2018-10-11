@@ -1,0 +1,18 @@
+server:
+  port: ${config.server.port:8003}
+  #context-path: /registry
+
+spring:
+  application:
+    name: registry
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    serviceUrl:
+      #defaultZone:  http://${eureka.instance.hostname}:${server.port}/registry/eureka/
+      defaultZone:  http://${eureka.instance.hostname}:8001/eureka/

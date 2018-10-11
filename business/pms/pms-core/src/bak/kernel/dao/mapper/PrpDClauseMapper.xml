@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinosoft.pms.core.kernel.dao.PrpDClauseMapper" >
+  <resultMap id="BaseResultMap" type="com.sinosoft.pms.core.kernel.entity.PrpDClause" >
+		<result column="ClauseCode" property="clauseCode" jdbcType="VARCHAR" />
+		<result column="OldClauseCode" property="oldClauseCode" jdbcType="VARCHAR" />
+		<result column="ClassCode" property="classCode" jdbcType="VARCHAR" />
+		<result column="ClauseCName" property="clauseCName" jdbcType="VARCHAR" />
+		<result column="ClauseTName" property="clauseTName" jdbcType="VARCHAR" />
+		<result column="ClauseEName" property="clauseEName" jdbcType="VARCHAR" />
+		<result column="ClauseSCName" property="clauseSCName" jdbcType="VARCHAR" />
+		<result column="ClauseSEName" property="clauseSEName" jdbcType="VARCHAR" />
+		<result column="ClauseVersion" property="clauseVersion" jdbcType="VARCHAR" />
+		<result column="AgricultureFlag" property="agricultureFlag" jdbcType="VARCHAR" />
+		<result column="ClauseAttribute" property="clauseAttribute" jdbcType="VARCHAR" />
+		<result column="AuditFlag" property="auditFlag" jdbcType="VARCHAR" />
+		<result column="AreaLevel" property="areaLevel" jdbcType="VARCHAR" />
+		<result column="AreaCode" property="areaCode" jdbcType="VARCHAR" />
+		<result column="AreaName" property="areaName" jdbcType="VARCHAR" />
+		<result column="ReportNo" property="reportNo" jdbcType="VARCHAR" />
+		<result column="ApprovalDepart" property="approvalDepart" jdbcType="VARCHAR" />
+		<result column="PolicyFlag" property="policyFlag" jdbcType="VARCHAR" />
+		<result column="ClauseDesc" property="clauseDesc" jdbcType="VARCHAR" />
+		<result column="ClauseEDesc" property="clauseEDesc" jdbcType="VARCHAR" />
+		<result column="KindBindFlag" property="kindBindFlag" jdbcType="VARCHAR" />
+		<result column="FirstLevel" property="firstLevel" jdbcType="VARCHAR" />
+		<result column="SecondLevel" property="secondLevel" jdbcType="VARCHAR" />
+		<result column="ThirdLevel" property="thirdLevel" jdbcType="VARCHAR" />
+		<result column="HYCenterFlag" property="hYCenterFlag" jdbcType="VARCHAR" />
+		<result column="DutyFreeFlag" property="dutyFreeFlag" jdbcType="VARCHAR" />
+		<result column="ValidDate" property="validDate" jdbcType="DATE" />
+		<result column="InvalidDate" property="invalidDate" jdbcType="DATE" />
+		<result column="ValidInd" property="validInd" jdbcType="VARCHAR" />
+		<result column="TCol1" property="tCol1" jdbcType="VARCHAR" />
+		<result column="TCol2" property="tCol2" jdbcType="VARCHAR" />
+		<result column="TCol3" property="tCol3" jdbcType="VARCHAR" />
+		<result column="Remark" property="remark" jdbcType="VARCHAR" />
+		<result column="Flag" property="flag" jdbcType="VARCHAR" />
+		<result column="CreatorCode" property="creatorCode" jdbcType="VARCHAR" />
+		<result column="CreateTime" property="createTime" jdbcType="DATE" />
+		<result column="UpdaterCode" property="updaterCode" jdbcType="VARCHAR" />
+		<result column="UpdateTime" property="updateTime" jdbcType="DATE" />
+		<result column="ClauseCode" property="clauseCode" jdbcType="VARCHAR" />
+		<result column="OldClauseCode" property="oldClauseCode" jdbcType="VARCHAR" />
+		<result column="ClassCode" property="classCode" jdbcType="VARCHAR" />
+		<result column="ClauseCName" property="clauseCName" jdbcType="VARCHAR" />
+		<result column="ClauseTName" property="clauseTName" jdbcType="VARCHAR" />
+		<result column="ClauseEName" property="clauseEName" jdbcType="VARCHAR" />
+		<result column="ClauseSCName" property="clauseSCName" jdbcType="VARCHAR" />
+		<result column="ClauseSEName" property="clauseSEName" jdbcType="VARCHAR" />
+		<result column="ClauseVersion" property="clauseVersion" jdbcType="VARCHAR" />
+		<result column="AgricultureFlag" property="agricultureFlag" jdbcType="VARCHAR" />
+		<result column="ClauseAttribute" property="clauseAttribute" jdbcType="VARCHAR" />
+		<result column="AuditFlag" property="auditFlag" jdbcType="VARCHAR" />
+		<result column="AreaLevel" property="areaLevel" jdbcType="VARCHAR" />
+		<result column="AreaCode" property="areaCode" jdbcType="VARCHAR" />
+		<result column="AreaName" property="areaName" jdbcType="VARCHAR" />
+		<result column="ReportNo" property="reportNo" jdbcType="VARCHAR" />
+		<result column="ApprovalDepart" property="approvalDepart" jdbcType="VARCHAR" />
+		<result column="PolicyFlag" property="policyFlag" jdbcType="VARCHAR" />
+		<result column="ClauseDesc" property="clauseDesc" jdbcType="VARCHAR" />
+		<result column="ClauseEDesc" property="clauseEDesc" jdbcType="VARCHAR" />
+		<result column="KindBindFlag" property="kindBindFlag" jdbcType="VARCHAR" />
+		<result column="FirstLevel" property="firstLevel" jdbcType="VARCHAR" />
+		<result column="SecondLevel" property="secondLevel" jdbcType="VARCHAR" />
+		<result column="ThirdLevel" property="thirdLevel" jdbcType="VARCHAR" />
+		<result column="HYCenterFlag" property="hYCenterFlag" jdbcType="VARCHAR" />
+		<result column="DutyFreeFlag" property="dutyFreeFlag" jdbcType="VARCHAR" />
+		<result column="ValidDate" property="validDate" jdbcType="DATE" />
+		<result column="InvalidDate" property="invalidDate" jdbcType="DATE" />
+		<result column="ValidInd" property="validInd" jdbcType="VARCHAR" />
+		<result column="TCol1" property="tCol1" jdbcType="VARCHAR" />
+		<result column="TCol2" property="tCol2" jdbcType="VARCHAR" />
+		<result column="TCol3" property="tCol3" jdbcType="VARCHAR" />
+		<result column="Remark" property="remark" jdbcType="VARCHAR" />
+		<result column="Flag" property="flag" jdbcType="VARCHAR" />
+		<result column="CreatorCode" property="creatorCode" jdbcType="VARCHAR" />
+		<result column="CreateTime" property="createTime" jdbcType="DATE" />
+		<result column="UpdaterCode" property="updaterCode" jdbcType="VARCHAR" />
+		<result column="UpdateTime" property="updateTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  clauseCode,oldClauseCode,classCode,clauseCName,clauseTName,clauseEName,clauseSCName,clauseSEName,clauseVersion,agricultureFlag,clauseAttribute,auditFlag,areaLevel,areaCode,areaName,reportNo,approvalDepart,policyFlag,clauseDesc,clauseEDesc,kindBindFlag,firstLevel,secondLevel,thirdLevel,hYCenterFlag,dutyFreeFlag,validDate,invalidDate,validInd,tCol1,tCol2,tCol3,remark,flag,creatorCode,createTime,updaterCode,updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDClauseKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from PrpDClause 
+    where 
+	 ClauseCode = #{clauseCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDClauseKey" >
+    delete from PrpDClause 
+    where 
+		 ClauseCode = #{clauseCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDClause" >
+    insert into PrpDClause  (ClauseCode,OldClauseCode,ClassCode,ClauseCName,ClauseTName,ClauseEName,ClauseSCName,ClauseSEName,ClauseVersion,AgricultureFlag,ClauseAttribute,AuditFlag,AreaLevel,AreaCode,AreaName,ReportNo,ApprovalDepart,PolicyFlag,ClauseDesc,ClauseEDesc,KindBindFlag,FirstLevel,SecondLevel,ThirdLevel,HYCenterFlag,DutyFreeFlag,ValidDate,InvalidDate,ValidInd,TCol1,TCol2,TCol3,Remark,Flag,CreatorCode,CreateTime,UpdaterCode,UpdateTime)
+    values (#{clauseCode,jdbcType=VARCHAR},#{oldClauseCode,jdbcType=VARCHAR},#{classCode,jdbcType=VARCHAR},#{clauseCName,jdbcType=VARCHAR},#{clauseTName,jdbcType=VARCHAR},#{clauseEName,jdbcType=VARCHAR},#{clauseSCName,jdbcType=VARCHAR},#{clauseSEName,jdbcType=VARCHAR},#{clauseVersion,jdbcType=VARCHAR},#{agricultureFlag,jdbcType=VARCHAR},#{clauseAttribute,jdbcType=VARCHAR},#{auditFlag,jdbcType=VARCHAR},#{areaLevel,jdbcType=VARCHAR},#{areaCode,jdbcType=VARCHAR},#{areaName,jdbcType=VARCHAR},#{reportNo,jdbcType=VARCHAR},#{approvalDepart,jdbcType=VARCHAR},#{policyFlag,jdbcType=VARCHAR},#{clauseDesc,jdbcType=VARCHAR},#{clauseEDesc,jdbcType=VARCHAR},#{kindBindFlag,jdbcType=VARCHAR},#{firstLevel,jdbcType=VARCHAR},#{secondLevel,jdbcType=VARCHAR},#{thirdLevel,jdbcType=VARCHAR},#{hYCenterFlag,jdbcType=VARCHAR},#{dutyFreeFlag,jdbcType=VARCHAR},#{validDate,jdbcType=DATE},#{invalidDate,jdbcType=DATE},#{validInd,jdbcType=VARCHAR},#{tCol1,jdbcType=VARCHAR},#{tCol2,jdbcType=VARCHAR},#{tCol3,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{flag,jdbcType=VARCHAR},#{creatorCode,jdbcType=VARCHAR},#{createTime,jdbcType=DATE},#{updaterCode,jdbcType=VARCHAR},#{updateTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDClause" >
+    insert into PrpDClause
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="clauseCode != null" >
+        ClauseCode,
+		</if>
+<if test="oldClauseCode != null" >
+        OldClauseCode,
+		</if>
+<if test="classCode != null" >
+        ClassCode,
+		</if>
+<if test="clauseCName != null" >
+        ClauseCName,
+		</if>
+<if test="clauseTName != null" >
+        ClauseTName,
+		</if>
+<if test="clauseEName != null" >
+        ClauseEName,
+		</if>
+<if test="clauseSCName != null" >
+        ClauseSCName,
+		</if>
+<if test="clauseSEName != null" >
+        ClauseSEName,
+		</if>
+<if test="clauseVersion != null" >
+        ClauseVersion,
+		</if>
+<if test="agricultureFlag != null" >
+        AgricultureFlag,
+		</if>
+<if test="clauseAttribute != null" >
+        ClauseAttribute,
+		</if>
+<if test="auditFlag != null" >
+        AuditFlag,
+		</if>
+<if test="areaLevel != null" >
+        AreaLevel,
+		</if>
+<if test="areaCode != null" >
+        AreaCode,
+		</if>
+<if test="areaName != null" >
+        AreaName,
+		</if>
+<if test="reportNo != null" >
+        ReportNo,
+		</if>
+<if test="approvalDepart != null" >
+        ApprovalDepart,
+		</if>
+<if test="policyFlag != null" >
+        PolicyFlag,
+		</if>
+<if test="clauseDesc != null" >
+        ClauseDesc,
+		</if>
+<if test="clauseEDesc != null" >
+        ClauseEDesc,
+		</if>
+<if test="kindBindFlag != null" >
+        KindBindFlag,
+		</if>
+<if test="firstLevel != null" >
+        FirstLevel,
+		</if>
+<if test="secondLevel != null" >
+        SecondLevel,
+		</if>
+<if test="thirdLevel != null" >
+        ThirdLevel,
+		</if>
+<if test="hYCenterFlag != null" >
+        HYCenterFlag,
+		</if>
+<if test="dutyFreeFlag != null" >
+        DutyFreeFlag,
+		</if>
+<if test="validDate != null" >
+        ValidDate,
+		</if>
+<if test="invalidDate != null" >
+        InvalidDate,
+		</if>
+<if test="validInd != null" >
+        ValidInd,
+		</if>
+<if test="tCol1 != null" >
+        TCol1,
+		</if>
+<if test="tCol2 != null" >
+        TCol2,
+		</if>
+<if test="tCol3 != null" >
+        TCol3,
+		</if>
+<if test="remark != null" >
+        Remark,
+		</if>
+<if test="flag != null" >
+        Flag,
+		</if>
+<if test="creatorCode != null" >
+        CreatorCode,
+		</if>
+<if test="createTime != null" >
+        CreateTime,
+		</if>
+<if test="updaterCode != null" >
+        UpdaterCode,
+		</if>
+<if test="updateTime != null" >
+        UpdateTime,
+		</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="clauseCode != null" >
+        ClauseCode,jdbcType=VARCHAR,
+		</if>
+		<if test="oldClauseCode != null" >
+        OldClauseCode,jdbcType=VARCHAR,
+		</if>
+		<if test="classCode != null" >
+        ClassCode,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseCName != null" >
+        ClauseCName,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseTName != null" >
+        ClauseTName,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseEName != null" >
+        ClauseEName,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseSCName != null" >
+        ClauseSCName,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseSEName != null" >
+        ClauseSEName,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseVersion != null" >
+        ClauseVersion,jdbcType=VARCHAR,
+		</if>
+		<if test="agricultureFlag != null" >
+        AgricultureFlag,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseAttribute != null" >
+        ClauseAttribute,jdbcType=VARCHAR,
+		</if>
+		<if test="auditFlag != null" >
+        AuditFlag,jdbcType=VARCHAR,
+		</if>
+		<if test="areaLevel != null" >
+        AreaLevel,jdbcType=VARCHAR,
+		</if>
+		<if test="areaCode != null" >
+        AreaCode,jdbcType=VARCHAR,
+		</if>
+		<if test="areaName != null" >
+        AreaName,jdbcType=VARCHAR,
+		</if>
+		<if test="reportNo != null" >
+        ReportNo,jdbcType=VARCHAR,
+		</if>
+		<if test="approvalDepart != null" >
+        ApprovalDepart,jdbcType=VARCHAR,
+		</if>
+		<if test="policyFlag != null" >
+        PolicyFlag,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseDesc != null" >
+        ClauseDesc,jdbcType=VARCHAR,
+		</if>
+		<if test="clauseEDesc != null" >
+        ClauseEDesc,jdbcType=VARCHAR,
+		</if>
+		<if test="kindBindFlag != null" >
+        KindBindFlag,jdbcType=VARCHAR,
+		</if>
+		<if test="firstLevel != null" >
+        FirstLevel,jdbcType=VARCHAR,
+		</if>
+		<if test="secondLevel != null" >
+        SecondLevel,jdbcType=VARCHAR,
+		</if>
+		<if test="thirdLevel != null" >
+        ThirdLevel,jdbcType=VARCHAR,
+		</if>
+		<if test="hYCenterFlag != null" >
+        HYCenterFlag,jdbcType=VARCHAR,
+		</if>
+		<if test="dutyFreeFlag != null" >
+        DutyFreeFlag,jdbcType=VARCHAR,
+		</if>
+		<if test="validDate != null" >
+        ValidDate,jdbcType=DATE,
+		</if>
+		<if test="invalidDate != null" >
+        InvalidDate,jdbcType=DATE,
+		</if>
+		<if test="validInd != null" >
+        ValidInd,jdbcType=VARCHAR,
+		</if>
+		<if test="tCol1 != null" >
+        TCol1,jdbcType=VARCHAR,
+		</if>
+		<if test="tCol2 != null" >
+        TCol2,jdbcType=VARCHAR,
+		</if>
+		<if test="tCol3 != null" >
+        TCol3,jdbcType=VARCHAR,
+		</if>
+		<if test="remark != null" >
+        Remark,jdbcType=VARCHAR,
+		</if>
+		<if test="flag != null" >
+        Flag,jdbcType=VARCHAR,
+		</if>
+		<if test="creatorCode != null" >
+        CreatorCode,jdbcType=VARCHAR,
+		</if>
+		<if test="createTime != null" >
+        CreateTime,jdbcType=DATE,
+		</if>
+		<if test="updaterCode != null" >
+        UpdaterCode,jdbcType=VARCHAR,
+		</if>
+		<if test="updateTime != null" >
+        UpdateTime,jdbcType=DATE,
+		</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDClause" >
+    update PrpDClause set
+    <set >
+		
+<if test="oldClauseCode  != null" >      
+        OldClauseCode = #{oldClauseCode ,jdbcType=VARCHAR},</if>
+<if test="classCode  != null" >      
+        ClassCode = #{classCode ,jdbcType=VARCHAR},</if>
+<if test="clauseCName  != null" >      
+        ClauseCName = #{clauseCName ,jdbcType=VARCHAR},</if>
+<if test="clauseTName  != null" >      
+        ClauseTName = #{clauseTName ,jdbcType=VARCHAR},</if>
+<if test="clauseEName  != null" >      
+        ClauseEName = #{clauseEName ,jdbcType=VARCHAR},</if>
+<if test="clauseSCName  != null" >      
+        ClauseSCName = #{clauseSCName ,jdbcType=VARCHAR},</if>
+<if test="clauseSEName  != null" >      
+        ClauseSEName = #{clauseSEName ,jdbcType=VARCHAR},</if>
+<if test="clauseVersion  != null" >      
+        ClauseVersion = #{clauseVersion ,jdbcType=VARCHAR},</if>
+<if test="agricultureFlag  != null" >      
+        AgricultureFlag = #{agricultureFlag ,jdbcType=VARCHAR},</if>
+<if test="clauseAttribute  != null" >      
+        ClauseAttribute = #{clauseAttribute ,jdbcType=VARCHAR},</if>
+<if test="auditFlag  != null" >      
+        AuditFlag = #{auditFlag ,jdbcType=VARCHAR},</if>
+<if test="areaLevel  != null" >      
+        AreaLevel = #{areaLevel ,jdbcType=VARCHAR},</if>
+<if test="areaCode  != null" >      
+        AreaCode = #{areaCode ,jdbcType=VARCHAR},</if>
+<if test="areaName  != null" >      
+        AreaName = #{areaName ,jdbcType=VARCHAR},</if>
+<if test="reportNo  != null" >      
+        ReportNo = #{reportNo ,jdbcType=VARCHAR},</if>
+<if test="approvalDepart  != null" >      
+        ApprovalDepart = #{approvalDepart ,jdbcType=VARCHAR},</if>
+<if test="policyFlag  != null" >      
+        PolicyFlag = #{policyFlag ,jdbcType=VARCHAR},</if>
+<if test="clauseDesc  != null" >      
+        ClauseDesc = #{clauseDesc ,jdbcType=VARCHAR},</if>
+<if test="clauseEDesc  != null" >      
+        ClauseEDesc = #{clauseEDesc ,jdbcType=VARCHAR},</if>
+<if test="kindBindFlag  != null" >      
+        KindBindFlag = #{kindBindFlag ,jdbcType=VARCHAR},</if>
+<if test="firstLevel  != null" >      
+        FirstLevel = #{firstLevel ,jdbcType=VARCHAR},</if>
+<if test="secondLevel  != null" >      
+        SecondLevel = #{secondLevel ,jdbcType=VARCHAR},</if>
+<if test="thirdLevel  != null" >      
+        ThirdLevel = #{thirdLevel ,jdbcType=VARCHAR},</if>
+<if test="hYCenterFlag  != null" >      
+        HYCenterFlag = #{hYCenterFlag ,jdbcType=VARCHAR},</if>
+<if test="dutyFreeFlag  != null" >      
+        DutyFreeFlag = #{dutyFreeFlag ,jdbcType=VARCHAR},</if>
+<if test="validDate  != null" >      
+        ValidDate = #{validDate ,jdbcType=DATE},</if>
+<if test="invalidDate  != null" >      
+        InvalidDate = #{invalidDate ,jdbcType=DATE},</if>
+<if test="validInd  != null" >      
+        ValidInd = #{validInd ,jdbcType=VARCHAR},</if>
+<if test="tCol1  != null" >      
+        TCol1 = #{tCol1 ,jdbcType=VARCHAR},</if>
+<if test="tCol2  != null" >      
+        TCol2 = #{tCol2 ,jdbcType=VARCHAR},</if>
+<if test="tCol3  != null" >      
+        TCol3 = #{tCol3 ,jdbcType=VARCHAR},</if>
+<if test="remark  != null" >      
+        Remark = #{remark ,jdbcType=VARCHAR},</if>
+<if test="flag  != null" >      
+        Flag = #{flag ,jdbcType=VARCHAR},</if>
+<if test="creatorCode  != null" >      
+        CreatorCode = #{creatorCode ,jdbcType=VARCHAR},</if>
+<if test="createTime  != null" >      
+        CreateTime = #{createTime ,jdbcType=DATE},</if>
+<if test="updaterCode  != null" >      
+        UpdaterCode = #{updaterCode ,jdbcType=VARCHAR},</if>
+<if test="updateTime  != null" >      
+        UpdateTime = #{updateTime ,jdbcType=DATE},</if>
+    </set>
+    where 
+		<if test="clauseCode  != null" >
+        ClauseCode = #{clauseCode ,jdbcType=VARCHAR}
+      </if>		
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinosoft.pms.core.kernel.entity.PrpDClause" >
+    update PRPDCODE
+    set 
+				
+<if test="oldClauseCode  != null" >OldClauseCode = #{oldClauseCode ,jdbcType=VARCHAR},</if>		
+<if test="classCode  != null" >ClassCode = #{classCode ,jdbcType=VARCHAR},</if>		
+<if test="clauseCName  != null" >ClauseCName = #{clauseCName ,jdbcType=VARCHAR},</if>		
+<if test="clauseTName  != null" >ClauseTName = #{clauseTName ,jdbcType=VARCHAR},</if>		
+<if test="clauseEName  != null" >ClauseEName = #{clauseEName ,jdbcType=VARCHAR},</if>		
+<if test="clauseSCName  != null" >ClauseSCName = #{clauseSCName ,jdbcType=VARCHAR},</if>		
+<if test="clauseSEName  != null" >ClauseSEName = #{clauseSEName ,jdbcType=VARCHAR},</if>		
+<if test="clauseVersion  != null" >ClauseVersion = #{clauseVersion ,jdbcType=VARCHAR},</if>		
+<if test="agricultureFlag  != null" >AgricultureFlag = #{agricultureFlag ,jdbcType=VARCHAR},</if>		
+<if test="clauseAttribute  != null" >ClauseAttribute = #{clauseAttribute ,jdbcType=VARCHAR},</if>		
+<if test="auditFlag  != null" >AuditFlag = #{auditFlag ,jdbcType=VARCHAR},</if>		
+<if test="areaLevel  != null" >AreaLevel = #{areaLevel ,jdbcType=VARCHAR},</if>		
+<if test="areaCode  != null" >AreaCode = #{areaCode ,jdbcType=VARCHAR},</if>		
+<if test="areaName  != null" >AreaName = #{areaName ,jdbcType=VARCHAR},</if>		
+<if test="reportNo  != null" >ReportNo = #{reportNo ,jdbcType=VARCHAR},</if>		
+<if test="approvalDepart  != null" >ApprovalDepart = #{approvalDepart ,jdbcType=VARCHAR},</if>		
+<if test="policyFlag  != null" >PolicyFlag = #{policyFlag ,jdbcType=VARCHAR},</if>		
+<if test="clauseDesc  != null" >ClauseDesc = #{clauseDesc ,jdbcType=VARCHAR},</if>		
+<if test="clauseEDesc  != null" >ClauseEDesc = #{clauseEDesc ,jdbcType=VARCHAR},</if>		
+<if test="kindBindFlag  != null" >KindBindFlag = #{kindBindFlag ,jdbcType=VARCHAR},</if>		
+<if test="firstLevel  != null" >FirstLevel = #{firstLevel ,jdbcType=VARCHAR},</if>		
+<if test="secondLevel  != null" >SecondLevel = #{secondLevel ,jdbcType=VARCHAR},</if>		
+<if test="thirdLevel  != null" >ThirdLevel = #{thirdLevel ,jdbcType=VARCHAR},</if>		
+<if test="hYCenterFlag  != null" >HYCenterFlag = #{hYCenterFlag ,jdbcType=VARCHAR},</if>		
+<if test="dutyFreeFlag  != null" >DutyFreeFlag = #{dutyFreeFlag ,jdbcType=VARCHAR},</if>		
+<if test="validDate  != null" >ValidDate = #{validDate ,jdbcType=DATE},</if>		
+<if test="invalidDate  != null" >InvalidDate = #{invalidDate ,jdbcType=DATE},</if>		
+<if test="validInd  != null" >ValidInd = #{validInd ,jdbcType=VARCHAR},</if>		
+<if test="tCol1  != null" >TCol1 = #{tCol1 ,jdbcType=VARCHAR},</if>		
+<if test="tCol2  != null" >TCol2 = #{tCol2 ,jdbcType=VARCHAR},</if>		
+<if test="tCol3  != null" >TCol3 = #{tCol3 ,jdbcType=VARCHAR},</if>		
+<if test="remark  != null" >Remark = #{remark ,jdbcType=VARCHAR},</if>		
+<if test="flag  != null" >Flag = #{flag ,jdbcType=VARCHAR},</if>		
+<if test="creatorCode  != null" >CreatorCode = #{creatorCode ,jdbcType=VARCHAR},</if>		
+<if test="createTime  != null" >CreateTime = #{createTime ,jdbcType=DATE},</if>		
+<if test="updaterCode  != null" >UpdaterCode = #{updaterCode ,jdbcType=VARCHAR},</if>		
+<if test="updateTime  != null" >UpdateTime = #{updateTime ,jdbcType=DATE},</if>		
+    where 
+			<if test="clauseCode  != null" >
+        ClauseCode = #{clauseCode ,jdbcType=VARCHAR}
+      </if>	
+  </update>
+</mapper>

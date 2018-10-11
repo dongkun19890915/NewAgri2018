@@ -1,0 +1,37 @@
+2018-04-25 08:44:18.036  INFO [gateway,,,] 4376 ---  [           main]  s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5316e95f: startup date [Wed Apr 25 08:44:18 CST 2018]; root of context hierarchy
+2018-04-25 08:44:18.637  INFO [gateway,,,] 4376 ---  [           main]  f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-04-25 08:44:18.687  INFO [gateway,,,] 4376 ---  [           main]  trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$f5862b6b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-04-25 08:44:20.627  INFO [gateway,,,] 4376 ---  [           main]  o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2018-04-25 08:44:20.774  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2018-04-25 08:44:21.046  INFO [gateway,,,] 4376 ---  [           main]  c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2018-04-25 08:44:21.047  INFO [gateway,,,] 4376 ---  [           main]  c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2018-04-25 08:44:21.219  INFO [gateway,,,] 4376 ---  [           main]  c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2018-04-25 08:44:21.220  INFO [gateway,,,] 4376 ---  [           main]  c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2018-04-25 08:44:21.546  INFO [gateway,,,] 4376 ---  [           main]  c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-04-25 08:44:22.436  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2018-04-25 08:44:22.436  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2018-04-25 08:44:22.436  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2018-04-25 08:44:22.436  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Application is null : false
+2018-04-25 08:44:22.436  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2018-04-25 08:44:22.436  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2018-04-25 08:44:22.436  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2018-04-25 08:44:22.629  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : The response status is 200
+2018-04-25 08:44:22.631  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 10
+2018-04-25 08:44:22.634  INFO [gateway,,,] 4376 ---  [           main]  c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2018-04-25 08:44:22.637  INFO [gateway,,,] 4376 ---  [           main]  com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1524617062637 with initial instances count: 4
+2018-04-25 08:44:24.289 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2018-04-25 08:44:24.289 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2018-04-25 08:44:24.289 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2018-04-25 08:44:24.290 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2018-04-25 08:44:24.290 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2018-04-25 08:44:24.299 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Removing [defaultProperties] PropertySource
+2018-04-25 08:44:24.300 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Adding [defaultProperties] PropertySource with lowest search precedence
+2018-04-25 08:44:24.300 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Adding [applicationConfig: [classpath:/bootstrap.yml]] PropertySource with search precedence immediately higher than [defaultProperties]
+2018-04-25 08:44:24.317  INFO [gateway,,,] 4376 ---  [           main]  c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at: http://192.168.0.86:8000/
+2018-04-25 08:44:24.341 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.web.client.RestTemplate              : Created GET request for "http://192.168.0.86:8000/gateway/default"
+2018-04-25 08:44:24.359 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.web.client.RestTemplate              : Setting request Accept header to [application/json, application/*+json]
+2018-04-25 08:44:26.299 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.web.client.RestTemplate              : GET request for "http://192.168.0.86:8000/gateway/default" resulted in 200 (null)
+2018-04-25 08:44:26.300 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.web.client.RestTemplate              : Reading [class org.springframework.cloud.config.environment.Environment] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@1788cb61]
+2018-04-25 08:44:26.305  INFO [gateway,,,] 4376 ---  [           main]  c.c.c.ConfigServicePropertySourceLocator : Located environment: name=gateway, profiles=[default], label=null, version=null, state=null
+2018-04-25 08:44:26.305  INFO [gateway,,,] 4376 ---  [           main]  b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource [name='configService', propertySources=[MapPropertySource [name='classpath:/repo/application.yml']]]
+2018-04-25 08:44:26.307 DEBUG [gateway,,,] 4376 ---  [           main]  o.s.w.c.s.StandardServletEnvironment     : Adding [bootstrapProperties] PropertySource with highest search precedence

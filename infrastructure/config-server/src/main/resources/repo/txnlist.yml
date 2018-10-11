@@ -1,0 +1,14 @@
+# 服务端口设置
+server:
+  port: 9013
+# 数据源设置
+spring:
+  datasource:
+    name: txnlistDatasource
+    url: jdbc:oracle:thin:@192.168.0.13:1521:orcl
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: txnlist2
+    password: txnlist2
+    connectionTimeout: 2000
+
+

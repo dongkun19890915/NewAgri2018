@@ -1,0 +1,184 @@
+## 所有应用的公共配置
+ribbon:
+    ConnectTimeout: 30000
+    ReadTimeout: 30000
+# 负载均衡参数设置
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 30000
+spring:
+    redis:
+        password: ENC(khaxWHcfT6VgSVyUf7qFyFXI/q1zJGXl)
+        database: 0
+        maxIdle: 300
+        maxWait: 3000
+        testOnBorrow: true
+        expiration: 1800
+        # 集群哨兵配置
+        sentinel:
+            master: mymaster
+            #nodes: 192.168.0.40:26379,192.168.0.41:26379,192.168.0.42:26379
+            nodes: 192.168.0.5:26379
+    datasource:
+        name: datasource
+        url: jdbc:oracle:thin:@192.168.0.13:1521:orcl
+        driver-class-name: oracle.jdbc.OracleDriver
+        username: gyic2
+        password: gyic2
+        connectionTimeout: 2000
+        # druid数据源
+        druid:
+            maxActive: 50      #最大连接池数 !生产要调整
+            initialSize: 1     #初始连接池数 !生产要调整
+            minIdle: 1         #最小连接池数 !生产要调整
+            maxWait: 60000     #获取连接等待超时时间
+            timeBetweenEvictionRunsMillis: 60000  #配置间隔多久才进行一次检测
+            minEvictableIdleTimeMillis: 300000    #配置一个连接在池中最小生存的时间
+            validationQuery: select 1 from dual
+            testWhileIdle: true
+            testOnBorrow: false
+            testOnReturn: false
+            poolPreparedStatements: true
+            maxOpenPreparedStatements: 20
+            # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+            filters: stat,slf4j
+            # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+            connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=3000
+            # 合并多个DruidDataSource的监控数据
+            useGlobalDataSourceStat: true
+            stat-view-servlet:
+                enabled: true
+    jpa:
+        database: ORACLE
+        show-sql: true
+        generate-ddl: false
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.Oracle10gDialect
+                physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+    sleuth.sampler.percentage: 1.0
+
+    zipkin:
+        enabled: false
+        locator.discovery.enabled: true
+
+#开启shutdown的安全验证
+#退出指令 curl -X POST -u admin:admin123 http://192.168.0.140:9012/mng/shutdown
+endpoints.shutdown.sensitive: true
+endpoints.shutdown.enabled: true
+
+security.basic.enabled: false
+security.user.name: admin
+security.user.password: ENC(6ewlR9pJ4vsag6dC8nbYROZTjwvu4PXm)
+management:
+    context-path: /mng
+    security:
+        enabled: true
+        roles: SUPERUSER
+eureka:
+    instance:
+        metadata-map:
+            user.name: "${security.user.name}"    ## 用于服务端访问客户端
+            user.password: "${security.user.password}"
+            management.context-path: ${management.context-path}
+filter:
+  none:
+    path: /api/auth,/api/autoAuth,/api/sso/api/autoAuth,/api/sso/api/auth,/api/status,/api/valid,/login,/api/logout,/js,/api/js,/css,/images,/mng,/fonts
+token:
+  maxAge: 172800
+
+# 负载均衡后的地址，如果有keepalive填写代理的ip，如果没有，填写主nginx的ip。注意最后的sso/如果少/会影响登出
+loadbalancing: http://192.168.0.5
+sso:
+  url: ${loadbalancing}/sso/
+front:
+  url: ${loadbalancing}/
+#本地前端调试使用
+localhost:
+  url: http://localhost/
+web:
+    url: ${loadbalancing}/api
+
+
+
+ssoApps:
+    url: ${sso.url},${front.url},${localhost.url},${web.url},http://www.sinosoft-hf.cn:9005/,http://www.sinosoft-hf.cn:80/,http://www.sinosoft-hf.cn:9000/
+
+
+# 周边接口对接配置信息
+webservice:
+    # 国元老核心相关系统服务配置
+    webAgriPrpallService:
+        url: http://192.168.0.2:7701 # 接口地址
+    # 电子回执单接口
+    receiptService:
+      ftpUser: gyybt # 用户名
+      ftpPass: ENC(deIxyYehYKkfZowQAA+bAMa6Co8PZtE+) # 密码//gyybt2016
+      ftpUrl: 9.0.2.110 # ftp服务器
+      ftpPort: 21 # 端口号
+      ftpDir: /home/weblogic/intraTestApplications/gynxpic/allinpay
+      iUserCode: 0433 # 电子回执单调用接口报文用户名
+      iPassWord: ENC(08NbEwzNTg6AsnB3cheTwA==) # 电子回执单调用接口报文密码 0000
+      url: http://9.0.2.157 # 电子回执单接口地址
+    #金禾接口地址
+    gycoreService:
+      url: http://36.32.160.60:9000/GYCoreWebService.asmx?WSDL
+    #签章接口地址
+    seal:
+      url: http://121.42.226.56:9236/Seal/services/SealService?wsdl
+      #应用系统ID
+      sysId: sysId
+      userId: userId
+      #userPsd: 123456
+      userPsd: ENC(fPV+Mwq6G3P4uNH6BS37IA==)
+      #签章规则号
+      ruleNos:
+        #按绝对坐标
+        rule1: 1
+        #按(盖章)文字覆盖 确保文字唯一
+        rule2: 1
+        #按(国元农业保险股份有限公司)文字覆盖 确保文字唯一
+        rule3: 1
+
+
+#fileService地址
+fileService:
+  url: http://www.sinosoft-hf.cn:8088/fileserver
+#导出Excel文件类型( 可选：.xls、.xlsx )
+     # 种植险模板编号
+  plantFileId: 2288dbf5051b44aa9b35ed86e4ce494a
+     # 养殖险模板编号
+  herdFileId: 98793181da944154b5027eabd763bd58
+#导出Excel文件类型( 可选：.xls、.xlsx )
+exportExcelType: .xls
+
+# 系统相关配置
+sysconfig:
+    # 公共配置
+    common:
+        #新农险标识（mian表中的systemflag,用于区分新农险系统与老系统的数据）
+        systemFlag: agri
+#配置加密密钥
+jasypt:
+  encryptor:
+    password: 9lWaL475Hqwg
+    
+#前端配置地址
+front_end:
+ #承保
+  prpallFront:
+        claimUrl: ${loadbalancing} #调用理赔页面地址
+        gisUrl: http://36.32.160.60:8888  #金禾地址
+        sunECMUrl: http://9.0.2.15:9103 #影像地址
+        sunECMKeys: KsSeWb1eVSs8yGSZQI0Wd7UN #接入系统密钥
+  #理赔
+  claimFront:
+        prpallUrl: ${loadbalancing} #调用承保地址
+        gisUrl: ${front_end.prpallFront.gisUrl}  #金禾地址
+        sunECMUrl: ${front_end.prpallFront.sunECMUrl} #影像地址
+        sunECMKeys: TbJeaZIOzqzq4QCiSA1db46D #接入系统密钥

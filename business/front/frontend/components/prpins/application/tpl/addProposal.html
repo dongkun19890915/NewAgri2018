@@ -1,0 +1,49 @@
+<div class="index_con">
+    <ng-form novalidate="novalidate" name="proposalForm" >
+        <div class="div_copy">
+            <div class="copy_input">
+                <input type="text" class="fl" value="" ng-model="copyObjectId" mc-placeholder="请输入投保单号码或保单号码" ng-maxlength="22"/>
+            </div>
+            <div class="copy"><button class="submit" ng-click="copyProposalOrPolicy()">复 制</button></div>
+        </div>
+        <!--业务相关信息-->
+        <!--标签页布局 -->
+        <div ng-if="disStyle == 'tabs'">
+            <div sino-tabs class="tabbable" ng-init="tabs.index = 1">
+                <ul class="tab_ul">
+                    <li sino-tab-head ng-repeat="m in moduleList  | orderBy:'index'">
+                        <a href="#" ng-click="$event.preventDefault()">{{m.disName}}</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div ng-repeat="m in moduleList  | orderBy:'index'" sino-tab-body="animated" class="tab-pane">
+                        <div id="m.name" class="index_list" sino-form-module="m.url" mod-type="m.type" ng-controller="m.ctrl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--流式布局 -->
+        <div ng-if="disStyle == 'flow'">
+            <div ng-repeat="m in moduleList  | orderBy:'index'" class="flowable">
+                <div class="index_tit"><h6>{{m.disName}}</h6></div>
+                <div id="m.name" class="index_list" sino-form-module="m.url" mod-type="m.type" ng-controller="m.ctrl"></div>
+            </div>
+        </div>
+        <!--操作按钮区域-->
+        <div ng-if="proposal && !proposal.readonly" class="index_btn">
+            <a href="#">
+                <i></i><span>预览</span>
+            </a>
+            <a href="#">
+                <i class="i_2"></i><span>删除</span>
+            </a>
+            <a ng-click="proposal.save()">
+                <i class="i_3"></i><span>暂存</span>
+            </a>
+        </div>
+        <div class="index_btn1">
+            <button class="submit" ng-click="onSubmit(form)">提交审核</button>
+            <button class="edit">退出</button>
+        </div>
+    </ng-form>
+</div>

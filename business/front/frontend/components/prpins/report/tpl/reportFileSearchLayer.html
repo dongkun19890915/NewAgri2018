@@ -1,0 +1,42 @@
+<!--文件查询-->
+<div class="mask"></div>
+<div class="insure_correct">
+    <div class="remove_header">
+        <span>文件列表</span>
+        <a href="javascript:void(0)"><i ng-click="reportFileSearchClose()"></i></a>
+    </div>
+    <div class="content_overflow document_list">
+        <img id="showImgFile" data-original="images/bank_01.png" src="" class="hide"/>
+
+        <div  class="insure_content">
+            <table >
+                <tr>
+                    <th>文件名称</th>
+                    <th>文件类型</th>
+                    <th>上传日期</th>
+                    <th>投保单号</th>
+                    <th>批改申请号</th>
+                    <th class="t_last width_auto">备注</th>
+                </tr>
+                <tr ng-repeat="d in uploadFileList|orderBy:col:desc">
+                    <td class="t_first">
+                        <a ng-if="d.isImg" href="{{d.imgUrl}}" data-lightbox="example-set" data-title="{{$index+1}}">
+                            {{d.fileName}}
+                        </a>
+                        <a ng-if="!d.isImg" download  ng-click="showImgFile(d)">
+                            {{d.fileName}}
+                        </a>
+                    </td>
+                    <td>{{d.fileLx}}</td>
+                    <td>{{d.createTime|date:"yyyy-MM-dd"}}</td>
+                    <td>{{d.proposalNo}}</td>
+                    <td>{{d.applyNo}}</td>
+                    <td>{{d.remark}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="remove_button no_border">
+            <button class="button_sure" ng-click="reportFileSearchClose()">退 出</button>
+        </div>
+    </div>
+</div>

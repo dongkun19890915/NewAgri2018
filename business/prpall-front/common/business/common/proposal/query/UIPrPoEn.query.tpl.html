@@ -1,0 +1,309 @@
+<!-- 公用头部 -->
+<div class="main">
+<div class="content_div section commentWidth">
+    <div class="position">
+        <span class="ml10">当前位置：</span>
+        <span class="local-fir">投保单管理 > </span>
+        <span class="local-sec">投保单查询</span>
+    </div>
+    <div class="queryCriteria">
+        <span class="queryCriteria_title">
+            <label>查询条件</label>
+            <div class="click_img1" ng-click="addFrom()"><i class="iconfont" style="font-size: 20px;" ng-show="tabBtn">&#xe667;</i><i class="iconfont" style="font-size: 20px;" ng-show="!tabBtn">&#xe668;</i></div>
+        </span>
+        <div class="condition_table" id="pt4">
+            <ul class="clearfix">
+                <li class="condition_td teaR fl">
+                    <label>投保单号码</label>
+                    <div>
+                        <input type="text" ng-change="changeproposalNo(proposal.prpTmain.proposalNo)" maxlength="40" ng-blur="checkproposalNo($event,proposal.prpTmain.proposalNo)" ng-class="{'checkOutBdRed':check.proposalNo}" ng-model="proposal.prpTmain.proposalNo" class="">
+                        <s ng-bind="check.proposalNo"></s>
+                    </div>
+                </li>
+                <li class="condition_td teaC fl">
+                    <label>投保人名称</label>
+                    <div>
+                        <input type="text" ng-blur="checkappliName($event,proposal.prpTmain.appliName)" maxlength="40" ng-class="{'checkOutBdRed':check.appliName}" ng-model="proposal.prpTmain.appliName" class="">
+                        <s ng-bind="check.appliName"></s>
+                    </div>
+                </li>
+                <li class="condition_td teaL fl">
+                    <label>投保人代码</label>
+                    <div>
+                        <input type="text" ng-blur="checkappliCode($event,proposal.prpTmain.appliCode)" maxlength="40" ng-class="{'checkOutBdRed':check.appliCode}"  ng-model="proposal.prpTmain.appliCode" class="">
+                        <s ng-bind="check.appliCode"></s>
+                    </div>
+                </li>
+                <li class="condition_td teaR fl">
+                    <label>被保人名称</label>
+                    <div><input type="text" ng-blur="checkinsuredName($event,proposal.prpTmain.insuredName)" maxlength="40" ng-class="{'checkOutBdRed':check.insuredName}" ng-model="proposal.prpTmain.insuredName" class="">
+                        <s ng-bind="check.insuredName"></s></div>
+                </li>
+                <li class="condition_td teaC fl">
+                    <label>被保人代码</label>
+                    <div><input type="text" ng-blur="checkinsuredCode($event,proposal.prpTmain.insuredCode)" maxlength="40" ng-class="{'checkOutBdRed':check.insuredCode}"  ng-model="proposal.prpTmain.insuredCode" class="">
+                        <s ng-bind="check.insuredCode"></s></div>
+                </li>
+                <li class="condition_td teaL fl">
+                    <label>打印状态</label>
+                    <select ng-model="proposal.prpTmain.printFlag">
+                        <option value=""  selected hidden></option>
+                        <option value="0">未打印</option>
+                        <option value="1">已打印</option>
+                    </select>
+                </li>
+                <li ng-show="conditionShow">
+                    <ul class="clearfix">
+                        <li class="condition_td teaR fl">
+                            <label>总保险金额</label>
+                            <div><input type="text" ng-blur="checksumAmount($event,proposal.prpTmain.sumAmount)" maxlength="40" ng-class="{'checkOutBdRed':check.sumAmount}" ng-model="proposal.prpTmain.sumAmount" ng-keypress="pressDecimal($event)"/>
+                            <s ng-bind="check.sumAmount"></s></div>
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>总保险费</label>
+                            <div><input type="text" ng-blur="checksumPremium($event,proposal.prpTmain.sumPremium)"maxlength="40"  ng-class="{'checkOutBdRed':check.sumPremium}"  ng-model="proposal.prpTmain.sumPremium" ng-keypress="pressDecimal($event)"/>
+                            <s ng-bind="check.sumPremium"></s></div>
+                        </li>
+                        <!--<li class="condition_td teaL fl">
+                            <label>归属机构</label>
+                            <div><input type="text" ng-blur="checkcomCode($event,proposal.prpTmain.comCode)" maxlength="40" ng-class="{'checkOutBdRed':check.comCode}" ng-model="proposal.prpTmain.comCode">
+                            <s ng-bind="check.comCode"></s></div>
+                        </li>-->
+                        <li class="condition_td teaL fl">
+                            <label>归属机构</label>
+                            <div class="codeType codeNoBor"  >
+                                <ui-select history ng-model="proposal.prpTmain.comCode"
+                                           ng-click="getComCodeList()"
+                                >
+                                    <ui-select-match placeholder="查询或选择..." ng-attr-title="{{$select.selected.comCName}}">
+                                        {{$select.selected.comCName}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="code.comCode as code in selectListData.comCodeList | filter: $select.search">
+                                        <span ng-bind="code.comCName" ng-attr-title="{{code.comCName}}"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </li>
+                        <li class="condition_td teaR fl">
+                            <label>业务员代码</label>
+                            <div><input type="text" ng-blur="checkhandler1Code($event,proposal.prpTmain.handler1Code)" maxlength="40" ng-class="{'checkOutBdRed':check.handler1Code}" ng-model="proposal.prpTmain.handler1Code">
+                                <s ng-bind="check.handler1Code"></s></div>
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>操作员代码</label>
+                            <div><input type="text" ng-blur="checkoperatorCode($event,proposal.prpTmain.operatorCode)" maxlength="40" ng-class="{'checkOutBdRed':check.operatorCode}" ng-model="proposal.prpTmain.operatorCode">
+                                <s ng-bind="check.operatorCode"></s></div>
+                        </li>
+                        <li class="condition_td teaL fl">
+                            <label>政策/商业标志</label>
+                            <div class="codeType" style="width: 55%">
+                                <code-type base-code="BusinessType1"  ng-model="proposal.prpTmain.BusinessType1"  ></code-type><!--ng-init="proposal.prpTmain.BusinessType1='01'"-->
+                            </div>
+                        </li>
+                        <li class="condition_td teaR fl">
+                            <label>起保日期</label>
+                            <input style="width: 27%;position: relative;left:-3px;" type="text" id="DataStart2" jedate
+                                   class="date-input proposal_date" ng-model="proposal.prpTmain.startDate" ng-change="queryResultsDate(proposal.prpTmain.startDate,proposal.prpTmain.startEndDate,'起保日期')"
+                                   format="YYYY-MM-DD" required readonly />  <!--ng-init="proposal.prpTmain.startDate=time.year+'-'+time.month+'-01'"-->
+                            <i class="fl">-</i>
+                            <input style="width: 26%;position: relative;left:-3px;" type="text" id="DataEnd2" jedate
+                                   class="date-input proposal_date" ng-model="proposal.prpTmain.startEndDate" ng-change="queryResultsDate(proposal.prpTmain.startDate,proposal.prpTmain.startEndDate,'起保日期')"
+                                   format="YYYY-MM-DD"
+                                   required readonly /><!--ng-init="proposal.prpTmain.startEndDate=time.year+'-'+time.month+'-'+time.date"-->
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>终保日期</label>
+                            <input style="width: 27%;position: relative;left:-3px;" type="text" id="DataStart3" jedate
+                                   class="date-input proposal_date" ng-model="proposal.prpTmain.endStartDate" ng-change="queryResultsDate(proposal.prpTmain.endStartDate,proposal.prpTmain.endDate,'终保日期')"
+                                   format="YYYY-MM-DD" required readonly /><!--ng-init="proposal.prpTmain.endStartDate=time.year+1+'-'+time.month+'-01'"-->
+                            <i class="fl">-</i>
+                            <input style="width: 26%;position: relative;left:-3px;" type="text" id="DataEnd3" jedate
+                                   class="date-input proposal_date" ng-model="proposal.prpTmain.endDate" ng-change="queryResultsDate(proposal.prpTmain.endStartDate,proposal.prpTmain.endDate,'终保日期')"
+                                   format="YYYY-MM-DD"
+                                   required readonly /><!--ng-init="proposal.prpTmain.endDate=time.year+1+'-'+time.month+'-'+time.date"-->
+                        </li>
+                        <li class="condition_td teaL fl">
+                            <label>制单日期</label>
+                            <input style="width: 27%;position: relative;left:-3px;" type="text" id="idDataStart2" jedate
+                                   class="date-input proposal_date " ng-model="proposal.prpTmain.operateStartDate"  ng-change="queryResultsDate(proposal.prpTmain.operateStartDate,proposal.prpTmain.operateEndDate,'制单日期')"
+                                   format="YYYY-MM-DD" required readonly /><!--ng-init="proposal.prpTmain.operateStartDate=time.year+'-'+time.month+'-01'"-->
+                            <i class="fl">-</i>
+                            <input style="width: 26%;" type="text" id="idDataEnd2" jedate
+                                   class="date-input proposal_date " ng-model="proposal.prpTmain.operateEndDate"  ng-change="queryResultsDate(proposal.prpTmain.operateStartDate,proposal.prpTmain.operateEndDate,'制单日期')"
+                                   format="YYYY-MM-DD"
+                                   required readonly /><!--ng-init="proposal.prpTmain.operateEndDate=time.year+'-'+time.month+'-'+time.date"-->
+                        </li>
+                        <li class="condition_td teaR fl">
+                            <label>状态</label>
+                            <select ng-model="proposal.prpTmain.underWriteFlag"
+                                    ng-options="underWriteFlag.codeCode as underWriteFlag.codeName for underWriteFlag in underWriteFlagList">
+                                <option value=""  selected hidden></option>
+                            </select>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="btn_tr clearfix">
+                <span class="fl" ng-click="submit()">查询</span>
+                <span class="fr" ng-click="reset()">重置</span>
+            </div>
+        </div>
+    </div>
+    <div class="queryResult">
+        <div class="queryResult_title clearfix">
+            <span class="fl">查询结果</span>
+            <label class="fr" ng-click="goBackDashboard();">返回</label>
+            <label class="fr"   ng-click="printProposals()">打印</label>
+            <label class="fr" ng-click="submitUndwrtByProposal()">提交核保</label>
+        </div>
+        <table>
+            <tr class="tr_top">
+                <td class="w8 check-box1" style="position: relative;left:14px;" >
+                    <label class="checkbox-label1 "  ng-class="{'checkbox-checked':select_all==true}" ng-click="selectAll()"><!--box.checked=!box.checked-->
+                        <span></span>
+                        <input type="checkbox" name="checkbox" class="hide" ng-model="select_all"><em>全选</em>
+                    </label>
+                </td>
+                <td class="">投保单号</td>
+                <td style="width: 13%;">投保人名称</td>
+                <td style="width: 13%;">被保险人名称</td>
+                <td class="insuranceTime">保险期间</td>
+                <td class="w5">操作员</td>
+                <td class="w9">制单日期</td>
+                <td>疑似重复投保</td>
+                <td class="w5 stateWidth">状态</td>
+                <td class="w5 stateWidth">核保信息</td>
+                <td class="w8">操作</td>
+            </tr>
+            <tr class="tr_content F2F2F2 check-box1" ng-repeat="info in proposal.QueryList track by $index">
+                <td>
+                    <!--<input ng-model="info.checked" type="checkbox" ng-change="selectOne()"/>-->
+                    <label class=" checkbox-label1 " ng-class="{'checkbox-checked':info.checked==true}" ng-click="selectOne()"><!--box.checked1=!box.checked1-->
+                        <span></span>
+                        <input type="checkbox" name="checkbox" class="hide" ng-model="info.checked">
+                    </label>
+                </td>
+                <td class="C2DBE61 cur" ng-click="getProposalInfo($index,'Examine')" >
+                    <div ng-bind="info.proposalNo" class="w50" ng-attr-title="{{info.proposalNo}}"></div>
+                </td>
+                <td ng-bind="info.appliName"></td>
+                <td ng-bind="info.insuredName"></td>
+                <td > {{info.startDate}}至{{info.endDate}}</td>
+                <td ng-bind="info.operatorName"></td>
+                <td ng-bind="info.operateDate"></td>
+                <td ng-bind="info.repeatFlag==true?'是':''" ng-click="lookDetailRelativeInsureList(info.repeatFlag,info,$index)" class="C2DBE61 cur"></td>
+                <td  ng-bind="info.underWriteFlag"></td>
+                <td  class="C2DBE61 cur" ng-bind="info.othFlag" ng-click="getViewTrace(info.proposalNo,info.othFlag)"></td>
+                <td>
+                    <i class="iconfont cur" style="font-size: 20px;" ng-show="info.operate == '1'" title="修改" ng-click="getProposalInfo($index,'Edit')">&#xe62c;</i>
+                    <i class="iconfont cur" style="font-size: 20px;"  ng-show="info.operate == '1'"title="撤单" ng-click="revocation(info)">&#xe61b;</i>
+                    <i class="iconfont cur" style="font-size: 20px;" ng-show="info.operate1='2' == '2'" ng-click="upLoading(info.proposalNo)" title="上传">&#xe609;</i>
+                </td>
+            </tr>
+        </table>
+        <div ng-show="isEmptyObject(proposal.QueryList)||proposal.QueryList.length==0" ng-class="{'not-query':isEmptyObject(proposal.QueryList),'query-null':proposal.QueryList.length==0}" class="not-query"></div>
+        <div class="index_page">
+            <tm-pagination conf="paginationConfmm"></tm-pagination>
+        </div>
+    </div>
+
+    <!--核保信息详情-->
+    <div ng-show="policyInfo" class="all_payment layer-model">
+        <div class="large-layer-content all_payment_contain" style="top:15%;padding-bottom: 15px;">
+            <div class="all_payment_head layer-header">
+                <span>核保信息详情</span>
+                <i class="icon iconfont" ng-click="closepolicyInfoShow()">&#xe62f;</i>
+            </div>
+
+            <div class="layer-con all_payment_content1" style="padding:0;">
+                <div class="queryResult" ng-repeat="examine in examineList track by $index">
+                    <table border="1" bordercolor = "#ffffff"  style=" background-color: rgba(182, 182, 182, 0.32);"cellspacing = "2">
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">级别名称：</td>
+                            <td style="width: 25%;"  colspan="3" ng-bind="examine.nodeName"></td>
+                        </tr>
+                        <tr class="poen-tr" >
+                            <td style="width: 25%;">处理人员：</td>
+                            <td style="width: 25%;" ng-bind="examine.operatorName"></td>
+                            <td style="width: 25%;">处理部门：</td>
+                            <td style="width: 25%;" ng-bind="examine.deptCode"></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">级别状态：</td>
+                            <td style="width: 25%;" ng-bind="examine.nodeStatusName"></td>
+                            <td style="width: 25%;">流向：</td>
+                            <td style="width: 25%;" ng-bind="examine.flowStatusName"></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">提交时间：</td>
+                            <td style="width: 25%;" ng-bind="examine.submitTime"></td>
+                            <td style="width: 25%;">处理完毕时间：</td>
+                            <td style="width: 25%;" ng-bind="examine.submitTime"></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;" >审核意见：</td>
+                            <td style="width: 25%;" colspan="3"><textarea style="width: 90%;height: 40px;margin-top: 3px;" ng-bind="examine.handleText" disabled="policyInfo"></textarea></td>
+                        </tr>
+                        <tr class="poen-tr">
+                            <td style="width: 25%;">审核信息：</td>
+                            <td style="width: 25%;" colspan="3" ng-bind="examine.handleTextInfo"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--重复性校验弹框-->
+<div class="all_payment layer-model" id="relativeInsureListCode">
+    <div class="large-layer-content relationListNo_layer" style="top:30% !important;">
+        <div class="all_payment_head layer-header">
+            <span>温馨提示</span>
+        </div>
+        <div class="layui-layer-content" style="padding:30px;line-height: 34px;font-size: 18px !important;">
+            <p>有疑似性重复投保的投保单，请确认是否继续？</p>
+            <p>
+                <span>具体投保单为：</span>
+                <span id="repeatTrueList"></span>
+            </p>
+        </div>
+        <div class="layer-footer">
+            <button class="greenButton" style="margin-right:80px;" ng-click="goRelativeInsureListCode()">继续</button>
+            <button class="greenButton" ng-click="closeRelativeInsureListCode()">取消</button>
+        </div>
+    </div>
+</div>
+<!--有效保单列表弹框-->
+<div class="all_payment layer-model" ng-show="showDetailRelativeInsure">
+    <div class="large-layer-content relationListNo_layer">
+        <div class="all_payment_head layer-header">
+            <span>保单列表</span>
+            <i class="icon iconfont" ng-click="closeDetailRelativeInsureList()">&#xe62f;</i>
+        </div>
+        <div class="queryResult" style="max-height:450px;overflow-y: auto;">
+            <table>
+                <tr class="tr_top">
+                    <td >保单号</td>
+                    <td>投保人名称</td>
+                    <td >起保日期</td>
+                    <td >终保日期</td>
+                    <td >制单人</td>
+                </tr>
+                <tr class="tr_content F2F2F2" ng-repeat="relativeInsure in detailRelativeInsureList track by $index">
+                    <td ng-bind="relativeInsure.policyNo" ng-click="getPolicyInfo(relativeInsure.policyNo)" style="color:#5a9cff;cursor: pointer;"></td>
+                    <td ng-bind="relativeInsure.appliName"></td>
+                    <td ng-bind="relativeInsure.startDate"></td>
+                    <td ng-bind="relativeInsure.endDate"></td>
+                    <td ng-bind="relativeInsure.operatorName"></td>
+                </tr>
+            </table>
+            <div class="index_page">
+                <tm-pagination conf="paginationConfmm4"></tm-pagination>
+            </div>
+        </div>
+        <div class="layer-footer">
+            <button class="greenButton" ng-click="closeDetailRelativeInsureList()">取消</button>
+        </div>
+    </div>
+</div>

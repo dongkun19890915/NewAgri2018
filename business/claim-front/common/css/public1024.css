@@ -1,0 +1,59 @@
+.commentWidth .condition_td label{
+    width: 34%;
+}
+.commentWidth .condition_td .half-div{
+    width: 66%;
+}
+.w50oh{
+    width:50px;overflow: hidden;margin:0 auto;
+}
+.pl13{
+    padding-left:13%;
+}
+.w124{
+    width: 124px;
+}
+.w90lossFeeType{
+    width: 86px;
+}
+.w150{
+    width: 150px;
+}
+.w52{
+    width: 52%;
+}
+/*工作台*/
+/*调度处理*/
+.btn_tr span.Initiation{
+    position: relative;
+    left:9px;
+}
+.condition_td.half-li.institutionsClass{
+    width: 58%;
+}
+.condition_td.half-li.institutionsClass>label{
+    width: 34.2%;
+}
+/*报案登记*/
+li.long-li label.w17Print{
+    width: 17%;
+}
+li.long-li .half-div.w83Print{
+    width: 83%;
+}
+.w50endFlag{
+    width: 50px;
+}
+
+.new-table .tr_content input.w92input{
+    width: 92px;
+}
+.w17td{
+    width: 17%;
+}
+.w18td{
+    width: 18%;
+}
+label.w32label{
+    width: 32%;
+}

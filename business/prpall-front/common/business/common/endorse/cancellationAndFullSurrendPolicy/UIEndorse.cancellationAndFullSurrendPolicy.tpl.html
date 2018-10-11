@@ -1,0 +1,156 @@
+<!--
+****************************************************************************
+* DESC: 农险angular－特殊批改全单退保／保单注销界面
+* AUTHOR     ：阳光项目组
+* Created by sen on 2017/11/12.
+* --------------------------------------------------------
+*       sunyaohui       2018-01-06     项目部署
+****************************************************************************
+-->
+<div class="section insurPeriod" id="cafs">
+    <div class="gy-common con">
+        <div ng-show="!obtainText">
+            <div class="position">
+                <span>当前位置：</span>
+                <span class="local-fir">{{Tittle.firstLev}} > </span>
+                <span class="local-fir">{{Tittle.secLev}} > </span>
+                <span class="local-sec">{{Tittle.thirdLev}}</span>
+            </div>
+            <div ng-show="!isAdjust" class="content_div content1-div">
+                <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>批改信息</label>
+                </span>
+                    <div class="condition_table">
+                        <div class="sepCorr-info-top"><i class="icon iconfont">&#xe602;</i>您选择了<span>{{number}}</span>条保单信息进行特殊批改。<span class="lookChoosedDetail" ng-click="choosedDetail()">查看已选保单详情</span></div>
+                        <div>
+                            <ul class="clearfix" id="myFlow">
+                                <li class="condition_td fl half-li">
+                                    <label><i class="mes_sign">*</i>批改申请人</label><input type="text" class=""  ng-model="endorse.blEndorseDtoList[0].prpPheadDto.appliName"/>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>归属部门</label><input type="text" class="" disabled ng-model="endorseConditionDto.loginComCName"/>
+                                </li>
+                                <li class="condition_td fl half-li data-box">
+                                    <label><i class="mes_sign">*</i>批改生效日期</label>
+                                    <!--<input class="date-input data fl" id="start" readonly  jedate ng-model="endorseDate1"/>-->
+                                    <input  type="text" id="start" jedate
+                                           class="date-input proposal_date" ng-model="endorseDate1"
+                                           format="YYYY-MM-DD" required readonly ng-change="compare(endorseDate1,endorseDate)"/>
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>批改日期</label>
+                                   <!--// <input class="date-input fl" id="makeDate" readonly jedate ng-model="endorseDate" value=""/>-->
+                                    <input type="text" id="makeDate" jedate
+                                           class="date-input proposal_date" ng-model="endorseDate"
+                                           format="YYYY-MM-DD" required readonly />
+                                </li>
+                                <li class="condition_td fl half-li">
+                                    <label>批改方式</label>
+                                    <div style="display: inline-block;" class="endorseFashion">
+                                        <code-type base-code="endorseType" ng-model="endorse.blEndorseDtoList[0].prpPheadDto.endorseType" ng-init=""></code-type>
+                                    </div>
+                                </li>
+                                <li class="condition_td fl half-li" ng-if="publicShow">
+                                    <label>短期费率方式</label>
+                                    <div style="display: inline-block;" class="endorseFashion" id="myInput">
+                                        <code-type  ng-show="!onlyShow" base-code="ShortRateFlagMain" ng-model='endorse.endorseConditionDto.shortRateFlag'
+                                                   ng-init="endorse.endorseConditionDto.shortRateFlag='3'" reverseData="getShortRateFlagName"
+                                                   ng-change="getShortRate(prpTitemKind.shortRateFlag)" required></code-type>
+                                        <!--<code-type base-code="ShortRateFlagMain" ng-model="endorse.endorseConditionDto.shortRateFlag" disabled></code-type>-->
+                                    </div>
+                                </li>
+                                <li class="condition_td3  fl">
+                                    <label class="label3">批改方式原因</label>
+                    		<textarea ng-model="endorse.endorseConditionDto.endorseReason" class="endorseReason">
+
+                    		</textarea>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn_tr clearfix">
+                            <span class="fl" ng-click="last()">上一步</span>
+                            <span class="fr no-bg" ng-click="next()">下一步</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isAdjust" class="content_div content1-div">
+                <div class="queryCriteria queryResult mt0">
+                <span class="queryCriteria_title">
+                    <label>全单退保后调整</label>
+                </span>
+                    <table>
+                        <tr class="tr_top">
+                            <td>保单号</td>
+                            <td>总保额</td>
+                            <td>到期保费</td>
+                            <td>未到期保费</td>
+                        </tr>
+                        <tr class="tr_content tr_content-bg" ng-repeat="x in fullSurrenderList">
+                            <td ng-bind="x.policyNoSign">121212121</td>
+                            <td ng-bind="x.TotalInsured">100.00</td>
+                            <td ng-bind="x.MaturePremium">20.00</td>
+                            <td ng-bind="x.UnearnedPremium">200.00</td>
+                        </tr>
+                    </table>
+                    <div class="condition_table">
+                        <div class="btn_tr clearfix">
+                            <span class="fl" ng-click="showPrevPage(e)">上一步</span>
+                            <span class="fr no-bg" ng-click="showAdjust()">下一步</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div ng-if="obtainText" ng-include="'common/business/common/endorse/model/UIEndorse.obtainApproval.model.tpl.html'"></div>
+    </div>
+</div>
+<!--加载中蒙板-->
+<div class="orderlayerBox" ng-show="showDetail">
+    <div class="mask zIndex"></div>
+    <div class="tip_success_info printLayer orderIntLayer" style="position: fixed;">
+        <div class="remove_header">
+            <span>批改保单列表</span>
+            <i class="icon iconfont" ng-click="cancel()">&#xe632;</i>
+        </div>
+        <div class="info_container">
+            <div class="queryResult">
+                <div class="queryResult_title layer_queryResult_title clearfix">
+                    <span class="fl">保单列表</span>
+                </div>
+                <table>
+                    <tr class="tr_top">
+                        <td>序号</td>
+                        <td>保单号</td>
+                        <td>投保人名称</td>
+                        <td>被保险人名称</td>
+                        <td>保险起期</td>
+                        <td>保险止期</td>
+                        <td>操作员</td>
+                    </tr>
+                    <tr class="tr_content" ng-repeat="x in details">
+                        <td ng-bind="$index+1"></td>
+                        <td class="table-td-blue" ng-bind="x.policyNo"  ng-click="getPolicyInfo(x.policyNo)"></td>
+                        <td ng-bind="x.appliName"></td>
+                        <td ng-bind="x.insuredName"></td>
+                        <td ng-bind="x.stratDate"></td>
+                        <td ng-bind="x.endDate"></td>
+                        <td ng-bind="x.operatorName"></td>
+                    </tr>
+                </table>
+                <div class="index_page">
+                    <tm-pagination conf="paginationConfmm1"></tm-pagination>
+                </div>
+            </div>
+        </div>
+        <div class="remove_button no-line">
+        </div>
+    </div>
+</div>
+
+<div ng-if="false" style="position: absolute;z-index: 1000;top:0;width: 100%;height: 100%;background:rgba(0,0,0,0.6);text-align: center;">
+    <span style="position: absolute;top: 50%;color:#ffffff"><img src="common/images/lightbox/loading.gif" style="width: 24px;">&nbsp;加载中。。。</span>
+</div>

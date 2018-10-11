@@ -1,0 +1,108 @@
+
+<!--整单支付单列表-->
+<div class="main">
+    <div class="section">
+        <div class="position">
+            <!--<span class="local-fir">理赔管理 > </span>-->
+            <!--<span class="local-fir">支付管理 > </span>-->
+            <!--<span class="local-fir">支付情况统计表</span>-->
+        </div>
+        <div class="content_div content1-div">
+            <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>整单支付单列表</label>
+                </span>
+                <div class="condition_table">
+                    <div class="queryResult">
+                        <table>
+                            <thead>
+                            <tr class="tr_top">
+                                <th>序号</th>
+                                <th>批次号</th>
+                                <th>支付单号</th>
+                                <th>领款人姓名</th>
+                                <th>领款人账号</th>
+                                <th>金额</th>
+                                <th>状态</th>
+                                <th>支付说明</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr_content" ng-repeat="result in paymentList">
+                                <td>{{$index+1}}</td>
+                                <td ng-bind="result.billNo"></td>
+                                <td ng-bind="result.paymentNo"
+                                    class="pointer" style="color: #2DBE61"
+                                    ng-click="goSee(result,'SHOW1')"
+                                   >
+                                </td>
+                                <td ng-bind="result.receiverName"></td>
+                                <td ng-bind="result.receiverAccount"></td>
+                                <td ng-bind="result.payAmount"></td >
+                                <td ng-bind="result.payType"></td>
+                                <td ng-bind="result.purpose"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div ng-show="paymentList===null||paymentList.length==0" ng-class="{'not-query':paymentList===null,'query-null':paymentList.length==0}"></div>
+                        <div class="index_page">
+                            <tm-pagination conf="paginationConf"></tm-pagination>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--<div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>清单支付单列表</label>
+                </span>
+                <div class="condition_table">
+                    <div class="queryResult">
+                        <table>
+                            <thead>
+                            <tr class="tr_top">
+                                <th>序号</th>
+                                <th>批次号</th>
+                                <th>支付单号</th>
+                                <th>领款人姓名</th>
+                                <th>领款人账号</th>
+                                <th>金额</th>
+                                <th>状态</th>
+                                <th>支付说明</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr_content" ng-repeat="result in paymentList">
+                                <td>1</td>
+                                <td ng-model="result.comName">合肥中心支公司总</td>
+                                <td ng-model="result.inputDate"></td>
+                                <td ng-model="result.payDate"></td>
+                                <td ng-model="result.paymentNo">
+                                    <span>123456432</span>
+                                    <span>65432123456</span>
+                                </td>
+                                <td ng-model="result.compensateNo">
+                                    <span>123456432</span>
+                                    <span>65432123456</span>
+                                </td >
+                                <td ng-model="result.insuredName">柯胜华</td>
+                                <td ng-model="result.underWriteEnddate">2017-10-18</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div ng-show="prplregist===null||prplregist.length==0" ng-class="{'not-query':prplregist===null,'query-null':prplregist.length==0}"></div>
+                        <div class="index_page">
+                            <tm-pagination conf="paginationConf"></tm-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="btn_tr clearfix mt20">
+                <span ng-click="goBack()">返回</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+<!--更改业务信息-->
+<div class="index_con">
+    <!--保单基本信息-->
+    <ng-form novalidate="novalidate" name="endorseBusinessForm">
+        <div class="index_list">
+            <div class="index_tit"><h6>保单基本信息</h6></div>
+            <ul class="list_ul list_ul1">
+                <li><span>保单号码：</span></li>
+                <li><span class="fl"  ng-bind="surrenderData.copyPolicyDto.prpCopyMainDto.policyNo"></span></li>
+                <li><em>*</em><span>投保日期：</span></li>
+                <li><span class="fl"  ng-bind="surrenderData.copyPolicyDto.prpCopyMainDto.operateDate |date:'yyyy-MM-dd'">2016-07-20</span></li>
+                <li><em>*</em><span>保单生效日：</span></li>
+                <li><span class="fl"  ng-bind="surrenderData.copyPolicyDto.prpCopyMainDto.startDate |date:'yyyy-MM-dd'">2017-07-19</span><span class="fl">&nbsp;&nbsp;0时</span></li>
+                <li><span>保单终止日：</span></li>
+                <li><span class="fl"  ng-bind="surrenderData.copyPolicyDto.prpCopyMainDto.endDate |date:'yyyy-MM-dd'">2017-07-19&nbsp;&nbsp;&nbsp;&nbsp;24时</span><span class="fl">&nbsp;&nbsp;24时</span></li>
+            </ul>
+        </div>
+        <!--批改基本信息-->
+        <div class="index_list">
+            <div class="index_tit"><h6>批改基本信息</h6></div>
+            <ul class="list_ul">
+                <li><span>批改类型：</span></li>
+                <li>
+                    <span ng-bind="surrenderData.prpPheadDto.endorType" class="hide"></span>
+                    <span class="fl" ng-bind="surrenderData.prpPheadDto.endorTypeName"></span>
+                </li>
+
+                <li><span>批改申请号码：</span></li>
+                <li><span class="fl" ng-bind="surrenderData.prpPheadDto.applyNo"></span></li>
+
+                <li><em>*</em><span>批改申请日：</span></li>
+                <li><span class="fl" ng-bind="surrenderData.prpPheadDto.endorDate"></span></li>
+                <li>
+                    <em>*</em><span>批改生效日：</span></li>
+                <li class="effective_date"><span class="fl"  ng-bind="surrenderData.prpPheadDto.validDate"></span>  <span   class="fl" > &nbsp;&nbsp;0时</span>
+                </li>
+
+                <li><span>批改原因说明：</span></li>
+                <li class="correct_reason"><input type="text" maxlength="40" class="fl bor box_shadow" ng-model="surrenderData.prpPheadDto.reasonText" readonly/></li>
+            </ul>
+        </div>
+        <!--业务相关信息-->
+        <div class="index_list">
+            <div class="index_tit"><h6>业务相关信息</h6></div>
+            <ul class="list_ul">
+                <li><em>*</em><span>业务来源：</span></li>
+                <li>
+                    <span class="fl" ng-bind="surrenderData.copyPolicyDto.prpCopyMainDto.businessNatureName"></span>
+                </li>
+
+                <li><em>*</em><span>出单省级机构：</span></li>
+                <li>
+                    <span class="fl" ng-bind="surrenderData.copyPolicyDto.prpCopyMainDto.comCodeName"></span>
+                </li>
+
+                <li><em>*</em><span>出单分支机构代码：</span></li>
+                <li>
+                    <input  type="text"  maxlength="20"  class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.cityCode" required readonly>
+                </li>
+
+                <li><span>业务归属机构代码：</span></li>
+                <li>
+                    <input  type="text"  maxlength="20"  class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.makeCom" readonly />
+                </li>
+
+                <li><span>渠道代码：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.handlerCode">
+                </li>
+                <li><span>渠道名称：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.handlerName">
+                </li>
+                <li><span>协议代码：</span></li>
+                <li>
+                    <input type="text" readonly class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.contractNo">
+                </li>
+                <li></li>
+                <li></li>
+
+                <li><em>*</em><span>归属业务员代码：</span></li>
+                <li>
+                    <input  type="text" required maxlength="20" class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.handler1Code" readonly>
+                </li>
+
+                <li><em>*</em><span>归属业务员姓名：</span></li>
+                <li>
+                    <input  type="text" required maxlength="25" class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.handler1Name" readonly>
+                </li>
+                <li><em>*</em><span>录单人员代码：</span></li>
+                <li>
+                    <input  type="text" required maxlength="20" class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.operatorCode" readonly>
+                </li>
+
+                <li><em>*</em><span>录单人员姓名：</span></li>
+                <li>
+                    <input  type="text" required maxlength="25" class="fl bor box_shadow" ng-model="surrenderData.copyPolicyDto.prpCopyMainDto.operatorName" readonly>
+                </li>
+
+                <li><span>批改录入人员代码：</span></li>
+                <li>
+                    <input type="text" readonly maxlength="20" class="fl bor box_shadow" ng-model="surrenderData.prpPheadDto.operatorCode">
+                </li>
+
+                <li><span>批改录入人员姓名：</span></li>
+                <li>
+                    <input type="text" readonly maxlength="25"  warn-text="批改录入人员姓名" class="fl bor box_shadow" ng-model="surrenderData.prpPheadDto.operatorName" >
+                </li>
+
+                <li><span>批改申请人员代码：</span></li>
+                <li>
+                    <input type="text" readonly maxlength="20" ng-model="surrenderData.prpPheadDto.operatorApplyCode" class="fl bor box_shadow">
+                </li>
+
+                <li><span>批改申请人员姓名：</span></li>
+                <li>
+                    <input type="text" readonly maxlength="15" ng-model="surrenderData.prpPheadDto.operatorApplyName" class="fl bor box_shadow">
+                </li>
+            </ul>
+        </div>
+        <div class="index_btn">
+            <span class="policy_info" ng-click="policyDetailShow()">
+                <i></i><em>查阅保单详情</em>
+            </span>
+            <span ng-click="FileshowInsure()">
+                <i class="i_1"></i><em>上传</em>
+            </span>
+        </div>
+        <div class="index_btn1">
+            <span class="submit" ng-click="nuclearSurClick()">下一步</span>
+            <span class="edit giveUp" ng-click="giveUpClick()">放弃任务</span>
+        </div>
+    </ng-form>
+</div>
+<!--弹层---文件上传-->
+<div data-ng-include="'components/prpins/proposal/tpl/applicationFileUploadLayer.html'"></div>
+<!--  引入 保单详情页面 容器，需要在 查阅保单详情 按钮上 增加显示 隐藏开关 -->
+<div data-ng-include="'components/prpins/endorse/tpl/policyDetail.html'"></div>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: sinosoft.sysframework:sysframework:1.1.0-165">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Maven/repos/NewAgri1/repo/sinosoft/sysframework/sysframework/1.1.0-165/sysframework-1.1.0-165.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../Maven/repos/NewAgri1/repo/sinosoft/sysframework/sysframework/1.1.0-165/sysframework-1.1.0-165-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../Maven/repos/NewAgri1/repo/sinosoft/sysframework/sysframework/1.1.0-165/sysframework-1.1.0-165-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

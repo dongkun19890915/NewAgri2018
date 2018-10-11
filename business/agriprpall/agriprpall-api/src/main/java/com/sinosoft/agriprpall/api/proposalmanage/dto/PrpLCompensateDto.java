@@ -1,0 +1,1303 @@
+package com.sinosoft.agriprpall.api.proposalmanage.dto;
+
+import com.sinosoft.framework.dto.BaseRequest;
+
+import java.io.Serializable;
+
+/**
+ * @author codegen@研发中心
+ * @mail admin@sinosoft.com.cn
+ * @time  2017-11-08 05:40:44.225 
+ * 赔款计算书表Api操作对象
+ */
+public class PrpLCompensateDto extends BaseRequest implements Serializable{
+	private static final long serialVersionUID = 1L;
+	/** 属性赔款计算书号码/赔款计算书号码 */
+	private String compensateNo ;		
+	/** 属性理赔类型/理赔类型 */
+	private String lFlag ;		
+	/** 属性赔案号/赔案号 */
+	private String caseNo ;		
+	/** 属性次数/次数 */
+	private Integer times ;
+	/** 属性险类代码/险类代码 */
+	private String classCode ;
+	/** 属性险种代码/险种代码 */
+	private String riskCode ;
+	/** 属性立案号码/立案号码 */
+	private String claimNo ;
+	/** 属性保单号码/保单号码 */
+	private String policyNo ;
+	/** 属性免赔条件字段/免赔条件字段 */
+	private String deductCond ;
+	/** 属性终到日期/终到日期 */
+	private java.util.Date preserveDate ;
+	/** 属性理赔代理人代码/理赔代理人代码 */
+	private String checkAgentCode ;
+	/** 属性理赔代理人名称/理赔代理人名称 */
+	private String checkAgentName ;
+	/** 属性检验人名称/检验人名称 */
+	private String surveyOrName ;
+	/** 属性索赔人名称/索赔人名称 */
+	private String counterClaimerName ;
+	/** 属性航方责任/航方责任 */
+	private String dutyDescription ;
+	/** 属性币别代码/币别代码 */
+	private String currency ;
+	/** 属性标的损失金额/标的损失金额 */
+	private Double sumLoss ;
+	/** 属性损余金额/损余金额 */
+	private Double sumRest ;
+	/** 属性责任赔款合计/责任赔款合计 */
+	private Double sumDutyPaid ;
+	/** 属性不计入赔款的费用金额/不计入赔款的费用金额 */
+	private Double sumNoDutyFee ;
+	/** 属性总赔付金额/总赔付金额 */
+	private Double sumPaid ;
+	/** 属性已预付赔款/已预付赔款 */
+	private Double sumPrepaid ;
+	/** 属性本次赔付金额/本次赔付金额 */
+	private Double sumThisPaid ;
+	/** 属性领赔款单位/领赔款单位 */
+	private String receiverName ;
+	/** 属性开户银行/开户银行 */
+	private String bank ;
+	/** 属性银行帐号/银行帐号 */
+	private String account ;
+	/** 属性出单机构/出单机构 */
+	private String makeCom ;
+	/** 属性业务归属机构代码/业务归属机构代码 */
+	private String comCode ;
+	/** 属性经办人代码/经办人代码 */
+	private String handlerCode ;
+	/** 属性归属业务员代码/归属业务员代码 */
+	private String handler1Code ;
+	/** 属性复核员代码/复核员代码 */
+	private String approverCode ;
+	/** 属性最终核赔人代码/最终核赔人代码 */
+	private String underwriteCode ;
+	/** 属性最终核赔人名称/最终核赔人名称 */
+	private String underwritEName ;
+	/** 属性统计年月/统计年月 */
+	private java.util.Date statisticSym ;
+	/** 属性操作员代码/操作员代码 */
+	private String operatorCode ;
+	/** 属性计算机输入日期/计算机输入日期 */
+	private java.util.Date inputDate ;
+	/** 属性核赔完成日期/核赔完成日期 */
+	private java.util.Date underWriteEndDate ;
+	/** 属性核赔标志1/核赔标志1 */
+	private String underWriteFlag ;
+	/** 属性备注/备注 */
+	private String remark ;
+	/** 属性标志字段/标志字段 */
+	private String flag ;
+	/** 属性案件性质/案件性质 */
+	private String caseType ;
+	/** 属性责任比例/责任比例 */
+	private Double indemnityDutyRate ;
+	/** 属性赔偿责任代码/赔偿责任代码 */
+	private String indemnityDuty ;
+	/** 属性最终计算书标志/最终计算书标志 */
+	private String finallyFlag ;
+	/** 属性理赔结论/理赔结论 */
+	private String result ;
+	/** 属性赔付数量/赔付数量 */
+	private Double lossesNumber ;
+	/** 属性赔付数量计量单位/赔付数量计量单位 */
+	private String lossesUnitCode ;
+	/** 属性出险户次/出险户次 */
+	private Double damageInsured ;
+	/** 属性受灾面积/受灾面积 */
+	private Double disasterArea ;
+	/** 属性受灾面积计量单位/受灾面积计量单位 */
+	private String disasterUnit ;
+	/** 属性成灾面积/成灾面积 */
+	private Double affectedArea ;
+	/** 属性成灾面积计量单位/成灾面积计量单位 */
+	private String affectedUnit ;
+	/** 属性绝产面积/绝产面积 */
+	private Double noProductionArea ;
+	/** 属性绝产面积计量单位/绝产面积计量单位 */
+	private String noProductionUnit ;
+	/** 属性死亡数量/死亡数量 */
+	private Double deathQuantity ;
+	/** 属性死亡数量计量单位/死亡数量计量单位 */
+	private String deathUnit ;
+	/** 属性扑杀数量/扑杀数量 */
+	private Double killQuantity ;
+	/** 属性扑杀数量计量单位/扑杀数量计量单位 */
+	private String killUnit ;
+	/** 属性农业/涉农/非农/农业/涉农/非农 */
+	private String businessType ;
+	/** 属性中央政策性/地方政策性/商业性/中央政策性/地方政策性/商业性 */
+	private String businessType1 ;
+	/** 属性医疗类型/医疗类型 */
+	private String medicalType ;
+	/** 属性伤势程度/伤势程度 */
+	private String woundGrade ;
+	/** 属性赔案类别/赔案类别 */
+	private String claimType ;
+	/** 属性三者车牌号/三者车牌号 */
+	private String thridLicenseNo ;
+	/** 属性三者车承保公司/三者车承保公司 */
+	private String thridCompany ;
+	/** 属性0－直接业务，1－分入业务/0－直接业务，1－分入业务 */
+	private String businessFlag ;
+	/** 属性其他标志/其他标志 */
+	private String otherFlag ;
+	/** 属性对象名称/对象名称 */
+	private String objectName ;
+	/** 属性对象证件类型/对象证件类型 */
+	private String objectType ;
+	/** 属性对象证件号码/对象证件号码 */
+	private String objectCode ;
+	/** 属性车险平台赔付接口上传序号/车险平台赔付接口上传序号 */
+	private String uploadSerialNo ;
+	/** 属性实付时间/实付时间 */
+	private java.util.Date payrefDate ;
+	/** 属性理赔清单关联号/理赔清单关联号 */
+	private String claimRelationNo ;
+	/** 属性计算书标志/计算书标志 */
+	private String prpLCompensateFlag ;
+	/** 属性关联计算书号/关联计算书号 */
+	private String relatedCompensateNo ;
+	/** 属性追偿标志/追偿标志 */
+	private String recoveryFlag ;
+	/** 属性追偿类型/追偿类型 */
+	private String recoveryType ;
+	/** 属性追偿金额/追偿金额 */
+	private Double recoveryAmount ;
+	/** 属性计算书上传标识/计算书上传标识 */
+	private String compensateUploadFlag ;
+	/** 属性核赔退回标志/核赔退回标志 */
+	private String isVericBack ;
+	/** 属性赔付类型/赔付类型 */
+	private String peiFuType ;
+	/** 属性零赔付原因/零赔付原因 */
+	private String zeroLossType ;
+	/** 属性注销拒赔类型/注销拒赔类型 */
+	private String zeroLossCaseType ;
+	/** 属性详细原因/详细原因 */
+	private String zeroLossDetailReason ;
+	/** 属性属性coinspaidlosstype/属性coinspaidlosstype */
+	private String coinsPaidLossType ;
+	/** 属性属性coinssumpaid/属性coinssumpaid */
+	private Double coinsSumPaid ;
+	/** 属性属性reopenedtype/属性reopenedtype */
+	private String reOpenedType ;
+	/** 属性是否涉诉/是否涉诉 */
+	private String lawsuitFlag ;
+	/** 属性修改人/修改人 */
+	private String updateBy ;
+	/** 属性修改时间/修改时间 */
+	private java.util.Date updateDate ;
+	/** 属性是否理赔公示/是否理赔公示 */
+	private String claimNotification ;
+	/** 属性是否无公害化处理/是否无公害化处理 */
+	private String inncentTreatment ;
+	/**
+	 * 属性赔款计算书号码/赔款计算书号码的getter方法
+	 */
+	public String getCompensateNo() {
+		return compensateNo;
+	}
+	/**
+	 * 属性赔款计算书号码/赔款计算书号码的setter方法
+	 */
+	public void setCompensateNo(String compensateNo) {
+		this.compensateNo = compensateNo;
+	}
+	/**
+	 * 属性理赔类型/理赔类型的getter方法
+	 */
+	public String getLFlag() {
+		return lFlag;
+	}
+	/**
+	 * 属性理赔类型/理赔类型的setter方法
+	 */
+	public void setLFlag(String lFlag) {
+		this.lFlag = lFlag;
+	}
+	/**
+	 * 属性赔案号/赔案号的getter方法
+	 */
+	public String getCaseNo() {
+		return caseNo;
+	}
+	/**
+	 * 属性赔案号/赔案号的setter方法
+	 */
+	public void setCaseNo(String caseNo) {
+		this.caseNo = caseNo;
+	}
+	/**
+	 * 属性次数/次数的getter方法
+	 */
+	public Integer getTimes() {
+		return times;
+	}
+	/**
+	 * 属性次数/次数的setter方法
+	 */
+	public void setTimes(Integer times) {
+		this.times = times;
+	}
+	/**
+	 * 属性险类代码/险类代码的getter方法
+	 */
+	public String getClassCode() {
+		return classCode;
+	}
+	/**
+	 * 属性险类代码/险类代码的setter方法
+	 */
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
+	}
+	/**
+	 * 属性险种代码/险种代码的getter方法
+	 */
+	public String getRiskCode() {
+		return riskCode;
+	}
+	/**
+	 * 属性险种代码/险种代码的setter方法
+	 */
+	public void setRiskCode(String riskCode) {
+		this.riskCode = riskCode;
+	}
+	/**
+	 * 属性立案号码/立案号码的getter方法
+	 */
+	public String getClaimNo() {
+		return claimNo;
+	}
+	/**
+	 * 属性立案号码/立案号码的setter方法
+	 */
+	public void setClaimNo(String claimNo) {
+		this.claimNo = claimNo;
+	}
+	/**
+	 * 属性保单号码/保单号码的getter方法
+	 */
+	public String getPolicyNo() {
+		return policyNo;
+	}
+	/**
+	 * 属性保单号码/保单号码的setter方法
+	 */
+	public void setPolicyNo(String policyNo) {
+		this.policyNo = policyNo;
+	}
+	/**
+	 * 属性免赔条件字段/免赔条件字段的getter方法
+	 */
+	public String getDeductCond() {
+		return deductCond;
+	}
+	/**
+	 * 属性免赔条件字段/免赔条件字段的setter方法
+	 */
+	public void setDeductCond(String deductCond) {
+		this.deductCond = deductCond;
+	}
+	/**
+	 * 属性终到日期/终到日期的getter方法
+	 */
+	public java.util.Date getPreserveDate() {
+		return preserveDate;
+	}
+	/**
+	 * 属性终到日期/终到日期的setter方法
+	 */
+	public void setPreserveDate(java.util.Date preserveDate) {
+		this.preserveDate = preserveDate;
+	}
+	/**
+	 * 属性理赔代理人代码/理赔代理人代码的getter方法
+	 */
+	public String getCheckAgentCode() {
+		return checkAgentCode;
+	}
+	/**
+	 * 属性理赔代理人代码/理赔代理人代码的setter方法
+	 */
+	public void setCheckAgentCode(String checkAgentCode) {
+		this.checkAgentCode = checkAgentCode;
+	}
+	/**
+	 * 属性理赔代理人名称/理赔代理人名称的getter方法
+	 */
+	public String getCheckAgentName() {
+		return checkAgentName;
+	}
+	/**
+	 * 属性理赔代理人名称/理赔代理人名称的setter方法
+	 */
+	public void setCheckAgentName(String checkAgentName) {
+		this.checkAgentName = checkAgentName;
+	}
+	/**
+	 * 属性检验人名称/检验人名称的getter方法
+	 */
+	public String getSurveyOrName() {
+		return surveyOrName;
+	}
+	/**
+	 * 属性检验人名称/检验人名称的setter方法
+	 */
+	public void setSurveyOrName(String surveyOrName) {
+		this.surveyOrName = surveyOrName;
+	}
+	/**
+	 * 属性索赔人名称/索赔人名称的getter方法
+	 */
+	public String getCounterClaimerName() {
+		return counterClaimerName;
+	}
+	/**
+	 * 属性索赔人名称/索赔人名称的setter方法
+	 */
+	public void setCounterClaimerName(String counterClaimerName) {
+		this.counterClaimerName = counterClaimerName;
+	}
+	/**
+	 * 属性航方责任/航方责任的getter方法
+	 */
+	public String getDutyDescription() {
+		return dutyDescription;
+	}
+	/**
+	 * 属性航方责任/航方责任的setter方法
+	 */
+	public void setDutyDescription(String dutyDescription) {
+		this.dutyDescription = dutyDescription;
+	}
+	/**
+	 * 属性币别代码/币别代码的getter方法
+	 */
+	public String getCurrency() {
+		return currency;
+	}
+	/**
+	 * 属性币别代码/币别代码的setter方法
+	 */
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+	/**
+	 * 属性标的损失金额/标的损失金额的getter方法
+	 */
+	public Double getSumLoss() {
+		return sumLoss;
+	}
+	/**
+	 * 属性标的损失金额/标的损失金额的setter方法
+	 */
+	public void setSumLoss(Double sumLoss) {
+		this.sumLoss = sumLoss;
+	}
+	/**
+	 * 属性损余金额/损余金额的getter方法
+	 */
+	public Double getSumRest() {
+		return sumRest;
+	}
+	/**
+	 * 属性损余金额/损余金额的setter方法
+	 */
+	public void setSumRest(Double sumRest) {
+		this.sumRest = sumRest;
+	}
+	/**
+	 * 属性责任赔款合计/责任赔款合计的getter方法
+	 */
+	public Double getSumDutyPaid() {
+		return sumDutyPaid;
+	}
+	/**
+	 * 属性责任赔款合计/责任赔款合计的setter方法
+	 */
+	public void setSumDutyPaid(Double sumDutyPaid) {
+		this.sumDutyPaid = sumDutyPaid;
+	}
+	/**
+	 * 属性不计入赔款的费用金额/不计入赔款的费用金额的getter方法
+	 */
+	public Double getSumNoDutyFee() {
+		return sumNoDutyFee;
+	}
+	/**
+	 * 属性不计入赔款的费用金额/不计入赔款的费用金额的setter方法
+	 */
+	public void setSumNoDutyFee(Double sumNoDutyFee) {
+		this.sumNoDutyFee = sumNoDutyFee;
+	}
+	/**
+	 * 属性总赔付金额/总赔付金额的getter方法
+	 */
+	public Double getSumPaid() {
+		return sumPaid;
+	}
+	/**
+	 * 属性总赔付金额/总赔付金额的setter方法
+	 */
+	public void setSumPaid(Double sumPaid) {
+		this.sumPaid = sumPaid;
+	}
+	/**
+	 * 属性已预付赔款/已预付赔款的getter方法
+	 */
+	public Double getSumPrepaid() {
+		return sumPrepaid;
+	}
+	/**
+	 * 属性已预付赔款/已预付赔款的setter方法
+	 */
+	public void setSumPrepaid(Double sumPrepaid) {
+		this.sumPrepaid = sumPrepaid;
+	}
+	/**
+	 * 属性本次赔付金额/本次赔付金额的getter方法
+	 */
+	public Double getSumThisPaid() {
+		return sumThisPaid;
+	}
+	/**
+	 * 属性本次赔付金额/本次赔付金额的setter方法
+	 */
+	public void setSumThisPaid(Double sumThisPaid) {
+		this.sumThisPaid = sumThisPaid;
+	}
+	/**
+	 * 属性领赔款单位/领赔款单位的getter方法
+	 */
+	public String getReceiverName() {
+		return receiverName;
+	}
+	/**
+	 * 属性领赔款单位/领赔款单位的setter方法
+	 */
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+	/**
+	 * 属性开户银行/开户银行的getter方法
+	 */
+	public String getBank() {
+		return bank;
+	}
+	/**
+	 * 属性开户银行/开户银行的setter方法
+	 */
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+	/**
+	 * 属性银行帐号/银行帐号的getter方法
+	 */
+	public String getAccount() {
+		return account;
+	}
+	/**
+	 * 属性银行帐号/银行帐号的setter方法
+	 */
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	/**
+	 * 属性出单机构/出单机构的getter方法
+	 */
+	public String getMakeCom() {
+		return makeCom;
+	}
+	/**
+	 * 属性出单机构/出单机构的setter方法
+	 */
+	public void setMakeCom(String makeCom) {
+		this.makeCom = makeCom;
+	}
+	/**
+	 * 属性业务归属机构代码/业务归属机构代码的getter方法
+	 */
+	public String getComCode() {
+		return comCode;
+	}
+	/**
+	 * 属性业务归属机构代码/业务归属机构代码的setter方法
+	 */
+	public void setComCode(String comCode) {
+		this.comCode = comCode;
+	}
+	/**
+	 * 属性经办人代码/经办人代码的getter方法
+	 */
+	public String getHandlerCode() {
+		return handlerCode;
+	}
+	/**
+	 * 属性经办人代码/经办人代码的setter方法
+	 */
+	public void setHandlerCode(String handlerCode) {
+		this.handlerCode = handlerCode;
+	}
+	/**
+	 * 属性归属业务员代码/归属业务员代码的getter方法
+	 */
+	public String getHandler1Code() {
+		return handler1Code;
+	}
+	/**
+	 * 属性归属业务员代码/归属业务员代码的setter方法
+	 */
+	public void setHandler1Code(String handler1Code) {
+		this.handler1Code = handler1Code;
+	}
+	/**
+	 * 属性复核员代码/复核员代码的getter方法
+	 */
+	public String getApproverCode() {
+		return approverCode;
+	}
+	/**
+	 * 属性复核员代码/复核员代码的setter方法
+	 */
+	public void setApproverCode(String approverCode) {
+		this.approverCode = approverCode;
+	}
+	/**
+	 * 属性最终核赔人代码/最终核赔人代码的getter方法
+	 */
+	public String getUnderwriteCode() {
+		return underwriteCode;
+	}
+	/**
+	 * 属性最终核赔人代码/最终核赔人代码的setter方法
+	 */
+	public void setUnderwriteCode(String underwriteCode) {
+		this.underwriteCode = underwriteCode;
+	}
+	/**
+	 * 属性最终核赔人名称/最终核赔人名称的getter方法
+	 */
+	public String getUnderwritEName() {
+		return underwritEName;
+	}
+	/**
+	 * 属性最终核赔人名称/最终核赔人名称的setter方法
+	 */
+	public void setUnderwritEName(String underwritEName) {
+		this.underwritEName = underwritEName;
+	}
+	/**
+	 * 属性统计年月/统计年月的getter方法
+	 */
+	public java.util.Date getStatisticSym() {
+		return statisticSym;
+	}
+	/**
+	 * 属性统计年月/统计年月的setter方法
+	 */
+	public void setStatisticSym(java.util.Date statisticSym) {
+		this.statisticSym = statisticSym;
+	}
+	/**
+	 * 属性操作员代码/操作员代码的getter方法
+	 */
+	public String getOperatorCode() {
+		return operatorCode;
+	}
+	/**
+	 * 属性操作员代码/操作员代码的setter方法
+	 */
+	public void setOperatorCode(String operatorCode) {
+		this.operatorCode = operatorCode;
+	}
+	/**
+	 * 属性计算机输入日期/计算机输入日期的getter方法
+	 */
+	public java.util.Date getInputDate() {
+		return inputDate;
+	}
+	/**
+	 * 属性计算机输入日期/计算机输入日期的setter方法
+	 */
+	public void setInputDate(java.util.Date inputDate) {
+		this.inputDate = inputDate;
+	}
+	/**
+	 * 属性核赔完成日期/核赔完成日期的getter方法
+	 */
+	public java.util.Date getUnderWriteEndDate() {
+		return underWriteEndDate;
+	}
+	/**
+	 * 属性核赔完成日期/核赔完成日期的setter方法
+	 */
+	public void setUnderWriteEndDate(java.util.Date underWriteEndDate) {
+		this.underWriteEndDate = underWriteEndDate;
+	}
+	/**
+	 * 属性核赔标志1/核赔标志1的getter方法
+	 */
+	public String getUnderWriteFlag() {
+		return underWriteFlag;
+	}
+	/**
+	 * 属性核赔标志1/核赔标志1的setter方法
+	 */
+	public void setUnderWriteFlag(String underWriteFlag) {
+		this.underWriteFlag = underWriteFlag;
+	}
+	/**
+	 * 属性备注/备注的getter方法
+	 */
+	public String getRemark() {
+		return remark;
+	}
+	/**
+	 * 属性备注/备注的setter方法
+	 */
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	/**
+	 * 属性标志字段/标志字段的getter方法
+	 */
+	public String getFlag() {
+		return flag;
+	}
+	/**
+	 * 属性标志字段/标志字段的setter方法
+	 */
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+	/**
+	 * 属性案件性质/案件性质的getter方法
+	 */
+	public String getCaseType() {
+		return caseType;
+	}
+	/**
+	 * 属性案件性质/案件性质的setter方法
+	 */
+	public void setCaseType(String caseType) {
+		this.caseType = caseType;
+	}
+	/**
+	 * 属性责任比例/责任比例的getter方法
+	 */
+	public Double getIndemnityDutyRate() {
+		return indemnityDutyRate;
+	}
+	/**
+	 * 属性责任比例/责任比例的setter方法
+	 */
+	public void setIndemnityDutyRate(Double indemnityDutyRate) {
+		this.indemnityDutyRate = indemnityDutyRate;
+	}
+	/**
+	 * 属性赔偿责任代码/赔偿责任代码的getter方法
+	 */
+	public String getIndemnityDuty() {
+		return indemnityDuty;
+	}
+	/**
+	 * 属性赔偿责任代码/赔偿责任代码的setter方法
+	 */
+	public void setIndemnityDuty(String indemnityDuty) {
+		this.indemnityDuty = indemnityDuty;
+	}
+	/**
+	 * 属性最终计算书标志/最终计算书标志的getter方法
+	 */
+	public String getFinallyFlag() {
+		return finallyFlag;
+	}
+	/**
+	 * 属性最终计算书标志/最终计算书标志的setter方法
+	 */
+	public void setFinallyFlag(String finallyFlag) {
+		this.finallyFlag = finallyFlag;
+	}
+	/**
+	 * 属性理赔结论/理赔结论的getter方法
+	 */
+	public String getResult() {
+		return result;
+	}
+	/**
+	 * 属性理赔结论/理赔结论的setter方法
+	 */
+	public void setResult(String result) {
+		this.result = result;
+	}
+	/**
+	 * 属性赔付数量/赔付数量的getter方法
+	 */
+	public Double getLossesNumber() {
+		return lossesNumber;
+	}
+	/**
+	 * 属性赔付数量/赔付数量的setter方法
+	 */
+	public void setLossesNumber(Double lossesNumber) {
+		this.lossesNumber = lossesNumber;
+	}
+	/**
+	 * 属性赔付数量计量单位/赔付数量计量单位的getter方法
+	 */
+	public String getLossesUnitCode() {
+		return lossesUnitCode;
+	}
+	/**
+	 * 属性赔付数量计量单位/赔付数量计量单位的setter方法
+	 */
+	public void setLossesUnitCode(String lossesUnitCode) {
+		this.lossesUnitCode = lossesUnitCode;
+	}
+	/**
+	 * 属性出险户次/出险户次的getter方法
+	 */
+	public Double getDamageInsured() {
+		return damageInsured;
+	}
+	/**
+	 * 属性出险户次/出险户次的setter方法
+	 */
+	public void setDamageInsured(Double damageInsured) {
+		this.damageInsured = damageInsured;
+	}
+	/**
+	 * 属性受灾面积/受灾面积的getter方法
+	 */
+	public Double getDisasterArea() {
+		return disasterArea;
+	}
+	/**
+	 * 属性受灾面积/受灾面积的setter方法
+	 */
+	public void setDisasterArea(Double disasterArea) {
+		this.disasterArea = disasterArea;
+	}
+	/**
+	 * 属性受灾面积计量单位/受灾面积计量单位的getter方法
+	 */
+	public String getDisasterUnit() {
+		return disasterUnit;
+	}
+	/**
+	 * 属性受灾面积计量单位/受灾面积计量单位的setter方法
+	 */
+	public void setDisasterUnit(String disasterUnit) {
+		this.disasterUnit = disasterUnit;
+	}
+	/**
+	 * 属性成灾面积/成灾面积的getter方法
+	 */
+	public Double getAffectedArea() {
+		return affectedArea;
+	}
+	/**
+	 * 属性成灾面积/成灾面积的setter方法
+	 */
+	public void setAffectedArea(Double affectedArea) {
+		this.affectedArea = affectedArea;
+	}
+	/**
+	 * 属性成灾面积计量单位/成灾面积计量单位的getter方法
+	 */
+	public String getAffectedUnit() {
+		return affectedUnit;
+	}
+	/**
+	 * 属性成灾面积计量单位/成灾面积计量单位的setter方法
+	 */
+	public void setAffectedUnit(String affectedUnit) {
+		this.affectedUnit = affectedUnit;
+	}
+	/**
+	 * 属性绝产面积/绝产面积的getter方法
+	 */
+	public Double getNoProductionArea() {
+		return noProductionArea;
+	}
+	/**
+	 * 属性绝产面积/绝产面积的setter方法
+	 */
+	public void setNoProductionArea(Double noProductionArea) {
+		this.noProductionArea = noProductionArea;
+	}
+	/**
+	 * 属性绝产面积计量单位/绝产面积计量单位的getter方法
+	 */
+	public String getNoProductionUnit() {
+		return noProductionUnit;
+	}
+	/**
+	 * 属性绝产面积计量单位/绝产面积计量单位的setter方法
+	 */
+	public void setNoProductionUnit(String noProductionUnit) {
+		this.noProductionUnit = noProductionUnit;
+	}
+	/**
+	 * 属性死亡数量/死亡数量的getter方法
+	 */
+	public Double getDeathQuantity() {
+		return deathQuantity;
+	}
+	/**
+	 * 属性死亡数量/死亡数量的setter方法
+	 */
+	public void setDeathQuantity(Double deathQuantity) {
+		this.deathQuantity = deathQuantity;
+	}
+	/**
+	 * 属性死亡数量计量单位/死亡数量计量单位的getter方法
+	 */
+	public String getDeathUnit() {
+		return deathUnit;
+	}
+	/**
+	 * 属性死亡数量计量单位/死亡数量计量单位的setter方法
+	 */
+	public void setDeathUnit(String deathUnit) {
+		this.deathUnit = deathUnit;
+	}
+	/**
+	 * 属性扑杀数量/扑杀数量的getter方法
+	 */
+	public Double getKillQuantity() {
+		return killQuantity;
+	}
+	/**
+	 * 属性扑杀数量/扑杀数量的setter方法
+	 */
+	public void setKillQuantity(Double killQuantity) {
+		this.killQuantity = killQuantity;
+	}
+	/**
+	 * 属性扑杀数量计量单位/扑杀数量计量单位的getter方法
+	 */
+	public String getKillUnit() {
+		return killUnit;
+	}
+	/**
+	 * 属性扑杀数量计量单位/扑杀数量计量单位的setter方法
+	 */
+	public void setKillUnit(String killUnit) {
+		this.killUnit = killUnit;
+	}
+	/**
+	 * 属性农业/涉农/非农/农业/涉农/非农的getter方法
+	 */
+	public String getBusinessType() {
+		return businessType;
+	}
+	/**
+	 * 属性农业/涉农/非农/农业/涉农/非农的setter方法
+	 */
+	public void setBusinessType(String businessType) {
+		this.businessType = businessType;
+	}
+	/**
+	 * 属性中央政策性/地方政策性/商业性/中央政策性/地方政策性/商业性的getter方法
+	 */
+	public String getBusinessType1() {
+		return businessType1;
+	}
+	/**
+	 * 属性中央政策性/地方政策性/商业性/中央政策性/地方政策性/商业性的setter方法
+	 */
+	public void setBusinessType1(String businessType1) {
+		this.businessType1 = businessType1;
+	}
+	/**
+	 * 属性医疗类型/医疗类型的getter方法
+	 */
+	public String getMedicalType() {
+		return medicalType;
+	}
+	/**
+	 * 属性医疗类型/医疗类型的setter方法
+	 */
+	public void setMedicalType(String medicalType) {
+		this.medicalType = medicalType;
+	}
+	/**
+	 * 属性伤势程度/伤势程度的getter方法
+	 */
+	public String getWoundGrade() {
+		return woundGrade;
+	}
+	/**
+	 * 属性伤势程度/伤势程度的setter方法
+	 */
+	public void setWoundGrade(String woundGrade) {
+		this.woundGrade = woundGrade;
+	}
+	/**
+	 * 属性赔案类别/赔案类别的getter方法
+	 */
+	public String getClaimType() {
+		return claimType;
+	}
+	/**
+	 * 属性赔案类别/赔案类别的setter方法
+	 */
+	public void setClaimType(String claimType) {
+		this.claimType = claimType;
+	}
+	/**
+	 * 属性三者车牌号/三者车牌号的getter方法
+	 */
+	public String getThridLicenseNo() {
+		return thridLicenseNo;
+	}
+	/**
+	 * 属性三者车牌号/三者车牌号的setter方法
+	 */
+	public void setThridLicenseNo(String thridLicenseNo) {
+		this.thridLicenseNo = thridLicenseNo;
+	}
+	/**
+	 * 属性三者车承保公司/三者车承保公司的getter方法
+	 */
+	public String getThridCompany() {
+		return thridCompany;
+	}
+	/**
+	 * 属性三者车承保公司/三者车承保公司的setter方法
+	 */
+	public void setThridCompany(String thridCompany) {
+		this.thridCompany = thridCompany;
+	}
+	/**
+	 * 属性0－直接业务，1－分入业务/0－直接业务，1－分入业务的getter方法
+	 */
+	public String getBusinessFlag() {
+		return businessFlag;
+	}
+	/**
+	 * 属性0－直接业务，1－分入业务/0－直接业务，1－分入业务的setter方法
+	 */
+	public void setBusinessFlag(String businessFlag) {
+		this.businessFlag = businessFlag;
+	}
+	/**
+	 * 属性其他标志/其他标志的getter方法
+	 */
+	public String getOtherFlag() {
+		return otherFlag;
+	}
+	/**
+	 * 属性其他标志/其他标志的setter方法
+	 */
+	public void setOtherFlag(String otherFlag) {
+		this.otherFlag = otherFlag;
+	}
+	/**
+	 * 属性对象名称/对象名称的getter方法
+	 */
+	public String getObjectName() {
+		return objectName;
+	}
+	/**
+	 * 属性对象名称/对象名称的setter方法
+	 */
+	public void setObjectName(String objectName) {
+		this.objectName = objectName;
+	}
+	/**
+	 * 属性对象证件类型/对象证件类型的getter方法
+	 */
+	public String getObjectType() {
+		return objectType;
+	}
+	/**
+	 * 属性对象证件类型/对象证件类型的setter方法
+	 */
+	public void setObjectType(String objectType) {
+		this.objectType = objectType;
+	}
+	/**
+	 * 属性对象证件号码/对象证件号码的getter方法
+	 */
+	public String getObjectCode() {
+		return objectCode;
+	}
+	/**
+	 * 属性对象证件号码/对象证件号码的setter方法
+	 */
+	public void setObjectCode(String objectCode) {
+		this.objectCode = objectCode;
+	}
+	/**
+	 * 属性车险平台赔付接口上传序号/车险平台赔付接口上传序号的getter方法
+	 */
+	public String getUploadSerialNo() {
+		return uploadSerialNo;
+	}
+	/**
+	 * 属性车险平台赔付接口上传序号/车险平台赔付接口上传序号的setter方法
+	 */
+	public void setUploadSerialNo(String uploadSerialNo) {
+		this.uploadSerialNo = uploadSerialNo;
+	}
+	/**
+	 * 属性实付时间/实付时间的getter方法
+	 */
+	public java.util.Date getPayrefDate() {
+		return payrefDate;
+	}
+	/**
+	 * 属性实付时间/实付时间的setter方法
+	 */
+	public void setPayrefDate(java.util.Date payrefDate) {
+		this.payrefDate = payrefDate;
+	}
+	/**
+	 * 属性理赔清单关联号/理赔清单关联号的getter方法
+	 */
+	public String getClaimRelationNo() {
+		return claimRelationNo;
+	}
+	/**
+	 * 属性理赔清单关联号/理赔清单关联号的setter方法
+	 */
+	public void setClaimRelationNo(String claimRelationNo) {
+		this.claimRelationNo = claimRelationNo;
+	}
+	/**
+	 * 属性计算书标志/计算书标志的getter方法
+	 */
+	public String getPrpLCompensateFlag() {
+		return prpLCompensateFlag;
+	}
+	/**
+	 * 属性计算书标志/计算书标志的setter方法
+	 */
+	public void setPrpLCompensateFlag(String prpLCompensateFlag) {
+		this.prpLCompensateFlag = prpLCompensateFlag;
+	}
+	/**
+	 * 属性关联计算书号/关联计算书号的getter方法
+	 */
+	public String getRelatedCompensateNo() {
+		return relatedCompensateNo;
+	}
+	/**
+	 * 属性关联计算书号/关联计算书号的setter方法
+	 */
+	public void setRelatedCompensateNo(String relatedCompensateNo) {
+		this.relatedCompensateNo = relatedCompensateNo;
+	}
+	/**
+	 * 属性追偿标志/追偿标志的getter方法
+	 */
+	public String getRecoveryFlag() {
+		return recoveryFlag;
+	}
+	/**
+	 * 属性追偿标志/追偿标志的setter方法
+	 */
+	public void setRecoveryFlag(String recoveryFlag) {
+		this.recoveryFlag = recoveryFlag;
+	}
+	/**
+	 * 属性追偿类型/追偿类型的getter方法
+	 */
+	public String getRecoveryType() {
+		return recoveryType;
+	}
+	/**
+	 * 属性追偿类型/追偿类型的setter方法
+	 */
+	public void setRecoveryType(String recoveryType) {
+		this.recoveryType = recoveryType;
+	}
+	/**
+	 * 属性追偿金额/追偿金额的getter方法
+	 */
+	public Double getRecoveryAmount() {
+		return recoveryAmount;
+	}
+	/**
+	 * 属性追偿金额/追偿金额的setter方法
+	 */
+	public void setRecoveryAmount(Double recoveryAmount) {
+		this.recoveryAmount = recoveryAmount;
+	}
+	/**
+	 * 属性计算书上传标识/计算书上传标识的getter方法
+	 */
+	public String getCompensateUploadFlag() {
+		return compensateUploadFlag;
+	}
+	/**
+	 * 属性计算书上传标识/计算书上传标识的setter方法
+	 */
+	public void setCompensateUploadFlag(String compensateUploadFlag) {
+		this.compensateUploadFlag = compensateUploadFlag;
+	}
+	/**
+	 * 属性核赔退回标志/核赔退回标志的getter方法
+	 */
+	public String getIsVericBack() {
+		return isVericBack;
+	}
+	/**
+	 * 属性核赔退回标志/核赔退回标志的setter方法
+	 */
+	public void setIsVericBack(String isVericBack) {
+		this.isVericBack = isVericBack;
+	}
+	/**
+	 * 属性赔付类型/赔付类型的getter方法
+	 */
+	public String getPeiFuType() {
+		return peiFuType;
+	}
+	/**
+	 * 属性赔付类型/赔付类型的setter方法
+	 */
+	public void setPeiFuType(String peiFuType) {
+		this.peiFuType = peiFuType;
+	}
+	/**
+	 * 属性零赔付原因/零赔付原因的getter方法
+	 */
+	public String getZeroLossType() {
+		return zeroLossType;
+	}
+	/**
+	 * 属性零赔付原因/零赔付原因的setter方法
+	 */
+	public void setZeroLossType(String zeroLossType) {
+		this.zeroLossType = zeroLossType;
+	}
+	/**
+	 * 属性注销拒赔类型/注销拒赔类型的getter方法
+	 */
+	public String getZeroLossCaseType() {
+		return zeroLossCaseType;
+	}
+	/**
+	 * 属性注销拒赔类型/注销拒赔类型的setter方法
+	 */
+	public void setZeroLossCaseType(String zeroLossCaseType) {
+		this.zeroLossCaseType = zeroLossCaseType;
+	}
+	/**
+	 * 属性详细原因/详细原因的getter方法
+	 */
+	public String getZeroLossDetailReason() {
+		return zeroLossDetailReason;
+	}
+	/**
+	 * 属性详细原因/详细原因的setter方法
+	 */
+	public void setZeroLossDetailReason(String zeroLossDetailReason) {
+		this.zeroLossDetailReason = zeroLossDetailReason;
+	}
+	/**
+	 * 属性属性coinspaidlosstype/属性coinspaidlosstype的getter方法
+	 */
+	public String getCoinsPaidLossType() {
+		return coinsPaidLossType;
+	}
+	/**
+	 * 属性属性coinspaidlosstype/属性coinspaidlosstype的setter方法
+	 */
+	public void setCoinsPaidLossType(String coinsPaidLossType) {
+		this.coinsPaidLossType = coinsPaidLossType;
+	}
+	/**
+	 * 属性属性coinssumpaid/属性coinssumpaid的getter方法
+	 */
+	public Double getCoinsSumPaid() {
+		return coinsSumPaid;
+	}
+	/**
+	 * 属性属性coinssumpaid/属性coinssumpaid的setter方法
+	 */
+	public void setCoinsSumPaid(Double coinsSumPaid) {
+		this.coinsSumPaid = coinsSumPaid;
+	}	
+	/**
+	 * 属性属性reopenedtype/属性reopenedtype的getter方法
+	 */
+	public String getReOpenedType() {
+		return reOpenedType;
+	}
+	/**
+	 * 属性属性reopenedtype/属性reopenedtype的setter方法
+	 */
+	public void setReOpenedType(String reOpenedType) {
+		this.reOpenedType = reOpenedType;
+	}	
+	/**
+	 * 属性是否涉诉/是否涉诉的getter方法
+	 */
+	public String getLawsuitFlag() {
+		return lawsuitFlag;
+	}
+	/**
+	 * 属性是否涉诉/是否涉诉的setter方法
+	 */
+	public void setLawsuitFlag(String lawsuitFlag) {
+		this.lawsuitFlag = lawsuitFlag;
+	}	
+	/**
+	 * 属性修改人/修改人的getter方法
+	 */
+	public String getUpdateBy() {
+		return updateBy;
+	}
+	/**
+	 * 属性修改人/修改人的setter方法
+	 */
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
+	}	
+	/**
+	 * 属性修改时间/修改时间的getter方法
+	 */
+	public java.util.Date getUpdateDate() {
+		return updateDate;
+	}
+	/**
+	 * 属性修改时间/修改时间的setter方法
+	 */
+	public void setUpdateDate(java.util.Date updateDate) {
+		this.updateDate = updateDate;
+	}	
+	/**
+	 * 属性是否理赔公示/是否理赔公示的getter方法
+	 */
+	public String getClaimNotification() {
+		return claimNotification;
+	}
+	/**
+	 * 属性是否理赔公示/是否理赔公示的setter方法
+	 */
+	public void setClaimNotification(String claimNotification) {
+		this.claimNotification = claimNotification;
+	}	
+	/**
+	 * 属性是否无公害化处理/是否无公害化处理的getter方法
+	 */
+	public String getInncentTreatment() {
+		return inncentTreatment;
+	}
+	/**
+	 * 属性是否无公害化处理/是否无公害化处理的setter方法
+	 */
+	public void setInncentTreatment(String inncentTreatment) {
+		this.inncentTreatment = inncentTreatment;
+	}	
+}

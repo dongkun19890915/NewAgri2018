@@ -1,0 +1,23 @@
+<div ng-controller="onLineChargeLayerCtrl" >
+    <div class="mask"></div>
+    <div class="mask_remove">
+        <ul>
+            <li class="remove_header">
+                <span>支付</span>
+                <em><i ng-click="onLineClose()"></i></em>
+            </li>
+            <li class="pay_layer pay_layer1">
+                <span>支付完成前，请不要关闭此支付验证窗口</span>
+            </li>
+            <li class="pay_layer pay_layer2">
+                <span>支付完成后，请根据您支付的情况点击下面按钮。</span>
+            </li>
+            <li class="remove_button pay_button">
+                <div>
+                    <span ng-click="onLinePayFail()" class="button_cancel">支付遇到问题</span>
+                    <span ng-click="onLinePaySucc()" class="button_sure">支付完成</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

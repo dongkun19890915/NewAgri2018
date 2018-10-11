@@ -1,0 +1,24 @@
+<div ng-hide="downloadUserInfoLayer">
+    <div class="mask"></div>
+    <div class="tip_success_info">
+        <ul>
+            <div class="remove_header">
+                <span>信息提示</span>
+                <a href="javascript:void(0)"><i ng-click="closeImport()"></i></a>
+            </div>
+
+            <div class="info_container">
+                <i class="tip_2"></i>
+                <span>{{message}}</span>
+            </div>
+
+            <li class="remove_button">
+                <div>
+                    <a href="javascript:void(0)" class="button_sure" ng-click="download()" disabled="downloadDisabled">确认</a>
+                    <a href="javascript:void(0)" class="button_cancel" ng-click="closeImport()">取消</a>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>

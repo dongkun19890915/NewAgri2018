@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd 
+         http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-4.1.xsd  
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+    <description>Spring-MVC相关配置</description>    
+	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
+	<context:component-scan base-package="com.sinosoft.fileserver" 	use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />		
+	</context:component-scan>	
+	<mvc:annotation-driven/>	
+	<!-- REST中根据URL后缀自动判定Content-Type及相应的View -->
+	<!-- SpringMVC层异常处理Begin -->
+<!--
+	<bean class="com.sinosoft.framework.web.controller.JsonExceptionResolver"/>
+-->
+	<bean class="com.sinosoft.fileserver.controller.FileServerJsonExceptionResolver"/>
+	<!-- 使用Annotation自动注册Bean,只扫描@Controller End-->
+	<!-- 响应定义 -->
+ 	<mvc:annotation-driven>  
+       <mvc:message-converters>  
+           <ref bean="stringHttpMessageConverter" />  
+           <ref bean="fastJsonHttpMessageConverter" />  
+       </mvc:message-converters>  
+   </mvc:annotation-driven>  
+ 
+   <bean id="stringHttpMessageConverter"  
+       class="org.springframework.http.converter.StringHttpMessageConverter">  
+       <constructor-arg value="UTF-8" index="0"></constructor-arg><!--避免出现乱码 -->  
+       <property name="supportedMediaTypes">  
+           <list>  
+               <value>text/plain;charset=UTF-8</value>  
+           </list>  
+       </property>  
+   </bean>  
+   <bean id="fastJsonHttpMessageConverter"  
+       class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">  
+ 
+       <property name="supportedMediaTypes">  
+           <list>  
+               <value>application/json;charset=UTF-8</value>  
+               <value>text/html;charset=UTF-8</value>
+           </list>  
+       </property>  
+       <property name="features">  
+           <array>  
+               <!-- <value>WriteMapNullValue</value> -->  
+              		  <value>QuoteFieldNames</value>  
+             	      <value>WriteDateUseDateFormat</value>  
+ 				      <value>DisableCircularReferenceDetect</value> 
+           </array>  
+       </property>  
+   </bean>  
+     
+   <!-- 返回类型定义 -->  
+   <util:list id="messageConverters">  
+       <ref bean="stringHttpMessageConverter" />  
+       <ref bean="fastJsonHttpMessageConverter" />  
+   </util:list>  
+
+	<!-- REST中根据URL后缀自动判定Content-Type及相应的View -->
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="mediaTypes">
+			<map>
+				<entry key="xml" value="application/xml" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="favorPathExtension" value="true" />
+	</bean>
+		<mvc:resources mapping="/static/**" location="/static/"
+		cache-period="31536000" />
+
+
+    <!-- decrypt password in config.properties -->
+    <bean id="environmentVariablesConfiguration" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
+        <property name="algorithm" value="PBEWithMD5AndDES" />
+        <property name="password" value="9lWaL475Hqwg" />
+    </bean>
+    <bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+        <property name="config" ref="environmentVariablesConfiguration" />
+    </bean>
+    <bean id="propertyConfigurer"
+          class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer">
+        <constructor-arg ref="configurationEncryptor" />
+        <property name="locations">
+            <list>
+                <value>classpath:db.properties</value>
+                <value>classpath:file.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="utf-8" />
+    </bean>
+</beans>	
+	

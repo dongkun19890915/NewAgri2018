@@ -1,0 +1,6 @@
+# 服务端口设置
+server:
+  port: 9011
+#信雅达影像上传路径
+IMAGE_CRUDT_URL: http://220.178.31.50:9200/SunECM/servlet/RouterServlet
+paymentUrl: http://10.75.42.50:7003/payment/services/AgriClaimInterface?wsdl

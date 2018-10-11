@@ -1,0 +1,95 @@
+<!--险种方案弹层-->
+<div ng-show="showAdminRisk"  class="all_payment layer-model">
+    <div class="large-layer-content riskScheme1">
+        <div class="all_payment_head layer-header1">
+            <span>险种方案</span>
+        </div>
+        <div class="layer-con riskScheme_content1">
+            <div class="layer-con1">
+                <ul>
+                    <li>
+                        <label class="admin_risk_contain_wLeft teaR">
+                            <i class="mes_sign">*</i><span class="mesColor" >创建类型</span>
+                            <select ng-model='proposal.editType' ng-disabled="proposalQueryHide">
+                                <option>新模版</option>
+                                <option>复制模版</option>
+                            </select>
+                        </label>
+                        <label ng-show="showInp" class="admin_risk_contain_wRight" style="width: 300px">
+                            <input type="text" ng-disabled="proposalQueryHide" />
+                            <button class="blurButton1">查询</button>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="admin_risk_contain_wLeft teaR">
+                            <i class="mes_sign">*</i><span class="mesColor" >险种</span>
+                            <select ng-model='proposal.prpTmainDto.classCode' ng-disabled="proposalQueryHide">
+                            <option value="">31种植保险类</option>
+                            <option value="">31养殖保险类</option>
+                            </select>
+                        </label>
+                        <label class="admin_risk_contain_wRight">
+
+                            <select ng-model='proposal.prpTmainDto.riskCode' ng-disabled="proposalQueryHide">
+                                <option value="">3101-水稻种植保险</option>
+                                <option value="">3102-大棚蔬菜种植保险</option>
+                                <option value="">3105-林木火灾保险</option>
+                                <option value="">3107-小麦种植保险</option>
+                                <option value="">3108-油菜种植保险</option>
+                                <option value="">3114-玉米种植保险</option>
+                            </select>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="admin_risk_contain_wLeft teaR">
+                            <i class="mes_sign">*</i><span class="mesColor" >条款</span>
+                            <input type="text" style="width: 55%;">
+                        </label>
+                        <label class="admin_risk_contain_wLeft teaR ">
+                            <i class="mes_sign">*</i><span class="mesColor" >适用机构</span>
+                            <input type="text" style="width: 55%;"/>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="admin_risk_contain_wLeft fl">
+                            <div>
+                                <input style="width: 102px" type="text" id="idDataStart1" jedate
+                                       class=" admin_date2  disp fr" ng-model="proposal.prpTmain.operateStartDate"
+                                       format="YYYY-MM-DD" required readonly/>
+                                <input style="width: 102px" type="text" id="idDataEnd1" jedate
+                                       class=" admin_date2  disp fr" ng-model="proposal.prpTmain.operateEndDate"
+                                       format="YYYY-MM-DD"
+                                       required readonly/>
+
+                            </div>
+                            <label class="fr"><i class="mes_sign textlh">*</i><span class="mesColor textlh" >有效期</span></label>
+                        </label>
+                        <label class="admin_risk_contain_wLeft teaR" style="margin-left:4px">
+                            <i class="mes_sign  textlh">*</i><span class="mesColor">模版状态</span>
+                            <select  disabled>
+                                <option  value="">请选择</option>
+                                <option  value="">启用</option>
+                                <option  value="">禁用</option>
+                            </select>
+                            <!--<code-type base-code="classCode1" ng-model='proposal.prpTmainDto.classCode' class="fl"></code-type>-->
+                        </label>
+                    </li>
+                    <li>
+                        <label class="admin_risk_contain_wLeft teaR fr" style="margin-right: 184px">
+                            <i class="mes_sign">*</i><span class="mesColor" >模版号码</span>
+                            <input type="text" style="width: 55%;" ng-disabled="proposalQueryHide">
+                        </label>
+                        <label class="admin_risk_contain_wLeft teaR fr" style="margin-right:3px">
+                            <i class="mes_sign">*</i><span class="mesColor"  >模版名称</span>
+                            <input type="text" style="width: 55%;" ng-disabled="proposalQueryHide"/>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layer-footer">
+            <button class="blurButton" ng-click="yesRiskScheme()">确定</button>
+            <button class="whiteButton2" ng-click="resetRiskScheme()">重置</button>
+        </div>
+    </div>
+</div>

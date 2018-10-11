@@ -1,0 +1,52 @@
+<div id="comTreeBox">
+  <script type="text/ng-template" id="nodes_renderer1.html">
+    <div class=" comTree-node-content">
+
+      <a class=""
+         ng-style="{'padding-left':(node.level-1)*20+'px'}"
+         data-nodrag>
+            <span ng-if="node.childList.length>=0"
+                  ng-click="toggleNode(this,node)">
+              <!--ng-class="{  'glyphicon-chevron-right1':node.collapsed,   'glyphicon-chevron-down1': !node.collapsed }"-->
+              <i ng-show="node.collapsed" class="iconfont">&#xe605;</i>
+              <i ng-hide="node.collapsed" class="iconfont">&#xea2f;</i>
+            </span>
+
+        <span ng-if="node.childList==null||node.childList==undefined" style="width: 14px;height: 14px;display: inline-block"></span>
+        <!--<span type="checkbox" ng-class="" style="display: inline-block;width: 14px;height: 14px;border: 1px solid #ccc" class="radioclass" ng-model="node.checked" ng-click="changeNode(node,$parentNodesScope,$parentNodeScope)"></span>-->
+        <div class="check-box" ng-if="multipleFlag" style="float: none;display: inline-block; overflow: hidden;width: 20px;">
+          <label class="checkbox-label"
+                 ng-class="{'checkbox-checked':node.checked==true,'is-disabled':ngDisabled || node.disabled}"
+                 ng-click="changeNodeMult(node,$parentNodesScope,$parentNodeScope)">
+          <span class="check-main">
+            <span></span>
+          </span>
+          </label>
+        </div>
+        <span ng-bind="node.name" ng-class="{'loading-child':node.loading==true}" ng-click="checkNode(this,node)"></span>
+      </a>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.childList" ng-class="{hidden:collapsed}">
+      <li ng-repeat="node in node.childList" ui-tree-node class="comTree-node-li"
+          ng-include="'nodes_renderer1.html'"></li>
+    </ol>
+  </script>
+  <input type="text" ng-value="ngValue" ng-required="ngRequired" ng-show="!multipleFlag"  ng-click="openTree()" readonly style="color: #333;cursor: pointer">
+  <div class="multi-drop" ng-if="multipleFlag" ng-click="openTree()" >
+    <!--<span ng-show="ngValue===null||ngValue.length==0">请选择...</span>-->
+    <ul class="multi-drop-ul">
+      <li ng-repeat="item in ngValue"><span ng-bind="item"></span></li>
+    </ul>
+  </div>
+  <input type="hidden" ng-model="ngModel">
+  <div class="row comTree" id="comtree-list" ng-show="switchFlag">
+    <div class="comTree-content">
+      <div ui-tree data-drag-enabled="false" id="tree-root">
+        <ol ui-tree-nodes ng-model="data">
+          <li ng-repeat="node in data" class="comTree-node-li" ui-tree-node
+              ng-include="'nodes_renderer1.html'"></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

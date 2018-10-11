@@ -1,0 +1,9 @@
+{
+  "application": "快速投保",
+  "option": "请选择",
+  "insure-now":"立即投保",
+  "name": "名字:{MYNAME, select, male{杨浩田} female{杨维超} other{韩纪远}}",
+  "age": "{{number}}",
+  "btn_en": "English",
+  "btn_zh": "汉语"
+}

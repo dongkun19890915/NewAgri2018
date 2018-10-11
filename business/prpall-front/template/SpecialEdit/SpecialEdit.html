@@ -1,0 +1,75 @@
+<div class="content_div content1-div">
+    <div class="queryResult">
+        <!--89dc9a-->
+        <div class="cancella-top">{{permsg.endorTittle}}</div>
+        <div>
+            <div class=" cancella-left">批改日期:</div>
+            <div class=" cancella-right" ng-bind="permsg.endorDate">2017-05-05</div>
+        </div>
+        <div>
+            <div class=" cancella-left">批改申请人:</div>
+            <div class=" cancella-right" ng-bind="permsg.endorApplicant">张四</div>
+        </div>
+        <div>
+            <div class=" cancella-left">批改生效日期:</div>
+            <div class=" cancella-right" ng-bind="permsg.appliCode">2017-05-06</div>
+        </div>
+        <div>
+            <div class=" cancella-left">归属部门:</div>
+            <div class=" cancella-right" ng-bind="permsg.ComCode">00000 总公司</div>
+        </div>
+        <div>
+            <div class=" cancella-left">投保人:</div>
+            <div class=" cancella-right" ng-bind="permsg.appliName">张4</div>
+        </div>
+        <div ng-show="AdjustRrate">
+            <div class=" cancella-left">调整费率:</div>
+            <div class=" cancella-right"><input type="text" class="cancellaInputht" ng-model="permsg.AdjustRrate"/>
+                %
+            </div>
+        </div>
+        <div ng-show="UnitInsurance">
+            <div class=" cancella-left">单位保险金额:</div>
+            <div class=" cancella-right"><input type="text" class="cancellaInputht" ng-model="permsg.UnitInsurance"/>
+                %
+            </div>
+        </div>
+        <div ng-show="permsg.ShortRateMethod">
+            <div class=" cancella-left operatorCodeSignht">短期费率方式:</div>
+            <div class=" cancella-right"><select name="" id="">
+                <option value="">不计</option>
+                <option value="">日比率</option>
+                <option value="">月比率</option>
+            </select></div>
+        </div>
+        <div ng-show="permsg.operatorCodeSign" style="height: 28px  ">
+            <div class=" cancella-left">归属业务员:</div>
+            <div class="operatorCodeSignB"><input type="text" ng-model="permsg.operatorCodeSign" readonly/></div>
+            <div class="operatorCodeSignA">变更为<input type="text" ng-mode="operatorCodeSignCP"/></div>
+        </div>
+        <table class="cancella-table">
+            <tr class="tr_top">
+                <td>序号</td>
+                <td>保单号</td>
+                <td>投保人名称</td>
+                <td>被保险人名称</td>
+                <td>保险起期</td>
+                <td>保险止期</td>
+                <td>操作员</td>
+            </tr>
+            <tr class="tr_content" ng-repeat="x in CancellationPolicy">
+                <td ng-bind="$index+1">11111111</td>
+                <td ng-bind="x.policyNo">44444444444</td>
+                <td ng-bind="x.appliName">55555555555555</td>
+                <td ng-bind="x.insuredName">6566666</td>
+                <td ng-bind="x.startDate">777777</td>
+                <td ng-bind="x.endDate">888888</td>
+                <td ng-bind="x.operatorCode">9999999</td>
+
+            </tr>
+        </table>
+        <!--<div class="index_page">-->
+        <!--<tm-pagination conf="paginationConfmm"></tm-pagination>-->
+        <!--</div>-->
+    </div>
+</div>

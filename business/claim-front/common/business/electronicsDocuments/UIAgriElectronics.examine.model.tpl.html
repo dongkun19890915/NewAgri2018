@@ -1,0 +1,87 @@
+<div ng-if="showDocFlag">
+    <div class="modal-header">
+        <h1 class="font-large">电子单证</h1>
+        <i class="icon iconfont modal-header-close" ng-click="closeModal()">&#xe632;</i>
+    </div>
+    <div class="modal-body" style="max-height: 300px;overflow-y:scroll;">
+        <div class="info_container">
+            <div class="btn_tr clearfix">
+                <span class="org_btn" ng-click="documentaryView()">单证查看</span>
+                <span class="org_btn" ng-click="documentUploading()">单证上传</span>
+                <span class="org_btn" ng-click="claimNotice()">索赔须知</span>
+            </div>
+            <div class="queryResult">
+                <div class="queryResult_title clearfix">
+                    <span class="fl">理赔联系记录</span>
+                </div>
+                <table>
+                    <tr class="tr_top">
+                        <td width="10%">序号</td>
+                        <td width="20%">时间</td>
+                        <td width="10%">操作员</td>
+                        <td width="10%">节点名称</td>
+                        <td>内容</td>
+                    </tr>
+                    <tr class="tr_content" ng-repeat="prpLMessageDto in communication.prpLMessageDtoList">
+                        <td class="C2DBE61">{{prpLMessageDto.serialNo}}</td>
+                        <td>{{prpLMessageDto.inputDate | timeFilter}}</td>
+                        <td>{{prpLMessageDto.operatorName}}</td>
+                        <td>{{prpLMessageDto.nodeType}}</td>
+                        <td>{{prpLMessageDto.context}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer" style="text-align: center;">
+            <button class="btn-success" ng-click="closeModal()">取消</button>
+        </div>
+    </div>
+</div>
+<div ng-if="uploadDocFlag">
+    <div class="modal-header" >
+        <h1 class="font-large">单证上传</h1>
+        <i class="icon iconfont modal-header-close" ng-click="closeModal()">&#xe632;</i>
+    </div>
+    <div class="modal-body" style="max-height: 300px;overflow-y:scroll;">
+        <div class="queryCriteria mt20">
+                <span class="queryCriteria_title">
+                    <label>案件信息</label>
+                </span>
+            <div class="condition_table">
+                <ul class="clearfix halfup-ul" >
+                    <li class="condition_td fl half-li">
+                        <label>报案号</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryClaimList.registNo" ng-disabled="true"/>
+                        </div>
+                    </li>
+                    <li class="condition_td fl half-li">
+                        <label>保单号码</label>
+                        <div class="half-div">
+                            <input type="text" ng-model="queryClaimList.policyNo" ng-disabled="true"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="queryCriteria mt20">
+                <span class="queryCriteria_title">
+                    <label>单证类型</label>
+                </span>
+            <div class="condition_table">
+                <div class="row">
+                    <div class="col-sm-3" style="min-height: 50px;"  ng-repeat="queryClaim in queryClaimList.imageTypeList">
+                        <label>
+                            <input type="checkbox" ng-model="queryClaim.choosed" ng-change="addImageType(queryClaim)"/>
+                            {{queryClaim.codeCName}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center;">
+        <button class="btn-success" ng-click="uploadDocument()">上传</button>
+        <button class="btn-success" ng-click="closeModal()">取消</button>
+    </div>
+</div>

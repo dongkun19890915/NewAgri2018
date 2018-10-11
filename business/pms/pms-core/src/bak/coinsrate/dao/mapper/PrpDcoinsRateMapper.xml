@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinosoft.pms.core.coinsrate.dao.PrpDcoinsRateMapper" >
+  <resultMap id="BaseResultMap" type="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRate" >
+		<result column="VersionNo" property="versionNo" jdbcType="VARCHAR" />
+		<result column="RiskCode" property="riskCode" jdbcType="VARCHAR" />
+		<result column="RiskName" property="riskName" jdbcType="VARCHAR" />
+		<result column="ComCode" property="comCode" jdbcType="VARCHAR" />
+		<result column="ComCName" property="comCName" jdbcType="VARCHAR" />
+		<result column="EffectDate" property="effectDate" jdbcType="DATE" />
+		<result column="InvalidDate" property="invalidDate" jdbcType="DATE" />
+		<result column="CoinsRate" property="coinsRate" jdbcType="INTEGER" />
+		<result column="Flag" property="flag" jdbcType="VARCHAR" />
+		<result column="Remark" property="remark" jdbcType="VARCHAR" />
+		<result column="CreateTime" property="createTime" jdbcType="DATE" />
+		<result column="CreateBy" property="createBy" jdbcType="VARCHAR" />
+		<result column="UpdateTime" property="updateTime" jdbcType="DATE" />
+		<result column="UpdateBy" property="updateBy" jdbcType="VARCHAR" />
+		<result column="VersionNo" property="versionNo" jdbcType="VARCHAR" />
+		<result column="RiskCode" property="riskCode" jdbcType="VARCHAR" />
+		<result column="RiskName" property="riskName" jdbcType="VARCHAR" />
+		<result column="ComCode" property="comCode" jdbcType="VARCHAR" />
+		<result column="ComCName" property="comCName" jdbcType="VARCHAR" />
+		<result column="EffectDate" property="effectDate" jdbcType="DATE" />
+		<result column="InvalidDate" property="invalidDate" jdbcType="DATE" />
+		<result column="CoinsRate" property="coinsRate" jdbcType="INTEGER" />
+		<result column="Flag" property="flag" jdbcType="VARCHAR" />
+		<result column="Remark" property="remark" jdbcType="VARCHAR" />
+		<result column="CreateTime" property="createTime" jdbcType="DATE" />
+		<result column="CreateBy" property="createBy" jdbcType="VARCHAR" />
+		<result column="UpdateTime" property="updateTime" jdbcType="DATE" />
+		<result column="UpdateBy" property="updateBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  versionNo,riskCode,riskName,comCode,comCName,effectDate,invalidDate,coinsRate,flag,remark,createTime,createBy,updateTime,updateBy
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.sinosoft.pms.core.salerate.entity.PrpDsalesRate">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from PrpDcoinsRate order by EffectDate DESC
+  </select>
+  <select id="selectNew" resultMap="BaseResultMap" parameterType="com.sinosoft.pms.core.salerate.entity.PrpDsalesRate">
+  	select * from PrpDcoinsRate where invaliddate = to_date('9999-09-09','yyyy-mm-dd') order by coinsrate desc
+  </select>
+  <select id="selectByDate" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from PrpDcoinsRate where 1=1
+<!--   	EffectDate<= to_date(#{effectDate},'YYYY-MM-dd')  -->
+  	 order by EffectDate DESC
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRateKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from PrpDcoinsRate 
+    where 
+	 VersionNo = #{versionNo,jdbcType=VARCHAR} and RiskCode = #{riskCode,jdbcType=VARCHAR} and ComCode = #{comCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRateKey" >
+    delete from PrpDcoinsRate 
+    where 
+		 VersionNo = #{versionNo,jdbcType=VARCHAR}, RiskCode = #{riskCode,jdbcType=VARCHAR}, ComCode = #{comCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRate" >
+    insert into PrpDcoinsRate  (VersionNo,RiskCode,RiskName,ComCode,ComCName,EffectDate,InvalidDate,CoinsRate,Flag,Remark,CreateTime,CreateBy,UpdateTime,UpdateBy)
+    values (#{versionNo,jdbcType=VARCHAR},#{riskCode,jdbcType=VARCHAR},#{riskName,jdbcType=VARCHAR},#{comCode,jdbcType=VARCHAR},#{comCName,jdbcType=VARCHAR},#{effectDate,jdbcType=DATE},#{invalidDate,jdbcType=DATE},#{coinsRate,jdbcType=INTEGER},#{flag,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{createTime,jdbcType=DATE},#{createBy,jdbcType=VARCHAR},#{updateTime,jdbcType=DATE},#{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRate" >
+    insert into PrpDcoinsRate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="versionNo != null" >
+        VersionNo,
+		</if>
+<if test="riskCode != null" >
+        RiskCode,
+		</if>
+<if test="riskName != null" >
+        RiskName,
+		</if>
+<if test="comCode != null" >
+        ComCode,
+		</if>
+<if test="comCName != null" >
+        ComCName,
+		</if>
+<if test="effectDate != null" >
+        EffectDate,
+		</if>
+<if test="invalidDate != null" >
+        InvalidDate,
+		</if>
+<if test="coinsRate != null" >
+        CoinsRate,
+		</if>
+<if test="flag != null" >
+        Flag,
+		</if>
+<if test="remark != null" >
+        Remark,
+		</if>
+<if test="createTime != null" >
+        CreateTime,
+		</if>
+<if test="createBy != null" >
+        CreateBy,
+		</if>
+<if test="updateTime != null" >
+        UpdateTime,
+		</if>
+<if test="updateBy != null" >
+        UpdateBy,
+		</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="versionNo != null" >
+        VersionNo,jdbcType=VARCHAR,
+		</if>
+		<if test="riskCode != null" >
+        RiskCode,jdbcType=VARCHAR,
+		</if>
+		<if test="riskName != null" >
+        RiskName,jdbcType=VARCHAR,
+		</if>
+		<if test="comCode != null" >
+        ComCode,jdbcType=VARCHAR,
+		</if>
+		<if test="comCName != null" >
+        ComCName,jdbcType=VARCHAR,
+		</if>
+		<if test="effectDate != null" >
+        EffectDate,jdbcType=DATE,
+		</if>
+		<if test="invalidDate != null" >
+        InvalidDate,jdbcType=DATE,
+		</if>
+		<if test="coinsRate != null" >
+        CoinsRate,jdbcType=INTEGER,
+		</if>
+		<if test="flag != null" >
+        Flag,jdbcType=VARCHAR,
+		</if>
+		<if test="remark != null" >
+        Remark,jdbcType=VARCHAR,
+		</if>
+		<if test="createTime != null" >
+        CreateTime,jdbcType=DATE,
+		</if>
+		<if test="createBy != null" >
+        CreateBy,jdbcType=VARCHAR,
+		</if>
+		<if test="updateTime != null" >
+        UpdateTime,jdbcType=DATE,
+		</if>
+		<if test="updateBy != null" >
+        UpdateBy,jdbcType=VARCHAR,
+		</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRate" >
+    update PrpDcoinsRate set
+    <set >
+		
+
+<if test="riskName  != null" >      
+        RiskName = #{riskName ,jdbcType=VARCHAR},</if>
+
+<if test="comCName  != null" >      
+        ComCName = #{comCName ,jdbcType=VARCHAR},</if>
+<if test="effectDate  != null" >      
+        EffectDate = #{effectDate ,jdbcType=DATE},</if>
+<if test="invalidDate  != null" >      
+        InvalidDate = #{invalidDate ,jdbcType=DATE},</if>
+<if test="coinsRate  != null" >      
+        CoinsRate = #{coinsRate ,jdbcType=INTEGER},</if>
+<if test="flag  != null" >      
+        Flag = #{flag ,jdbcType=VARCHAR},</if>
+<if test="remark  != null" >      
+        Remark = #{remark ,jdbcType=VARCHAR},</if>
+<if test="createTime  != null" >      
+        CreateTime = #{createTime ,jdbcType=DATE},</if>
+<if test="createBy  != null" >      
+        CreateBy = #{createBy ,jdbcType=VARCHAR},</if>
+<if test="updateTime  != null" >      
+        UpdateTime = #{updateTime ,jdbcType=DATE},</if>
+<if test="updateBy  != null" >      
+        UpdateBy = #{updateBy ,jdbcType=VARCHAR},</if>
+    </set>
+    where 
+		<if test="versionNo  != null" >
+        VersionNo = #{versionNo ,jdbcType=VARCHAR} and 
+      </if>	<if test="riskCode  != null" >
+        RiskCode = #{riskCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="comCode  != null" >
+        ComCode = #{comCode ,jdbcType=VARCHAR}
+      </if>		
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRate" >
+    update PrpDcoinsRate
+    set 
+				
+		
+<if test="riskName  != null" >RiskName = #{riskName ,jdbcType=VARCHAR},</if>		
+		
+<if test="comCName  != null" >ComCName = #{comCName ,jdbcType=VARCHAR},</if>		
+<if test="effectDate  != null" >EffectDate = #{effectDate ,jdbcType=DATE},</if>		
+<if test="invalidDate  != null" >InvalidDate = #{invalidDate ,jdbcType=DATE},</if>		
+<if test="coinsRate  != null" >CoinsRate = #{coinsRate ,jdbcType=INTEGER},</if>		
+<if test="flag  != null" >Flag = #{flag ,jdbcType=VARCHAR},</if>		
+<if test="remark  != null" >Remark = #{remark ,jdbcType=VARCHAR},</if>		
+<if test="createTime  != null" >CreateTime = #{createTime ,jdbcType=DATE},</if>		
+<if test="createBy  != null" >CreateBy = #{createBy ,jdbcType=VARCHAR},</if>		
+<if test="updateTime  != null" >UpdateTime = #{updateTime ,jdbcType=DATE},</if>		
+<if test="updateBy  != null" >UpdateBy = #{updateBy ,jdbcType=VARCHAR},</if>		
+    where 
+			<if test="versionNo  != null" >
+        VersionNo = #{versionNo ,jdbcType=VARCHAR} and 
+      </if>	<if test="riskCode  != null" >
+        RiskCode = #{riskCode ,jdbcType=VARCHAR} and 
+      </if>	<if test="comCode  != null" >
+        ComCode = #{comCode ,jdbcType=VARCHAR}
+      </if>	
+  </update>
+<!--   	非空校验放在service层，传到此处的值不为空 -->
+  <update id="updateInvalidDate" parameterType="com.sinosoft.pms.core.coinsrate.entity.PrpDcoinsRate" >
+    update PrpDcoinsRate p
+    set p.Invaliddate = #{invalidDate,jdbcType=DATE}
+    ,p.updateTime = #{updateTime,jdbcType=VARCHAR}
+    ,p.updateBy = #{updateBy,jdbcType=DATE}
+    where p.versionNo = (
+    	select e.versionNo from prpDcoinsRate e
+    	where e.riskCode = #{riskCode,jdbcType=VARCHAR}
+    	and e.invaliddate = to_date('9999-09-09', 'yyyy-mm-dd')
+    	and e.comCode = #{comCode,jdbcType=VARCHAR}
+    )
+  </update>
+  <select id="selectCoins" resultMap="BaseResultMap" parameterType="com.sinosoft.pms.core.arealimit.entity.PrpDareaLimit" >
+     select * from prpdcoinsrate e join (
+      select pc.comcode,max(pc.effectdate) effectdate 
+      from prpdcoinsrate pc where pc.effectdate &lt; #{effectDate,jdbcType=DATE}
+      group by pc.comcode ) p
+     on p.comcode = e.comcode and p.effectdate = e.effectdate
+     where 1=1
+       <if test="versionNo  != null" >
+        and e.VersionNo = #{versionNo ,jdbcType=VARCHAR}
+      </if>	<if test="riskCode  != null" >
+        and e.riskCode = #{riskCode ,jdbcType=VARCHAR}
+      </if>	<if test="comCode  != null" >
+        and ComCode = #{comCode ,jdbcType=VARCHAR}
+      </if>	
+  </select>
+</mapper>

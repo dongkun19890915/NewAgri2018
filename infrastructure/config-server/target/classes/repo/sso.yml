@@ -1,0 +1,19 @@
+server:
+  port: 9005
+  #context-path: /sso-rest
+
+ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 5000
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000
+sso:
+    thirdAuth: # 第三方应用调用新农险页自动登录相关参数
+        authTimeOut: 300000 # 请求有效期（ms）
+        authSystem: GIS # 允许调用的第三方应用标识，多配置使用,分隔（例：GIS,PRPALL）
+

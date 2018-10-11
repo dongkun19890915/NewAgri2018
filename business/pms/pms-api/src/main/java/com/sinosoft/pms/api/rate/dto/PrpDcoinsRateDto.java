@@ -1,0 +1,162 @@
+package com.sinosoft.pms.api.rate.dto;
+
+import java.io.Serializable;
+
+import com.sinosoft.framework.dto.BaseRequest;
+/**
+ * @author codegen@研发中心
+ * @mail admin@sinosoft.com.cn
+ * @time  2017-09-15 09:24:37.739 
+ * 共同体成员比例配置表Api操作对象
+ */
+public class PrpDcoinsRateDto extends BaseRequest implements Serializable{
+	private static final long serialVersionUID = 1L;
+	/** 属性产品代码/产品代码 */
+	private String riskCode ;		
+	/** 属性产品名称/产品名称 */
+	private String riskName ;		
+	/** 属性成员公司代码/成员公司代码 */
+	private String comCode ;		
+	/** 属性成员公司名称/成员公司名称 */
+	private String comCName ;		
+	/** 属性版次号/版次号 */
+	private String versionNo ;		
+	/** 属性共保比例/共保比例 */
+	private java.lang.Double coinsRate ;		
+	/** 属性生效日期/生效日期 */
+	private java.util.Date effectDate ;		
+	/** 属性失效日期/失效日期 */
+	private java.util.Date invalidDate ;		
+	/** 属性标志/标志 */
+	private String flag ;		
+	/** 属性备注/备注 */
+	private String remark ;		
+			
+			
+			
+			
+	/**
+	 * 属性产品代码/产品代码的getter方法
+	 */
+	public String getRiskCode() {
+		return riskCode;
+	}
+	/**
+	 * 属性产品代码/产品代码的setter方法
+	 */
+	public void setRiskCode(String riskCode) {
+		this.riskCode = riskCode;
+	}	
+	/**
+	 * 属性产品名称/产品名称的getter方法
+	 */
+	public String getRiskName() {
+		return riskName;
+	}
+	/**
+	 * 属性产品名称/产品名称的setter方法
+	 */
+	public void setRiskName(String riskName) {
+		this.riskName = riskName;
+	}	
+	/**
+	 * 属性成员公司代码/成员公司代码的getter方法
+	 */
+	public String getComCode() {
+		return comCode;
+	}
+	/**
+	 * 属性成员公司代码/成员公司代码的setter方法
+	 */
+	public void setComCode(String comCode) {
+		this.comCode = comCode;
+	}	
+	/**
+	 * 属性成员公司名称/成员公司名称的getter方法
+	 */
+	public String getComCName() {
+		return comCName;
+	}
+	/**
+	 * 属性成员公司名称/成员公司名称的setter方法
+	 */
+	public void setComCName(String comCName) {
+		this.comCName = comCName;
+	}	
+	/**
+	 * 属性版次号/版次号的getter方法
+	 */
+	public String getVersionNo() {
+		return versionNo;
+	}
+	/**
+	 * 属性版次号/版次号的setter方法
+	 */
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
+	}	
+	/**
+	 * 属性共保比例/共保比例的getter方法
+	 */
+	public java.lang.Double getCoinsRate() {
+		return coinsRate;
+	}
+	/**
+	 * 属性共保比例/共保比例的setter方法
+	 */
+	public void setCoinsRate(java.lang.Double coinsRate) {
+		this.coinsRate = coinsRate;
+	}	
+	/**
+	 * 属性生效日期/生效日期的getter方法
+	 */
+	public java.util.Date getEffectDate() {
+		return effectDate;
+	}
+	/**
+	 * 属性生效日期/生效日期的setter方法
+	 */
+	public void setEffectDate(java.util.Date effectDate) {
+		this.effectDate = effectDate;
+	}	
+	/**
+	 * 属性失效日期/失效日期的getter方法
+	 */
+	public java.util.Date getInvalidDate() {
+		return invalidDate;
+	}
+	/**
+	 * 属性失效日期/失效日期的setter方法
+	 */
+	public void setInvalidDate(java.util.Date invalidDate) {
+		this.invalidDate = invalidDate;
+	}	
+	/**
+	 * 属性标志/标志的getter方法
+	 */
+	public String getFlag() {
+		return flag;
+	}
+	/**
+	 * 属性标志/标志的setter方法
+	 */
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}	
+	/**
+	 * 属性备注/备注的getter方法
+	 */
+	public String getRemark() {
+		return remark;
+	}
+	/**
+	 * 属性备注/备注的setter方法
+	 */
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}	
+		
+		
+		
+		
+}

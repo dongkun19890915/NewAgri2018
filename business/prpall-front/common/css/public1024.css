@@ -1,0 +1,198 @@
+/*工作台*/
+.choose-div span{
+    font-size: 0.9em;
+}
+i.icon-print{
+    font-size:65px;
+}
+.choose-ul h3{
+    font-size:16px;
+}
+.choose-ul h3 span{
+    font-size:20px;
+}
+.choose-ul h2{
+    font-size:14px;
+}
+.choose-right li{
+    height: 100px;
+}
+.insurancePeriod{
+    width: 11%;
+}
+.assured{
+    width: 14%;
+}
+table.table tr td{
+    line-height:32px;
+}
+/*投保单录入*/
+/*清单查询*/
+#checkList #listDates{
+    width: 41%;
+}
+#listDates>label{
+    width: 33%;
+}
+#checkList .condition_td{
+    width: 29.33%;
+}
+#checkList .condition_td4{
+    width: 65%;
+}
+#checkList .condition_td4>span{
+    width: 14%;
+}
+#checkList .condition_td4 select{
+    width: 16.5%;
+}
+/*投保单录入*/
+/*基本信息*/
+#basic.basic_information input, #basic.basic_information select{
+    width: 54%;
+}
+#basic.basic_information .basic_information_second input{
+    width: 24%;
+    text-indent: 0;
+}
+#basic .basic_information_scale1>span{
+    width: 18%;
+}
+#basic .basic_information_scale>span.message{
+    width: 18.3%;
+}
+#basic .handlerDetail{
+    width: 57.6%;
+}
+#basic .codeTypeDetail,#others .codeTypeDetail{
+    width: 54% !important;
+}
+#basic .relativeBtn{
+    position: absolute;
+    width: 28px;
+    right: -17px;
+    top: 4px;
+}
+.basic_information_con li .basic_information_scale.messageFa{
+    width:88%
+}
+#basic .attribution_region div>div{
+    width:13.8%;
+}
+.riskSchemeContainWRight>input {
+    margin-left:4%;
+    width:34.5%;
+}
+
+/*合同信息*/
+.contract_con_left li label{
+    width: 36%;
+}
+.mainAgri .contract_con_right li label{
+    width: 25%;
+}
+.contract_con_right li label.amountCovered{
+    width: 33%;
+}
+#contract .insuranceFashion{
+    width: 48.5%;
+}
+#contract .insuredAmount{
+    width: 11%;
+}
+.contract_information input{
+    width: 185px;
+}
+.num_wid{
+    width: 139px !important;
+}
+#contract .codeTypeDetail{
+    width: 48.2%;
+}
+/*投保单管理*/
+.commentWidth .condition_td{
+    width: 46.33%;
+}
+.insuranceTime{
+    width: 12%;
+}
+.stateWidth{
+    width: 6%;
+}
+#codeTypeAmount{
+    width:40.2%;
+}
+/*模板向导*/
+#riskCode{
+    width: 53%;
+}
+#expiryEnd{
+    width: 54.4%;
+}
+#coverageRightContainer{
+    width:98%;
+}
+.pay>input{
+    width: 75%;
+}
+/*普通批改*/
+#marking textarea{
+    width: 71%;
+}
+#model #myInput>div,#model .myInput>div{
+    width: 55%;
+}
+#model #endorseReason{
+    width: 77.5%;
+}
+#cafs .endorseFashion{
+    width: 60.8%;
+}
+#cafs .endorseReason{
+    width:80.5%;
+}
+.condition_td>div.guishuzhuanyong{
+    width: 27.6%;
+}
+/*共保信息*/
+#othersInformationRight .other1 label{
+    width:29%;
+}
+#othersInformationRight .other1>div,#othersInformationRight .other2>div{
+    width:53%;
+}
+#othersInformationRight .other2 label{
+    width:24%;
+    margin-left:13px;
+}
+/*//////*/
+#othersInformationRight.otherInformation .other1{
+    width:30%;
+}
+#othersInformationRight.otherInformation .other2{
+    width: 40%;
+}
+#othersInformationRight.otherInformation .other1 label{
+    width:29%;
+}
+#othersInformationRight.otherInformation .other1>div,#othersInformationRight.otherInformation .other2>div{
+    width:50%;
+}
+#othersInformationRight.otherInformation .other2 label{
+    width:32%;
+}
+.areaCodeType{
+    width: 17%;
+}
+.uiSelectWidth{
+    width: 100px;
+}
+.uiSelectWidth2{
+    width: 84px;
+}
+.w50{
+    width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin:0 auto;
+}

@@ -1,0 +1,419 @@
+<div class="section">
+  <div class="workbench-top">
+    <div class="index-mod dispatch-task">
+      <div class="fl mod-left">
+        <i class="iconfont">&#xe61d;</i>
+        <h2>调度任务</h2>
+      </div>
+      <ul class="fr mod-right">
+        <li>
+          <label>
+            <em ng-bind="schedWaitingTotalCount" ng-click="waitQuery('sched')"></em>
+            <h2>待处理</h2>
+          </label>
+        </li>
+        <li>
+          <label>
+            <em ng-bind="schedTotalCount" ng-click="queryMyJob('sched')"></em>
+            <h2>已处理</h2>
+          </label>
+        </li>
+
+      </ul>
+    </div>
+    <div class="index-mod check-task">
+      <div class="fl mod-left">
+        <i class="iconfont">&#xe61d;</i>
+        <h2>查勘定损任务</h2>
+      </div>
+      <ul class="fr mod-right">
+        <li>
+          <label>
+            <em ng-bind="checkWaitingTotalCount" ng-click="waitQuery('check')"></em>
+            <h2>待处理</h2>
+          </label>
+        </li>
+        <li>
+          <label>
+            <em ng-bind="checkTotalCount" ng-click="queryMyJob('check')"></em>
+            <h2>已处理</h2>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="index-mod compenstate-task">
+      <div class="fl mod-left">
+        <i class="iconfont">&#xe61d;</i>
+        <h2>理算任务</h2>
+      </div>
+      <ul class="fr mod-right">
+        <li>
+          <label>
+            <em ng-bind="compeWaitingTotalCount" ng-click="waitQuery('compe')"></em>
+            <h2>待处理</h2>
+          </label>
+        </li>
+        <li>
+          <label>
+            <em ng-bind="compeTotalCount" ng-click="queryMyJob('compp')"></em>
+            <h2>已处理</h2>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="workbench-container">
+    <div class="index-left fl">
+      <div>
+        <h3>
+          <em></em>
+          <span>常用功能</span>
+          <i class="iconfont icon-setup" ng-click="add()">&#xe64b;</i>
+        </h3>
+
+
+        <ul class="com-fun">
+          <li class="fl" ng-repeat="oriMenu in userMenu" ng-click="goOriMenu($index)">
+               <div>
+                   <!--<i class="iconfont">&#xe6d0;</i>-->
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='001'">&#xe61d;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='002'">&#xe61c;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='003'">&#xe620;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='004'">&#xe623;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='005'">&#xe626;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='006'">&#xe625;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='007'">&#xe628;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='008'">&#xe613;</i>
+                   <i class="iconfont" ng-if="oriMenu.iconExpand=='009'">&#xe60d;</i>
+                <h3 ng-bind="oriMenu.menuCName"></h3>
+               </div>
+          </li>
+          <li>
+          <i class="iconfont icon-add" ng-click="add()">&#xe631;</i>
+          <h3></h3>
+          </li>
+          <!--  <li class="fl">
+                <div class="choose-bg"></div>
+                <div class="choose-div cur">
+                    <i class="iconfont icon-print" ng-click="deleteAll()">&#xe668;</i>
+                    <span>删除常用功能</span>
+                </div>
+            </li>-->
+
+          <!--   <li class="fl">
+                 <div class="choose-bg"></div>
+                 <div class="choose-div cur">
+                     <i class="iconfont icon-print" ng-click="delete('myFunction')">&#xe668;</i>
+                     <span>删除常用功能</span>
+                 </div>
+             </li>-->
+          <!-- <li class="fl">
+               <div class="choose-bg"></div>
+               <div class="choose-div cur">
+                   <i class="iconfont icon-print" ng-click="add()">&#xe667;</i>
+                   <span>增加常用功能</span>
+               </div>
+           </li>-->
+        </ul>
+
+
+
+
+
+        <!--<ul class="com-fun">-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>报案登记</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>调度任务处理</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>理赔打印</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>查看定损任务处理</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>报案登记</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>调度任务处理</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>理赔打印</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont">&#xe6d0;</i>-->
+            <!--<h3>查看定损任务处理</h3>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<i class="iconfont icon-add" ng-click="openComFunLayer()">&#xe631;</i>-->
+            <!--<h3></h3>-->
+          <!--</li>-->
+        <!--</ul>-->
+      </div>
+      <div>
+        <h3>
+          <em></em>
+          <span>快速查询</span>
+        </h3>
+        <ul class="quick">
+          <li>
+            <select class="half-div" style="width: 100%;" ng-model="nodeType">
+              <option value="sched" selecte="selected">调度任务查询</option>
+              <option value="regis">报案任务查询</option>
+              <option value="check">查勘定损任务查询</option>
+              <option value="claim">立案任务查询</option>
+              <option value="compe">理算任务查询</option>
+              <option value="endca">结案任务查询</option>
+            </select>
+          </li>
+          <li style="margin-top: 8px;">
+            <div class="half-div"  style="position: relative;">
+              <input type="text" placeholder="请输入保单号" ng-model="policyNo">
+                     <!--ng-pattern="regData.number"-->
+                     <!--warn-text="{'ErrPattern':'保单号格式错误，请修改!',itemName:'保单号'}"-->
+                     <!--warn-text ng-minLength="15"-->
+                     <!--maxlength="21"-->
+            </div>
+          </li>
+          <li style="margin-top: 10px;">
+            <div class="half-div" style="position: relative;">
+              <input type="text" placeholder="请输入报案号" ng-model="registNo">
+                     <!--ng-pattern="regData.number"-->
+                     <!--warn-text="{'ErrPattern':'报案号格式错误，请修改!',itemName:'报案号'}"-->
+                     <!--warn-text ng-minLength="15"-->
+                     <!--maxlength="21"-->
+            </div>
+          </li>
+          <li style="margin-top: 7px;">
+            <input type="button" class="quick-btn" value="快速查询" ng-click="querySpec()">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="index-right fr">
+      <div>
+        <ul class="tab fl">
+          <li ng-class="{'act':showFlag==false}" ng-click="showFlag=false;waitQuery()">待处理</li>
+          <li ng-class="{'act':showFlag==true}" ng-click="showFlag=true;queryMyJob()">已处理</li>
+
+        </ul>
+        <!--<code-type class="tab-select fr" ng-model="queryDto.riskCategory" base-code="riskType"></code-type>-->
+        <select class="tab-select fr" ng-model="nodeType" ng-change="queryMyJob()" style="height:24px;line-height: 24px;margin-right:20px;margin-top:20px;">
+          <option value="sched">调度任务查询</option>
+          <option value="regis">报案任务查询</option>
+          <option value="check">查勘定损任务查询</option>
+          <option value="claim">立案任务查询</option>
+          <option value="compe">理算任务查询</option>
+          <option value="endca">结案任务查询</option>
+        </select>
+      </div>
+      <div class="tab-content">
+        <!--<div class="queryResult" ng-show="!showFlag">-->
+          <!--<table>-->
+            <!--<tr class="tr_top">-->
+              <!--<td>序号</td>-->
+              <!--<td>保单号</td>-->
+              <!--<td>业务号</td>-->
+              <!--<td>报案日期</td>-->
+              <!--<td>案件状态</td>-->
+              <!--<td>操作</td>-->
+            <!--</tr>-->
+            <!--<tr class="tr_content" ng-repeat="result in waitDto">-->
+              <!--<td ng-bind="$index+1"></td>-->
+              <!--<td ng-bind="result.policyNo"></td>-->
+              <!--<td ng-bind="result.registNo"></td>-->
+              <!--<td ng-bind="result.reportDate"></td>-->
+              <!--<td ng-bind="result.nodeStatus"></td>-->
+              <!--<td class='local-sec'>调度</td>-->
+            <!--</tr>-->
+          <!--</table>-->
+          <!--<div>-->
+            <!--<div class="index_page">-->
+              <!--<tm-pagination conf="paginationConf"></tm-pagination>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="queryResult" ng-show="showFlag">-->
+          <!--<table>-->
+            <!--<tr class="tr_top">-->
+              <!--<td>序号</td>-->
+              <!--<td>保单号</td>-->
+              <!--<td>业务号</td>-->
+              <!--<td>报案日期</td>-->
+              <!--<td>案件状态</td>-->
+              <!--<td>操作</td>-->
+            <!--</tr>-->
+            <!--<tr class="tr_content" ng-repeat="result in overDto">-->
+              <!--<td ng-bind="$index+1"></td>-->
+              <!--<td ng-bind="result.policyNo"></td>-->
+              <!--<td ng-bind="result.registNo"></td>-->
+              <!--<td ng-bind="result.reportDate"></td>-->
+              <!--<td ng-bind="result.nodeStatus"></td>-->
+              <!--<td class='local-sec'>调度</td>-->
+            <!--</tr>-->
+          <!--</table>-->
+          <!--<div>-->
+            <!--<div class="index_page">-->
+              <!--<tm-pagination conf="paginationConf"></tm-pagination>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+          <div class="queryResult" >
+            <table>
+              <tr class="tr_top">
+                <td>序号</td>
+                <td>保单号</td>
+                <td>业务号</td>
+                <td>报案日期</td>
+                <td>案件状态</td>
+                <td>操作</td>
+              </tr>
+              <tr class="tr_content" ng-repeat="result in taskQueryDto">
+                <td ng-bind="$index+1"></td>
+                <td ng-bind="result.policyNo"></td>
+                <td ng-bind="result.registNo"></td>
+                <td ng-bind="result.reportDate"></td>
+                <td ng-bind="result.nodeStatus==4?'已处理':'未处理'"></td>
+                <td class='local-sec' ng-click="manage(showFlag,result)" ng-bind="showFlag?'查看':'处理'"></td>
+              </tr>
+            </table>
+            <div class="index_page">
+              <tm-pagination conf="paginationConf"></tm-pagination>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--修改常用功能弹层-->
+<div class="layer-revise" ng-if="commonUserMenu">
+  <div class="mask"></div>
+  <div class="layer-content">
+    <div class="layer-header">
+      <span>功能定制</span>
+      <i class="icon iconfont" ng-click="delete_5()">&#xe632;</i>
+    </div>
+    <div class="layer-con">
+      <div class="layer-con1">
+        <div class="ovh mb15">
+          <span class="t-span">常用功能名称</span>
+          <div>
+            <select class="revise-select fl"  ng-model="menu" ng-options="menu for menu in data_menuList" >
+              <option value="" selected hidden>请选择常用功能</option>
+            </select>
+          </div>
+        </div>
+        <div class="ovh revise-bottom" style="margin:auto;">
+          <ul class="comfun comfun1" style="margin: auto">
+            <li ng-click="chooseOne('One','001')">
+              <label style="position: relative">
+                <i class="iconfont" ng-class="isActive('One')?'active':''">&#xe61d;</i>
+                <div class="choose-background-dash" ng-if="isActive('One')" ><span class="choose-dui-dash">√</span></div>
+              </label>
+            </li>
+            <li ng-click="chooseOne('Two','002')">
+              <label>
+                <i class="iconfont" ng-class="isActive('Two')?'active':''">&#xe61c;</i>
+                <div class="choose-background-dash" ng-if="isActive('Two')"><span class="choose-dui-dash">√</span></div>
+              </label>
+            </li>
+            <li ng-click="chooseOne('Three','003')">
+              <label>
+                <i class="iconfont" ng-class="isActive('Three')?'active':''">&#xe620;</i>
+                <div class="choose-background-dash" ng-if="isActive('Three')"><span class="choose-dui-dash">√</span></div>
+              </label>
+            </li>
+            <li ng-click="chooseOne('Four','004')">
+              <label>
+                <i class="iconfont" ng-class="isActive('Four')?'active':''">&#xe623;</i>
+                <div class="choose-background-dash" ng-if="isActive('Four')"><span class="choose-dui-dash">√</span></div>
+              </label>
+            </li>
+            <li ng-click="chooseOne('Five','005')">
+              <label>
+                <i class="iconfont" ng-class="isActive('Five')?'active':''">&#xe626;</i>
+                <div class="choose-background-dash" ng-if="isActive('Five')"><span class="choose-dui-dash">√</span></div>
+              </label>
+            </li>
+            <li ng-click="chooseOne('Six','006')">
+              <label>
+                <i class="iconfont" ng-class="isActive('Six')?'active':''">&#xe625;</i>
+                <div class="choose-background-dash" ng-if="isActive('Six')"><span class="choose-dui-dash">√</span></div>
+              </label>
+            </li>
+            <li ng-click="chooseOne('Seven','007')">
+              <label>
+                <i class="iconfont"  ng-class="isActive('Seven')?'active':''">&#xe627;</i>
+                <div class="choose-background-dash" ng-if="isActive('Seven')"><span class="choose-dui-dash">√</span></div>
+              </label>
+            </li>
+          </ul>
+          <button ng-click="addContent()" style="margin:auto;display: block">确认添加</button>
+        </div>
+        <div class="" style="max-height:134px;overflow-y: auto">
+          <span class="t-span">已有常用功能</span>
+          <ul class="has-comfun">
+
+            <li  ng-repeat="i in userMenu" style="width: 200px">
+              <i class="iconfont icon-close" ng-click="deleteoriMenu($event,'0',i.menuCName)">&#xe632;</i>
+
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='001'">&#xe61d;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='002'">&#xe61c;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='003'">&#xe620;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='004'">&#xe623;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='005'">&#xe626;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='006'">&#xe625;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='007'">&#xe627;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='008'">&#xe613;</i>
+              <i class="iconfont icon-claimprint" ng-if="i.iconExpand=='009'">&#xe60d;</i>
+              <span ng-bind="i.menuCName"></span>
+            </li>
+
+
+            <!--      <li ng-class="isFun('myFunction_1')?'delFunction':''">
+                  &lt;!&ndash;    <i class="iconfont icon-close" ng-click="delete_6('Delete_1')">&#xe632;</i>&ndash;&gt;
+                      <i class="iconfont">&#xe613;</i>
+                      <span>投保单录入</span>
+                  </li>
+                  <li ng-class="isFun('myFunction_2')?'delFunction':''">
+                    &lt;!&ndash;  <i class="iconfont icon-close" ng-click="delete_6('Delete_2')">&#xe632;</i>&ndash;&gt;
+                      <i class="iconfont">&#xe60c;</i>
+                      <span>普通批改</span>
+                  </li>
+                  <li ng-class="isFun('myFunction_3')?'delFunction':''">
+                     &lt;!&ndash; <i class="iconfont icon-close"  ng-click="delete_6('Delete_3')">&#xe632;</i>&ndash;&gt;
+                      <i class="iconfont">&#xe60b;</i>
+                      <span>投保单打印</span>
+                  </li>
+                  <li ng-class="isFun('myFunction_4')?'delFunction':''">
+                     &lt;!&ndash; <i class="iconfont icon-close" ng-click="delete_6('Delete_4')">&#xe632;</i>&ndash;&gt;
+                      <i class="iconfont ml5" >&#xe60d;</i>
+                      <span>投保单查询</span>
+                  </li>
+
+                  <li ng-class="isFun('myFunction_5')?'delFunction':''">
+                      &lt;!&ndash;<i class="iconfont icon-close" ng-click="delete_6('Delete_5')">&#xe632;</i>&ndash;&gt;
+                      <i class="iconfont ml5" >&#xe620;</i>
+                      <span>影像管理</span>
+                  </li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="layer-footer h70" style="height: 46px;line-height: 28px;">
+      <span class="layer-ok" ng-click="saveFunction()">保 存</span>
+      <span class="layer-cancel" ng-click="oriFunction()">取 消</span>
+    </div>
+  </div>
+</div>

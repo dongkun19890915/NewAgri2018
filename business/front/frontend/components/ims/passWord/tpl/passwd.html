@@ -1,0 +1,40 @@
+<!--修改密码-->
+<form name ="updateForm" class="index_con">
+	<div class="index_list">
+		<div class="index_tit">
+			<h6>修改密码</h6>
+		</div>
+
+		<ul class="list_ul">
+			<li></li>
+			<li><em>*</em><span>原密码：</span></li>
+			<li><input type="password" mc-placeholder="请输入原密码" class="fl" ng-model="userDto.passWord"  maxlength="20" required ></li>
+			<li></li>
+			<li></li>
+			<li><em>*</em><span>新密码：</span></li>
+			<li><input type="password" mc-placeholder="由8~20位数字字母符号组成" class="fl"
+				ng-model="userDto.newPassword" ng-minlength="8" maxlength="20" required  warn-text="" ng-blur="checkUserCode()"></li>
+			<li></li>
+			<li></li>
+
+			<li><em>*</em><span>确认新密码：</span></li>
+			<li><input type="password"  mc-placeholder="确认新密码" class="fl"
+				ng-model="passWordAgain" required   ng-minlength="8" maxlength="20" warn-text=""  ng-blur="surePasswd()"></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<!--按钮-->
+	<div class="index_btn1">
+		<span class="submit"   ng-disabled=" updatePwdDisableFlag " ng-click="sure()">确 定</span>
+		<!--ng-class="{'ngdisable':updatePwdDisableFlag}"-->
+		<span class="edit" ng-click="exit()">退 出</span>
+	</div>
+	<!-- 弹层密码校验失败-->
+	<div data-ng-include ="'components/ims/passWord/tpl/passwdFailLayer.html'"></div>
+	<!-- 弹层修改密码成功-->
+	<div data-ng-include ="'components/ims/passWord/tpl/passwdSucLayer.html'"></div>
+	<!-- 不可以修改密码-->
+	<div data-ng-include ="'components/ims/passWord/tpl/exitFailLayer.html'"></div>
+</form>

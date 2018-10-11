@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	 xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+  
+  	
+    <!-- 数据源定义-->  
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		destroy-method="close">
+        <property name="driverClassName" value="${db.driver}"/>
+		<property name="filters" value="stat" />
+		<property name="url" value="${db.fileserver.url}" />
+		<property name="username" value="${db.fileserver.username}" />
+		<property name="password" value="${db.fileserver.password}" />
+        <property name="initialSize" value="${db.initialSize}"/>
+        <property name="minIdle" value="${db.minIdle}"/>
+        <property name="maxActive" value="${db.maxActive}"/>
+        <property name="maxWait" value="${db.maxWait}"/>
+		<property name="proxyFilters">
+        <list>
+            <ref bean="log-filter" />
+        </list>		
+        </property>        
+    </bean>
+<!-- druid 日志输出filter -->
+	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
+ 		<property name="statementExecutableSqlLogEnable" value="true" />
+ 		<property name="resultSetLogEnabled" value="true" />
+ 		<property name="statementLogEnabled" value="true" />
+ 		<property name="connectionLogEnabled" value="true" />
+ 		<property name="dataSourceLogEnabled" value="true" />
+    </bean>
+	<!-- spring与mybatis整合配置，扫描所有dao -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+		p:basePackage="com.sinosoft.fileserver.dao" p:sqlSessionFactoryBeanName="sqlSessionFactory" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--dataSource属性指定要用到的连接池 -->
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<array>
+				<value>classpath*:com/sinosoft/fileserver/dao/mapper/*.xml</value>
+			</array>
+		</property>
+	</bean>
+      <!--
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="classpath:com/sinosoft/fileserver/dao/TFileInfoMapper.xml" />
+        
+    </bean>    -->
+    <!-- 查 找 类 路 径 下 的 映 射 器 并 自 动 将 它 们 创 建 成 MapperFactoryBean-->  
+    <!-- 
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com。sinosoft。fileserver.dao" />  
+         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>   
+       -->
+     
+	<!-- 开启事务注解驱动 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+     
+</beans>  

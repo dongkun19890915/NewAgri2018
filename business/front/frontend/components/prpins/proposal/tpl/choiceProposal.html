@@ -1,0 +1,19 @@
+<div class="index_con">
+    <div class="index_list">
+        <div class="index_tit"><h6>产品信息</h6></div>
+        <ul class="list_ul list_ul_bor">
+            <li><span>选择产品：</span></li>
+            <li>
+                <select class="form-control fl select_wid1" ng-model="fileDto.riskCode" <!--ng-options="x.riskCode as x.riskCName for x in riskList"--> required>
+                    <option value="">-请选择-</option>
+                    <option value="EQ01">EQ01</option>
+                </select>
+            </li>
+        </ul>
+        <div class="pending_btn">
+            <div class="pending_btn1">
+                <span class="a_search" ng-click="indexApplication()">确 定</span>
+            </div>
+        </div>
+    </div>
+</div>

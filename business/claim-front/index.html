@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head id="head">
+    <meta http-equiv="expires" CONTENT="0">
+    <meta name="renderer" content="webkit" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=8"/>-->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <title>国元农业保险系统</title>
+    <!--[if lt IE 9]>
+    <script src="common/js/es5-shim.js"></script>
+    <script src="common/js/es5-sham.min.js"></script>
+    <script>
+        document.createElement('ui-select');
+        document.createElement('ui-select-match');
+        document.createElement('ui-select-choices');
+        document.createElement('code-type');
+        document.createElement('ng-form');
+        document.createElement('line-chart');
+        document.createElement('map-chart');
+        document.createElement('ng-pdf8');
+        document.createElement('check-box');
+        document.createElement('com-tree');
+        document.createElement('radio');
+        document.createElement('multi-drop');
+    </script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="common/css/ie8.css"/>
+    <![endif]-->
+    <script>
+        (function(){
+            //统一版本管理，更改版本后可以防止缓存问题
+            window.CHERRY = {
+//                  version: '0.0.1',
+                version: (new Date()).getTime(),
+                runMode: 'dev'//运行模式选择  dev |  uat |  product
+            };
+
+            var loadStylesWithVersion = function(styles, version){
+                for(var i=0;i<styles.length;i++){
+                    var link = document.createElement("link");
+                    link.rel = "stylesheet";
+                    link.href= styles[i] + "?v=" + version;
+                    document.getElementById('head').appendChild(link);
+                }
+            };
+            loadStylesWithVersion([
+                    'common/css/bootstrap/bootstrap.css',
+//					'common/css/bootstrap/bootstrap-select.min.css',
+                    'common/css/tm.pagination/tm.pagination.css',
+                    'common/css/jedate/jedate.min.css',
+                    'common/css/ui-tree/angular-ui-tree.css',
+                    'common/css/ui-tree/ui-tree.css',
+                    'common/css/base.css',
+                    'common/css/public.css',
+                    'common/css/index.css',
+                    'common/css/select/select.css',
+                    'common/css/css.css',
+                    'common/css/alpha.css'
+              ],
+                    window.CHERRY.version);
+        })();
+    </script>
+    <script src="common/js/es5-shim.js"></script>
+    <script src="common/js/es5-sham.min.js"></script>
+    <link href="common/css/public1024.css" rel="stylesheet" type="text/css" media="screen and (max-width: 1024px)">
+    <!--判断是否是IE浏览器  若是就给HTML加class为ie10-->
+    <link rel="stylesheet" type="text/css" href="common/css/ie10-and-up.css" />
+    <script>
+        function isIE() {
+            if (!!window.ActiveXObject || "ActiveXObject" in window){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        if(isIE()){
+            document.documentElement.className='ie10';
+        }
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container-fluid " >
+    <!--<div class="row" ng-if="false">-->
+        <!--<div class="col-sm-12">-->
+            <!--<div ui-view="login"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="row">
+        <!--头部-->
+        <div ng-show="authSystemFlag" ng-controller="headerCtrl" ng-include="'common/frame/header/header.tpl.html'"></div>
+        <div>
+            <!--菜单-->
+            <div ng-show="authSystemFlag" ng-controller="menuCtrl" ng-include="'common/frame/menu/menu.tpl.html'"></div>
+            <div class="main-content" style="margin-top: 68px;">
+                <div  ng-controller="navigationCtrl" ng-include="'common/frame/navigation/navigation.tpl.html'"></div>
+                <div ui-view class="main"></div>
+                <div  ui-view="main" class="main" ></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function(){
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "common/js/require/require.js";
+        script.setAttribute('data-main','common/main.js?v=' + window.CHERRY.version);
+        document.getElementById('head').appendChild(script);
+    })();
+</script>
+ 
+</body>
+</html>

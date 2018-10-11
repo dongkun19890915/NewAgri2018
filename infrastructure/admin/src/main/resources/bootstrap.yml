@@ -1,0 +1,28 @@
+server:
+    port: ${config.server.port:8002}
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: ${config.registry.url:http://localhost:8001/eureka/}
+        registry-fetch-interval-seconds: 30
+    instance:
+        lease-renewal-interval-in-seconds: 30
+        preferIpAddress: true
+#        metadata-map:
+#            user.name: ${security.user.name}
+#            user.password: ${security.user.password}
+
+spring:
+    application:
+        name: admin
+#    cloud:
+#        config:
+#            name: ${spring.application.name}
+#            profile: ${config.profile:default}
+#            label: ${config.label:dev}
+#            discovery:
+#                enabled: true
+#                serviceId: CONFIG-SERVER
+#            fail-fast: true
+#            enabled: true

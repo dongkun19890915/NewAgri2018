@@ -1,0 +1,29 @@
+<!--查看核批历史记录-->
+<div class="mask"></div>
+<div class="insure_correct">
+    <div class="remove_header">
+        <span>核批历史</span>
+        <a href="javascript:void(0)"><i ng-click="newclearViewHide()"></i></a>
+    </div>
+    <div class="insure_content">
+        <table>
+            <tr>
+                <th>核批时间</th>
+                <th>核批人员代码</th>
+                <th>核批人员姓名</th>
+                <th>核批决定</th>
+                <th>核批意见</th>
+            </tr>
+            <tr ng-repeat="d in uwNotionData|orderBy:col:desc">
+                <td ng-bind="d.handleTime|date: 'yyyy-MM-dd'"></td>
+                <td ng-bind="d.handleCode"></td>
+                <td ng-bind="d.handleName"></td>
+                <td ng-bind="d.handleType"></td>
+                <td   class="endorseadvice" ng-bind="d.handleText"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="remove_button no_border">
+        <button class="button_sure" ng-click="newclearViewHide()">退 出</button>
+    </div>
+</div>

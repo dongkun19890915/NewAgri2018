@@ -1,0 +1,108 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔工作台---修改常用功能弹层页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/16 
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="layer-revise" ng-show="checkComFunFlag">
+  <div class="mask"></div>
+  <div class="layer-content">
+    <div class="layer-header">
+      <span>修改常用功能</span>
+      <i class="icon iconfont" ng-click="close()">&#xe632;</i>
+    </div>
+    <div class="layer-con">
+      <div class="layer-con1">
+        <div class="ovh mb15">
+          <span class="t-span">常用功能名称</span>
+          <div>
+            <select class="revise-select fl">
+              <option value="">投保单</option>
+              <option value="">投保单1</option>
+              <option value="">投保单2</option>
+            </select>
+          </div>
+        </div>
+        <div class="ovh revise-bottom">
+          <span class="t-span">常用功能</span>
+          <ul class="comfun">
+            <li>
+              <label style="position: relative">
+                <i class="iconfont">&#xe61d;</i>
+                <div class="choose-background"><span class="choose-dui">√</span></div>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="iconfont">&#xe61c;</i>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="iconfont">&#xe620;</i>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="iconfont">&#xe623;</i>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="iconfont">&#xe626;</i>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="iconfont">&#xe625;</i>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="iconfont">&#xe628;</i>
+              </label>
+            </li>
+          </ul>
+          <button>确认添加</button>
+        </div>
+        <div class="ovh">
+          <span class="t-span">已有常用功能</span>
+          <ul class="has-comfun">
+            <li>
+              <i class="iconfont icon-close">&#xe632;</i>
+              <i class="iconfont">&#xe613;</i>
+              <span>投保单录入</span>
+            </li>
+            <li>
+              <i class="iconfont icon-close">&#xe632;</i>
+              <i class="iconfont">&#xe60c;</i>
+              <span>普通批改</span>
+            </li>
+            <li>
+              <i class="iconfont icon-close">&#xe632;</i>
+              <i class="iconfont">&#xe60b;</i>
+              <span>投保单打印</span>
+            </li>
+            <!--<li>-->
+            <!--<i class="iconfont icon-close">&#xe632;</i>-->
+            <!--<i class="iconfont">&#xe60d;</i>-->
+            <!--<span>保单查询</span>-->
+            <!--</li>-->
+            <li>
+              <i class="iconfont icon-close">&#xe632;</i>
+              <i class="iconfont ml5">&#xe60d;</i>
+              <span>保单查询</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="layer-footer h70">
+      <span class="layer-ok">保 存</span>
+      <span class="layer-cancel">取 消</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+# 服务端口设置
+server:
+  port: 9010
+  maxHttpPostSize: 0
+# 系统相关配置
+sysconfig:
+  # 保单模块
+  policyManage:
+    #正本限制
+    editType:
+      master: MASTER
+      copy: COPY
+    #缴费原因：自缴保费
+    payReason: R10
+    #缴费原因：政府补贴
+    subsidy: RS3,RS4,RS5,RS6,RS7,PS3,PS4,PS5,PS6,PS7
+
+
+

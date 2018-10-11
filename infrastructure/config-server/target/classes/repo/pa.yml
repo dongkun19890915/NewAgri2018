@@ -1,0 +1,25 @@
+server:
+  port: 9003
+  #context-path: /pa-rest
+
+spring:
+    datasource:
+        name: paDatasource
+        url: jdbc:oracle:thin:@47.94.96.232:1521:xe
+        driver-class-name: oracle.jdbc.OracleDriver
+        username: SC_PRPINS
+        password: scprpins@yyjc
+        connectionTimeout: 2000
+
+ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 5000
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000
+
+

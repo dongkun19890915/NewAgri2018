@@ -1,0 +1,25 @@
+server:
+    port: 9007
+    #context-path: /notice-rest
+
+spring:
+    datasource:
+        name: dmsDatasource
+        url: jdbc:oracle:thin:@192.168.0.8:1521:agri
+        driver-class-name: oracle.jdbc.OracleDriver
+        username: notice2
+        password: notice1001
+        connectionTimeout: 2000
+
+ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 5000
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000
+
+

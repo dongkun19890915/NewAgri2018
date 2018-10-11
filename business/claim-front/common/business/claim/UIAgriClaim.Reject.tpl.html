@@ -1,0 +1,106 @@
+<!--
+****************************************************************************
+* DESC       ：国元农险理赔立案任务查询---申请注销/拒赔页面
+* AUTHOR     ：国元农险项目组
+* CREATEDATE ：2017/12/11
+* MODIFYLIST ：Name        Date        Reason/Contents
+* --------------------------------------------------------
+****************************************************************************
+-->
+<div class="section">
+  <div class="content_div content1-div">
+    <div class="queryCriteria">
+      <span class="queryCriteria_title">
+          <label>注销/拒赔信息</label>
+          <span class="click_img" ></span>
+      </span>
+      <div class="condition_table">
+        <ul class="clearfix half-ul">
+          <li class="condition_td fl half-li">
+            <label>申请时间</label>
+            <div class="half-div">
+              <input type="text" ng-model="claim.prpLregist.cancelDate" ng-disabled="true"/>
+            </div>
+          </li>
+          <li class="condition_td fl half-li">
+            <label>申请人</label>
+            <div class="half-div">
+              <input type="text" ng-model="claim.prpLregist.comName" />
+            </div>
+          </li>
+        </ul>
+        <table class="condition-table mt40">
+          <tr class="tr_top">
+            <td>立案号</td>
+            <td>保单号</td>
+            <td class="w11_11">注销/拒赔</td>
+            <td class="w19">注销/拒赔原因</td>
+            <td>被保险人</td>
+            <td>出险地点</td>
+            <td class="w11_11">出险时间</td>
+          </tr>
+          <tr class="tr_content" ng-repeat="(index,result) in rejectList">
+            <td>
+              <div class="w50oh"  ng-bind="result.prpLclaimCancelClaimNo" ng-attr-title="{{result.prpLclaimCancelClaimNo}}"></div>
+            </td>
+            <td>
+              <div class="w50oh" ng-attr-title="{{result.prpLClaimDto.policyNo}}" ng-bind="result.prpLClaimDto.policyNo"></div>
+            </td>
+            <td>
+              <ui-select ng-model="result.caseType">
+                <ui-select-match>
+                  <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in (caseTypeArray | filter:$select.search) track by item.id">
+                  <span ng-bind="item.name"></span>
+                </ui-select-choices>
+              </ui-select>
+            </td>
+            <td  ng-if="result.caseType.id!=1">
+              <ui-select ng-model="result.cancelReason">
+                <ui-select-match placeholder="请选择">
+                  <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in (cancelReasonArray | filter:$select.search) track by item.id">
+                  <span ng-bind="item.name"></span>
+                </ui-select-choices>
+              </ui-select>
+            </td>
+            <td ng-if="result.caseType.id==1">
+              <ui-select ng-model="result.cancelReason">
+                <ui-select-match placeholder="请选择">
+                  <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in (cancelReasonCancel | filter:$select.search) track by item.id">
+                  <span ng-bind="item.name"></span>
+                </ui-select-choices>
+              </ui-select>
+            </td>
+            <td ng-bind="result.insuredName"></td>
+            <!--<td ng-bind="result.caseType"></td>-->
+            <td ng-bind="result.damageAddress"></td>
+            <td ng-bind="result.damageDate"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="content_div content1-div mt20">
+    <div class="queryCriteria">
+                <span class="queryCriteria_title">
+                    <label>注销/拒赔说明</label>
+                    <span class="click_img" ></span>
+                </span>
+      <div class="condition_table">
+        <textarea name="" rows="4" class="long-li" ng-model="claim.prpLclaim.cancelReason"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="btn_tr clearfix mt20">
+    <span  class="btn" ng-disabled="flag"  ng-click="saveReject()">提交</span>
+    <span ng-click="openEleDocumentLayer()">电子单证</span>
+    <span ng-click="goBack()">取消</span>
+  </div>
+</div>
+<!--电子单证弹层-->
+<!--<div ui-view="eleDocument"></div>-->

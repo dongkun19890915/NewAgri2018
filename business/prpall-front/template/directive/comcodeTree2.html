@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="./common/js/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
+<div id="comTreeBox">
+    <div ng-if="switchFlag">
+        <div class="mask"></div>
+    </div>
+    <!--<div ng-include="'tree.html'"></div>-->
+    <!--<script type="text/ng-template" id="nodes_renderer1.html">-->
+        <!--<div class=" comTree-node-content">-->
+
+            <!--<a class=""-->
+               <!--ng-style="{'padding-left':(node.level-1)*20+'px'}"-->
+               <!--data-nodrag>-->
+            <!--<span ng-if="node.childs.length!==0&&node.childs"-->
+                  <!--ng-click="toggleNode(this,node)">-->
+              <!--&lt;!&ndash;ng-class="{  'glyphicon-chevron-right1':node.collapsed,   'glyphicon-chevron-down1': !node.collapsed }"&ndash;&gt;-->
+              <!--<i ng-show="node.collapsed" class="iconfont">&#xe605;</i>-->
+              <!--<i ng-hide="node.collapsed" class="iconfont">&#xea2f;</i>-->
+            <!--</span>-->
+
+                <!--<span ng-if="node.childs==null||node.childs==undefined" style="width: 15px;height: 14px;display: inline-block"></span>-->
+                <!--&lt;!&ndash;<span type="checkbox" ng-class="" style="display: inline-block;width: 14px;height: 14px;border: 1px solid #ccc" class="radioclass" ng-model="node.checked" ng-click="changeNode(node,$parentNodesScope,$parentNodeScope)"></span>&ndash;&gt;-->
+                <!--<div class="check-box" ng-if="multipleFlag" style="float: none;display: inline-block;width: 20px;overflow: inherit;">-->
+                    <!--<label class="checkbox-label"-->
+                           <!--ng-class="{'checkbox-checked':node.checked==true,'is-disabled':ngDisabled || node.disabled}"-->
+                           <!--ng-click="changeNodeMult(node,$parentNodesScope,$parentNodeScope)">-->
+          <!--<span class="check-main" style="position: relative;top:6px;">-->
+            <!--<span style=""></span>-->
+          <!--</span>-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<span ng-bind="node.comCName" ng-style="{cursor:node.childs.length==0&&node.childs?'pointer':'default'}"-->
+                      <!--ng-click="checkNode(this,node)"></span>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;<ol ui-tree-nodes="" ng-model="node.childs" ng-class="{hidden:collapsed}">&ndash;&gt;-->
+            <!--&lt;!&ndash;<li ng-repeat="node in node.childs" ui-tree-node class="comTree-node-li"&ndash;&gt;-->
+                <!--&lt;!&ndash;ng-include="'tree.html'"></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ol>&ndash;&gt;-->
+    <!--</script>-->
+    <input type="text" ng-value="ngValue" ng-if="!multipleFlag"  ng-click="openTree()" readonly style="cursor: pointer">
+    <div class="multi-drop" ng-if="multipleFlag" ng-click="openTree()" style="background-color:#2DBE61;color: #fff;text-align: center;margin-left: 13px;" >
+        展开
+        <!--<span ng-show="ngValue===null||ngValue.length==0">��ѡ��...</span>-->
+        <!--<ul class="multi-drop-ul">-->
+            <!--&lt;!&ndash;<li ng-repeat="item in ngValue track by $index"><span ng-bind="item"></span></li>&ndash;&gt;-->
+            <!--<li ng-repeat=""><span ng-bind=""></span></li>-->
+        <!--</ul>-->
+    </div>
+    <input type="hidden" ng-model="ngModel">
+    <div class="row comTree" ng-show="switchFlag">
+        <div class="all_payment_head layer-header">
+            <span style="color: #fff">适用机构</span>
+            <i class="icon iconfont plusAndReduce" ng-click="returnSwitchFlag()">&#xe632;</i>
+        </div>
+        <div class="comTree-content" >
+            <ul id="treeDemo2"  name="ztree-dddd" class="ztree" style="width:200px;"></ul>
+
+            <input hidden id="getSelectedBtn2" type="button" value="获取选中的值" style="float:left;"/>
+        </div>
+        <div class="layer-footer">
+            <i class="greenButton" ng-show="!backBtnFlag" ng-click="offswitchFlag();">确定</i>
+            <i class="greenButton" ng-show="!backBtnFlag" ng-click="refreshTree();">重置</i>
+            <i  class="greenButton" ng-click="returnSwitchFlag();">取消</i>
+        </div>
+    </div>
+
+</div>

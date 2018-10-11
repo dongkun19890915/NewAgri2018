@@ -1,0 +1,102 @@
+<!-- 支付信息维护 -->
+<div class="main">
+    <div class="section commentWidth" style="height:auto;">
+        <div class="position">
+            <span>当前位置：</span>
+            <span class="local-fir">支付信息维护> </span>
+            <span class="local-sec">支付信息查询</span>
+        </div>
+        <div class="content_div content1-div">
+            <div class="queryCriteria">
+			<span class="queryCriteria_title">
+				<label>查询条件</label>
+			</span>
+                <div class="condition_table" id="pt4">
+                    <ul class="clearfix">
+                        <li class="condition_td teaR fl">
+                            <label>批单号码</label>
+                            <div>
+                                <input ng-model="payInfoCondition.endorseNo" type="text"  onkeyup="this.value=this.value.replace(/[^\d-]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d-]/g,'')"
+                                       class="" ng-blur="checkendorseNo($event,payInfoCondition.endorseNo)" maxlength="40" ng-class="{'checkOutBdRed':check.endorseNo}">
+                                <s ng-bind="check.endorseNo"></s>
+                            </div>
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label>保单号码</label>
+                            <div>
+                                <input type="text" ng-model="payInfoCondition.policyNo"
+                                       class="" ng-blur="checkpolicyNo($event,payInfoCondition.policyNo)" maxlength="40" ng-class="{'checkOutBdRed':check.policyNo}">
+                                <s ng-bind="check.policyNo"></s>
+                            </div>
+
+                        </li>
+                        <li class="condition_td teaL fl">
+                            <label>投保人名称</label>
+                            <div>
+                                <input type="text" ng-model="payInfoCondition.insuredName"
+                                       class="" ng-blur="checkinsuredName($event,payInfoCondition.insuredName)" maxlength="40" ng-class="{'checkOutBdRed':check.insuredName}">
+                                <s ng-bind="check.insuredName"></s>
+                            </div>
+                        </li>
+                        <li class="condition_td teaR fl">
+                            <label>被保险人</label>
+                            <div>
+                                <input type="text" ng-model="payInfoCondition.appliName"
+                                       class="" ng-blur="checkappliName($event,payInfoCondition.appliName)" maxlength="40" ng-class="{'checkOutBdRed':check.appliName}">
+                                <s ng-bind="check.appliName"></s>
+                            </div>
+                        </li>
+                        <li class="condition_td teaC fl">
+                            <label class="teaR">
+                                <span>费用类型</span>
+                            </label>
+                            <div class="codeType" style="max-width:300px; width: 55%;float: left;" >
+                                <code-type base-code="CostType" ng-model='payInfoCondition.costType'></code-type>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="btn_tr clearfix">
+                        <span class="fl" ng-click="submit()">查询</span>
+                        <span class="fr" ng-click="reset()">重置</span>
+                    </div>
+                </div>
+            </div>
+            <div class="queryResult">
+                <div class="queryResult_title clearfix">
+                    <span class="fl">查询结果</span>
+                    <label class="fr" ng-click="return()">返回</label>
+                    <label class="fr" ng-click="goUIPrPoEnpayManageEnter()">支付信息录入</label>
+                </div>
+                <table>
+                    <tr class="tr_top">
+                        <td class="w10">序号</td>
+                        <td class="w10">批单号码</td>
+                        <td class="w10">保单号码</td>
+                        <td class="w10">被保险人</td>
+                        <td class="w10">承保机构</td>
+                        <td class="w10">结算金额</td>
+                        <td class="w10">费用类型</td>
+                        <td class="w10">操作</td>
+                    </tr>
+                    <tr class="tr_content F2F2F2" ng-repeat="info in QueryList track by $index">
+                        <td>{{$index+1}}</td>
+                        <td  class=""  ng-bind="info.endorseNo"></td><!-- ng-click="showView(info)" -->
+                        <td ng-bind="info.policyNo"></td>
+                        <td ng-bind="info.insuredName"></td>
+                        <td ng-bind="info.makeComName"></td>
+                        <td ng-bind="info.chgPremium.toFixed(2)"></td>
+                        <td ng-bind="info.costType"></td>
+                        <td>
+                            <i class="iconfont cur" style="font-size: 24px;" title="查看" ng-click="showView(info)">&#xe620;</i>
+                            <i class="iconfont cur" style="font-size: 24px;" title="修改" ng-click="showModify(info)">&#xe62c;</i>
+                        </td>
+                    </tr>
+                </table>
+                <div ng-show="isEmptyObject(QueryList)||QueryList.length==0" ng-class="{'not-query':isEmptyObject(QueryList),'query-null':QueryList.length==0}" class="not-query"></div>
+                <div class="index_page">
+                    <tm-pagination conf="paginationConfmm"></tm-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
