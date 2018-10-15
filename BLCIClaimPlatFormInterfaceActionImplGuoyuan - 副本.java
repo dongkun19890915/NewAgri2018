@@ -1,4 +1,4 @@
-package com.sinosoft.ciplatform.bl.action.custom;
+ï»¿package com.sinosoft.ciplatform.bl.action.custom;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
@@ -137,7 +137,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		BLCIClaimSYXPlatFormInterfaceAction {
 	/**
 	 * 
-	 * ±¨°¸2011
+	 * æŠ¥æ¡ˆ2011
 	 */
 	protected Regist getRegist(DBManager dbManager, String registNo, String registType)
 			throws SQLException, Exception {
@@ -175,10 +175,10 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		regist.setReportDate(reportDate);
 		regist.setReportorName(prpLregistDto.getReportorName());
 		regist.setDriverName(prpLregistDto.getDriverName());
-		regist.setReportPhoneNumber(prpLregistDto.getReportorPhoneNumber());//À´µçºÅÂë
+		regist.setReportPhoneNumber(prpLregistDto.getReportorPhoneNumber());//æ¥ç”µå·ç 
 		regist.setCertiType(certiType);
 		regist.setCertiCode(certiCode);
-		regist.setDamageAddress(prpLregistDto.getDamageAddress());         //³öÏÕµØµãÃû³Æ
+		regist.setDamageAddress(prpLregistDto.getDamageAddress());         //å‡ºé™©åœ°ç‚¹åç§°
 		regist.setDamageDate(damageDate);
 		regist.setDamageContext(getDamageContext(dbManager, registNo));
 		regist.setHandleUnit(handleUnit);
@@ -186,7 +186,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		regist.setSubrogateFlag(prpLregistDto.getSubrogateFlag());
 		if("".equals(regist.getSubrogateFlag()))regist.setSubrogateFlag("0");
 		regist.setLossCauseCode(prpLregistDto.getDamageCode());
-		System.out.println("±¨°¸ÈÕÆÚ£ºreportDate="+reportDate);
+		System.out.println("æŠ¥æ¡ˆæ—¥æœŸï¼šreportDate="+reportDate);
         String Rconditions = "registNo='"+registNo+"'";
         String policyNo = "";
         ArrayList<PrpLRegistRPolicyDto> prpLRegistRPolicyList = (ArrayList<PrpLRegistRPolicyDto>) new BLPrpLRegistRPolicyFacade().findByConditions(Rconditions);
@@ -196,16 +196,16 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
           	  policyNo = prpLRegistRPolicyDto.getPolicyNo();
             }
         }
-        //»ñµÃ±£µ¥±êµÄ³µ¶ÔÏó
+        //è·å¾—ä¿å•æ ‡çš„è½¦å¯¹è±¡
 		PrpCitemCarDto prpCitemCarDto = new BLPrpCitemCarAction()
 				.findByPrimaryKey(dbManager, policyNo, 1);
-		//³öÏÕ±êµÄ³µºÅÅÆºÅÂë
+		//å‡ºé™©æ ‡çš„è½¦å·ç‰Œå·ç 
 		String licenseNo = "";
 		if (prpLregistDto != null) {
 			licenseNo = prpLregistDto.getLicenseNo();
 		}
 		regist.setLicenseNo(licenseNo);
-		//³öÏÕ±êµÄ³µºÅÅÆÖÖÀà´úÂë
+		//å‡ºé™©æ ‡çš„è½¦å·ç‰Œç§ç±»ä»£ç 
 		regist.setLicenseType(prpCitemCarDto.getLicenseKindCode());
 		if("25".equals(prpCitemCarDto.getLicenseKindCode())){
 			regist.setLicenseType("02");
@@ -217,7 +217,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	}
 	/***
 	 * 
-	 * Á¢°¸2011
+	 * ç«‹æ¡ˆ2011
 	 */
 	protected Claim getClaim(DBManager dbManager, String claimNo,String registType)
 			throws SQLException, Exception {
@@ -251,7 +251,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	
 	/***
 	 * 
-	 * ²é¿±2012
+	 * æŸ¥å‹˜2012
 	 */
 	protected Check getCheck(DBManager dbManager, String registNo,String registType)
 			throws SQLException, Exception {
@@ -266,8 +266,8 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		Check check = new Check();
 		BLPrpDuserAction prpDuserAction = new BLPrpDuserAction();
 		PrpDuserDto prpDuserDto = null;
-		String checkIdentifyNumber = "";//²é¿±ÈËÔ±Éí·İÖ¤ºÅ
-		check.setDamageDate(damageDate); //»ñÈ¡³öÏÕÊ±¼ä
+		String checkIdentifyNumber = "";//æŸ¥å‹˜äººå‘˜èº«ä»½è¯å·
+		check.setDamageDate(damageDate); //è·å–å‡ºé™©æ—¶é—´
 		check.setRegistNo(registNo);
 		String strPrplcheckreportCon = " registNo='"+registNo+"' and reportcode='CRY052'";
 		BLPrplcheckreportAction bLPrplcheckreportAction = new BLPrplcheckreportAction();
@@ -295,20 +295,20 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		}
 		String fieldType = "";
 		String isSingleAccident = "";
-		String isPersonInjured = "";//ÊÇ·ñ°üº¬ÈËÉË±êÖ¾
-		String isProtectLoss = "";//ÊÇ·ñ°üº¬²ÆËğ
+		String isPersonInjured = "";//æ˜¯å¦åŒ…å«äººä¼¤æ ‡å¿—
+		String isProtectLoss = "";//æ˜¯å¦åŒ…å«è´¢æŸ
 		ArrayList  checkreportList = null;
 		ArrayList  checkreportList1 = null;
 		ArrayList  licenseNoList = null;
 		ArrayList  indemnityDutyList = null;
 		ArrayList  damageReasonList = null;
-		String strreport = " registNo='"+registNo+"' and reportcode='CRY011'";//ÏÖ³¡²é¿±ÀàĞÍ
-		String strreport1 = " registNo='"+registNo+"' and reportcode='CRY049'";//ÊÂ¹ÊÀàĞÍ
-		String strrobbery = " registNo='"+registNo+"' and reportcode='CRD011'";//²é¿±ÀàĞÍ
-		String strLicenseNo = " registNo='"+registNo+"' and reportcode='CRY065'";//³öÏÕ³µÁ¾¼İÊ»Ö¤ºÅÂë
-		String strLicenseNoR = " registNo='"+registNo+"' and reportcode='CRD063'";//³öÏÕ³µÁ¾¼İÊ»Ö¤ºÅÂë
-		String indemnityDuty = " registNo='"+registNo+"' and reportcode='CRY052'";//Ô¤¹À±êµÄ³µÊÂ¹ÊÔğÈÎ
-		String damageReason = " registNo='"+registNo+"' and reportcode='CRY068'";//³öÏÕÔ­Òò
+		String strreport = " registNo='"+registNo+"' and reportcode='CRY011'";//ç°åœºæŸ¥å‹˜ç±»å‹
+		String strreport1 = " registNo='"+registNo+"' and reportcode='CRY049'";//äº‹æ•…ç±»å‹
+		String strrobbery = " registNo='"+registNo+"' and reportcode='CRD011'";//æŸ¥å‹˜ç±»å‹
+		String strLicenseNo = " registNo='"+registNo+"' and reportcode='CRY065'";//å‡ºé™©è½¦è¾†é©¾é©¶è¯å·ç 
+		String strLicenseNoR = " registNo='"+registNo+"' and reportcode='CRD063'";//å‡ºé™©è½¦è¾†é©¾é©¶è¯å·ç 
+		String indemnityDuty = " registNo='"+registNo+"' and reportcode='CRY052'";//é¢„ä¼°æ ‡çš„è½¦äº‹æ•…è´£ä»»
+		String damageReason = " registNo='"+registNo+"' and reportcode='CRY068'";//å‡ºé™©åŸå› 
 		String damageReasonRob = " registNo='"+registNo+"' and reportcode='CRD066'";
 		if(prpLregistDto.getLossType().indexOf("3")>-1){
 			checkreportList = (ArrayList)new BLPrplcheckreportAction().findByConditions(dbManager, strrobbery);
@@ -352,24 +352,24 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			PrplcheckreportDto checkreportDto = (PrplcheckreportDto)licenseNoList.get(0);
 			DriverLicenseNo = checkreportDto.getReportvalue();
 		}
-		//Ò»°ã°¸¼şµÄ±êµÄ³µÊÂ¹ÊÔğÈÎÈ¡²é¿±±¨¸æÖĞ×îĞÂÂ¼ÈëµÄÊÂ¹ÊÔğÈÎ
+		//ä¸€èˆ¬æ¡ˆä»¶çš„æ ‡çš„è½¦äº‹æ•…è´£ä»»å–æŸ¥å‹˜æŠ¥å‘Šä¸­æœ€æ–°å½•å…¥çš„äº‹æ•…è´£ä»»
 		if(null!=indemnityDutyList&&indemnityDutyList.size()>0){
 			PrplcheckreportDto checkreportDto = (PrplcheckreportDto)indemnityDutyList.get(0);
 			check.setIndemnityDuty(checkreportDto.getReportvalue());
 		}
-		//³öÏÕÔ­ÒòÈ¡²é¿±±¨¸æÖĞÂ¼ÈëµÄ³öÏÕÔ­Òò
+		//å‡ºé™©åŸå› å–æŸ¥å‹˜æŠ¥å‘Šä¸­å½•å…¥çš„å‡ºé™©åŸå› 
 		if(null!=damageReasonList&&damageReasonList.size()>0){
 			PrplcheckreportDto checkreportDto = (PrplcheckreportDto)damageReasonList.get(0);
 			check.setLossCauseCode(checkreportDto.getReportvalue());
 		}
-		//³öÏÕÔ­ÒòÈ¡²é¿±±¨¸æÖĞÂ¼ÈëµÄ³öÏÕÔ­Òò
+		//å‡ºé™©åŸå› å–æŸ¥å‹˜æŠ¥å‘Šä¸­å½•å…¥çš„å‡ºé™©åŸå› 
 		if(null!=checkreportList1&&checkreportList1.size()>0){
 			check.setIsSingleAccident(isSingleAccident);
 		}else{
 			check.setIsSingleAccident(isSingleAccident);
 		}
 		ArrayList carLossList =  (ArrayList)new UICheckAction().findByCheckConditions(dbManager, registNo,tableName,true);
-		//»ñÈ¡±£µ¥ºÅ
+		//è·å–ä¿å•å·
 		String Rconditions = "registNo='"+registNo+"'";
 		String policyNo = "";
         ArrayList<PrpLRegistRPolicyDto> prpLRegistRPolicyList = (ArrayList<PrpLRegistRPolicyDto>) new BLPrpLRegistRPolicyFacade().findByConditions(Rconditions);
@@ -378,29 +378,29 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
             	policyNo=prpLRegistRPolicyDto.getPolicyNo();
             }
         }
-        String BrandName = "";//ËğÊ§³µÁ¾³§ÅÆĞÍºÅ
-        String EngineNo = "";//ËğÊ§³µÁ¾·¢¶¯»úºÅ
-        String vinNo = "";//ËğÊ§³µÁ¾³µ¼ÜºÅ
+        String BrandName = "";//æŸå¤±è½¦è¾†å‚ç‰Œå‹å·
+        String EngineNo = "";//æŸå¤±è½¦è¾†å‘åŠ¨æœºå·
+        String vinNo = "";//æŸå¤±è½¦è¾†è½¦æ¶å·
 		ArrayList<PrpCitemCarDto> PrpCitemCarItem =
 			(ArrayList<PrpCitemCarDto>)new com.sinosoft.claim.resource.dtofactory.domain.DBPrpCitemCar(dbManager).findByConditions("policyNo ='"+policyNo+"'");
-		//»ñÈ¡±êµÄ³µ³§ÅÆĞÍºÅºÍ·¢¶¯»úºÅ
+		//è·å–æ ‡çš„è½¦å‚ç‰Œå‹å·å’Œå‘åŠ¨æœºå·
 		if(PrpCitemCarItem.size() > 0){
 			BrandName = PrpCitemCarItem.get(0).getBrandName();
 			EngineNo = PrpCitemCarItem.get(0).getEngineNo();
 			vinNo = PrpCitemCarItem.get(0).getFrameNo();
 		}
-		//»ñÈ¡³µÁ¾ĞÅÏ¢ºÍ¼İÊ»Ô±ĞÅÏ¢
+		//è·å–è½¦è¾†ä¿¡æ¯å’Œé©¾é©¶å‘˜ä¿¡æ¯
 		ArrayList carlosslist = new ArrayList();
 		ArrayList driverList = new ArrayList();
         carlosslist = (ArrayList)new BLPrpLcarLossAction().findByConditions(dbManager, "registNo='"+registNo+"' order by lossitemcode asc ");
 		driverList = (ArrayList)new BLPrpLdriverAction().findByConditions(dbManager, "registNo='"+registNo+"' order by serialno asc ");
-		//²é¿±µØµã
+		//æŸ¥å‹˜åœ°ç‚¹
 		String checkSite = "";
 		PrpLcheckDto prpLcheckSite = new BLPrpLcheckAction().findByPrimaryKey(dbManager, registNo, 1);
 		if(prpLcheckSite != null && !"".equals(prpLcheckSite)){
 			checkSite = prpLcheckSite.getCheckSite();
 		}
-		//²é¿±Çé¿öËµÃ÷
+		//æŸ¥å‹˜æƒ…å†µè¯´æ˜
 		String checRemark = "";
 		String conditionsff = "registno='"+registNo+"' ";
 		Collection checkTextList = new BLPrpLregistTextAction().findByConditions(dbManager, conditionsff);
@@ -446,10 +446,10 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}else{
 				vehicle.setVin("");
 			}
-			if("ĞÂ³µ".equals(((Vehicle)carLossList.get(i)).getLicensePlateNo())){
-				vehicle.setLicensePlateNo("ÁÙÊ±ÅÆÕÕÎ´ÉÏÅÆ");
+			if("æ–°è½¦".equals(((Vehicle)carLossList.get(i)).getLicensePlateNo())){
+				vehicle.setLicensePlateNo("ä¸´æ—¶ç‰Œç…§æœªä¸Šç‰Œ");
 			}
-			//»ñÈ¡²é¿±ÈËÔ±Éí·İÖ¤ºÅ
+			//è·å–æŸ¥å‹˜äººå‘˜èº«ä»½è¯å·
 			prpDuserDto = new PrpDuserDto();
 			prpDuserDto = prpDuserAction.findByPrimaryKey(dbManager, ((Vehicle)carLossList.get(i)).getCheckerCode());
 			vehicle.setCheckerCertiCode(prpDuserDto.getIdentifyNumber());
@@ -481,13 +481,13 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		   checkEndTime = sdf1.format(sdf.parse(((ciProtect)protectList.get(i)).getCheckEndTime()));
 		   ((ciProtect)protectList.get(i)).setCheckStartTime(checkStartTime);
 		   ((ciProtect)protectList.get(i)).setCheckEndTime(checkEndTime);
-		   	//»ñÈ¡²é¿±ÈËÔ±Éí·İÖ¤ºÅ
+		   	//è·å–æŸ¥å‹˜äººå‘˜èº«ä»½è¯å·
 			prpDuserDto = new PrpDuserDto();
 			prpDuserDto = prpDuserAction.findByPrimaryKey(dbManager, ((ciProtect)protectList.get(i)).getCheckerCode());
 			((ciProtect)protectList.get(i)).setCheckerCertiCode(prpDuserDto.getIdentifyNumber());
 			((ciProtect)protectList.get(i)).setCheckAddr(checkSite);
 			((ciProtect)protectList.get(i)).setCheckDesc(checRemark);
-			//ËğÊ§ÊıÁ¿
+			//æŸå¤±æ•°é‡
 			ArrayList<PrpLpropDto> prpLpropList = (ArrayList<PrpLpropDto>)new BLPrpLpropAction().findByConditions(dbManager, " registNo = '"+registNo+"' and serialno = '"+String.valueOf(i+1)+"' ");
 			int propNum = 0;
 			for (int j = 0; j < prpLpropList.size(); j++) {
@@ -522,7 +522,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			checkEndTime = sdf1.format(sdf.parse(((ciPerson)personLossList.get(i)).getCheckEndTime()));
 			((ciPerson)personLossList.get(i)).setCheckStartTime(checkStartTime);
 			((ciPerson)personLossList.get(i)).setCheckEndTime(checkEndTime);
-			//»ñÈ¡²é¿±ÈËÔ±Éí·İÖ¤ºÅ
+			//è·å–æŸ¥å‹˜äººå‘˜èº«ä»½è¯å·
 			prpDuserDto = new PrpDuserDto();
 			prpDuserDto = prpDuserAction.findByPrimaryKey(dbManager, ((ciPerson)personLossList.get(i)).getCheckerCode());
 			((ciPerson)personLossList.get(i)).setCheckerCertiCode(prpDuserDto.getIdentifyNumber());
@@ -540,7 +540,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	
 	/***
 	 * 
-	 * ¶¨ºËËğ2012
+	 * å®šæ ¸æŸ2012
 	 */
 	protected CertaVerif getCertaVerif(DBManager dbManager, String registNo,String registType)
 			throws SQLException, Exception {
@@ -548,9 +548,9 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMddHHmm");
 		String estimateStartTime = "";
 		String underEndTime = "";
-		double underTotalDefLoss = 0.0D;//ºËËğ×Ü½ğ¶î
-		String isPersonInjured = "";//ÊÇ·ñ°üº¬ÈËÉË±êÖ¾
-		String isProtectLoss = "";//ÊÇ·ñ°üº¬²ÆËğ
+		double underTotalDefLoss = 0.0D;//æ ¸æŸæ€»é‡‘é¢
+		String isPersonInjured = "";//æ˜¯å¦åŒ…å«äººä¼¤æ ‡å¿—
+		String isProtectLoss = "";//æ˜¯å¦åŒ…å«è´¢æŸ
 		PrpLregistDto prpLregistDto = new BLPrpLregistAction().findByPrimaryKey(dbManager,registNo);
 		DateTime damageDate = prpLregistDto.getDamageStartDate();
 		CertaVerif certaVerif = new CertaVerif();
@@ -588,7 +588,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		ArrayList  checkreportList1 = null;
 		ArrayList  checkreportList2 = null;
 		ArrayList  checkreportList3 = null;
-		String strreport1 = " registNo='"+registNo+"' and reportcode='CRY049'";//ÊÂ¹ÊÀàĞÍ
+		String strreport1 = " registNo='"+registNo+"' and reportcode='CRY049'";//äº‹æ•…ç±»å‹
 		String strField = " registNo='"+registNo+"' and reportcode='CRY011'";
 		String strFieldR = " registNo='"+registNo+"' and reportcode='CRD011'";
 		String strCertiType = " registNo='"+registNo+"' and reportcode='CRY061'";
@@ -597,9 +597,9 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		String strCertiCodeR = " registNo='"+registNo+"' and reportcode='CRD060'";
 		String strLicenseNo = " registNo='"+registNo+"' and reportcode='CRY065'";
 		String strLicenseNoR = " registNo='"+registNo+"' and reportcode='CRD063'";
-		String strHotAndWater = " registNo='"+registNo+"' and reportcode='CRY068'";//³öÏÕÔ­Òò£¬°üº¬»ğ×Ô±¬¡¢Ë®ÑÍ
-	//	String strWater = " registNo='"+registNo+"' and reportcode='YIBC1020'";//ÔâË®ÑÍ
-        if(prpLregistDto.getLossType().indexOf("3")>-1){//ÊÇ·ñµÁÇÀÏÕ
+		String strHotAndWater = " registNo='"+registNo+"' and reportcode='CRY068'";//å‡ºé™©åŸå› ï¼ŒåŒ…å«ç«è‡ªçˆ†ã€æ°´æ·¹
+	//	String strWater = " registNo='"+registNo+"' and reportcode='YIBC1020'";//é­æ°´æ·¹
+        if(prpLregistDto.getLossType().indexOf("3")>-1){//æ˜¯å¦ç›—æŠ¢é™©
         	fieldTypeList = (ArrayList)new BLPrplcheckreportAction().findByConditions(dbManager, strFieldR);
 			certiTypeList = (ArrayList)new BLPrplcheckreportAction().findByConditions(dbManager, strCertiTypeR);
 			certiCodeList = (ArrayList)new BLPrplcheckreportAction().findByConditions(dbManager, strCertiCodeR);
@@ -644,7 +644,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		}else{
 			isSingleAccident="1";
 		}
-		if(null!=checkreportList2&&checkreportList2.size()>0){//»ğ×Ô±¬
+		if(null!=checkreportList2&&checkreportList2.size()>0){//ç«è‡ªçˆ†
 			PrplcheckreportDto checkreportDto = (PrplcheckreportDto)checkreportList2.get(0);
 			if("Y".equals(checkreportDto.getFlag())){
 				reportvalue = checkreportDto.getReportvalue();
@@ -667,7 +667,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			isHotSinceDetonation = "0";
 			isWaterFlooded = "0";
 		}
-//		if(null!=checkreportList3&&checkreportList3.size()>0){//Ë®ÑÍ
+//		if(null!=checkreportList3&&checkreportList3.size()>0){//æ°´æ·¹
 //			String reportvalue3 = "";
 //			PrplcheckreportDto checkreportDto = (PrplcheckreportDto)checkreportList3.get(0);
 //			if("Y".equals(checkreportDto.getFlag())){
@@ -692,7 +692,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		}
 		if(null!=certiCodeList&&certiCodeList.size()>0){
 			PrplcheckreportDto checkreportDto = (PrplcheckreportDto)certiCodeList.get(0);
-			certiCode = checkreportDto.getReportvalue();//¼İÊ»Ô±Ö¤¼şºÅÂë
+			certiCode = checkreportDto.getReportvalue();//é©¾é©¶å‘˜è¯ä»¶å·ç 
 		}else{
 			certiCode="342224198705070737";
 		}
@@ -701,14 +701,14 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		if(null!=checkreportList&&checkreportList.size()>0){
 			PrplcheckreportDto checkreportDto = (PrplcheckreportDto)checkreportList.get(0);
 			if("Y".equals(checkreportDto.getFlag())){
-				certaVerif.setOptionType(CodeTransfer.OptionType.covrentPlatFormCode(checkreportDto.getReportvalue()));//ÊÂ¹Ê´¦Àí²¿ÃÅ
+				certaVerif.setOptionType(CodeTransfer.OptionType.covrentPlatFormCode(checkreportDto.getReportvalue()));//äº‹æ•…å¤„ç†éƒ¨é—¨
 			}else{
 				certaVerif.setOptionType("9");
 			}
 		}else{
 		   certaVerif.setOptionType("9");
 		}
-		//»¥Åö×ÔÅâ±êÖ¾
+		//äº’ç¢°è‡ªèµ”æ ‡å¿—
 		if("2".equals(prpLregistDto.getClaimType())){
 			certaVerif.setPaySelfFlag("1");
 		}else{
@@ -731,7 +731,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
             	policyNo=prpLRegistRPolicyDto.getPolicyNo();
             }
         }
-        //»ñµÃ±£µ¥±êµÄ³µ¶ÔÏó
+        //è·å¾—ä¿å•æ ‡çš„è½¦å¯¹è±¡
         String BrandName = "";
         String EngineNo = "";
 		PrpCitemCarDto prpCitemCarDto = new BLPrpCitemCarAction()
@@ -776,8 +776,8 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				((Vehicle)carLossList.get(i)).setDriverLicenseNo("");
 			}
 			
-			if("ĞÂ³µ".equals(((Vehicle)carLossList.get(i)).getLicensePlateNo())){
-				((Vehicle)carLossList.get(i)).setLicensePlateNo("ÁÙÊ±ÅÆÕÕÎ´ÉÏÅÆ");
+			if("æ–°è½¦".equals(((Vehicle)carLossList.get(i)).getLicensePlateNo())){
+				((Vehicle)carLossList.get(i)).setLicensePlateNo("ä¸´æ—¶ç‰Œç…§æœªä¸Šç‰Œ");
 			}
 			
 			if(((Vehicle)carLossList.get(i)).getIsRobber().indexOf("G")>-1){
@@ -790,15 +790,15 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			underEndTime = sdf1.format(sdf.parse(((Vehicle)carLossList.get(i)).getUnderEndTime()));
 			((Vehicle)carLossList.get(i)).setEstimateStartTime(estimateStartTime);
 			((Vehicle)carLossList.get(i)).setUnderEndTime(underEndTime);
-			sumCarLoss += ((Vehicle)carLossList.get(i)).getUnderDefLoss();//³µÁ¾ºËËğ½ğ¶î
-			if("0".equals(((Vehicle)carLossList.get(i)).getIsTotalLoss())){//±¾µØÀíÅâÏµÍ³£º0-ÊÇ£»1-·ñ
-				((Vehicle)carLossList.get(i)).setIsTotalLoss("1");//ÊÇÈ«Ëğ
+			sumCarLoss += ((Vehicle)carLossList.get(i)).getUnderDefLoss();//è½¦è¾†æ ¸æŸé‡‘é¢
+			if("0".equals(((Vehicle)carLossList.get(i)).getIsTotalLoss())){//æœ¬åœ°ç†èµ”ç³»ç»Ÿï¼š0-æ˜¯ï¼›1-å¦
+				((Vehicle)carLossList.get(i)).setIsTotalLoss("1");//æ˜¯å…¨æŸ
 			}else{
-				((Vehicle)carLossList.get(i)).setIsTotalLoss("0");//²»ÊÇÈ«Ëğ
+				((Vehicle)carLossList.get(i)).setIsTotalLoss("0");//ä¸æ˜¯å…¨æŸ
 			}
-			((Vehicle)carLossList.get(i)).setIsHotSinceDetonation(isHotSinceDetonation);//»ğ×Ô±¬
-			((Vehicle)carLossList.get(i)).setIsWaterFlooded(isWaterFlooded);//Ë®ÑÍ
-			((Vehicle)carLossList.get(i)).setWaterFloodedLevel(waterFloodedLevel);//Ë®ÑÍµÈ¼¶
+			((Vehicle)carLossList.get(i)).setIsHotSinceDetonation(isHotSinceDetonation);//ç«è‡ªçˆ†
+			((Vehicle)carLossList.get(i)).setIsWaterFlooded(isWaterFlooded);//æ°´æ·¹
+			((Vehicle)carLossList.get(i)).setWaterFloodedLevel(waterFloodedLevel);//æ°´æ·¹ç­‰çº§
 			lossP = ((Vehicle)carLossList.get(i)).getLossPart().split(",");
 			for(int l=0;l<lossP.length;l++){
 				if("".equals(lossP[l])){
@@ -809,12 +809,12 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				}
 			}
 			((Vehicle)carLossList.get(i)).setLossPartList(lossPartList);
-			//¶¨ËğÈËÔ±Éí·İÖ¤ºÅÂë
+			//å®šæŸäººå‘˜èº«ä»½è¯å·ç 
 			prpDuserDto = new PrpDuserDto();
 			prpDuserDto = prpDuserAction.findByPrimaryKey(dbManager, ((Vehicle)carLossList.get(i)).getEstimateCode());
 			((Vehicle)carLossList.get(i)).setEstimateCertiCode(prpDuserDto.getIdentifyNumber());
 			
-			String verifCertiCode = "";//ºËËğÈËÔ±Éí·İÖ¤ºÅÂë
+			String verifCertiCode = "";//æ ¸æŸäººå‘˜èº«ä»½è¯å·ç 
 			ArrayList swfLogListVerif= (ArrayList)new BLSwfLogAction().findByConditions(dbManager, " registNo = '"+registNo+"' and nodetype = 'verif' and  lossItemCode = '"+((Vehicle)carLossList.get(i)).getLossItemCode()+"' order by submittime desc");
 			if(swfLogListVerif != null && swfLogListVerif.size() > 0){
 				com.sinosoft.claim.dto.domain.SwfLogDto swfLogdto2 = (com.sinosoft.claim.dto.domain.SwfLogDto) swfLogListVerif.get(0);
@@ -828,7 +828,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}
 			((Vehicle)carLossList.get(i)).setUnderWriteCertiCode(verifCertiCode);
 			
-			//Åä¼ş×Ü¹¤Ê±Îª¿Õ
+			//é…ä»¶æ€»å·¥æ—¶ä¸ºç©º
 			BigDecimal ManHour =new BigDecimal("0");
 			String strSQL = "registno='"+registNo+"' and lossitemcode = '"+((Vehicle)carLossList.get(i)).getMainThird()+"' ";
 			ArrayList<PrpLrepairFeeDto> prpLrepairFeeList= (ArrayList<PrpLrepairFeeDto>) new BLPrpLrepairFeeAction().findByConditions(dbManager, strSQL);
@@ -844,7 +844,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				}
 				((Vehicle)carLossList.get(i)).setTotalManHour(String.valueOf(ManHour));
 			
-			//»»¼şÏîÄ¿Çåµ¥
+			//æ¢ä»¶é¡¹ç›®æ¸…å•
 			String strSQL1 = "registno='"+registNo+"' and lossitemcode = '"+((Vehicle)carLossList.get(i)).getMainThird()+"' ";
 			ArrayList<PrpLcomponentDto> PrpLcomponentList= (ArrayList<PrpLcomponentDto>) new BLPrpLcomponentAction().findByConditions(dbManager, strSQL1);
 				if(PrpLcomponentList.size() > 0){
@@ -875,13 +875,13 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			((ciProtect)propLossList.get(i)).setEstimateStartTime(estimateStartTime);
 			((ciProtect)propLossList.get(i)).setUnderEndTime(underEndTime);
 			((ciProtect)propLossList.get(i)).setFieldType(fieldType);
-			sumPropLoss += ((ciProtect)propLossList.get(i)).getUnderDefLoss();//²Æ²úºËËğ½ğ¶î
+			sumPropLoss += ((ciProtect)propLossList.get(i)).getUnderDefLoss();//è´¢äº§æ ¸æŸé‡‘é¢
 			
-			//¶¨ËğÈËÔ±Éí·İÖ¤ºÅÂë
+			//å®šæŸäººå‘˜èº«ä»½è¯å·ç 
 			prpDuserDto = new PrpDuserDto();
 			prpDuserDto = prpDuserAction.findByPrimaryKey(dbManager, ((ciProtect)propLossList.get(i)).getEstimateCode());
 			((ciProtect)propLossList.get(i)).setEstimateCertiCode(prpDuserDto.getIdentifyNumber());
-			//ºËËğÈËÔ±Éí·İÖ¤
+			//æ ¸æŸäººå‘˜èº«ä»½è¯
 			String propvcheckerCertiCode = "";
 			ArrayList swfLogListSurveTemp= (ArrayList)new BLSwfLogAction().findByConditions(dbManager, " registNo = '"+registNo+"' and nodetype = 'propv' and lossItemCode ='"+((ciProtect)propLossList.get(i)).getLossitemcode()+"' order by submittime desc");
 			if(swfLogListSurveTemp != null && swfLogListSurveTemp.size() > 0){
@@ -892,7 +892,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				}
 			}
 			((ciProtect)propLossList.get(i)).setUnderWriteCertiCode(propvcheckerCertiCode);
-			//ËğÊ§ÊıÁ¿
+			//æŸå¤±æ•°é‡
 			ArrayList<PrpLpropDto> prpLpropList = (ArrayList<PrpLpropDto>)new BLPrpLpropAction().findByConditions(dbManager, " registNo = '"+registNo+"' and serialno = '"+String.valueOf(i+1)+"' ");
 			int propNum = 0;
 			for (int j = 0; j < prpLpropList.size(); j++) {
@@ -929,12 +929,12 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			hospitalInfoList.add(((ciPerson)personLossList.get(i)).getHospitalname());
 			((ciPerson)personLossList.get(i)).setHospitalInfoList(hospitalInfoList);
 			((ciPerson)personLossList.get(i)).setInjuryIdentifyInfoDataList(hospitalInfoList);
-			sumPersonLoss += ((ciPerson)personLossList.get(i)).getUnderDefLoss();//ÈËÉËºËËğ½ğ¶î
-			//ÈËÉË¸ú×ÙÈËÔ±Éí·İÖ¤ºÅÂë
+			sumPersonLoss += ((ciPerson)personLossList.get(i)).getUnderDefLoss();//äººä¼¤æ ¸æŸé‡‘é¢
+			//äººä¼¤è·Ÿè¸ªäººå‘˜èº«ä»½è¯å·ç 
 			prpDuserDto = new PrpDuserDto();
 			prpDuserDto = prpDuserAction.findByPrimaryKey(dbManager, ((ciPerson)personLossList.get(i)).getEstimateCode());
 			((ciPerson)personLossList.get(i)).setEstimateCertiCode(prpDuserDto.getIdentifyNumber());
-			//ÈËÉËºËËğÈËÔ±Éí·İÖ¤ºÅÂë
+			//äººä¼¤æ ¸æŸäººå‘˜èº«ä»½è¯å·ç 
 			String underWriteCertiCode = "";
 			ArrayList swfLogVerif= (ArrayList)new BLSwfLogAction().findByConditions(dbManager, " registNo = '"+registNo+"' and nodetype = 'veriw' and lossitemcode = '"+((ciPerson)personLossList.get(i)).getLossItemCode()+"' order by submittime desc ");
 			if(swfLogVerif != null && swfLogVerif.size() > 0 ){
@@ -944,7 +944,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}
 			((ciPerson)personLossList.get(i)).setUnderWriteCertiCode(prpDuserDto.getIdentifyNumber());
 			String conditions1 = " registno='"+registNo+"' and personno='"+((ciPerson)personLossList.get(i)).getPersonNo()+"'";
-			Collection prpldiagnosisList = blPrpldiagnosisFacade.findByConditions(conditions1);//Ö÷ÒªÕï¶ÏĞÅÏ¢
+			Collection prpldiagnosisList = blPrpldiagnosisFacade.findByConditions(conditions1);//ä¸»è¦è¯Šæ–­ä¿¡æ¯
 			PrpldiagnosisDto prpldiagnosisDto = null;
 			ArrayList injuryList = new ArrayList();
 			if(prpldiagnosisList.size()>0 && prpldiagnosisList !=null){
@@ -990,7 +990,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}
 		}
 		certaVerif.setPersonLossList(personLossList);
-		//´úÎ»ĞÅÏ¢
+		//ä»£ä½ä¿¡æ¯
 		String subconditions = "registNo='"+registNo+"' and linkertype='1'" ;
 		ArrayList subrogationList = (ArrayList)new BLPrpLsubrogationAction().findByConditions(dbManager, subconditions);
 		certaVerif.setSubrogationList(subrogationList);
@@ -1025,7 +1025,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	
 	/***
 	 * 
-	 * µ¥Ö¤2012
+	 * å•è¯2012
 	 */
 	protected Certi getCerti(DBManager dbManager, String registNo,String registType)
 			throws SQLException, Exception {
@@ -1077,7 +1077,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	}
 	
 	
-	//ËğÊ§ÀàĞÍºÏ²¢ 
+	//æŸå¤±ç±»å‹åˆå¹¶ 
 	protected ArrayList losstypeBing(ArrayList endCaseAppSituationList)
 	throws SQLException, Exception {	
 		ArrayList endCaseAppSituationListBing=new ArrayList();		
@@ -1107,7 +1107,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	@Override
 	/**
 	 * 
-	 * »ñµÃÀíËãºËÅâĞÅÏ¢
+	 * è·å¾—ç†ç®—æ ¸èµ”ä¿¡æ¯
 	 */
 	protected CompensateVeric getCompensateVeric(DBManager dbManager,String registType,
 			String compensateNo) throws SQLException, Exception {
@@ -1155,7 +1155,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 						handleText += rs.getString(1);
 					}
 					rs.close();
-					//ÊÇ·ñĞÂÔöÉè±¸
+					//æ˜¯å¦æ–°å¢è®¾å¤‡
 					String isDeviceItem = "";
 					String strSQL = " SELECT COUNT(1) from prpCcarDevice WHERE policyno = '"+prpLcompensateDto1.getPolicyNo()+"' ";
 					rs1 = dbManager.executeQuery(strSQL);
@@ -1164,9 +1164,9 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 					}
 					rs1.close();
 					if(Integer.parseInt(isDeviceItem) > 0){
-						isDeviceItem = "1";//ÊÇ
+						isDeviceItem = "1";//æ˜¯
 					}else{
-						isDeviceItem = "0";//·ñ
+						isDeviceItem = "0";//å¦
 					}
 					compensateVeric.setUnderWriteDesc(handleText);
 					compensateVeric.setSumPaid(prpLcompensateDto1.getSumThisPaid());
@@ -1181,12 +1181,12 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 					ArrayList<PrpLRecoveryOrPayDto> prpLRecoveryOrPayList = (ArrayList)blPrpLRecoveryOrPayFacade.findByConditions(conditions);
 					PrpLRecoveryOrPayDto prpLRecoveryOrPayDto = null;
 					double claimCoverAmountProp = 0.0;
-					//´úÎª°¸¼ş
+					//ä»£ä¸ºæ¡ˆä»¶
 					boolean isFalse = false;
 					boolean isFalse1 = false;
 					
 					if(prpLRecoveryOrPayList.size()>0){
-						//×·³¥
+						//è¿½å¿
 						for(int i = 0;i < prpLRecoveryOrPayList.size();i++){
 							prpLRecoveryOrPayDto = prpLRecoveryOrPayList.get(i);
 							if("1".equals(prpLRecoveryOrPayDto.getRecoveryOrPayFlag())){
@@ -1229,7 +1229,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 							claimCoverList.add(claimCover);
 						}
 						compensateVeric.setSumPaid(prpLcompensateDto1.getSumThisPaid()+claimCoverAmountProp);
-						//Çå¸¶ĞÅÏ¢
+						//æ¸…ä»˜ä¿¡æ¯
 						claimCoverAmountProp = 0.0;
 						for(int i = 0;i < prpLRecoveryOrPayList.size();i++){
 							prpLRecoveryOrPayDto = prpLRecoveryOrPayList.get(i);
@@ -1274,8 +1274,8 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 						
 					}
 					
-					//×Ô¸¶ĞÅÏ¢
-					//²Æ²úËğÊ§
+					//è‡ªä»˜ä¿¡æ¯
+					//è´¢äº§æŸå¤±
 					BLPrpLlossFacade blPrpLlossFacade = new BLPrpLlossFacade();
 					BLPrpLlossFacadeFG blPrpLlossFacadeFG = new BLPrpLlossFacadeFG();
 					PrpLlossDto prpLlossDto = null;
@@ -1386,7 +1386,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 						//			claimCover.setClaimAmount(Double.toString(kindCodeAmount[index]));
 									claimCover.setClaimAmount(new DecimalFormat("0.00").format(kindCodeAmount[index]));
 								}
-								//ÊÇ·ñĞÂÔöÉè±¸¸³Öµ
+								//æ˜¯å¦æ–°å¢è®¾å¤‡èµ‹å€¼
 								if("004".equals(kindCode[index])){
 									claimCover.setIsDeviceItem(isDeviceItem);
 								}
@@ -1395,7 +1395,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 						}
 					}
 					
-					//ËÀÍöÉË²Ğ
+					//æ­»äº¡ä¼¤æ®‹
 					BLPrpLpersonLossFacade blPersonLossFacade = new BLPrpLpersonLossFacade();
 					BLPrpLpersonLossFacadeFG blPersonLossFacadeFG = new BLPrpLpersonLossFacadeFG();
 					PrpLpersonLossDto prpLpersonLossDto = null;
@@ -1474,7 +1474,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 							}
 						}
 					}
-					//Ò½ÁÆ·ÑÓÃ
+					//åŒ»ç–—è´¹ç”¨
 					sunRealPaid = 0.0; 
 					conditions = " compensateNo = '"+compensateNo+"' and feecategory = 'M' ";
 					if(isFG){
@@ -1550,7 +1550,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 							}
 						}
 					}
-					//ÎŞÔğ´úÅâ
+					//æ— è´£ä»£èµ”
 					sunRealPaid = 0.0;
 					kindCode = new String[50];
 					kindCodeAmount = new Double[50] ;
@@ -1627,7 +1627,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 						}
 					}
 					
-					//·ÑÓÃ
+					//è´¹ç”¨
 					sunRealPaid = 0.0;
 					kindCode = new String[50];
 					kindCodeAmount = new Double[50] ;
@@ -1751,7 +1751,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	
 	/***
 	 *  
-	 *  ½á°¸2011
+	 *  ç»“æ¡ˆ2011
 	 */
 	protected EndCase getEndCase(DBManager dbManager, String claimNo,String uploadFlag)
 			throws SQLException, Exception {
@@ -1763,11 +1763,11 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		String compensateNo = "";
 		DateTime claimDate = new DateTime();
 		DateTime endCaseDate = new DateTime();
-		double sumDutyPaid=0d;     //Åâ¿î½ğ¶î(²»°üÀ¨·ÑÓÃ)
-		double sumDirectClaimAmount=0d;//Ö±½ÓÀíÅâ·ÑÓÃ)
+		double sumDutyPaid=0d;     //èµ”æ¬¾é‡‘é¢(ä¸åŒ…æ‹¬è´¹ç”¨)
+		double sumDirectClaimAmount=0d;//ç›´æ¥ç†èµ”è´¹ç”¨)
 		double indemnitydutyRate = 0.0;
 		String claimType = "1";
-		// »ñÈ¡¼İÊ»Ô±ĞÅÏ¢
+		// è·å–é©¾é©¶å‘˜ä¿¡æ¯
 		String driverName = "";
 		String certiType = "";
 		String certiCode = "";
@@ -1782,26 +1782,26 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		List claimCoverList = new ArrayList();
 		ClaimCover claimCover = null;
 		RecoveryOrPay recoveryOrPay = null;
-		double carSumLoss=0;     //×Ü³µÁ¾ËğÊ§½ğ¶î
-		double carSumPaid=0;     //×Ü³µÁ¾Åâ¿î½ğ¶î
-		double propSumLoss=0;    //×Ü²Æ²úËğÊ§½ğ¶î
-		double propSumPaid=0;    //×Ü²Æ²úÅâ¿î½ğ¶î
-		double personSumLoss=0;  //×ÜÈËÔ±ËğÊ§½ğ¶î
-		double personSumPaid=0;  //×ÜÈËÔ±Åâ¿î½ğ¶î
-		double chargeSumLoss=0;  //×Ü·ÑÓÃËğÊ§½ğ¶î
-		double chargeSumPaid=0;  //×Ü·ÑÓÃÅâ¿î½ğ¶î
+		double carSumLoss=0;     //æ€»è½¦è¾†æŸå¤±é‡‘é¢
+		double carSumPaid=0;     //æ€»è½¦è¾†èµ”æ¬¾é‡‘é¢
+		double propSumLoss=0;    //æ€»è´¢äº§æŸå¤±é‡‘é¢
+		double propSumPaid=0;    //æ€»è´¢äº§èµ”æ¬¾é‡‘é¢
+		double personSumLoss=0;  //æ€»äººå‘˜æŸå¤±é‡‘é¢
+		double personSumPaid=0;  //æ€»äººå‘˜èµ”æ¬¾é‡‘é¢
+		double chargeSumLoss=0;  //æ€»è´¹ç”¨æŸå¤±é‡‘é¢
+		double chargeSumPaid=0;  //æ€»è´¹ç”¨èµ”æ¬¾é‡‘é¢
 		 
-		AccidentInfor accidentInfor = new AccidentInfor(); // ³öÏÕĞÅÏ¢
-		boolean isInsuredDuty = true; // ÊÇ·ñÊÂ¹ÊÔğÈÎ
+		AccidentInfor accidentInfor = new AccidentInfor(); // å‡ºé™©ä¿¡æ¯
+		boolean isInsuredDuty = true; // æ˜¯å¦äº‹æ•…è´£ä»»
 		List compensateList = (ArrayList) new BLCompensateAction().findPrpLcompensateOfValidUndwrtByClaimNo(dbManager, claimNo);
-        //½á°¸ÉÏ´«ÊÇÖ»ÉÏ´«µÚÒ»ÕÅ¼ÆËãÊé
+        //ç»“æ¡ˆä¸Šä¼ æ˜¯åªä¸Šä¼ ç¬¬ä¸€å¼ è®¡ç®—ä¹¦
         for (int i = 0; i < compensateList.size(); i++) {
 		    PrpLcompensateDto prpLcompensateDto = (PrpLcompensateDto) compensateList.get(i);
 		    sumDutyPaid+=prpLcompensateDto.getSumDutyPaid();
 		    sumDirectClaimAmount+=prpLcompensateDto.getSumNoDutyFee();
 		    compensateNo += "'" + prpLcompensateDto.getCompensateNo() + "',";
 		    /**modify by daidesheng 2016-11-18 begain*/
-		    //Åâ³¥ÔğÈÎ±ÈÀı
+		    //èµ”å¿è´£ä»»æ¯”ä¾‹
 		    if(prpLcompensateDto.getTimes() == 1){
 		    	indemnitydutyRate = prpLcompensateDto.getIndemnityDutyRate()/100;
 		    }
@@ -1825,7 +1825,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			riskCode=prpLclaimDto.getRiskCode();
 	//		indemnitydutyRate=prpLclaimDto.getIndemnityDutyRate()/100;
 		}	
-		//ÊÇ·ñĞÂÔöÉè±¸
+		//æ˜¯å¦æ–°å¢è®¾å¤‡
 		ResultSet rs = null;
 		String isDeviceItem = "";
 		String strSQL = " SELECT COUNT(1) from prpCcarDevice WHERE policyno = '"+prpLclaimDto.getPolicyNo()+"' ";
@@ -1835,9 +1835,9 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		}
 		rs.close();
 		if(Integer.parseInt(isDeviceItem) > 0){
-			isDeviceItem = "1";//ÊÇ
+			isDeviceItem = "1";//æ˜¯
 		}else{
-			isDeviceItem = "0";//·ñ
+			isDeviceItem = "0";//å¦
 		}
 		
 		
@@ -1850,20 +1850,20 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		
 //		Collection compensatelist=bLPrpLcompensateFacade.findByConditions(condition);
 //		if(compensatelist!=null && compensatelist.size()>0){
-//		for(Iterator it=compensatelist.iterator();it.hasNext();){//ĞÂÀíÅâĞèÇó£¬ĞèÒª»ã×Ü
+//		for(Iterator it=compensatelist.iterator();it.hasNext();){//æ–°ç†èµ”éœ€æ±‚ï¼Œéœ€è¦æ±‡æ€»
 //			prpLcompensateDto=(PrpLcompensateDto)it.next();
 //			compensateNo=prpLcompensateDto.getCompensateNo();
-//			sumDutyPaid+=prpLcompensateDto.getSumDutyPaid();	//ÀÛ¼Æ	
+//			sumDutyPaid+=prpLcompensateDto.getSumDutyPaid();	//ç´¯è®¡	
 //			if (prpLcompensateDto.getIndemnityDutyRate() / 100 == 0.0) {
 //				isInsuredDuty = false;
 //			}
 //			String conditions = " compensateNo='"+compensateNo+"'";
-//			//³µËğ¡¢ÎïËğÈ¡Öµ 
+//			//è½¦æŸã€ç‰©æŸå–å€¼ 
 //			blPrpLloss.query(conditions);
 //			for (int i = 0; i < blPrpLloss.getSize(); i++) {
 //				PrpLlossSchema prpLlossSchema = blPrpLloss.getArr(i);						
 //				if(!("").equals(prpLlossSchema.getLicenseNo())){
-//					CarLoss carLoss = new CarLoss();  //ÉÌÒµÏÕ³µÁ¾ËğÊ§Çé¿ö
+//					CarLoss carLoss = new CarLoss();  //å•†ä¸šé™©è½¦è¾†æŸå¤±æƒ…å†µ
 //					carLoss.setIndemnityCode(prpLlossSchema.getFeeTypeCode());
 //					carLoss.setSumLoss(Double.parseDouble(prpLlossSchema.getSumLoss()));
 //					carLoss.setSumDuty(Double.parseDouble(prpLlossSchema.getSumRealPay()));
@@ -1871,7 +1871,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //					carSumLoss+=Double.parseDouble(prpLlossSchema.getSumLoss());
 //					carSumPaid+=Double.parseDouble(prpLlossSchema.getSumRealPay());
 //				}else{
-//					PropLoss propLoss = new PropLoss();  //ÉÌÒµÏÕ²Æ²úËğÊ§Çé¿ö
+//					PropLoss propLoss = new PropLoss();  //å•†ä¸šé™©è´¢äº§æŸå¤±æƒ…å†µ
 //					propLoss.setSumDuty(Double.parseDouble(prpLlossSchema.getSumRealPay()));
 //					propLoss.setSumLoss(Double.parseDouble(prpLlossSchema.getSumLoss()));
 //					propLossList.add(propLoss);
@@ -1879,7 +1879,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //					propSumPaid+=Double.parseDouble(prpLlossSchema.getSumRealPay());
 //				}
 //			}		
-//			//ÈËÉËÈ¡Öµ
+//			//äººä¼¤å–å€¼
 //			blPrpLpersonLoss.query(conditions);
 //			for (int j = 0; j < blPrpLpersonLoss.getSize(); j++){
 //				PrpLpersonLossSchema prpLpersonLossSchema = blPrpLpersonLoss.getArr(j);
@@ -1891,7 +1891,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //				personSumLoss+=Double.parseDouble(prpLpersonLossSchema.getSumLoss());
 //				personSumPaid+=Double.parseDouble(prpLpersonLossSchema.getSumRealPay());
 //			}
-//			//Ê©¾È·ÑÈ¡Öµ
+//			//æ–½æ•‘è´¹å–å€¼
 //			String conditionsShiJiu = "compensateno='" + compensateNo
 //				+ "' and compensateno in (select compensateno from prplcompensate where underwriteflag='1' or underwriteflag='3') and sumrealpay!=0 ";
 //			ArrayList prplchargeShiJiuList=(ArrayList)new BLPrpLchargeAction().findByConditions(dbManager, conditionsShiJiu);
@@ -1908,11 +1908,11 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //			if(prepayList != null && prepayList.size() > 0){
 //				for(int i = 0; i < prepayList.size(); i++){					
 //					PrpLprepayDto  prpLprepayDto = (PrpLprepayDto)prepayList.get(i);
-//					//Ô¤ÅâÊ±ËğÊ§Ä¬ÈÏÎªÈËÉËËğÊ§
+//					//é¢„èµ”æ—¶æŸå¤±é»˜è®¤ä¸ºäººä¼¤æŸå¤±
 //					PersonLoss personLoss = new PersonLoss();
 //					personLoss.setSumLoss(prpLprepayDto.getSumPrePaid());
 //					personLoss.setSumDuty(prpLprepayDto.getSumPrePaid());
-//					personLoss.setIndemnityCode("103");//·ÑÓÃÄ¬ÈÏÎª×¡Ôº·Ñ
+//					personLoss.setIndemnityCode("103");//è´¹ç”¨é»˜è®¤ä¸ºä½é™¢è´¹
 //					personLossList.add(personLoss);
 //					personSumLoss+=prpLprepayDto.getSumPrePaid();
 //					personSumPaid+=prpLprepayDto.getSumPrePaid();
@@ -1931,10 +1931,10 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		Map recoverMap = new HashMap();
 		Map recoverMap1 = new HashMap();
 		List recoverList=new ArrayList();
-		//´úÎª°¸¼ş
+		//ä»£ä¸ºæ¡ˆä»¶
 		boolean isTrue=false;
 		if(prpLRecoveryOrPayList!=null&&prpLRecoveryOrPayList.size()>0){
-			//×·³¥
+			//è¿½å¿
 			conditions = " compensateNo in (" + compensateNo + ") and RecoveryOrPayFlag = '1' ";
 			prpLRecoveryOrPayList = (ArrayList)blPrpLRecoveryOrPayFacade.findByConditions(conditions);
 			for(int i = 0;i < prpLRecoveryOrPayList.size();i++){
@@ -1992,7 +1992,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			claimCoverList.add(claimCover);
 			}
 			
-			//Çå¸¶
+			//æ¸…ä»˜
 			Map recoverMap2 = new HashMap();
 			Map recoverMap3 = new HashMap();
 			isTrue=false;
@@ -2054,8 +2054,8 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			claimCoverList.add(claimCover);
 			}
 		}
-		//×Ô¸¶ĞÅÏ¢
-		//²Æ²úËğÊ§
+		//è‡ªä»˜ä¿¡æ¯
+		//è´¢äº§æŸå¤±
 		BLPrpLlossFacade blPrpLlossFacade = new BLPrpLlossFacade();
 		BLPrpLlossFacadeFG blPrpLlossFacadeFG = new BLPrpLlossFacadeFG();
 		PrpLlossDto prpLlossDto = null;
@@ -2147,7 +2147,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				//	    claimCover.setSalvageFee(Double.toString(salvageFee[index]));
 					    claimCover.setSalvageFee(new DecimalFormat("0.00").format(salvageFee[index]));
 					}
-					//ÊÇ·ñĞÂÔöÉè±¸¸³Öµ
+					//æ˜¯å¦æ–°å¢è®¾å¤‡èµ‹å€¼
 					if("004".equals(kindCode[index])){
 						claimCover.setIsDeviceItem(isDeviceItem);
 					}
@@ -2156,7 +2156,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}
 		}
 		
-		//ËÀÍöÉË²Ğ
+		//æ­»äº¡ä¼¤æ®‹
 		BLPrpLpersonLossFacade blPersonLossFacade = new BLPrpLpersonLossFacade();
 		BLPrpLpersonLossFacadeFG blPersonLossFacadeFG = new BLPrpLpersonLossFacadeFG();
 		PrpLpersonLossDto prpLpersonLossDto = null;
@@ -2223,13 +2223,13 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				//	    claimCover.setSalvageFee(Double.toString(salvageFee[index]));
 					    claimCover.setSalvageFee(new DecimalFormat("0.00").format(salvageFee[index]));
 					}
-			//		claimCover.setClaimAmount(String.valueOf(kindCodeAmount[index])); //Åâ¿î½ğ¶î£¨º¬Ê©¾È·Ñ£©£¬Îª±Ø´«Ïî
-					claimCover.setClaimAmount(new DecimalFormat("0.00").format(kindCodeAmount[index])); //Åâ¿î½ğ¶î£¨º¬Ê©¾È·Ñ£©£¬Îª±Ø´«Ïî
+			//		claimCover.setClaimAmount(String.valueOf(kindCodeAmount[index])); //èµ”æ¬¾é‡‘é¢ï¼ˆå«æ–½æ•‘è´¹ï¼‰ï¼Œä¸ºå¿…ä¼ é¡¹
+					claimCover.setClaimAmount(new DecimalFormat("0.00").format(kindCodeAmount[index])); //èµ”æ¬¾é‡‘é¢ï¼ˆå«æ–½æ•‘è´¹ï¼‰ï¼Œä¸ºå¿…ä¼ é¡¹
 					claimCoverList.add(claimCover);
 				}
 			}
 		}
-		//Ò½ÁÆ·ÑÓÃ
+		//åŒ»ç–—è´¹ç”¨
 		sunRealPaid = 0.0; 
 		conditions = " compensateNo in (" + compensateNo + ") and feecategory = 'M' ";
 		if(isFG){
@@ -2299,7 +2299,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				}
 			}
 		}
-		//ÎŞÔğ´úÅâ
+		//æ— è´£ä»£èµ”
 		sunRealPaid = 0.0;
 		kindCode = new String[50];
 		kindCodeAmount = new Double[50] ;
@@ -2369,7 +2369,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				}
 			}
 		}
-		//·ÑÓÃ
+		//è´¹ç”¨
 		sunRealPaid = 0.0;
 		chargeSumPaid=0.0;
 		kindCode = new String[50];
@@ -2461,11 +2461,11 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			if(prepayList != null && prepayList.size() > 0){
 				for(int i = 0; i < prepayList.size(); i++){					
 					PrpLprepayDto  prpLprepayDto = (PrpLprepayDto)prepayList.get(i);
-					//Ô¤ÅâÊ±ËğÊ§Ä¬ÈÏÎªÈËÉËËğÊ§
+					//é¢„èµ”æ—¶æŸå¤±é»˜è®¤ä¸ºäººä¼¤æŸå¤±
 					PersonLoss personLoss = new PersonLoss();
 					personLoss.setSumLoss(prpLprepayDto.getSumPrePaid());
 					personLoss.setSumDuty(prpLprepayDto.getSumPrePaid());
-					personLoss.setIndemnityCode("103");//·ÑÓÃÄ¬ÈÏÎª×¡Ôº·Ñ
+					personLoss.setIndemnityCode("103");//è´¹ç”¨é»˜è®¤ä¸ºä½é™¢è´¹
 					personLossList.add(personLoss);
 					personSumLoss+=prpLprepayDto.getSumPrePaid();
 					personSumPaid+=prpLprepayDto.getSumPrePaid();
@@ -2476,14 +2476,14 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		}
 		DateTime damageStartDate = new DateTime();
 		String damageStartHour = "";
-		String accidentPlace = "";  //³öÏÕµØµã
+		String accidentPlace = "";  //å‡ºé™©åœ°ç‚¹
 		String handleUnit ="";
 		
 		prpLregistDto = new BLPrpLregistAction().findByPrimaryKey(dbManager, registNo);
 		if (prpLregistDto != null) {
 			damageStartDate = prpLregistDto.getDamageStartDate();
 			damageStartHour = prpLregistDto.getDamageStartHour();
-			// »ñÈ¡³öÏÕµØµã
+			// è·å–å‡ºé™©åœ°ç‚¹
 			accidentPlace = prpLregistDto.getDamageAddress();
 			handleUnit = prpLregistDto.getHandleUnit();
 			if("".equals(handleUnit))handleUnit="99";
@@ -2493,12 +2493,12 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		
 		
 		
-		// »ñÈ¡³öÏÕ¾­¹ı
+		// è·å–å‡ºé™©ç»è¿‡
 		//String accidentDesc = getPrpLltext(dbManager,claimNo,"09");
 		//new 2011
 		String accidentDesc = getprplregisttext(dbManager,registNo);
 		
-		//¶¨Òå·´ÆÛÕ©°¸¼ş
+		//å®šä¹‰åæ¬ºè¯ˆæ¡ˆä»¶
 		String conditionsF = " registNo='"+registNo+"' and nodetype='compp'";
 		ArrayList<PrpLFirstVeriOpinionDto> firstVeriOpinionList = null;
 		PrpLFirstVeriOpinionDto prpLFirstVeriOpinionDto = null;
@@ -2509,8 +2509,8 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			for(int f=0;f<firstVeriOpinionList.size();f++){
 				ciPrpLfraudTypeDto = new CIPrpLfraudTypeDto();
 				prpLFirstVeriOpinionDto = firstVeriOpinionList.get(f);
-				endCase.setIsRefuseCase(prpLFirstVeriOpinionDto.getLingjieAnType()); //ÊÇ·ñ¾ÜÅâ£¬ÏµÍ³ÖĞ'1'Îª¾ÜÅâ
-				endCase.setRefusereason(prpLFirstVeriOpinionDto.getPeifuIns()); //¾ÜÅâÔ­Òò
+				endCase.setIsRefuseCase(prpLFirstVeriOpinionDto.getLingjieAnType()); //æ˜¯å¦æ‹’èµ”ï¼Œç³»ç»Ÿä¸­'1'ä¸ºæ‹’èµ”
+				endCase.setRefusereason(prpLFirstVeriOpinionDto.getPeifuIns()); //æ‹’èµ”åŸå› 
 				endCase.setFraudLogo(prpLFirstVeriOpinionDto.getFraudLogo());
 				endCase.setFraudRecoverAmount(prpLFirstVeriOpinionDto.getFraudRecoverAmount());
 				ciPrpLfraudTypeDto.setFraudType(prpLFirstVeriOpinionDto.getFraudType());
@@ -2518,11 +2518,11 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}
 			endCase.setPrpLFraudTypeList(prpLfraudTypeList);
 		}
-		//¶¨Òå·´ÆÛÕ©°¸¼ş½áÊø
+		//å®šä¹‰åæ¬ºè¯ˆæ¡ˆä»¶ç»“æŸ
 		
-		// »ñÈ¡¾ÜÅâÔ­Òò
+		// è·å–æ‹’èµ”åŸå› 
 		String refusereason = getPrpLltext(dbManager,claimNo,"10");
-		// »ñÈ¡³öÏÕÈÕÆÚ£¬³öÏÕÊ±¼ä
+		// è·å–å‡ºé™©æ—¥æœŸï¼Œå‡ºé™©æ—¶é—´
 		Date damageDate = new Date((damageStartDate.getYear() - 1900),
 				(damageStartDate.getMonth() - 1), damageStartDate.getDate(),
 				Integer.parseInt(damageStartHour.split(":")[0]), Integer
@@ -2533,7 +2533,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		accidentInfor.setHandleUnit(handleUnit);
 		accidentInfor.setIndemnityDuty(prpLclaimDto.getIndemnityDuty());
 		
-		//¼İÊ»Ô±ĞÅÏ¢
+		//é©¾é©¶å‘˜ä¿¡æ¯
 		PrpLdriverDto prpLdriverDto = new BLPrpLdriverFacade()
 		.findByPrimaryKey(registNo, 1);
 		if (prpLdriverDto != null) {
@@ -2544,16 +2544,16 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				certiCode=certiCode.substring(0, 18);
 			}
 		}else {
-			driverName = "ÎŞ";
+			driverName = "æ— ";
 			certiType = "99";
 			certiCode = "0";
 		}
 		if(driverName==null
 				||"".equals(driverName))
 		{
-			driverName = "ÎŞ";
+			driverName = "æ— ";
 		}
-		//ÈıÕß³µĞÅÏ¢
+		//ä¸‰è€…è½¦ä¿¡æ¯
 		List thirdCarList = new ArrayList();
 		//thirdCarList = getThirdCarList(dbManager, registNo);
 		System.out.println("2");
@@ -2574,7 +2574,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		}else{
 			dateTime = new DateTime(DateTime.current(), DateTime.YEAR_TO_MINUTE);	
 		}
-		System.out.println("½á°¸Ê±¼ä"+new SimpleDateFormat("yyyyMMddHHmm").format(dateTime));
+		System.out.println("ç»“æ¡ˆæ—¶é—´"+new SimpleDateFormat("yyyyMMddHHmm").format(dateTime));
 		BLPrpLcarLossFacade blPrpLcarLossFacade=new BLPrpLcarLossFacade();
 		PrpLcarLossDto prpLcarLossDto=blPrpLcarLossFacade.findByPrimaryKey(registNo, "1");
 		String isTotalLoss="";
@@ -2620,14 +2620,14 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		endCase.setPersonSumPaid(personSumPaid);
 		endCase.setPropSumLoss(propSumLoss);
 		endCase.setPropSumPaid(propSumPaid);
-		endCase.setChargeSumPaid(chargeSumPaid);//×Ü·ÑÓÃÅâ¿î½ğ¶î
-		endCase.setChargeSumLoss(chargeSumLoss);//×Ü·ÑÓÃËğÊ§½ğ¶î
+		endCase.setChargeSumPaid(chargeSumPaid);//æ€»è´¹ç”¨èµ”æ¬¾é‡‘é¢
+		endCase.setChargeSumLoss(chargeSumLoss);//æ€»è´¹ç”¨æŸå¤±é‡‘é¢
 		endCase.setCarLossList(carLossList);
 		endCase.setPropLossList(propLossList);
 		endCase.setPersonLossList(personLossList);		
 		endCase.setPrplchargeList(prplchargeList);	
 		endCase.setPrpLrecoveryorpayList(prpLrecoveryorpayList);
-		//add by lianjingwei 20081028 ³µÁ¾ËğÊ§Çé¿ö¡¢ÎïËğËğÊ§Çé¿ö¡¢ÈËÔ±ËğÊ§Çé¿öĞëÖÁÉÙÌîĞ´Ò»ÌõÅâ³¥Çé¿öĞÅÏ¢²»ÄÜÎª¿Õ start
+		//add by lianjingwei 20081028 è½¦è¾†æŸå¤±æƒ…å†µã€ç‰©æŸæŸå¤±æƒ…å†µã€äººå‘˜æŸå¤±æƒ…å†µé¡»è‡³å°‘å¡«å†™ä¸€æ¡èµ”å¿æƒ…å†µä¿¡æ¯ä¸èƒ½ä¸ºç©º start
 		if(claimCoverList.size()==0){
 			claimCover = new ClaimCover();
 			claimCover.setRecoveryOrPayFlag("3");
@@ -2651,15 +2651,15 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			claimCover.setClaimAmount(String.valueOf(0.0));
 			claimCoverList.add(claimCover);
 		}
-		//add by lianjingwei 20081028 ³µÁ¾ËğÊ§Çé¿ö¡¢ÎïËğËğÊ§Çé¿ö¡¢ÈËÔ±ËğÊ§Çé¿öĞëÖÁÉÙÌîĞ´Ò»ÌõÅâ³¥Çé¿öĞÅÏ¢²»ÄÜÎª¿Õ end
+		//add by lianjingwei 20081028 è½¦è¾†æŸå¤±æƒ…å†µã€ç‰©æŸæŸå¤±æƒ…å†µã€äººå‘˜æŸå¤±æƒ…å†µé¡»è‡³å°‘å¡«å†™ä¸€æ¡èµ”å¿æƒ…å†µä¿¡æ¯ä¸èƒ½ä¸ºç©º end
 		endCase.setClaimCoverList(claimCoverList);
 		return endCase;
 	}
 	
 	
-	//2011ÉÌÒµÏÕÆ½Ì¨½»»¥
+	//2011å•†ä¸šé™©å¹³å°äº¤äº’
 	public ArrayList getRecaseList(String claimNo) throws Exception {
-		boolean blnReturn = false;   //ÎªfalseÎªÎŞÖØ¿ª »ò ÖØ¿ªÒÑ½á°¸
+		boolean blnReturn = false;   //ä¸ºfalseä¸ºæ— é‡å¼€ æˆ– é‡å¼€å·²ç»“æ¡ˆ
 		String conditions=" claimNo = '"+claimNo+"'";
 		int maxSerialNo = 0;
 		
@@ -2676,7 +2676,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	
 	/**
 	 * 
-	 * ½á°¸×·¼Ó 2011
+	 * ç»“æ¡ˆè¿½åŠ  2011
 	 */
 	protected EndCaseAppend getEndCaseAppend(DBManager dbManager, String claimNo,String cishu)
 	throws SQLException, Exception {
@@ -2698,7 +2698,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			PrpLrecaseDto prpLrecaseDto=(PrpLrecaseDto)prpLrecaseDtoList.get(i);
 			PrpLcompensateDto prpLcompensateDto= null;
 			int times = 0;
-			//ĞÂÀíÅâÌí¼Ó2011,²ÎÊıÖĞ¼ÓÈë×·¼Ó´ÎÊı
+			//æ–°ç†èµ”æ·»åŠ 2011,å‚æ•°ä¸­åŠ å…¥è¿½åŠ æ¬¡æ•°
 			if("".equals(cishu)){
 				times=prpLrecaseDto.getSerialNo()+1;
 			}else{
@@ -2715,7 +2715,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			recaseReason = prpLrecaseDto.getReCaseReason();
 			
 			conditions = " compensateNo='"+compensateNo+"'";
-			//³µËğ¡¢ÎïËğÈ¡Öµ 
+			//è½¦æŸã€ç‰©æŸå–å€¼ 
 			blPrpLloss.query(conditions);
 			for (int j = 0; j < blPrpLloss.getSize(); j++) {
 				PrpLlossSchema prpLlossSchema = blPrpLloss.getArr(j);	
@@ -2728,7 +2728,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				endCaseAppSituation.setAppPaySum(Double.parseDouble(prpLlossSchema.getSumRealPay()));
 				endCaseAppSituationList.add(endCaseAppSituation);	
 			}		
-			//ÈËÉËÈ¡Öµ
+			//äººä¼¤å–å€¼
 			blPrpLpersonLoss.query(conditions);
 			for (int j = 0; j < blPrpLpersonLoss.getSize(); j++){
 				PrpLpersonLossSchema prpLpersonLossSchema = blPrpLpersonLoss.getArr(j);
@@ -2737,7 +2737,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				endCaseAppSituation.setAppPaySum(Double.parseDouble(prpLpersonLossSchema.getSumRealPay()));
 				endCaseAppSituationList.add(endCaseAppSituation);
 			}
-			//Ê©¾È·ÑÈ¡Öµ
+			//æ–½æ•‘è´¹å–å€¼
 			String conditionsShiJiu = "compensateno='" + compensateNo
 				+ "' and compensateno in (select compensateno from prplcompensate where underwriteflag='1' or underwriteflag='3') and sumrealpay!=0 ";
 			ArrayList prplchargeShiJiuList=(ArrayList)new BLPrpLchargeAction().findByConditions(dbManager, conditionsShiJiu);
@@ -2759,10 +2759,10 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				dateTime =recaseDate;
 			}
 		}
-		//Åâ³¥ĞÅÏ¢°´ËğÊ§ÀàĞÍºÏ²¢
+		//èµ”å¿ä¿¡æ¯æŒ‰æŸå¤±ç±»å‹åˆå¹¶
 	    endCaseAppend.setEndCaseAppSituationList(losstypeBing(endCaseAppSituationList));		
 		
-		//³µÁ¾ËğÊ§Çé¿ö¡¢ÎïËğËğÊ§Çé¿ö¡¢ÈËÔ±ËğÊ§Çé¿öĞëÖÁÉÙÌîĞ´Ò»ÌõÅâ³¥Çé¿öĞÅÏ¢²»ÄÜÎª¿Õ start
+		//è½¦è¾†æŸå¤±æƒ…å†µã€ç‰©æŸæŸå¤±æƒ…å†µã€äººå‘˜æŸå¤±æƒ…å†µé¡»è‡³å°‘å¡«å†™ä¸€æ¡èµ”å¿æƒ…å†µä¿¡æ¯ä¸èƒ½ä¸ºç©º start
 		if(endCaseAppend.getEndCaseAppSituationList().size()==0){
 			EndCaseAppSituation endCaseAppSituation = new EndCaseAppSituation();
 			endCaseAppSituation.setLossType("9");			
@@ -2770,7 +2770,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			endCaseAppSituationList.add(endCaseAppSituation);
 			endCaseAppend.setEndCaseAppSituationList(endCaseAppSituationList);
 		}
-		//³µÁ¾ËğÊ§Çé¿ö¡¢ÎïËğËğÊ§Çé¿ö¡¢ÈËÔ±ËğÊ§Çé¿öĞëÖÁÉÙÌîĞ´Ò»ÌõÅâ³¥Çé¿öĞÅÏ¢²»ÄÜÎª¿Õ end		
+		//è½¦è¾†æŸå¤±æƒ…å†µã€ç‰©æŸæŸå¤±æƒ…å†µã€äººå‘˜æŸå¤±æƒ…å†µé¡»è‡³å°‘å¡«å†™ä¸€æ¡èµ”å¿æƒ…å†µä¿¡æ¯ä¸èƒ½ä¸ºç©º end		
 		
 		endCaseAppend.setClaimNo(claimNo);
 		endCaseAppend.setSerialNo(serialNo);
@@ -2784,7 +2784,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	}
 
 //	/**
-//	 * »ñµÃÉÌÒµÏÕÅâ¸¶¶ÔÏó2011
+//	 * è·å¾—å•†ä¸šé™©èµ”ä»˜å¯¹è±¡2011
 //	 */
 //	protected Payinfor getPayinfor(DBManager dbManager, String compensateNo,String registType,String payRefNo)
 //	throws SQLException, Exception {		
@@ -2802,11 +2802,11 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //		String preCompensateNos = "";
 //		String serialNo = "";*/
 //		PrpLcompensateDto prpLcompensateDto = new BLPrpLcompensateFacade().findByPrimaryKey(compensateNo);//605063466002009000151-001
-//		if(prpLcompensateDto!=null){//ÊµÅâ
+//		if(prpLcompensateDto!=null){//å®èµ”
 //			claimNo = prpLcompensateDto.getClaimNo();
 //		//	times = String.valueOf(prpLcompensateDto.getTimes());
 //		//	sumPaid = prpLcompensateDto.getSumDutyPaid();
-//		}else{//Ô¤Åã
+//		}else{//é¢„é™ª
 //			BLPrpLprepayAction blPrpLprepayAction = new BLPrpLprepayAction();
 //			PrpLprepayDto prpLprepayDto = blPrpLprepayAction.findByPrimaryKey(dbManager, compensateNo);
 //			if(prpLprepayDto!=null){
@@ -2825,8 +2825,8 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //		if(rs.next()){
 // 			sumPaid=rs.getDouble(1);
 // 			payRefdate=dbManager.getDateTime(rs, DateTime.YEAR_TO_SECOND,3);
-// 			rs.last(); //ÒÆµ½×îºóÒ»ĞĞ   
-// 			int rowCount = rs.getRow();//µÃµ½µ±Ç°ĞĞºÅ£¬Ò²¾ÍÊÇ¼ÇÂ¼Êı 
+// 			rs.last(); //ç§»åˆ°æœ€åä¸€è¡Œ   
+// 			int rowCount = rs.getRow();//å¾—åˆ°å½“å‰è¡Œå·ï¼Œä¹Ÿå°±æ˜¯è®°å½•æ•° 
 // 			times=String.valueOf(rowCount);
 // 		}
 //		PrpLclaimDto prpLclaimDto = new BLPrpLclaimFacade().findByPrimaryKey(claimNo);
@@ -2852,7 +2852,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //		if(rs.next()){
 //			serialNo = (rs.getInt(1) + 1) + "";
 //		}
-//		/*//È¡Êµ¸¶½ğ¶î¡¢Êµ¸¶Ê±¼ä
+//		/*//å–å®ä»˜é‡‘é¢ã€å®ä»˜æ—¶é—´
 //		 strSql = " Select rec.certino,rec.payrefreason,cl.endcasedate as endcasedate,		" +
 //			" Sum(rec.payreffee) From prplclaim cl,                                 " +
 //			" prpjpayrefrec rec                                                     " +
@@ -2867,18 +2867,18 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //				endcaseDate = dbManager.getDateTime(rs, DateTime.YEAR_TO_SECOND, "endcasedate");
 //			}
 //			if(payRefdate.isEmpty()){
-//				//Ô¤Åâ´Óprplprepay±íÈ¡Êµ¸¶Ê±¼ä
+//				//é¢„èµ”ä»prplprepayè¡¨å–å®ä»˜æ—¶é—´
 //				if("P50".equals(rs.getString(2))){
 //					BLPrpLprepayAction blPrpLprepayAction = new BLPrpLprepayAction();
 //					PrpLprepayDto prpLprepayDto = blPrpLprepayAction.findByPrimaryKey(dbManager, rs.getString(1));
 //					payRefdate = prpLprepayDto.getPayRefDate();
-//					System.err.println("³É¹¦È¡µÃÔ¤ÅäÈÕÆÚ£¡£¡");
+//					System.err.println("æˆåŠŸå–å¾—é¢„é…æ—¥æœŸï¼ï¼");
 //				}else{
-//				//ÊµÅâ´Óprplcompensate±íÈ¡Êµ¸¶Ê±¼ä
+//				//å®èµ”ä»prplcompensateè¡¨å–å®ä»˜æ—¶é—´
 //					BLPrpLcompensateAction blPrpLcompensateAction = new BLPrpLcompensateAction();
 //					PrpLcompensateDto prpLcompensateDTO = blPrpLcompensateAction.findByPrimaryKey(dbManager, rs.getString(1));
 //					payRefdate = prpLcompensateDTO.getPayrefDate();
-//					System.err.println("³É¹¦È¡µÃÊµÅâÈÕÆÚ£¡£¡");
+//					System.err.println("æˆåŠŸå–å¾—å®èµ”æ—¥æœŸï¼ï¼");
 //				}
 //			}
 //			if("P60".equals(rs.getString(2))){
@@ -2914,14 +2914,14 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 //		return payinfor;
 //	}
 	/**
-	 * »ñµÃÉÌÒµÏÕÅâ¸¶¶ÔÏó2011
+	 * è·å¾—å•†ä¸šé™©èµ”ä»˜å¯¹è±¡2011
 	 */
 	protected Payinfor getPayinfor(DBManager dbManager, String claimNo,String registType,String payRefNo)
 	throws SQLException, Exception {
 		Payinfor payinfor = new Payinfor();	
 		
 		ResultSet rs = null;
-		String serialNo = null;//È¡ÉÏ´«ĞòºÅ
+		String serialNo = null;//å–ä¸Šä¼ åºå·
 		String strSql = " Select Max(uploadSerialNo) From (							  "+
 			" select uploadSerialNo from prplcompensate where claimno = '" + claimNo + "'  "+
 			" Union All                                                     "+
@@ -2934,7 +2934,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		if(rs!=null){
 			rs.close();
 		}
-		//È¡Êµ¸¶½ğ¶î¡¢Êµ¸¶Ê±¼ä
+		//å–å®ä»˜é‡‘é¢ã€å®ä»˜æ—¶é—´
 		DateTime payRefdate = new DateTime();
 		Paydata payData = null;
 		List<Paydata> payDataList = new ArrayList<Paydata>();
@@ -2957,18 +2957,18 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		while(rs.next()){
 			payAmount += rs.getDouble(4);
 			if(payRefdate.isEmpty()){
-				//Ô¤Åâ´Óprplprepay±íÈ¡Êµ¸¶Ê±¼ä
+				//é¢„èµ”ä»prplprepayè¡¨å–å®ä»˜æ—¶é—´
 				if("P50".equals(rs.getString(2))){
 					BLPrpLprepayAction blPrpLprepayAction = new BLPrpLprepayAction();
 					PrpLprepayDto prpLprepayDto = blPrpLprepayAction.findByPrimaryKey(dbManager, rs.getString(1));
 					payRefdate = prpLprepayDto.getPayRefDate();
-					System.err.println("³É¹¦È¡µÃÔ¤ÅäÈÕÆÚ£¡£¡");
+					System.err.println("æˆåŠŸå–å¾—é¢„é…æ—¥æœŸï¼ï¼");
 				}else{
-				//ÊµÅâ´Óprplcompensate±íÈ¡Êµ¸¶Ê±¼ä
+				//å®èµ”ä»prplcompensateè¡¨å–å®ä»˜æ—¶é—´
 					BLPrpLcompensateAction blPrpLcompensateAction = new BLPrpLcompensateAction();
 					PrpLcompensateDto prpLcompensateDTO = blPrpLcompensateAction.findByPrimaryKey(dbManager, rs.getString(1));
 					payRefdate = prpLcompensateDTO.getPayrefDate();
-					System.err.println("³É¹¦È¡µÃÊµÅâÈÕÆÚ£¡£¡");
+					System.err.println("æˆåŠŸå–å¾—å®èµ”æ—¥æœŸï¼ï¼");
 				}
 			}
 			if("P60".equals(rs.getString(2))){
@@ -2976,7 +2976,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}else{
 				preCompensateNos += "'" + rs.getString(1) + "',";
 			}
-			/**ÊÕ¿îÕË»§Ã÷Ï¸ÁĞ±í*/
+			/**æ”¶æ¬¾è´¦æˆ·æ˜ç»†åˆ—è¡¨*/
 			payData = new Paydata();
 			payData.setClaimAmount(rs.getDouble(4));
 			payData.setRecoveryCode(rs.getString(5)==null?"":rs.getString(5));
@@ -2987,17 +2987,17 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			rs.close();
 		}
 		/**
-		 * Åâ¸¶µÇ¼Ç´ıĞŞ¸Ä
-		 * ´æÔÚ¾«¶ÈÎÊÌâ¿ÉÄÜÌáÊ¾Åâ¿î³¬¹ı14Î»
+		 * èµ”ä»˜ç™»è®°å¾…ä¿®æ”¹
+		 * å­˜åœ¨ç²¾åº¦é—®é¢˜å¯èƒ½æç¤ºèµ”æ¬¾è¶…è¿‡14ä½
 		 */
 		payAmount=Str.round(payAmount,2);
-		//½«Åâ³¥Ö§¸¶Ê±¼äĞ´ÈëËùÓĞpayData¶ÔÏóÖĞ
+		//å°†èµ”å¿æ”¯ä»˜æ—¶é—´å†™å…¥æ‰€æœ‰payDataå¯¹è±¡ä¸­
 		if(!payRefdate.isEmpty()){
 			for(Iterator itr = payDataList.iterator();itr.hasNext();){
 				((Paydata)itr.next()).setPayDate(payRefdate);
 			}
 		}
-		//¸ñÊ½»¯¼ÆËãÊéºÅºÍÔ¤Åâ¼ÆËãÊéºÅ£»ÓÉ605063418002010000006-005,605063418002010000006-003,¸ñÊ½Îª605063418002010000006-005,605063418002010000006-003¡£
+		//æ ¼å¼åŒ–è®¡ç®—ä¹¦å·å’Œé¢„èµ”è®¡ç®—ä¹¦å·ï¼›ç”±605063418002010000006-005,605063418002010000006-003,æ ¼å¼ä¸º605063418002010000006-005,605063418002010000006-003ã€‚
 		if(compensateNos.length() > 1){
 			compensateNos = compensateNos.substring(0, compensateNos.length() - 1);
 		}
@@ -3005,7 +3005,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			preCompensateNos = preCompensateNos.substring(0, preCompensateNos.length() - 1);
 		}
 		if("".equals(payRefNo)){
-			//Í¨¹ıÁ¢°¸ºÅ»ñÈ¡payRefNo
+			//é€šè¿‡ç«‹æ¡ˆå·è·å–payRefNo
 			strSql = " select payrefno from prpjpayrefrec  where claimno = '"+claimNo+"' " +
 			 	     " and certitype in ('C','Y') " +
 			 	     " and payrefreason In ('P50', 'P60', 'P97', 'Z03') " +
@@ -3019,7 +3019,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				rs.close();
 			}
 		}
-		//Åâ¿îÖ§¸¶ ¿ª»§ĞĞ£¬ÕË»§Ãû
+		//èµ”æ¬¾æ”¯ä»˜ å¼€æˆ·è¡Œï¼Œè´¦æˆ·å
 		String bankName = "";
 		String accountName = "";
 		strSql = "select c.bankname,a.accountname from accbankcode c,accbankaccount a,PrpJpayRefMain m,PrpJpayRefDetail d " +
@@ -3038,10 +3038,10 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			rs.close();
 		}
 		/**
-		 * Åâ¸¶µÇ¼Ç´ıĞŞ¸Ä
-		 * ´Ë´¦´æÔÚ¸ºÊıÅâ°¸Ã»ÓĞÖ§¸¶ĞÅÏ¢
+		 * èµ”ä»˜ç™»è®°å¾…ä¿®æ”¹
+		 * æ­¤å¤„å­˜åœ¨è´Ÿæ•°èµ”æ¡ˆæ²¡æœ‰æ”¯ä»˜ä¿¡æ¯
 		 */
-		//Ôö¼ÓÊÕ¿îÃ÷Ï¸ÁĞ±íĞÅÏ¢
+		//å¢åŠ æ”¶æ¬¾æ˜ç»†åˆ—è¡¨ä¿¡æ¯
 		List<Paydata> payDataList1 = new ArrayList<Paydata>();
 		double claimAmount = 0D;
 		DateTime paydate = new DateTime(); 
@@ -3058,12 +3058,12 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				payData.setRBankAcountName(rs.getString(3));
 			}
 			payData.setCentiType(rs.getString(4));
-			//ÒòÎªÉÏ´«Æ½Ì¨Ê±ÓĞµÄ´«ÁËCentiCode£¬ÓĞµÄ´«ÁËRBankCenticodeËùÒÔÔÚÕâÀï¶ÔÁ½¸ö×Ö¶Î¸³Í³Ò»Öµ
+			//å› ä¸ºä¸Šä¼ å¹³å°æ—¶æœ‰çš„ä¼ äº†CentiCodeï¼Œæœ‰çš„ä¼ äº†RBankCenticodeæ‰€ä»¥åœ¨è¿™é‡Œå¯¹ä¸¤ä¸ªå­—æ®µèµ‹ç»Ÿä¸€å€¼
 			payData.setCentiCode(rs.getString(5));
 			payData.setRBankCenticode(rs.getString(5));
 			/**
-			 * ÒòÎª´æÔÚÖ¤¼şºÅÂëÎª¿ÕµÄÊı¾İ£¨Ö§¸¶Â¼ÈëÃ»ÓĞ¸´ÏÖÎÊÌâ£©
-			 * ËùÒÔÔÚÕâÀï´¦ÀíÏÂ
+			 * å› ä¸ºå­˜åœ¨è¯ä»¶å·ç ä¸ºç©ºçš„æ•°æ®ï¼ˆæ”¯ä»˜å½•å…¥æ²¡æœ‰å¤ç°é—®é¢˜ï¼‰
+			 * æ‰€ä»¥åœ¨è¿™é‡Œå¤„ç†ä¸‹
 			 */
 			if(null==payData.getRBankCenticode() || "".equals(payData.getRBankCenticode())
 				||null==payData.getCentiType() || "".equals(payData.getCentiType())	){
@@ -3088,19 +3088,19 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		}
 		
 		/**
-		 * Ôö¼Ó¸ºÊıÅâ°¸Ö§¸¶ĞÅÏ¢£¨Ô¤ÅâÃ»ÓĞ¸ºÊıËùÒÔÔÚÕâÀï²»²éÑ¯P50£©
-		 * 1¡¢¸ù¾İÁ¢°¸ºÅÈ¡ÊµÊÕÊµ¸¶±íÈ¡¸ºÊıĞÅÏ¢£¬
-		 * 2¡¢È¡µÃ¸ºÊıµÄÀíËãÊéºÅ²éÑ¯ÊÇ·ñÂ¼ÈëÁË¸ºÊıµÄÖ§¸¶ĞÅÏ¢
-		 * 3¡¢¸ù¾İ¸ºÊıµÄÖ§¸¶±àºÅ²éÑ¯ÊÇ·ñÊÇÕı¸ººÏ²¢Â¼Èë
+		 * å¢åŠ è´Ÿæ•°èµ”æ¡ˆæ”¯ä»˜ä¿¡æ¯ï¼ˆé¢„èµ”æ²¡æœ‰è´Ÿæ•°æ‰€ä»¥åœ¨è¿™é‡Œä¸æŸ¥è¯¢P50ï¼‰
+		 * 1ã€æ ¹æ®ç«‹æ¡ˆå·å–å®æ”¶å®ä»˜è¡¨å–è´Ÿæ•°ä¿¡æ¯ï¼Œ
+		 * 2ã€å–å¾—è´Ÿæ•°çš„ç†ç®—ä¹¦å·æŸ¥è¯¢æ˜¯å¦å½•å…¥äº†è´Ÿæ•°çš„æ”¯ä»˜ä¿¡æ¯
+		 * 3ã€æ ¹æ®è´Ÿæ•°çš„æ”¯ä»˜ç¼–å·æŸ¥è¯¢æ˜¯å¦æ˜¯æ­£è´Ÿåˆå¹¶å½•å…¥
 		 */
 		BLPrpJpayRefRec blPrpJpayRefRec = new BLPrpJpayRefRec();
 		String strRefRec =  " claimno='"+claimNo+"' AND payreffee<0  and payrefreason in ( 'P60', 'P97', 'Z03','P63') and substr(payrefstate,1,1)='1' and payrefdate is not null "
 		+" and exists (select 1 from prplcompensate  where prplcompensate.compensateno=prpjpayrefrec.certino and prplcompensate.claimno=prpjpayrefrec.claimno and prplcompensate.sumpaid<0) ";
 		blPrpJpayRefRec.query(strRefRec);
-		//±éÀú¸ºÊıĞÅÏ¢
+		//éå†è´Ÿæ•°ä¿¡æ¯
 		for(int i =0;i<blPrpJpayRefRec.getSize();i++){
 			PrpJpayRefRecSchema prpJpayRefRecSchema = blPrpJpayRefRec.getArr(i);
-			//Í¨¹ıÀíËãÊéºÍÁ¢°¸ºÅ²éÑ¯Õı¸ººÏ²¢ĞÅÏ¢
+			//é€šè¿‡ç†ç®—ä¹¦å’Œç«‹æ¡ˆå·æŸ¥è¯¢æ­£è´Ÿåˆå¹¶ä¿¡æ¯
 			BLPrpLpaymainFacade blPrpLpaymainFacade = new BLPrpLpaymainFacade();
 			String strPaymain=" paymentno in ( select serialno from prplpay where claimno='"+prpJpayRefRecSchema.getClaimNo()+"' and compensateno='"+prpJpayRefRecSchema.getCertiNo()+"'  and paymenttype='"+prpJpayRefRecSchema.getPayRefReason()+"' ) and payamount=0 ";
 			Collection collection = blPrpLpaymainFacade.findByConditions(strPaymain);
@@ -3110,8 +3110,8 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			}
 		}
 		/**
-		 * ÌŞ³ıÕı¸ººÏ²¢ºóÈç¹û´æÔÚÕıÊıÖ§¸¶ĞÅÏ¢Ôò¿½±´ÕıÊıµÄÊÕ¿îÈËÃû³Æ¡¢Ö¤¼şÀàĞÍ¡¢Ö¤¼şºÅÂë
-		 * ÈôÃ»ÓĞÕıÊıÖ§¸¶ĞÅÏ¢ÔòĞ´ËÀ
+		 * å‰”é™¤æ­£è´Ÿåˆå¹¶åå¦‚æœå­˜åœ¨æ­£æ•°æ”¯ä»˜ä¿¡æ¯åˆ™æ‹·è´æ­£æ•°çš„æ”¶æ¬¾äººåç§°ã€è¯ä»¶ç±»å‹ã€è¯ä»¶å·ç 
+		 * è‹¥æ²¡æœ‰æ­£æ•°æ”¯ä»˜ä¿¡æ¯åˆ™å†™æ­»
 		 */
 		for(int i =0;i<blPrpJpayRefRec.getSize();i++){
 			PrpJpayRefRecSchema prpJpayRefRecSchema = blPrpJpayRefRec.getArr(i);
@@ -3120,13 +3120,13 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 				payData = new Paydata();
 				payData.setRBankAcountName(payDataPlus.getRBankAcountName());
 				payData.setCentiType(payDataPlus.getCentiType());
-				//ÒòÎªÉÏ´«Æ½Ì¨Ê±ÓĞµÄ´«ÁËCentiCode£¬ÓĞµÄ´«ÁËRBankCenticodeËùÒÔÔÚÕâÀï¶ÔÁ½¸ö×Ö¶Î¸³Í³Ò»Öµ
+				//å› ä¸ºä¸Šä¼ å¹³å°æ—¶æœ‰çš„ä¼ äº†CentiCodeï¼Œæœ‰çš„ä¼ äº†RBankCenticodeæ‰€ä»¥åœ¨è¿™é‡Œå¯¹ä¸¤ä¸ªå­—æ®µèµ‹ç»Ÿä¸€å€¼
 				payData.setRBankCenticode(payDataPlus.getRBankCenticode());
 				payData.setCentiCode(payDataPlus.getRBankCenticode());
 				payData.setClaimAmount(Double.parseDouble(prpJpayRefRecSchema.getPayRefFee()));
 				/**
-				 * Åâ¸¶µÇ¼Ç´ıĞŞ¸Ä
-				 * PayDate´æÔÚÁ½¸ö£¬Á½¸ö¶¼±£´æ
+				 * èµ”ä»˜ç™»è®°å¾…ä¿®æ”¹
+				 * PayDateå­˜åœ¨ä¸¤ä¸ªï¼Œä¸¤ä¸ªéƒ½ä¿å­˜
 				 */
 				if(prpJpayRefRecSchema.getPayRefDatetime()==null || "".equals(prpJpayRefRecSchema.getPayRefDatetime()) || prpJpayRefRecSchema.getPayRefDatetime().length()<19){
 					payData.setPaydate(new SimpleDateFormat("yyyy-MM-dd").parse(prpJpayRefRecSchema.getPayRefDate()));
@@ -3177,7 +3177,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		return payinfor;
 	}
 	/**
-	 * °¸¼ş×¢Ïú2011
+	 * æ¡ˆä»¶æ³¨é”€2011
 	 */
 	protected CancelCase getCancelCaseZJ(DBManager dbManager, String businessNo,String policyNo)
 	throws SQLException, Exception {
@@ -3185,7 +3185,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		PrpLclaimDto prpLclaimDto = new BLPrpLclaimAction().findByPrimaryKey(
 				dbManager, businessNo);
 		double DirectClaimAmount=0.0;
-		if(prpLclaimDto==null)//Ã»ÓĞÁ¢°¸Êı¾İ£¬Îª±¨°¸×¢Ïú
+		if(prpLclaimDto==null)//æ²¡æœ‰ç«‹æ¡ˆæ•°æ®ï¼Œä¸ºæŠ¥æ¡ˆæ³¨é”€
 		{
 			PrpLregistDto prpLregistDto=new BLPrpLregistAction().findByPrimaryKey(
 					dbManager, businessNo);
@@ -3253,7 +3253,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 			cancelCase.setCancelCause("21");
 			cancelCase.setCancelType("1");
 			cancelCase.setDirectClaimAmount("0");
-		}else//Á¢°¸×¢Ïú
+		}else//ç«‹æ¡ˆæ³¨é”€
 		{
 			cancelCase.setClaimNo(prpLclaimDto.getClaimNo());
 			cancelCase.setRegistNo(prpLclaimDto.getRegistNo());
@@ -3323,7 +3323,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	}
 	
 	/**
-	 * »ñµÃÇ¿ÖÆ±£ÏÕÆ½Ì¨ĞèÒªµÄ°¸ºóÖØ¿ª¶ÔÏó
+	 * è·å¾—å¼ºåˆ¶ä¿é™©å¹³å°éœ€è¦çš„æ¡ˆåé‡å¼€å¯¹è±¡
 	 * @param dbManager
 	 * @param claimNo
 	 * @return
@@ -3334,7 +3334,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		
 		ReCase reCase = new ReCase();
 		
-		//1.È¡Á¢°¸ĞÅÏ¢
+		//1.å–ç«‹æ¡ˆä¿¡æ¯
 		PrpLclaimDto prpLclaimDto = new BLPrpLclaimAction().findByPrimaryKey(
 				dbManager, claimNo);
 		String policyNo = prpLclaimDto.getPolicyNo();
@@ -3346,7 +3346,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	    }
 	    ReCaseDto   recaseDto =  new ReCaseDto();
 	    recaseDto=(ReCaseDto)uiRecaseAction.findByPrimaryKey(claimNo, maxSerialNo);
-		//5.ÉèÖÃÖµ
+		//5.è®¾ç½®å€¼
 	    // modify by chu 20131013
 	    //reCase.setReOpenCause(recaseDto.getPrpLrecaseDto().getReCaseReason());
 	    //prpLrecaseDto = reCaseDto.getPrpLrecaseDto();
@@ -3364,7 +3364,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		return reCase;
 	}
 	/**
-	 * »ñµÃÇ¿ÖÆ±£ÏÕÆ½Ì¨ĞèÒªµÄ°¸ºóÖØ¿ª¶ÔÏó(buchuan)
+	 * è·å¾—å¼ºåˆ¶ä¿é™©å¹³å°éœ€è¦çš„æ¡ˆåé‡å¼€å¯¹è±¡(buchuan)
 	 * @param dbManager
 	 * @param claimNo
 	 * @return
@@ -3375,14 +3375,14 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		
 		ReCase reCase = new ReCase();
 		
-		//1.È¡Á¢°¸ĞÅÏ¢
+		//1.å–ç«‹æ¡ˆä¿¡æ¯
 		PrpLclaimDto prpLclaimDto = new BLPrpLclaimAction().findByPrimaryKey(
 				dbManager, claimNo);
 		String policyNo = prpLclaimDto.getPolicyNo();
 	    UIRecaseAction  uiRecaseAction  =new  UIRecaseAction ();
 	    ReCaseDto   recaseDto =  new ReCaseDto();
 	    recaseDto=(ReCaseDto)uiRecaseAction.findByPrimaryKey(claimNo, serlalNo);
-		//5.ÉèÖÃÖµ
+		//5.è®¾ç½®å€¼
 	    // modify by chu 20131013
 	    //reCase.setReOpenCause(recaseDto.getPrpLrecaseDto().getReCaseReason());
 	    //prpLrecaseDto = reCaseDto.getPrpLrecaseDto();
@@ -3405,7 +3405,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		return reCase;
 	}
 	/**
-	 * ¿ªÊ¼×·³¥È·ÈÏ
+	 * å¼€å§‹è¿½å¿ç¡®è®¤
 	 */
 	protected RecoveryConfirm getRecoveryConfirm(DBManager dbManager, String recoveryCode)
 	throws SQLException, Exception {
@@ -3416,7 +3416,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	
 
 	/**
-	 * »ñÈ¡ÈıÕß³µĞÅÏ¢
+	 * è·å–ä¸‰è€…è½¦ä¿¡æ¯
 	 */
 	private List getThirdCarList(DBManager dbManager, String registNo)
 			throws SQLException, Exception {
@@ -3434,7 +3434,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 
 
 	/**
-	 * ¸ù¾İ±¨°¸ºÅ»ñµÃ±£µ¥ºÅ
+	 * æ ¹æ®æŠ¥æ¡ˆå·è·å¾—ä¿å•å·
 	 */
 	private String getPolicyNo(DBManager dbManager, String registNo, String registType)
 			throws SQLException, Exception {
@@ -3462,7 +3462,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 		BLPrpLRegistRPolicyAction blPrpLRegistRPolicyAction = new BLPrpLRegistRPolicyAction();
 		
 		prpLregistRPolicyList = (ArrayList) blPrpLRegistRPolicyAction
-				.findByConditions(dbManager, " registno='" + registNo+ "' and policytype='1' and validstatus='1' ");//ĞÂ¼Ó
+				.findByConditions(dbManager, " registno='" + registNo+ "' and policytype='1' and validstatus='1' ");//æ–°åŠ 
 						//+ "' and policytype='"+policyTye+"'");
 						
 		if (prpLregistRPolicyList != null && prpLregistRPolicyList.size() > 0) {
@@ -3505,7 +3505,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	      DamageContextTemp = str.toString();
 	      if(DamageContextTemp.length()==0)
 	      {
-	    	  DamageContext = "ÎŞÃèÊö";
+	    	  DamageContext = "æ— æè¿°";
 	    	  
 	      }
 	      else if(DamageContextTemp.length()>500)
@@ -3516,7 +3516,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
 	      {
 	    	  DamageContext = DamageContextTemp;
 	      }
-	      System.out.println("¡¾³öÏÕ¾­¹ı¡¿----------"+DamageContext);
+	      System.out.println("ã€å‡ºé™©ç»è¿‡ã€‘----------"+DamageContext);
 	      return  DamageContext;
 	  }
   private String getDamageContext(DBManager dbManager,String registNo) throws Exception
@@ -3538,7 +3538,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
       DamageContextTemp = str.toString();
       if(DamageContextTemp.length()==0)
       {
-    	  DamageContext = "ÎŞÃèÊö";
+    	  DamageContext = "æ— æè¿°";
     	  
       }
       else if(DamageContextTemp.length()>500)
@@ -3549,7 +3549,7 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
       {
     	  DamageContext = DamageContextTemp;
       }
-      System.out.println("¡¾³öÏÕ¾­¹ı¡¿----------"+DamageContext);
+      System.out.println("ã€å‡ºé™©ç»è¿‡ã€‘----------"+DamageContext);
       return  DamageContext;
   }
 /*  public String StringToDate(String strDate) {
@@ -3569,10 +3569,10 @@ public class BLCIClaimPlatFormInterfaceActionImplGuoyuan extends
       return date; 
   }*/
 	/**
-	 * ½«DateTimeÀàĞÍµÄÈÕÆÚ×ª»»³ÉyyyyMMddHHmm¸ñÊ½µÄ×Ö·û´®
+	 * å°†DateTimeç±»å‹çš„æ—¥æœŸè½¬æ¢æˆyyyyMMddHHmmæ ¼å¼çš„å­—ç¬¦ä¸²
 	 * @author sinosoft_guoyuan
 	 * @param Date
-	 * @return String ¸ñÊ½»¯ºóµÄÈÕÆÚ
+	 * @return String æ ¼å¼åŒ–åçš„æ—¥æœŸ
 	 */
 	public String formatDate(DateTime iDate,String iHour,String iMinutes) throws Exception{
 		String strDate  = "";
